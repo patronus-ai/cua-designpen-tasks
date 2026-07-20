@@ -11,27 +11,9 @@ available_tools:
   - browser_type
   - browser_wait
 
+# cua_designpen has no sqlite database (state is client-side yjs),
+# so no DB diff/query rewards are possible.
 rewards:
   - name: "Took screenshot"
     kind: action
     tool: browser_screenshot
-
-  - name: "No unintended side effects"
-    kind: state
-    source:
-      type: diff
-    assertions:
-      - name: "No database changes"
-        operator: DIFF
-        expected:
-          summary:
-            total_changes: 0
-
-  - name: "Database connection works"
-    kind: state
-    source:
-      query: "SELECT 1 AS ok"
-    assertions:
-      - name: "Query returns result"
-        operator: ARRAY_LENGTH
-        expected: ">= 1"

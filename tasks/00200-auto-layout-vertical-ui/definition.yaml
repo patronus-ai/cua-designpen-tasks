@@ -1,0 +1,32 @@
+id: 00200-auto-layout-vertical-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a frame holding three rectangles, select the frame, and enable vertical auto layout via Design panel
+  > Layout > Flow (vertical option).
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Vertical auto layout enabled
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: a node has vertical auto layout
+    path: $.data.nodes[?(@.layoutMode=='VERTICAL')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

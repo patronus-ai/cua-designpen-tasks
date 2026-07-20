@@ -1,0 +1,36 @@
+id: 00108-edit-undo-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw two rectangles one after another, then press Cmd+Z once (or use Main menu > Edit > Undo) so the second
+  rectangle disappears.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Last action undone
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: at least one rectangle remains
+    path: $.data.nodes[?(@.type=='RECTANGLE')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: at most one rectangle remains
+    path: $.data.nodes[?(@.type=='RECTANGLE')]
+    operator: ARRAY_LENGTH
+    expected: <= 1
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

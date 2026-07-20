@@ -1,0 +1,36 @@
+id: 00440-comment-reply-ui
+start_url: http://cua_designpen.web
+prompt: 'With the Comment tool, place a comment on the canvas asking "does this work?" and submit it. Click the
+  pin to open the thread, then type "yes, approved" in the thread''s reply composer and submit the reply.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Thread has an original message plus a reply
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: thread has at least two messages
+    path: $.data.comments[0].messages
+    operator: ARRAY_LENGTH
+    expected: '>= 2'
+  - name: reply says approved
+    path: $.data.comments[0].messages[1].body
+    operator: STRING_CONTAINS
+    expected: approved
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

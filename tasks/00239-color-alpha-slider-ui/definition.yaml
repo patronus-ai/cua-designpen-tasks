@@ -1,0 +1,36 @@
+id: 00239-color-alpha-slider-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a rectangle, click its fill swatch in the right panel to open the color picker, set the color to pure
+  red (FF0000), then drag the alpha slider down to exactly 50% so content behind the shape shows through.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Rectangle fill is red at 50% alpha
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: fill alpha is 0.5
+    path: $.data.nodes[?(@.type=='RECTANGLE')].fills[0].color.a
+    operator: NUMERIC_MATCH
+    expected: '0.5'
+  - name: fill is pure red
+    path: $.data.nodes[?(@.type=='RECTANGLE')].style.fill
+    operator: COLOR_NEAR
+    expected: '#FF0000'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

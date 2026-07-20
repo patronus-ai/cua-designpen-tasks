@@ -1,0 +1,36 @@
+id: 00257-gradient-rotate-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a square, give it a linear gradient fill, then click the gradient editor''s rotate button to turn
+  the gradient a quarter turn (90 degrees) so it flows perpendicular to its original direction.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Rectangle has a rotated linear gradient
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: fill is a gradient
+    path: $.data.nodes[?(@.type=='RECTANGLE')].fills[0].type
+    operator: STRING_CONTAINS
+    expected: GRADIENT
+  - name: gradient transform present
+    path: $.data.nodes[?(@.type=='RECTANGLE')].fills[0].gradientTransform
+    operator: EXISTS
+    expected: 'true'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

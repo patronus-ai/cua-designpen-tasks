@@ -1,0 +1,32 @@
+id: 00371-asset-open-details-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a component from a rectangle. In the Assets tab of the left panel, click the component''s asset
+  tile to open its details popover, then use the Insert button inside that popover to add one copy to the canvas.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Instance added via asset details
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: an instance exists
+    path: $.data.nodes[?(@.type=='INSTANCE')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

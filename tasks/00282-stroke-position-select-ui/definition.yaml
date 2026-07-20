@@ -1,0 +1,36 @@
+id: 00282-stroke-position-select-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a rectangle with a border and change the Stroke position select in the panel to Inside, so the border
+  sits entirely within the shape''s edges and the outer dimensions do not grow.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Border aligned to the inside
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: stroke present
+    path: $.data.nodes[?(@.type=='RECTANGLE')].strokes
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: stroke align inside
+    path: $.data.nodes[?(@.type=='RECTANGLE')].strokes[0].align
+    operator: STRING_EQUALS
+    expected: INSIDE
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

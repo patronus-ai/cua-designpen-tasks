@@ -1,0 +1,32 @@
+id: 00155-multiplayer-cursors-toggle-ui
+start_url: http://cua_designpen.web
+prompt: 'Open the zoom dropdown in the top-right corner of the editor and uncheck the "Multiplayer cursors" checkbox
+  so other collaborators'' live cursors are hidden.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: 'Setup-only (grade via UI observation): Editor state intact after cursor toggle'
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: document state readable
+    path: $.data.nodes
+    operator: EXISTS
+    expected: 'true'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

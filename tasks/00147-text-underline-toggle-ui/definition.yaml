@@ -1,0 +1,32 @@
+id: 00147-text-underline-toggle-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a text layer with the text tool (T) reading "read the docs", select it, and underline it via Main
+  menu > Text > Underline. Do not rely on the Cmd+U shortcut — use the menu item.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Text is underlined
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: underlined text node present
+    path: $.data.nodes[?(@.type=='TEXT' & @.textDecoration=='UNDERLINE')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

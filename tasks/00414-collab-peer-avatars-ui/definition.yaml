@@ -1,0 +1,33 @@
+id: 00414-collab-peer-avatars-ui
+start_url: http://cua_designpen.web
+prompt: 'Open the file''s share link in a second browser tab so a peer joins, then check the toolbar of the first
+  tab.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: 'Setup-only (grade via UI observation): Document reachable (weak: avatar stack is presence UI only, needs
+    a peer)'
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: document state reachable
+    path: $.data.nodes
+    operator: EXISTS
+    expected: 'true'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

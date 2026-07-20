@@ -1,0 +1,34 @@
+id: 00410-collab-join-approval-gate-ui
+start_url: http://cua_designpen.web
+prompt: 'In the Share settings set the audience to "Only invited people", then open the file''s share link in a
+  second browser tab so a join request is sent. In the owner tab, click Approve on the join-request toast when it
+  appears.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: 'Setup-only (grade via UI observation): Document reachable (weak: approval flow is session-only, needs a
+    joining peer)'
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: document state reachable
+    path: $.data.nodes
+    operator: EXISTS
+    expected: 'true'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

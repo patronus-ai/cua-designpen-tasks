@@ -1,0 +1,33 @@
+id: 00447-dev-compare-changes-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a frame (about 300x200). Switch to Dev Mode via the toolbar toggle, select the frame, and mark it
+  as ready for development. Then switch back to design mode, widen the frame by about 50px, return to Dev Mode,
+  select the frame, and click the "Edited …" row in the code panel to open the compare-changes view.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Frame carries dev-ready status
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: a node is flagged ready for dev
+    path: $.data.nodes[?(@.sectionStatus=='BUILD')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

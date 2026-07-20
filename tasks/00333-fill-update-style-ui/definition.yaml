@@ -1,0 +1,37 @@
+id: 00333-fill-update-style-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw two rectangles named "Card A" and "Card B" and link both fills to the same paint style you create
+  (any starting color) via the fill apply-styles popover. Then change Card A''s fill to pure red (#FF0000) and use
+  the update action in the apply-styles panel to push the change back into the shared style.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: fill-update-style observable effect
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: Card A fill is pure red
+    path: $.data.nodes[?(@.name=='Card A')].style.fill
+    operator: COLOR_NEAR
+    expected: '#FF0000'
+  - name: Card B fill follows updated style to pure red
+    path: $.data.nodes[?(@.name=='Card B')].style.fill
+    operator: COLOR_NEAR
+    expected: '#FF0000'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

@@ -1,0 +1,36 @@
+id: 00197-auto-layout-padding-individual-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a frame with one rectangle inside and enable auto layout (Layout > Flow). In the Padding controls,
+  switch to individual per-side padding and set: top 12, right 24, bottom 36, left 48.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Individual padding set per side
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: top and bottom padding are 12 and 36
+    path: $.data.nodes[?(@.paddingTop==12 & @.paddingBottom==36)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: left and right padding are 48 and 24
+    path: $.data.nodes[?(@.paddingLeft==48 & @.paddingRight==24)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

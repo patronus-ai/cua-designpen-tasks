@@ -1,0 +1,32 @@
+id: 00116-align-middle-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw two 100x100 squares at (100, 100) and (260, 300). Select both and align them to their shared vertical
+  middle using Main menu > Arrange > Align Middle (or the design panel alignment row).
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Vertical middles aligned
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: both squares at midline y=200
+    path: $.data.nodes[?(@.type=='RECTANGLE' & @.y==200)]
+    operator: ARRAY_LENGTH
+    expected: '>= 2'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

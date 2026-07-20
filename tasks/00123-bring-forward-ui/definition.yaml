@@ -1,0 +1,37 @@
+id: 00123-bring-forward-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw three overlapping squares in this exact order: a 100x100 first, then a 150x150, then a 200x200, each
+  partly covering the previous one. Select the first (smallest) square and step it exactly one layer up with Cmd+Alt+ArrowUp,
+  so it sits above the 150px square but still below the 200px one.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Small square moved up one layer
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: small square is second from top
+    path: $.data.nodes[-2].width
+    operator: NUMERIC_MATCH
+    expected: == 100
+  - name: big square still topmost
+    path: $.data.nodes[-1].width
+    operator: NUMERIC_MATCH
+    expected: == 200
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

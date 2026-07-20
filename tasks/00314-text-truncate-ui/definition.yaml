@@ -1,0 +1,33 @@
+id: 00314-text-truncate-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a text layer with a long sentence (e.g. "This sentence is far too long to fit inside a small text
+  box"), shrink its box so the sentence no longer fits, then open the Type settings popover via the sliders button
+  in the Typography section and enable truncation with ellipsis in the Basics tab.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: text-truncate observable effect
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: ellipsis truncation enabled
+    path: $.data.nodes[?(@.type=='TEXT' & @.textTruncation=='ENDING')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

@@ -1,0 +1,36 @@
+id: 00292-effect-offset-edit-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a square, add a drop shadow, and set the shadow''s offset fields to X 10 and Y 20 so it is pushed
+  10 to the right and 20 down.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Shadow offset is (10, 20)
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: offset x is 10
+    path: $.data.nodes[?(@.type=='RECTANGLE')].effects[0].offset.x
+    operator: NUMERIC_MATCH
+    expected: '10'
+  - name: offset y is 20
+    path: $.data.nodes[?(@.type=='RECTANGLE')].effects[0].offset.y
+    operator: NUMERIC_MATCH
+    expected: '20'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

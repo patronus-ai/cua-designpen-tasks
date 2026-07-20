@@ -1,0 +1,40 @@
+id: 10044-create-vector-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools: call create_vector at (0,0) with name Zig, a closed triangle path (three vertices)
+  and fill #FF0000. When you are done, zoom the canvas to fit (press Shift+1 in the browser), then take a browser
+  screenshot of the app so the result can be visually verified.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- create_vector
+- get_node
+- find_nodes
+- browser_press_key
+- browser_screenshot
+required_tools:
+- create_vector
+rewards:
+- name: 'Tool under test invoked: create_vector'
+  kind: action
+  tool: create_vector
+- name: Zig vector with triangle network
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: Zig vector exists
+    path: $.data.nodes[?(@.type=='VECTOR' & @.name=='Zig')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: network has at least 3 vertices
+    path: $.data.nodes[?(@.name=='Zig')].vectorNetwork.vertices[*]
+    operator: ARRAY_LENGTH
+    expected: '>= 3'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

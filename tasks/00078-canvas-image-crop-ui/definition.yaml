@@ -1,0 +1,34 @@
+id: 00078-canvas-image-crop-ui
+start_url: http://cua_designpen.web
+prompt: 'Place any image on the canvas and select it. Open the fill swatch popover in the right panel, change the
+  image scale mode dropdown to "Crop" to enter the crop session, drag one of the crop handles inward to trim a chunk
+  off one side, then press Enter to commit the crop. (Note: double-clicking the image does not start a crop — use
+  the fill panel path.)
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Image cropped (crop state lives in paint data, weakly assertable)
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: an image-backed rectangle exists
+    path: $.data.nodes[?(@.type=='RECTANGLE')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

@@ -1,0 +1,33 @@
+id: 00237-visibility-bind-variable-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a BOOLEAN variable named "showBadge" in the variables panel. Draw a small circle, select it, then
+  right-click the visibility eye button in the Design panel Appearance section and bind the circle''s visibility
+  to the showBadge variable.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Visibility bound to a variable
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: a node has its visibility driven by a variable
+    path: $.data.nodes[*].boundVariables.visible
+    operator: EXISTS
+    expected: 'true'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

@@ -1,0 +1,42 @@
+id: 10012-reparent-node-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools: create a 300x300 frame named Tray at (0,0), give it vertical auto-layout with padding
+  24 and spacing 0 via set_layout, create a 50x50 ellipse named Ball at (600,600), then call reparent_node to move
+  Ball into Tray as its first child. When you are done, zoom the canvas to fit (press Shift+1 in the browser), then
+  take a browser screenshot of the app so the result can be visually verified.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- reparent_node
+- create_shape
+- set_layout
+- get_node
+- browser_press_key
+- browser_screenshot
+required_tools:
+- reparent_node
+rewards:
+- name: 'Tool under test invoked: reparent_node'
+  kind: action
+  tool: reparent_node
+- name: Ball sits inside Tray at the padding origin
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: Ball x snapped to padding
+    path: $.data.nodes[?(@.name=='Ball' & @.x==24)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: Ball y snapped to padding
+    path: $.data.nodes[?(@.name=='Ball' & @.y==24)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

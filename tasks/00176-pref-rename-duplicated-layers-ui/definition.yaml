@@ -1,0 +1,32 @@
+id: 00176-pref-rename-duplicated-layers-ui
+start_url: http://cua_designpen.web
+prompt: 'Open the main menu and turn OFF Preferences > "Rename duplicated layers" (on by default). Then draw a rectangle,
+  rename its layer to exactly "Card 1", and duplicate it with Cmd+D.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Duplicate kept identical name
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: two layers named Card 1
+    path: $.data.nodes[?(@.name=='Card 1')]
+    operator: ARRAY_LENGTH
+    expected: '>= 2'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

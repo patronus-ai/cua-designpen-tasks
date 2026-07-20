@@ -1,0 +1,36 @@
+id: 00455-dev-ready-list-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a frame and rename it "Login screen". Switch to Dev Mode via the toolbar toggle, select the frame,
+  mark it as ready for development, and open the dev-mode ready-for-dev list panel to confirm it is listed.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Frame flagged ready for dev
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: frame named Login screen exists
+    path: $.data.nodes[?(@.name=='Login screen')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: a node is flagged ready for dev
+    path: $.data.nodes[?(@.sectionStatus=='BUILD')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

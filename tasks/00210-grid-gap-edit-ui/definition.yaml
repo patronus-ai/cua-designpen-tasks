@@ -1,0 +1,32 @@
+id: 00210-grid-gap-edit-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a frame, enable Grid layout via Layout > Flow, then in the Grid controls gap fields set the column
+  gap to 20 and the row gap to 12.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Grid gaps 20/12 set
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: grid gaps are 20 and 12
+    path: $.data.nodes[?(@.gridColumnGap==20 & @.gridRowGap==12)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

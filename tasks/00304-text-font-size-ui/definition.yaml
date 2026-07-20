@@ -1,0 +1,32 @@
+id: 00304-text-font-size-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a text layer with the text "Q3 Report". With the layer selected, set the font size to 48 using the
+  size input in the Typography section of the properties panel.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: text-font-size observable effect
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: 48px text layer present
+    path: $.data.nodes[?(@.type=='TEXT')].fontSize
+    operator: NUMERIC_MATCH
+    expected: == 48
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

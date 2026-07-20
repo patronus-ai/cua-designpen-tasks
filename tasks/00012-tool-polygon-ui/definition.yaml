@@ -1,0 +1,32 @@
+id: 00012-tool-polygon-ui
+start_url: http://cua_designpen.web
+prompt: 'Activate the Polygon tool (shape flyout on the toolbar > Polygon — it has no keyboard shortcut) and drag
+  on the canvas to draw a default polygon (triangle).
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Polygon drawn
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: a polygon node exists
+    path: $.data.nodes[?(@.type=='POLYGON')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

@@ -1,0 +1,37 @@
+id: 00340-text-update-style-ui
+start_url: http://cua_designpen.web
+prompt: 'Create two text layers named "Intro" and "Outro", create one shared text style (any look), and apply it
+  to both via the TextStylesMenu. Then edit the shared style itself in the TextStyleEditorPopover, changing its
+  font size to 40.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: text-update-style observable effect
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: Intro is 40px
+    path: $.data.nodes[?(@.name=='Intro')].fontSize
+    operator: NUMERIC_MATCH
+    expected: == 40
+  - name: Outro followed the style edit
+    path: $.data.nodes[?(@.name=='Outro')].fontSize
+    operator: NUMERIC_MATCH
+    expected: == 40
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

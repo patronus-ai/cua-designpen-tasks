@@ -1,0 +1,35 @@
+id: 00351-variable-mode-add-ui
+start_url: http://cua_designpen.web
+prompt: 'Open the Local variables dialog from the left panel Variables tab, create a collection, and add a FLOAT
+  variable named "gutter" with value 200 in the default mode. Draw a rectangle and bind its width to "gutter" (it
+  should snap to 200). Back in the dialog, add a second mode named "Dark" next to the default mode using the "+"
+  in the mode header, set "gutter" to 320 in the new Dark column, and make Dark the default mode via its column
+  context menu so the bound rectangle follows the new mode.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Dark mode value re-resolved into bound width
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: rectangle width resolved to 320
+    path: $.data.nodes[?(@.type=='RECTANGLE')].width
+    operator: NUMERIC_MATCH
+    expected: == 320
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

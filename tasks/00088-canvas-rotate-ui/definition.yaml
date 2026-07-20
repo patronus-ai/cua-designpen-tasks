@@ -1,0 +1,32 @@
+id: 00088-canvas-rotate-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a rectangle, keep it selected, then position the cursor just outside one of its corners (the rotate
+  zone) and drag to give it a clockwise tilt of roughly 45 degrees — anywhere between 20 and 70 degrees is fine.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Node rotated by corner drag
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: rectangle rotated at least 20 degrees
+    path: $.data.nodes[?(@.type=='RECTANGLE')].rotation
+    operator: NUMERIC_MATCH
+    expected: '>= 20'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

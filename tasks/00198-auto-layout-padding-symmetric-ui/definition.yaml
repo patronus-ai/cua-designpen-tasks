@@ -1,0 +1,36 @@
+id: 00198-auto-layout-padding-symmetric-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a button-like frame with one rectangle inside, enable auto layout so it hugs the content (Layout
+  > Flow), and in the Padding controls set horizontal padding to 40 and vertical padding to 16.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Symmetric padding 40/16 set
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: horizontal padding is 40 on both sides
+    path: $.data.nodes[?(@.paddingLeft==40 & @.paddingRight==40)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: vertical padding is 16 on both sides
+    path: $.data.nodes[?(@.paddingTop==16 & @.paddingBottom==16)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

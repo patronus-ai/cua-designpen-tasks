@@ -1,0 +1,32 @@
+id: 00152-wrap-in-auto-layout-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw two squares side by side, select both, and wrap them in an auto-layout container with Shift+A (or
+  Main menu > Arrange > Add auto layout, or right-click > Add auto layout).
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Auto-layout frame exists
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: horizontal auto-layout frame present
+    path: $.data.nodes[?(@.type=='FRAME' & @.layoutMode=='HORIZONTAL')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

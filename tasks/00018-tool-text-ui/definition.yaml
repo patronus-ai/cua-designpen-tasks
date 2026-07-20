@@ -1,0 +1,37 @@
+id: 00018-tool-text-ui
+start_url: http://cua_designpen.web
+prompt: 'Using the Text tool (toolbar Text button or press T), create two separate text layers: click once and type
+  "Welcome" for the headline, then click below it and type "Get started" as a second layer. Click away after each
+  to commit.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Two text layers created
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: two text nodes exist
+    path: $.data.nodes[?(@.type=='TEXT')]
+    operator: ARRAY_LENGTH
+    expected: '>= 2'
+  - name: headline text present
+    path: $.data.nodes[?(@.type=='TEXT'&@.name=='Welcome')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

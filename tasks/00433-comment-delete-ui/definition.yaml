@@ -1,0 +1,37 @@
+id: 00433-comment-delete-ui
+start_url: http://cua_designpen.web
+prompt: 'With the Comment tool, place two separate comments on the canvas: one saying "keep this note" and one saying
+  "delete this note". Then click the pin of the second comment, open the thread''s "…" menu, choose Delete, and
+  confirm in the dialog.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Only the kept comment remains
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: exactly one thread remains
+    path: $.data.comments
+    operator: ARRAY_LENGTH
+    expected: == 1
+  - name: remaining message is the kept one
+    path: $.data.comments[0].messages[0].body
+    operator: STRING_CONTAINS
+    expected: keep this note
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

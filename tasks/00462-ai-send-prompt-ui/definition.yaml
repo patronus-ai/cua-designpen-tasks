@@ -1,0 +1,32 @@
+id: 00462-ai-send-prompt-ui
+start_url: http://cua_designpen.web
+prompt: 'Open the AI chat panel (right panel AI tab, or Cmd+J) and send the prompt: "Add a 200 by 200 blue rectangle
+  to the canvas".
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Requested rectangle exists
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: 200x200 rectangle exists
+    path: $.data.nodes[?(@.type=='RECTANGLE' & @.width==200)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

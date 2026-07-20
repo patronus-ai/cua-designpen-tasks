@@ -1,0 +1,40 @@
+id: 10029-attach-text-to-path-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools: create a text layer named ''River label'' reading ''along the bend'' and a vector
+  named ''Flow path'' from an open two-vertex network (0,0)->(300,80); then call attach_text_to_path binding the
+  text to the vector. When you are done, zoom the canvas to fit (press Shift+1 in the browser), then take a browser
+  screenshot of the app so the result can be visually verified.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- attach_text_to_path
+- create_shape
+- set_text
+- create_vector
+- get_node
+- find_nodes
+- browser_press_key
+- browser_screenshot
+required_tools:
+- attach_text_to_path
+rewards:
+- name: 'Tool under test invoked: attach_text_to_path'
+  kind: action
+  tool: attach_text_to_path
+- name: Text bound to path
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: '''River label'' carries textPath'
+    path: $.data.nodes[?(@.name=='River label')].textPath
+    operator: EXISTS
+    expected: 'true'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

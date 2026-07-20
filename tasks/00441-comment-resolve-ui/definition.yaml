@@ -1,0 +1,32 @@
+id: 00441-comment-resolve-ui
+start_url: http://cua_designpen.web
+prompt: 'With the Comment tool, place a comment on the canvas saying "fix the padding" and submit it. Click the
+  pin to open the thread, then click the thread''s checkmark (resolve) button to mark the conversation as resolved.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Comment thread is resolved
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: a resolved thread exists
+    path: $.data.comments[?(@.resolved==true)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

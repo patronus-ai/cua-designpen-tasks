@@ -1,0 +1,36 @@
+id: 00073-canvas-dblclick-enter-frame-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a frame with a small circle inside it. A single click only selects the whole frame, so double-click
+  the circle to drill inside the frame, confirm just the circle is selected, and delete it.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Frame child removed via drill-in
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: no ellipse remains
+    path: $.data.nodes[?(@.type=='ELLIPSE')]
+    operator: ARRAY_LENGTH
+    expected: <= 0
+  - name: frame still present
+    path: $.data.nodes[?(@.type=='FRAME')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

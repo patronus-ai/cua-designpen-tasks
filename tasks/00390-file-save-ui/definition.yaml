@@ -1,0 +1,32 @@
+id: 00390-file-save-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a rectangle and name it "SaveMe", then save the document to disk as a .fig file via Main menu > File
+  > Save (Cmd+S).
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Content that was saved exists
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: rectangle named SaveMe exists
+    path: $.data.nodes[?(@.name=='SaveMe')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

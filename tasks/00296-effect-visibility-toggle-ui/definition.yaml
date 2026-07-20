@@ -1,0 +1,36 @@
+id: 00296-effect-visibility-toggle-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw an ellipse, add a drop shadow, then click the eye button on the effect row to switch the shadow off
+  without deleting it.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Effect hidden but still present
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: effect still present
+    path: $.data.nodes[?(@.type=='ELLIPSE')].effects
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: effect not visible
+    path: $.data.nodes[?(@.type=='ELLIPSE')].effects[0].visible
+    operator: STRING_EQUALS
+    expected: 'false'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

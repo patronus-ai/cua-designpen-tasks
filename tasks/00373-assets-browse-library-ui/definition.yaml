@@ -1,0 +1,36 @@
+id: 00373-assets-browse-library-ui
+start_url: http://cua_designpen.web
+prompt: 'Componentize two shapes as "Card" and "Chip". In the Assets tab, click into the file''s own component library
+  to browse its contents, then insert a copy of Chip onto the canvas from there.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Instance of 'Chip' placed
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: two components exist
+    path: $.data.nodes[?(@.type=='COMPONENT')]
+    operator: ARRAY_LENGTH
+    expected: '>= 2'
+  - name: an instance named 'Chip' exists
+    path: $.data.nodes[?(@.type=='INSTANCE' & @.name=='Chip')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

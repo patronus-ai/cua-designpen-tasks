@@ -1,0 +1,40 @@
+id: 00280-stroke-per-side-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a rectangle, add a border, set the stroke weight to 4, then open the stroke side menu in the Stroke
+  section and choose Top so the border applies to the top edge only.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Border on top edge only at weight 4
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: stroke present
+    path: $.data.nodes[?(@.type=='RECTANGLE')].strokes
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: top border weight 4
+    path: $.data.nodes[?(@.type=='RECTANGLE')].borderTopWeight
+    operator: NUMERIC_MATCH
+    expected: '4'
+  - name: bottom border weight 0
+    path: $.data.nodes[?(@.type=='RECTANGLE')].borderBottomWeight
+    operator: NUMERIC_MATCH
+    expected: '0'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

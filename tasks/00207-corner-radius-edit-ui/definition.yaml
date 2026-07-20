@@ -1,0 +1,31 @@
+id: 00207-corner-radius-edit-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a rectangle and set its corner radius to 16 in the Design panel Appearance section radius field.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Uniform corner radius 16
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: a node has corner radius 16
+    path: $.data.nodes[?(@.cornerRadius==16)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

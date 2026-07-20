@@ -1,0 +1,32 @@
+id: 00117-align-right-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw two 100x100 squares at (100, 120) and (340, 260). Select both and align their right edges using Main
+  menu > Arrange > Align Right (or the design panel alignment row). The rightmost square must not move.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Right edges aligned
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: both squares at x=340
+    path: $.data.nodes[?(@.type=='RECTANGLE' & @.x==340)]
+    operator: ARRAY_LENGTH
+    expected: '>= 2'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

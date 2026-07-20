@@ -1,0 +1,32 @@
+id: 00400-share-set-password-ui
+start_url: http://cua_designpen.web
+prompt: 'Open the Share dialog and its settings sub-view, set the audience to "Anyone", enable the password toggle,
+  enter the password "qa-pass-1234" (or use the generate option), and click Save.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: 'Setup-only (grade via UI observation): Document reachable (weak: password setting lives outside the document)'
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: document state reachable
+    path: $.data.nodes
+    operator: EXISTS
+    expected: 'true'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

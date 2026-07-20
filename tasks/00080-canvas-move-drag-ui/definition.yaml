@@ -1,0 +1,32 @@
+id: 00080-canvas-move-drag-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a roughly 100x100 square near the left edge of the page, then drag it clear across to the right side
+  so its x position lands past 800.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Node moved by dragging
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: rectangle x past 800
+    path: $.data.nodes[?(@.type=='RECTANGLE')].x
+    operator: NUMERIC_MATCH
+    expected: '>= 800'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

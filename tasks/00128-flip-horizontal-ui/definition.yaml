@@ -1,0 +1,32 @@
+id: 00128-flip-horizontal-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw any asymmetric shape (e.g. a rectangle), select it, and mirror it left-to-right with Shift+H (or right-click
+  > Flip horizontal).
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Shape flipped horizontally
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: a node has flipX set
+    path: $.data.nodes[?(@.flipX==true)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

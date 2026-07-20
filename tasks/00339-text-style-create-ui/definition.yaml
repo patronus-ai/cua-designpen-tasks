@@ -1,0 +1,37 @@
+id: 00339-text-style-create-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a text layer with the text "Release notes", set its font family to Montserrat and font size to 28
+  in the Typography section. Then save that exact look as a shared text style (e.g. named "Heading/Release") via
+  the Styles create panel or the TextStylesMenu.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: text-style-create observable effect
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: Montserrat heading present
+    path: $.data.nodes[?(@.type=='TEXT' & @.fontFamily=='Montserrat')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: heading is 28px
+    path: $.data.nodes[?(@.type=='TEXT')].fontSize
+    operator: NUMERIC_MATCH
+    expected: == 28
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

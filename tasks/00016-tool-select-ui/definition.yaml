@@ -1,0 +1,33 @@
+id: 00016-tool-select-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a small circle near the top of the canvas with the Ellipse tool (O). Switch to the Move tool (toolbar
+  Move button or press V), click the circle to select it, and drag it down the page until its Y position is at least
+  600 (check the Y field in the panel).
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Node selected and moved
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: ellipse moved down past y 600
+    path: $.data.nodes[?(@.type=='ELLIPSE')].y
+    operator: NUMERIC_MATCH
+    expected: '>= 600'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

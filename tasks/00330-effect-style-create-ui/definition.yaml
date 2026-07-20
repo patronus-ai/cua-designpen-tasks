@@ -1,0 +1,33 @@
+id: 00330-effect-style-create-ui
+start_url: http://cua_designpen.web
+prompt: 'With nothing selected, open the Styles section "+" in the properties panel and create a new effect style
+  named "Frosted" containing a layer blur (e.g. blur 10). Then draw a circle with the ellipse tool and apply the
+  "Frosted" effect style to it.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: effect-style-create observable effect
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: blur effect on ellipse
+    path: $.data.nodes[?(@.type=='ELLIPSE')].effects[0].type
+    operator: STRING_EQUALS
+    expected: LAYER_BLUR
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

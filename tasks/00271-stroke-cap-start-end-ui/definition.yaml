@@ -1,0 +1,36 @@
+id: 00271-stroke-cap-start-end-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a plain straight line with the Line tool. Open the stroke settings popover (sliders button on the
+  stroke row) and set the end-point cap to an arrowhead using the cap selects.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Line ends in an arrowhead
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: line has a stroke
+    path: $.data.nodes[?(@.type=='LINE')].strokes
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: end cap is an arrow
+    path: $.data.nodes[?(@.type=='LINE')].strokes[0].capEnd
+    operator: STRING_CONTAINS
+    expected: ARROW
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

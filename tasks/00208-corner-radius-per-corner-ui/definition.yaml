@@ -1,0 +1,32 @@
+id: 00208-corner-radius-per-corner-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a rectangle, enable independent corners via the Appearance section corners toggle, then in the corners
+  grid set the top-left radius to 24 and the bottom-right radius to 8, leaving top-right and bottom-left at 0.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Mixed per-corner radii set
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: top-left 24 and bottom-right 8
+    path: $.data.nodes[?(@.topLeftRadius==24 & @.bottomRightRadius==8)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

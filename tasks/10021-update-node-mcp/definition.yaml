@@ -1,0 +1,44 @@
+id: 10021-update-node-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools: create a 100x100 rectangle named Ghost at (0,0), then call update_node once to move
+  it to (250,40) and set opacity 0.3. When you are done, zoom the canvas to fit (press Shift+1 in the browser),
+  then take a browser screenshot of the app so the result can be visually verified.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- update_node
+- create_shape
+- get_node
+- browser_press_key
+- browser_screenshot
+required_tools:
+- update_node
+rewards:
+- name: 'Tool under test invoked: update_node'
+  kind: action
+  tool: update_node
+- name: Ghost moved and faded
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: Ghost moved to x 250
+    path: $.data.nodes[?(@.name=='Ghost' & @.x==250)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: Ghost moved to y 40
+    path: $.data.nodes[?(@.name=='Ghost' & @.y==40)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: Ghost opacity 0.3
+    path: $.data.nodes[?(@.name=='Ghost' & @.opacity==0.3)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

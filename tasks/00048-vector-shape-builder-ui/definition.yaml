@@ -1,0 +1,37 @@
+id: 00048-vector-shape-builder-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a self-crossing figure-eight style loop with the Pen tool (P) and commit. Double-click it to enter
+  vector edit mode, activate the Shape builder subtool (vector edit toolbar "More" menu > Shape builder, or press
+  M), and click inside just one of the two lobes to fill it.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Filled lobe on self-crossing vector
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: vector node present
+    path: $.data.nodes[?(@.type=='VECTOR')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: fill present on vector
+    path: $.data.nodes[?(@.type=='VECTOR')].fills[0]
+    operator: EXISTS
+    expected: 'true'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

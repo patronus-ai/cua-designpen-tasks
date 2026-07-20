@@ -1,0 +1,32 @@
+id: 00316-text-vertical-trim-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a text layer with the text "Tight crop". Open the Type settings popover via the sliders button in
+  the Typography section, and in the Basics tab set the vertical trim to cap height.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: text-vertical-trim observable effect
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: cap-height trim enabled
+    path: $.data.nodes[?(@.type=='TEXT' & @.leadingTrim=='CAP_HEIGHT')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

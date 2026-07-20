@@ -1,0 +1,32 @@
+id: 00122-boolean-union-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw two overlapping circles, select both, and weld them into a single continuous shape via Main menu >
+  Object > Union selection.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Union result exists
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: boolean union node present
+    path: $.data.nodes[?(@.type=='BOOLEAN_OPERATION' & @.booleanOperation=='UNION')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

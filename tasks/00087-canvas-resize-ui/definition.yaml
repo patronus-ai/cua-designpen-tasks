@@ -1,0 +1,32 @@
+id: 00087-canvas-resize-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a star, then grab one of its corner resize handles and stretch it until it is at least 250 wide (aim
+  for about 300).
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Node resized by handle drag
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: star width at least 250
+    path: $.data.nodes[?(@.type=='STAR')].width
+    operator: NUMERIC_MATCH
+    expected: '>= 250'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

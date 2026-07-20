@@ -1,0 +1,32 @@
+id: 00305-text-font-weight-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a text layer with the text "Heads up!". With the layer selected, open the weight/style select in
+  the Typography section of the properties panel and change the weight to Bold.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: text-font-weight observable effect
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: bold weight applied
+    path: $.data.nodes[?(@.type=='TEXT')].fontWeight
+    operator: NUMERIC_MATCH
+    expected: == 700
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

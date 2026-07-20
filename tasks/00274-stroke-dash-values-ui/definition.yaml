@@ -1,0 +1,36 @@
+id: 00274-stroke-dash-values-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a rectangle with a border, open the stroke settings popover, set the dash style to Dashed, and type
+  dash length 10 and gap 5 into the dash fields.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Dash pattern is 10 on, 5 off
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: dash length 10
+    path: $.data.nodes[?(@.type=='RECTANGLE')].strokes[0].dashPattern[0]
+    operator: NUMERIC_MATCH
+    expected: '10'
+  - name: gap length 5
+    path: $.data.nodes[?(@.type=='RECTANGLE')].strokes[0].dashPattern[1]
+    operator: NUMERIC_MATCH
+    expected: '5'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

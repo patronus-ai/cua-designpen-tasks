@@ -1,0 +1,33 @@
+id: 00332-fill-detach-style-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a paint style (any color) and apply it to a new rectangle''s fill via the fill apply-styles popover.
+  Then detach the style from the rectangle''s fill using the detach action in the apply-styles panel, and recolor
+  just this rectangle to pure blue (#0000FF).
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: fill-detach-style observable effect
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: detached fill recolored pure blue
+    path: $.data.nodes[?(@.type=='RECTANGLE')].style.fill
+    operator: COLOR_NEAR
+    expected: '#0000FF'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

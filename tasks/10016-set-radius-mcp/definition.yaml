@@ -1,0 +1,36 @@
+id: 10016-set-radius-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools: create a 120x120 rectangle named Chip, then call set_radius with radius 12. When
+  you are done, zoom the canvas to fit (press Shift+1 in the browser), then take a browser screenshot of the app
+  so the result can be visually verified.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- set_radius
+- create_shape
+- get_node
+- browser_press_key
+- browser_screenshot
+required_tools:
+- set_radius
+rewards:
+- name: 'Tool under test invoked: set_radius'
+  kind: action
+  tool: set_radius
+- name: Chip corners rounded to 12
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: Chip cornerRadius is 12
+    path: $.data.nodes[?(@.name=='Chip' & @.cornerRadius==12)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

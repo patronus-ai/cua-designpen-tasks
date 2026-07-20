@@ -1,0 +1,41 @@
+id: 00025-vector-bend-segment-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a plain horizontal line with the Pen tool (P), commit with Enter, and double-click it to enter vector
+  edit mode. Hold Cmd/Ctrl (temporary Bend) or pick Bend from the vector edit toolbar, then grab the middle of the
+  stroke itself and drag it upward.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Bent line vector exists
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: vector node present
+    path: $.data.nodes[?(@.type=='VECTOR')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: network has at least 2 vertices
+    path: $.data.nodes[?(@.type=='VECTOR')].vectorNetwork.vertices[1]
+    operator: EXISTS
+    expected: 'true'
+  - name: path segment present
+    path: $.data.nodes[?(@.type=='VECTOR')].vectorNetwork.segments[0]
+    operator: EXISTS
+    expected: 'true'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

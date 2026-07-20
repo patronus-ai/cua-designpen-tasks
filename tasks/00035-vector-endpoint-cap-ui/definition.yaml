@@ -1,0 +1,36 @@
+id: 00035-vector-endpoint-cap-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a straight line with the Pen tool (P) and commit. Double-click it to enter vector edit mode, click
+  exactly one open endpoint to select it, and in the panel''s Stroke settings set that endpoint''s cap to Round.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Endpoint has ROUND cap
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: vector node present
+    path: $.data.nodes[?(@.type=='VECTOR')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: a vertex carries a round stroke cap
+    path: $.data.nodes[?(@.type=='VECTOR')].vectorNetwork.vertices[?(@.strokeCap=='ROUND')]
+    operator: EXISTS
+    expected: 'true'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

@@ -1,0 +1,36 @@
+id: 10041-create-shape-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools: call create_shape with type ELLIPSE, name Dot, position (25,30) and size 150x90.
+  When you are done, zoom the canvas to fit (press Shift+1 in the browser), then take a browser screenshot of the
+  app so the result can be visually verified.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- create_shape
+- get_node
+- find_nodes
+- browser_press_key
+- browser_screenshot
+required_tools:
+- create_shape
+rewards:
+- name: 'Tool under test invoked: create_shape'
+  kind: action
+  tool: create_shape
+- name: Ellipse created to spec
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: Dot ellipse is 150x90
+    path: $.data.nodes[?(@.type=='ELLIPSE' & @.name=='Dot' & @.width==150 & @.height==90)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

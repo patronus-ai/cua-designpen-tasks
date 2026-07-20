@@ -1,0 +1,32 @@
+id: 00295-effect-type-select-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a rectangle, add an effect via the Effects section "+", then change the effect type select from Drop
+  shadow to Inner shadow so the shadow is carved inward inside the shape''s edges.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Effect type is inner shadow
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: inner shadow set
+    path: $.data.nodes[?(@.type=='RECTANGLE')].effects[0].type
+    operator: STRING_EQUALS
+    expected: INNER_SHADOW
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

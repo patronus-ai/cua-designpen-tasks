@@ -1,0 +1,38 @@
+id: 10052-diff-jsx-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools: build frame Draft containing a rectangle named Icon and frame Final containing rectangles
+  Icon and Label; call diff_jsx from Draft to Final, then add the missing child it reveals (a rectangle named Label)
+  to Draft. When you are done, zoom the canvas to fit (press Shift+1 in the browser), then take a browser screenshot
+  of the app so the result can be visually verified.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- diff_jsx
+- create_shape
+- get_node
+- find_nodes
+- browser_press_key
+- browser_screenshot
+required_tools:
+- diff_jsx
+rewards:
+- name: 'Tool under test invoked: diff_jsx'
+  kind: action
+  tool: diff_jsx
+- name: Missing child added from JSX diff
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: two 'Label' nodes exist
+    path: $.data.nodes[?(@.name=='Label')]
+    operator: ARRAY_LENGTH
+    expected: '>= 2'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

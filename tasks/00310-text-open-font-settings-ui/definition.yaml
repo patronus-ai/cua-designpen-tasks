@@ -1,0 +1,33 @@
+id: 00310-text-open-font-settings-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a text layer with any text and keep it selected. Click the gear button in the Typography section
+  of the properties panel to open the font settings popover, and ensure Google Fonts is enabled as a font source
+  for this file.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: 'Setup-only (grade via UI observation): text-open-font-settings observable effect'
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: document state readable
+    path: $.data.nodes
+    operator: EXISTS
+    expected: 'true'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

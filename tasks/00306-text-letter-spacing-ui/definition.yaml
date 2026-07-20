@@ -1,0 +1,36 @@
+id: 00306-text-letter-spacing-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a text layer with the text "SPACED OUT" and set its font size to 40. Then set the letter spacing
+  to 10% in the letter-spacing field of the Typography section.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: text-letter-spacing observable effect
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: font size is 40
+    path: $.data.nodes[?(@.type=='TEXT')].fontSize
+    operator: NUMERIC_MATCH
+    expected: == 40
+  - name: letter spacing is 10% of 40px
+    path: $.data.nodes[?(@.type=='TEXT')].letterSpacing
+    operator: NUMERIC_MATCH
+    expected: == 4
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

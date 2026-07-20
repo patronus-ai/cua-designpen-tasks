@@ -1,0 +1,32 @@
+id: 00186-pref-use-number-keys-for-opacity-ui
+start_url: http://cua_designpen.web
+prompt: 'Confirm Main menu > Preferences > "Use number keys for opacity" is enabled (on by default). Draw a rectangle
+  and, with it selected on the canvas (not while typing in a field), tap the 5 key.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Rectangle at 50% opacity
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: rectangle has opacity 0.5
+    path: $.data.nodes[?(@.type=='RECTANGLE' & @.opacity==0.5)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

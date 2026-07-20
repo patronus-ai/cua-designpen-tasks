@@ -1,0 +1,33 @@
+id: 00203-constraint-horizontal-select-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a plain (non-auto-layout) frame and put a small rectangle near its right side. With the rectangle
+  selected, open the constraints controls via the pin toggle in the Position section, then set the horizontal constraint
+  select to Right.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Horizontal constraint set to right
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: a node is pinned to the right edge
+    path: $.data.nodes[?(@.horizontalConstraint=='MAX')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

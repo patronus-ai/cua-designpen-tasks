@@ -1,0 +1,43 @@
+id: 10007-get-jsx-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools: create a frame named Card containing a green rectangle, call get_jsx on the Card
+  frame, then create a text layer named Code and set its content to the returned JSX. When you are done, zoom the
+  canvas to fit (press Shift+1 in the browser), then take a browser screenshot of the app so the result can be visually
+  verified.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- get_jsx
+- create_shape
+- set_text
+- get_node
+- find_nodes
+- browser_press_key
+- browser_screenshot
+required_tools:
+- get_jsx
+rewards:
+- name: 'Tool under test invoked: get_jsx'
+  kind: action
+  tool: get_jsx
+- name: Code text layer holds the frame's JSX
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: Code text layer exists
+    path: $.data.nodes[?(@.name=='Code' & @.type=='TEXT')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: markup mentions the Card frame
+    path: $.data.nodes[?(@.name=='Code')].textContent
+    operator: ARRAY_ANY_STRING_CONTAINS
+    expected: Card
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

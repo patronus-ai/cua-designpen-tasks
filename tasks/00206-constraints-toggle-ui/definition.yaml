@@ -1,0 +1,33 @@
+id: 00206-constraints-toggle-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a frame with a wide bar-shaped rectangle inside. With the rectangle selected, click the pin toggle
+  in the Position section to reveal the constraints controls, then set the horizontal constraint to Left+Right so
+  the bar stretches with the frame.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Horizontal stretch constraint set
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: a node stretches with its frame horizontally
+    path: $.data.nodes[?(@.horizontalConstraint=='STRETCH')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

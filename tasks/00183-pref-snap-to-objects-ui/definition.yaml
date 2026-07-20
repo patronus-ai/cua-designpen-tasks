@@ -1,0 +1,33 @@
+id: 00183-pref-snap-to-objects-ui
+start_url: http://cua_designpen.web
+prompt: 'Confirm Main menu > Preferences > "Snap to objects" is enabled (on by default). Draw a 100x100 square at
+  x 100, y 100, then draw another 100x100 square nearby and drag it until it snaps flush against the first square''s
+  right edge — touching exactly, no gap.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Square snapped flush at x 200
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: a rectangle sits flush at x 200
+    path: $.data.nodes[?(@.type=='RECTANGLE' & @.x==200)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

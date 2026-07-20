@@ -1,0 +1,33 @@
+id: 00124-bring-to-front-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw an 80x80 square, then draw a 240x240 square directly over it so the small one is fully hidden. Select
+  the small square (e.g. via the layers panel) and move it to the top of the stack using right-click > Bring to
+  front, or press ].
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Small square on top
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: 80px square is topmost
+    path: $.data.nodes[-1].width
+    operator: NUMERIC_MATCH
+    expected: == 80
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

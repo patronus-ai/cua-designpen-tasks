@@ -1,0 +1,33 @@
+id: 00324-type-optical-size-auto-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a text layer with the text "Display size" using a variable font that has an optical size (opsz)
+  axis. Open the Type settings popover via the sliders button in the Typography section, switch to the Variable
+  tab, and turn OFF the automatic optical size toggle.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: type-optical-size-auto observable effect
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: auto optical size disabled
+    path: $.data.nodes[?(@.type=='TEXT' & @.opticalSizeAuto==false)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

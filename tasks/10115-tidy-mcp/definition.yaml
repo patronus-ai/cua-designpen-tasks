@@ -1,0 +1,44 @@
+id: 10115-tidy-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools: create three 100x100 rectangles Tile A, Tile B and Tile C at (0,0), (60,0) and (300,0)
+  so they jitter and overlap, then call tidy with axis horizontal and gap 20. When you are done, zoom the canvas
+  to fit (press Shift+1 in the browser), then take a browser screenshot of the app so the result can be visually
+  verified.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- tidy
+- create_shape
+- get_node
+- find_nodes
+- browser_press_key
+- browser_screenshot
+required_tools:
+- tidy
+rewards:
+- name: 'Tool under test invoked: tidy'
+  kind: action
+  tool: tidy
+- name: Tidied into a 20px-gap row
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: Tile A to Tile B gap is 20
+    path: $.data.nodes[?(@.name=='Tile A')]
+    path_b: $.data.nodes[?(@.name=='Tile B')]
+    operator: GAP_X
+    expected: == 20
+  - name: Tile B to Tile C gap is 20
+    path: $.data.nodes[?(@.name=='Tile B')]
+    path_b: $.data.nodes[?(@.name=='Tile C')]
+    operator: GAP_X
+    expected: == 20
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

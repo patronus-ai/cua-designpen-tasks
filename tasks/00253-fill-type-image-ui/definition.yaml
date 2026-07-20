@@ -1,0 +1,32 @@
+id: 00253-fill-type-image-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a rectangle, click its fill swatch to open the paint panel, and switch the paint to the Image tab
+  so the fill becomes an image instead of a plain color.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Rectangle fill is an image
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: fill type is image
+    path: $.data.nodes[?(@.type=='RECTANGLE')].fills[0].type
+    operator: STRING_EQUALS
+    expected: IMAGE
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

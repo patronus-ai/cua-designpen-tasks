@@ -1,0 +1,33 @@
+id: 00075-canvas-eyedropper-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw two rectangles side by side and set the first one''s fill to bright red #FF0000 using the fill controls
+  in the right panel. Then select the second rectangle, press I to start the eyedropper, move over the red rectangle
+  (a magnifying loupe appears), and click to sample the red.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Color sampled onto second rectangle
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: two rectangles exist
+    path: $.data.nodes[?(@.type=='RECTANGLE')]
+    operator: ARRAY_LENGTH
+    expected: '>= 2'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

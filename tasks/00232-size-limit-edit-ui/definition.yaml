@@ -1,0 +1,32 @@
+id: 00232-size-limit-edit-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a frame with two rectangles and enable horizontal auto layout (Layout > Flow). Open the width sizing
+  chevron menu and add a max-width limit, then set the max width value in the limit row to exactly 480.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Max width limit is 480
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: a node has max width 480
+    path: $.data.nodes[?(@.maxWidth==480)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

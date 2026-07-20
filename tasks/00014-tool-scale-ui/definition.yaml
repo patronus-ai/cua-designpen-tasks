@@ -1,0 +1,36 @@
+id: 00014-tool-scale-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw an ellipse and set it to exactly 150 by 100 via the panel W/H fields. Then activate the Scale tool
+  (Move flyout > Scale, or press K) and drag a corner handle outward until the ellipse is at least 300 wide.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Ellipse scaled proportionally
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: ellipse width at least doubled
+    path: $.data.nodes[?(@.type=='ELLIPSE')].width
+    operator: NUMERIC_MATCH
+    expected: '>= 300'
+  - name: ellipse height followed proportionally
+    path: $.data.nodes[?(@.type=='ELLIPSE')].height
+    operator: NUMERIC_MATCH
+    expected: '>= 190'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

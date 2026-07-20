@@ -1,0 +1,32 @@
+id: 00195-auto-layout-gap-edit-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a frame with three rectangles and enable horizontal auto layout (Layout > Flow). In the Flex controls,
+  set the gap (item spacing) field to exactly 32.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Row layout with 32px gap
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: horizontal layout with item spacing 32
+    path: $.data.nodes[?(@.layoutMode=='HORIZONTAL' & @.itemSpacing==32)]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

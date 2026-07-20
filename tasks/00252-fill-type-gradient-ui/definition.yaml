@@ -1,0 +1,32 @@
+id: 00252-fill-type-gradient-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a square, click its fill swatch to open the paint panel, and switch the paint from Solid to Gradient
+  using the Gradient tab.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Rectangle fill is a gradient
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: fill type is gradient
+    path: $.data.nodes[?(@.type=='RECTANGLE')].fills[0].type
+    operator: STRING_CONTAINS
+    expected: GRADIENT
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

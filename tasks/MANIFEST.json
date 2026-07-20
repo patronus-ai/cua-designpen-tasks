@@ -1,0 +1,3076 @@
+{
+  "ui": {
+    "app-menu-open": {
+      "number": "00001",
+      "dir": "00001-app-menu-open-ui",
+      "category": "toolbelt"
+    },
+    "tool-arrow": {
+      "number": "00002",
+      "dir": "00002-tool-arrow-ui",
+      "category": "toolbelt"
+    },
+    "tool-comment": {
+      "number": "00003",
+      "dir": "00003-tool-comment-ui",
+      "category": "toolbelt"
+    },
+    "tool-ellipse": {
+      "number": "00004",
+      "dir": "00004-tool-ellipse-ui",
+      "category": "toolbelt"
+    },
+    "tool-flyout": {
+      "number": "00005",
+      "dir": "00005-tool-flyout-ui",
+      "category": "toolbelt"
+    },
+    "tool-frame": {
+      "number": "00006",
+      "dir": "00006-tool-frame-ui",
+      "category": "toolbelt"
+    },
+    "tool-hand": {
+      "number": "00007",
+      "dir": "00007-tool-hand-ui",
+      "category": "toolbelt"
+    },
+    "tool-line": {
+      "number": "00008",
+      "dir": "00008-tool-line-ui",
+      "category": "toolbelt"
+    },
+    "tool-media": {
+      "number": "00009",
+      "dir": "00009-tool-media-ui",
+      "category": "toolbelt"
+    },
+    "tool-pen": {
+      "number": "00010",
+      "dir": "00010-tool-pen-ui",
+      "category": "toolbelt"
+    },
+    "tool-pencil": {
+      "number": "00011",
+      "dir": "00011-tool-pencil-ui",
+      "category": "toolbelt"
+    },
+    "tool-polygon": {
+      "number": "00012",
+      "dir": "00012-tool-polygon-ui",
+      "category": "toolbelt"
+    },
+    "tool-rectangle": {
+      "number": "00013",
+      "dir": "00013-tool-rectangle-ui",
+      "category": "toolbelt"
+    },
+    "tool-scale": {
+      "number": "00014",
+      "dir": "00014-tool-scale-ui",
+      "category": "toolbelt"
+    },
+    "tool-section": {
+      "number": "00015",
+      "dir": "00015-tool-section-ui",
+      "category": "toolbelt"
+    },
+    "tool-select": {
+      "number": "00016",
+      "dir": "00016-tool-select-ui",
+      "category": "toolbelt"
+    },
+    "tool-star": {
+      "number": "00017",
+      "dir": "00017-tool-star-ui",
+      "category": "toolbelt"
+    },
+    "tool-text": {
+      "number": "00018",
+      "dir": "00018-tool-text-ui",
+      "category": "toolbelt"
+    },
+    "mode-design": {
+      "number": "00019",
+      "dir": "00019-mode-design-ui",
+      "category": "mode"
+    },
+    "mode-dev": {
+      "number": "00020",
+      "dir": "00020-mode-dev-ui",
+      "category": "mode"
+    },
+    "mode-draw": {
+      "number": "00021",
+      "dir": "00021-mode-draw-ui",
+      "category": "mode"
+    },
+    "viewer-toolbar": {
+      "number": "00022",
+      "dir": "00022-viewer-toolbar-ui",
+      "category": "mode"
+    },
+    "vector-align-vertices": {
+      "number": "00023",
+      "dir": "00023-vector-align-vertices-ui",
+      "category": "vector-edit"
+    },
+    "vector-bend": {
+      "number": "00024",
+      "dir": "00024-vector-bend-ui",
+      "category": "vector-edit"
+    },
+    "vector-bend-segment": {
+      "number": "00025",
+      "dir": "00025-vector-bend-segment-ui",
+      "category": "vector-edit"
+    },
+    "vector-box-transform": {
+      "number": "00026",
+      "dir": "00026-vector-box-transform-ui",
+      "category": "vector-edit"
+    },
+    "vector-break-at-vertex": {
+      "number": "00027",
+      "dir": "00027-vector-break-at-vertex-ui",
+      "category": "vector-edit"
+    },
+    "vector-corner-radius": {
+      "number": "00028",
+      "dir": "00028-vector-corner-radius-ui",
+      "category": "vector-edit"
+    },
+    "vector-cut": {
+      "number": "00029",
+      "dir": "00029-vector-cut-ui",
+      "category": "vector-edit"
+    },
+    "vector-cut-divide": {
+      "number": "00030",
+      "dir": "00030-vector-cut-divide-ui",
+      "category": "vector-edit"
+    },
+    "vector-cut-split": {
+      "number": "00031",
+      "dir": "00031-vector-cut-split-ui",
+      "category": "vector-edit"
+    },
+    "vector-delete-selected": {
+      "number": "00032",
+      "dir": "00032-vector-delete-selected-ui",
+      "category": "vector-edit"
+    },
+    "vector-edit-exit": {
+      "number": "00033",
+      "dir": "00033-vector-edit-exit-ui",
+      "category": "vector-edit"
+    },
+    "vector-edit-mode": {
+      "number": "00034",
+      "dir": "00034-vector-edit-mode-ui",
+      "category": "vector-edit"
+    },
+    "vector-endpoint-cap": {
+      "number": "00035",
+      "dir": "00035-vector-endpoint-cap-ui",
+      "category": "vector-edit"
+    },
+    "vector-handle-drag": {
+      "number": "00036",
+      "dir": "00036-vector-handle-drag-ui",
+      "category": "vector-edit"
+    },
+    "vector-handle-mirroring": {
+      "number": "00037",
+      "dir": "00037-vector-handle-mirroring-ui",
+      "category": "vector-edit"
+    },
+    "vector-interior-select-all": {
+      "number": "00038",
+      "dir": "00038-vector-interior-select-all-ui",
+      "category": "vector-edit"
+    },
+    "vector-lasso": {
+      "number": "00039",
+      "dir": "00039-vector-lasso-ui",
+      "category": "vector-edit"
+    },
+    "vector-lasso-select": {
+      "number": "00040",
+      "dir": "00040-vector-lasso-select-ui",
+      "category": "vector-edit"
+    },
+    "vector-midpoint-insert": {
+      "number": "00041",
+      "dir": "00041-vector-midpoint-insert-ui",
+      "category": "vector-edit"
+    },
+    "vector-move": {
+      "number": "00042",
+      "dir": "00042-vector-move-ui",
+      "category": "vector-edit"
+    },
+    "vector-paint": {
+      "number": "00043",
+      "dir": "00043-vector-paint-ui",
+      "category": "vector-edit"
+    },
+    "vector-paint-fill": {
+      "number": "00044",
+      "dir": "00044-vector-paint-fill-ui",
+      "category": "vector-edit"
+    },
+    "vector-peer-swap": {
+      "number": "00045",
+      "dir": "00045-vector-peer-swap-ui",
+      "category": "vector-edit"
+    },
+    "vector-segment-drag": {
+      "number": "00046",
+      "dir": "00046-vector-segment-drag-ui",
+      "category": "vector-edit"
+    },
+    "vector-select-all": {
+      "number": "00047",
+      "dir": "00047-vector-select-all-ui",
+      "category": "vector-edit"
+    },
+    "vector-shape-builder": {
+      "number": "00048",
+      "dir": "00048-vector-shape-builder-ui",
+      "category": "vector-edit"
+    },
+    "vector-shape-builder-click": {
+      "number": "00049",
+      "dir": "00049-vector-shape-builder-click-ui",
+      "category": "vector-edit"
+    },
+    "vector-shape-builder-merge": {
+      "number": "00050",
+      "dir": "00050-vector-shape-builder-merge-ui",
+      "category": "vector-edit"
+    },
+    "vector-shape-builder-remove": {
+      "number": "00051",
+      "dir": "00051-vector-shape-builder-remove-ui",
+      "category": "vector-edit"
+    },
+    "vector-toggle-smooth": {
+      "number": "00052",
+      "dir": "00052-vector-toggle-smooth-ui",
+      "category": "vector-edit"
+    },
+    "vector-variable-width": {
+      "number": "00053",
+      "dir": "00053-vector-variable-width-ui",
+      "category": "vector-edit"
+    },
+    "vector-vertex-drag": {
+      "number": "00054",
+      "dir": "00054-vector-vertex-drag-ui",
+      "category": "vector-edit"
+    },
+    "vector-vertex-select": {
+      "number": "00055",
+      "dir": "00055-vector-vertex-select-ui",
+      "category": "vector-edit"
+    },
+    "vector-vertex-weld": {
+      "number": "00056",
+      "dir": "00056-vector-vertex-weld-ui",
+      "category": "vector-edit"
+    },
+    "vector-width-point-add": {
+      "number": "00057",
+      "dir": "00057-vector-width-point-add-ui",
+      "category": "vector-edit"
+    },
+    "vector-width-point-delete": {
+      "number": "00058",
+      "dir": "00058-vector-width-point-delete-ui",
+      "category": "vector-edit"
+    },
+    "vector-width-point-edit": {
+      "number": "00059",
+      "dir": "00059-vector-width-point-edit-ui",
+      "category": "vector-edit"
+    },
+    "vector-zero-handles": {
+      "number": "00060",
+      "dir": "00060-vector-zero-handles-ui",
+      "category": "vector-edit"
+    },
+    "pen-add-on-path": {
+      "number": "00061",
+      "dir": "00061-pen-add-on-path-ui",
+      "category": "pen"
+    },
+    "pen-chain-add-vertex": {
+      "number": "00062",
+      "dir": "00062-pen-chain-add-vertex-ui",
+      "category": "pen"
+    },
+    "pen-chain-from-vertex": {
+      "number": "00063",
+      "dir": "00063-pen-chain-from-vertex-ui",
+      "category": "pen"
+    },
+    "pen-close-path": {
+      "number": "00064",
+      "dir": "00064-pen-close-path-ui",
+      "category": "pen"
+    },
+    "pen-commit-into-session": {
+      "number": "00065",
+      "dir": "00065-pen-commit-into-session-ui",
+      "category": "pen"
+    },
+    "pen-connect-endpoints": {
+      "number": "00066",
+      "dir": "00066-pen-connect-endpoints-ui",
+      "category": "pen"
+    },
+    "pen-remove-vertex": {
+      "number": "00067",
+      "dir": "00067-pen-remove-vertex-ui",
+      "category": "pen"
+    },
+    "pen-resume-chain": {
+      "number": "00068",
+      "dir": "00068-pen-resume-chain-ui",
+      "category": "pen"
+    },
+    "canvas-alt-duplicate-drag": {
+      "number": "00069",
+      "dir": "00069-canvas-alt-duplicate-drag-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-alt-edge-fill": {
+      "number": "00070",
+      "dir": "00070-canvas-alt-edge-fill-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-create-text": {
+      "number": "00071",
+      "dir": "00071-canvas-create-text-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-dblclick-edit-text": {
+      "number": "00072",
+      "dir": "00072-canvas-dblclick-edit-text-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-dblclick-enter-frame": {
+      "number": "00073",
+      "dir": "00073-canvas-dblclick-enter-frame-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-draw-shape": {
+      "number": "00074",
+      "dir": "00074-canvas-draw-shape-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-eyedropper": {
+      "number": "00075",
+      "dir": "00075-canvas-eyedropper-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-frame-title-rename": {
+      "number": "00076",
+      "dir": "00076-canvas-frame-title-rename-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-freehand-draw": {
+      "number": "00077",
+      "dir": "00077-canvas-freehand-draw-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-image-crop": {
+      "number": "00078",
+      "dir": "00078-canvas-image-crop-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-marquee-select": {
+      "number": "00079",
+      "dir": "00079-canvas-marquee-select-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-move-drag": {
+      "number": "00080",
+      "dir": "00080-canvas-move-drag-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-move-snap": {
+      "number": "00081",
+      "dir": "00081-canvas-move-snap-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-nudge": {
+      "number": "00082",
+      "dir": "00082-canvas-nudge-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-padding-edit": {
+      "number": "00083",
+      "dir": "00083-canvas-padding-edit-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-pan-hand": {
+      "number": "00084",
+      "dir": "00084-canvas-pan-hand-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-pan-right-drag": {
+      "number": "00085",
+      "dir": "00085-canvas-pan-right-drag-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-pinch-zoom": {
+      "number": "00086",
+      "dir": "00086-canvas-pinch-zoom-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-resize": {
+      "number": "00087",
+      "dir": "00087-canvas-resize-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-rotate": {
+      "number": "00088",
+      "dir": "00088-canvas-rotate-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-scale-drag": {
+      "number": "00089",
+      "dir": "00089-canvas-scale-drag-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-select-click": {
+      "number": "00090",
+      "dir": "00090-canvas-select-click-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-shift-select": {
+      "number": "00091",
+      "dir": "00091-canvas-shift-select-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-spacing-handle": {
+      "number": "00092",
+      "dir": "00092-canvas-spacing-handle-ui",
+      "category": "canvas-interaction"
+    },
+    "canvas-wheel-pan-zoom": {
+      "number": "00093",
+      "dir": "00093-canvas-wheel-pan-zoom-ui",
+      "category": "canvas-interaction"
+    },
+    "enter-ladder": {
+      "number": "00094",
+      "dir": "00094-enter-ladder-ui",
+      "category": "canvas-interaction"
+    },
+    "esc-ladder": {
+      "number": "00095",
+      "dir": "00095-esc-ladder-ui",
+      "category": "canvas-interaction"
+    },
+    "multi-select": {
+      "number": "00096",
+      "dir": "00096-multi-select-ui",
+      "category": "canvas-interaction"
+    },
+    "set-opacity-digits": {
+      "number": "00097",
+      "dir": "00097-set-opacity-digits-ui",
+      "category": "canvas-interaction"
+    },
+    "clipboard-copy": {
+      "number": "00098",
+      "dir": "00098-clipboard-copy-ui",
+      "category": "edit-ops"
+    },
+    "clipboard-cut": {
+      "number": "00099",
+      "dir": "00099-clipboard-cut-ui",
+      "category": "edit-ops"
+    },
+    "clipboard-paste": {
+      "number": "00100",
+      "dir": "00100-clipboard-paste-ui",
+      "category": "edit-ops"
+    },
+    "copy-as-jsx": {
+      "number": "00101",
+      "dir": "00101-copy-as-jsx-ui",
+      "category": "edit-ops"
+    },
+    "copy-as-png": {
+      "number": "00102",
+      "dir": "00102-copy-as-png-ui",
+      "category": "edit-ops"
+    },
+    "copy-as-svg": {
+      "number": "00103",
+      "dir": "00103-copy-as-svg-ui",
+      "category": "edit-ops"
+    },
+    "copy-as-text": {
+      "number": "00104",
+      "dir": "00104-copy-as-text-ui",
+      "category": "edit-ops"
+    },
+    "copy-node-id": {
+      "number": "00105",
+      "dir": "00105-copy-node-id-ui",
+      "category": "edit-ops"
+    },
+    "copy-xpath": {
+      "number": "00106",
+      "dir": "00106-copy-xpath-ui",
+      "category": "edit-ops"
+    },
+    "edit-redo": {
+      "number": "00107",
+      "dir": "00107-edit-redo-ui",
+      "category": "edit-ops"
+    },
+    "edit-undo": {
+      "number": "00108",
+      "dir": "00108-edit-undo-ui",
+      "category": "edit-ops"
+    },
+    "paste-to-replace": {
+      "number": "00109",
+      "dir": "00109-paste-to-replace-ui",
+      "category": "edit-ops"
+    },
+    "select-all": {
+      "number": "00110",
+      "dir": "00110-select-all-ui",
+      "category": "edit-ops"
+    },
+    "selection-delete": {
+      "number": "00111",
+      "dir": "00111-selection-delete-ui",
+      "category": "edit-ops"
+    },
+    "selection-duplicate": {
+      "number": "00112",
+      "dir": "00112-selection-duplicate-ui",
+      "category": "edit-ops"
+    },
+    "align-bottom": {
+      "number": "00113",
+      "dir": "00113-align-bottom-ui",
+      "category": "object"
+    },
+    "align-center-h": {
+      "number": "00114",
+      "dir": "00114-align-center-h-ui",
+      "category": "object"
+    },
+    "align-left": {
+      "number": "00115",
+      "dir": "00115-align-left-ui",
+      "category": "object"
+    },
+    "align-middle": {
+      "number": "00116",
+      "dir": "00116-align-middle-ui",
+      "category": "object"
+    },
+    "align-right": {
+      "number": "00117",
+      "dir": "00117-align-right-ui",
+      "category": "object"
+    },
+    "align-top": {
+      "number": "00118",
+      "dir": "00118-align-top-ui",
+      "category": "object"
+    },
+    "boolean-exclude": {
+      "number": "00119",
+      "dir": "00119-boolean-exclude-ui",
+      "category": "object"
+    },
+    "boolean-intersect": {
+      "number": "00120",
+      "dir": "00120-boolean-intersect-ui",
+      "category": "object"
+    },
+    "boolean-subtract": {
+      "number": "00121",
+      "dir": "00121-boolean-subtract-ui",
+      "category": "object"
+    },
+    "boolean-union": {
+      "number": "00122",
+      "dir": "00122-boolean-union-ui",
+      "category": "object"
+    },
+    "bring-forward": {
+      "number": "00123",
+      "dir": "00123-bring-forward-ui",
+      "category": "object"
+    },
+    "bring-to-front": {
+      "number": "00124",
+      "dir": "00124-bring-to-front-ui",
+      "category": "object"
+    },
+    "component-create": {
+      "number": "00125",
+      "dir": "00125-component-create-ui",
+      "category": "object"
+    },
+    "component-set-create": {
+      "number": "00126",
+      "dir": "00126-component-set-create-ui",
+      "category": "object"
+    },
+    "flatten": {
+      "number": "00127",
+      "dir": "00127-flatten-ui",
+      "category": "object"
+    },
+    "flip-horizontal": {
+      "number": "00128",
+      "dir": "00128-flip-horizontal-ui",
+      "category": "object"
+    },
+    "flip-vertical": {
+      "number": "00129",
+      "dir": "00129-flip-vertical-ui",
+      "category": "object"
+    },
+    "frame-selection": {
+      "number": "00130",
+      "dir": "00130-frame-selection-ui",
+      "category": "object"
+    },
+    "group-selection": {
+      "number": "00131",
+      "dir": "00131-group-selection-ui",
+      "category": "object"
+    },
+    "instance-create": {
+      "number": "00132",
+      "dir": "00132-instance-create-ui",
+      "category": "object"
+    },
+    "instance-detach": {
+      "number": "00133",
+      "dir": "00133-instance-detach-ui",
+      "category": "object"
+    },
+    "instance-go-to-main": {
+      "number": "00134",
+      "dir": "00134-instance-go-to-main-ui",
+      "category": "object"
+    },
+    "mark-dev-completed": {
+      "number": "00135",
+      "dir": "00135-mark-dev-completed-ui",
+      "category": "object"
+    },
+    "mark-ready-for-dev": {
+      "number": "00136",
+      "dir": "00136-mark-ready-for-dev-ui",
+      "category": "object"
+    },
+    "move-to-page": {
+      "number": "00137",
+      "dir": "00137-move-to-page-ui",
+      "category": "object"
+    },
+    "outline-stroke": {
+      "number": "00138",
+      "dir": "00138-outline-stroke-ui",
+      "category": "object"
+    },
+    "outline-text": {
+      "number": "00139",
+      "dir": "00139-outline-text-ui",
+      "category": "object"
+    },
+    "remove-dev-status": {
+      "number": "00140",
+      "dir": "00140-remove-dev-status-ui",
+      "category": "object"
+    },
+    "rotate-shortcut": {
+      "number": "00141",
+      "dir": "00141-rotate-shortcut-ui",
+      "category": "object"
+    },
+    "send-backward": {
+      "number": "00142",
+      "dir": "00142-send-backward-ui",
+      "category": "object"
+    },
+    "send-to-back": {
+      "number": "00143",
+      "dir": "00143-send-to-back-ui",
+      "category": "object"
+    },
+    "split-vector": {
+      "number": "00144",
+      "dir": "00144-split-vector-ui",
+      "category": "object"
+    },
+    "text-bold": {
+      "number": "00145",
+      "dir": "00145-text-bold-ui",
+      "category": "object"
+    },
+    "text-italic": {
+      "number": "00146",
+      "dir": "00146-text-italic-ui",
+      "category": "object"
+    },
+    "text-underline-toggle": {
+      "number": "00147",
+      "dir": "00147-text-underline-toggle-ui",
+      "category": "object"
+    },
+    "tidy-up": {
+      "number": "00148",
+      "dir": "00148-tidy-up-ui",
+      "category": "object"
+    },
+    "toggle-lock": {
+      "number": "00149",
+      "dir": "00149-toggle-lock-ui",
+      "category": "object"
+    },
+    "toggle-visibility": {
+      "number": "00150",
+      "dir": "00150-toggle-visibility-ui",
+      "category": "object"
+    },
+    "ungroup": {
+      "number": "00151",
+      "dir": "00151-ungroup-ui",
+      "category": "object"
+    },
+    "wrap-in-auto-layout": {
+      "number": "00152",
+      "dir": "00152-wrap-in-auto-layout-ui",
+      "category": "object"
+    },
+    "language-select": {
+      "number": "00153",
+      "dir": "00153-language-select-ui",
+      "category": "viewport"
+    },
+    "layout-guides-toggle": {
+      "number": "00154",
+      "dir": "00154-layout-guides-toggle-ui",
+      "category": "viewport"
+    },
+    "multiplayer-cursors-toggle": {
+      "number": "00155",
+      "dir": "00155-multiplayer-cursors-toggle-ui",
+      "category": "viewport"
+    },
+    "profiler-toggle": {
+      "number": "00156",
+      "dir": "00156-profiler-toggle-ui",
+      "category": "viewport"
+    },
+    "rulers-toggle": {
+      "number": "00157",
+      "dir": "00157-rulers-toggle-ui",
+      "category": "viewport"
+    },
+    "theme-select": {
+      "number": "00158",
+      "dir": "00158-theme-select-ui",
+      "category": "viewport"
+    },
+    "toggle-ai-panel": {
+      "number": "00159",
+      "dir": "00159-toggle-ai-panel-ui",
+      "category": "viewport"
+    },
+    "toggle-ui": {
+      "number": "00160",
+      "dir": "00160-toggle-ui-ui",
+      "category": "viewport"
+    },
+    "zoom-100": {
+      "number": "00161",
+      "dir": "00161-zoom-100-ui",
+      "category": "viewport"
+    },
+    "zoom-in": {
+      "number": "00162",
+      "dir": "00162-zoom-in-ui",
+      "category": "viewport"
+    },
+    "zoom-out": {
+      "number": "00163",
+      "dir": "00163-zoom-out-ui",
+      "category": "viewport"
+    },
+    "zoom-to-fit": {
+      "number": "00164",
+      "dir": "00164-zoom-to-fit-ui",
+      "category": "viewport"
+    },
+    "zoom-to-level": {
+      "number": "00165",
+      "dir": "00165-zoom-to-level-ui",
+      "category": "viewport"
+    },
+    "zoom-to-selection": {
+      "number": "00166",
+      "dir": "00166-zoom-to-selection-ui",
+      "category": "viewport"
+    },
+    "autosave-toggle": {
+      "number": "00167",
+      "dir": "00167-autosave-toggle-ui",
+      "category": "preferences"
+    },
+    "pref-ctrl-click-right-click-menu": {
+      "number": "00168",
+      "dir": "00168-pref-ctrl-click-right-click-menu-ui",
+      "category": "preferences"
+    },
+    "pref-flip-objects-while-resizing": {
+      "number": "00169",
+      "dir": "00169-pref-flip-objects-while-resizing-ui",
+      "category": "preferences"
+    },
+    "pref-hide-canvas-ui": {
+      "number": "00170",
+      "dir": "00170-pref-hide-canvas-ui-ui",
+      "category": "preferences"
+    },
+    "pref-highlight-layers-on-hover": {
+      "number": "00171",
+      "dir": "00171-pref-highlight-layers-on-hover-ui",
+      "category": "preferences"
+    },
+    "pref-keep-tool-selected": {
+      "number": "00172",
+      "dir": "00172-pref-keep-tool-selected-ui",
+      "category": "preferences"
+    },
+    "pref-keyboard-zooms-into-selection": {
+      "number": "00173",
+      "dir": "00173-pref-keyboard-zooms-into-selection-ui",
+      "category": "preferences"
+    },
+    "pref-open-links-in-desktop-app": {
+      "number": "00174",
+      "dir": "00174-pref-open-links-in-desktop-app-ui",
+      "category": "preferences"
+    },
+    "pref-play-audio-notifications-ai": {
+      "number": "00175",
+      "dir": "00175-pref-play-audio-notifications-ai-ui",
+      "category": "preferences"
+    },
+    "pref-rename-duplicated-layers": {
+      "number": "00176",
+      "dir": "00176-pref-rename-duplicated-layers-ui",
+      "category": "preferences"
+    },
+    "pref-right-click-drag-to-pan": {
+      "number": "00177",
+      "dir": "00177-pref-right-click-drag-to-pan-ui",
+      "category": "preferences"
+    },
+    "pref-show-agents-on-canvas": {
+      "number": "00178",
+      "dir": "00178-pref-show-agents-on-canvas-ui",
+      "category": "preferences"
+    },
+    "pref-show-dimensions-on-objects": {
+      "number": "00179",
+      "dir": "00179-pref-show-dimensions-on-objects-ui",
+      "category": "preferences"
+    },
+    "pref-show-text-suggestions": {
+      "number": "00180",
+      "dir": "00180-pref-show-text-suggestions-ui",
+      "category": "preferences"
+    },
+    "pref-show-tool-suggestions": {
+      "number": "00181",
+      "dir": "00181-pref-show-tool-suggestions-ui",
+      "category": "preferences"
+    },
+    "pref-snap-to-geometry": {
+      "number": "00182",
+      "dir": "00182-pref-snap-to-geometry-ui",
+      "category": "preferences"
+    },
+    "pref-snap-to-objects": {
+      "number": "00183",
+      "dir": "00183-pref-snap-to-objects-ui",
+      "category": "preferences"
+    },
+    "pref-snap-to-pixel-grid": {
+      "number": "00184",
+      "dir": "00184-pref-snap-to-pixel-grid-ui",
+      "category": "preferences"
+    },
+    "pref-use-cmd-arrows-to-rotate-layers": {
+      "number": "00185",
+      "dir": "00185-pref-use-cmd-arrows-to-rotate-layers-ui",
+      "category": "preferences"
+    },
+    "pref-use-number-keys-for-opacity": {
+      "number": "00186",
+      "dir": "00186-pref-use-number-keys-for-opacity-ui",
+      "category": "preferences"
+    },
+    "pref-use-old-shortcuts-for-outlines": {
+      "number": "00187",
+      "dir": "00187-pref-use-old-shortcuts-for-outlines-ui",
+      "category": "preferences"
+    },
+    "pref-use-scroll-wheel-zoom": {
+      "number": "00188",
+      "dir": "00188-pref-use-scroll-wheel-zoom-ui",
+      "category": "preferences"
+    },
+    "pref-use-smart-quotes": {
+      "number": "00189",
+      "dir": "00189-pref-use-smart-quotes-ui",
+      "category": "preferences"
+    },
+    "preference-invert-zoom-direction": {
+      "number": "00190",
+      "dir": "00190-preference-invert-zoom-direction-ui",
+      "category": "preferences"
+    },
+    "auto-layout-alignment": {
+      "number": "00191",
+      "dir": "00191-auto-layout-alignment-ui",
+      "category": "design-panel"
+    },
+    "auto-layout-cross-gap": {
+      "number": "00192",
+      "dir": "00192-auto-layout-cross-gap-ui",
+      "category": "design-panel"
+    },
+    "auto-layout-direction-rtl": {
+      "number": "00193",
+      "dir": "00193-auto-layout-direction-rtl-ui",
+      "category": "design-panel"
+    },
+    "auto-layout-gap-auto": {
+      "number": "00194",
+      "dir": "00194-auto-layout-gap-auto-ui",
+      "category": "design-panel"
+    },
+    "auto-layout-gap-edit": {
+      "number": "00195",
+      "dir": "00195-auto-layout-gap-edit-ui",
+      "category": "design-panel"
+    },
+    "auto-layout-horizontal": {
+      "number": "00196",
+      "dir": "00196-auto-layout-horizontal-ui",
+      "category": "design-panel"
+    },
+    "auto-layout-padding-individual": {
+      "number": "00197",
+      "dir": "00197-auto-layout-padding-individual-ui",
+      "category": "design-panel"
+    },
+    "auto-layout-padding-symmetric": {
+      "number": "00198",
+      "dir": "00198-auto-layout-padding-symmetric-ui",
+      "category": "design-panel"
+    },
+    "auto-layout-remove": {
+      "number": "00199",
+      "dir": "00199-auto-layout-remove-ui",
+      "category": "design-panel"
+    },
+    "auto-layout-vertical": {
+      "number": "00200",
+      "dir": "00200-auto-layout-vertical-ui",
+      "category": "design-panel"
+    },
+    "auto-layout-wrap": {
+      "number": "00201",
+      "dir": "00201-auto-layout-wrap-ui",
+      "category": "design-panel"
+    },
+    "clip-content-toggle": {
+      "number": "00202",
+      "dir": "00202-clip-content-toggle-ui",
+      "category": "design-panel"
+    },
+    "constraint-horizontal-select": {
+      "number": "00203",
+      "dir": "00203-constraint-horizontal-select-ui",
+      "category": "design-panel"
+    },
+    "constraint-pin-diagram": {
+      "number": "00204",
+      "dir": "00204-constraint-pin-diagram-ui",
+      "category": "design-panel"
+    },
+    "constraint-vertical-select": {
+      "number": "00205",
+      "dir": "00205-constraint-vertical-select-ui",
+      "category": "design-panel"
+    },
+    "constraints-toggle": {
+      "number": "00206",
+      "dir": "00206-constraints-toggle-ui",
+      "category": "design-panel"
+    },
+    "corner-radius-edit": {
+      "number": "00207",
+      "dir": "00207-corner-radius-edit-ui",
+      "category": "design-panel"
+    },
+    "corner-radius-per-corner": {
+      "number": "00208",
+      "dir": "00208-corner-radius-per-corner-ui",
+      "category": "design-panel"
+    },
+    "grid-add-track": {
+      "number": "00209",
+      "dir": "00209-grid-add-track-ui",
+      "category": "design-panel"
+    },
+    "grid-gap-edit": {
+      "number": "00210",
+      "dir": "00210-grid-gap-edit-ui",
+      "category": "design-panel"
+    },
+    "grid-layout-enable": {
+      "number": "00211",
+      "dir": "00211-grid-layout-enable-ui",
+      "category": "design-panel"
+    },
+    "grid-track-edit": {
+      "number": "00212",
+      "dir": "00212-grid-track-edit-ui",
+      "category": "design-panel"
+    },
+    "grid-track-remove": {
+      "number": "00213",
+      "dir": "00213-grid-track-remove-ui",
+      "category": "design-panel"
+    },
+    "independent-corners-toggle": {
+      "number": "00214",
+      "dir": "00214-independent-corners-toggle-ui",
+      "category": "design-panel"
+    },
+    "instance-boolean-prop-toggle": {
+      "number": "00215",
+      "dir": "00215-instance-boolean-prop-toggle-ui",
+      "category": "design-panel"
+    },
+    "instance-switch-variant": {
+      "number": "00216",
+      "dir": "00216-instance-switch-variant-ui",
+      "category": "design-panel"
+    },
+    "instance-text-prop-edit": {
+      "number": "00217",
+      "dir": "00217-instance-text-prop-edit-ui",
+      "category": "design-panel"
+    },
+    "layout-guide-add": {
+      "number": "00218",
+      "dir": "00218-layout-guide-add-ui",
+      "category": "design-panel"
+    },
+    "layout-guide-pattern": {
+      "number": "00219",
+      "dir": "00219-layout-guide-pattern-ui",
+      "category": "design-panel"
+    },
+    "layout-guide-settings": {
+      "number": "00220",
+      "dir": "00220-layout-guide-settings-ui",
+      "category": "design-panel"
+    },
+    "layout-guide-toggle-remove": {
+      "number": "00221",
+      "dir": "00221-layout-guide-toggle-remove-ui",
+      "category": "design-panel"
+    },
+    "lock-aspect-ratio": {
+      "number": "00222",
+      "dir": "00222-lock-aspect-ratio-ui",
+      "category": "design-panel"
+    },
+    "opacity-edit": {
+      "number": "00223",
+      "dir": "00223-opacity-edit-ui",
+      "category": "design-panel"
+    },
+    "page-background-color": {
+      "number": "00224",
+      "dir": "00224-page-background-color-ui-to-fix",
+      "category": "design-panel"
+    },
+    "position-x-edit": {
+      "number": "00225",
+      "dir": "00225-position-x-edit-ui",
+      "category": "design-panel"
+    },
+    "position-y-edit": {
+      "number": "00226",
+      "dir": "00226-position-y-edit-ui",
+      "category": "design-panel"
+    },
+    "rotate-90": {
+      "number": "00227",
+      "dir": "00227-rotate-90-ui",
+      "category": "design-panel"
+    },
+    "rotation-edit": {
+      "number": "00228",
+      "dir": "00228-rotation-edit-ui",
+      "category": "design-panel"
+    },
+    "scale-panel": {
+      "number": "00229",
+      "dir": "00229-scale-panel-ui",
+      "category": "design-panel"
+    },
+    "selection-colors-edit": {
+      "number": "00230",
+      "dir": "00230-selection-colors-edit-ui",
+      "category": "design-panel"
+    },
+    "size-height-edit": {
+      "number": "00231",
+      "dir": "00231-size-height-edit-ui",
+      "category": "design-panel"
+    },
+    "size-limit-edit": {
+      "number": "00232",
+      "dir": "00232-size-limit-edit-ui",
+      "category": "design-panel"
+    },
+    "size-min-max-add": {
+      "number": "00233",
+      "dir": "00233-size-min-max-add-ui",
+      "category": "design-panel"
+    },
+    "size-width-edit": {
+      "number": "00234",
+      "dir": "00234-size-width-edit-ui",
+      "category": "design-panel"
+    },
+    "sizing-mode-select": {
+      "number": "00235",
+      "dir": "00235-sizing-mode-select-ui",
+      "category": "design-panel"
+    },
+    "text-resize-mode": {
+      "number": "00236",
+      "dir": "00236-text-resize-mode-ui",
+      "category": "design-panel"
+    },
+    "visibility-bind-variable": {
+      "number": "00237",
+      "dir": "00237-visibility-bind-variable-ui",
+      "category": "design-panel"
+    },
+    "visibility-panel-toggle": {
+      "number": "00238",
+      "dir": "00238-visibility-panel-toggle-ui",
+      "category": "design-panel"
+    },
+    "color-alpha-slider": {
+      "number": "00239",
+      "dir": "00239-color-alpha-slider-ui",
+      "category": "fills"
+    },
+    "color-area-sb": {
+      "number": "00240",
+      "dir": "00240-color-area-sb-ui",
+      "category": "fills"
+    },
+    "color-eyedropper": {
+      "number": "00241",
+      "dir": "00241-color-eyedropper-ui",
+      "category": "fills"
+    },
+    "color-format-select": {
+      "number": "00242",
+      "dir": "00242-color-format-select-ui",
+      "category": "fills"
+    },
+    "color-hue-slider": {
+      "number": "00243",
+      "dir": "00243-color-hue-slider-ui",
+      "category": "fills"
+    },
+    "color-opacity-input": {
+      "number": "00244",
+      "dir": "00244-color-opacity-input-ui",
+      "category": "fills"
+    },
+    "color-swatch-on-this-page": {
+      "number": "00245",
+      "dir": "00245-color-swatch-on-this-page-ui",
+      "category": "fills"
+    },
+    "color-value-input": {
+      "number": "00246",
+      "dir": "00246-color-value-input-ui",
+      "category": "fills"
+    },
+    "fill-add": {
+      "number": "00247",
+      "dir": "00247-fill-add-ui",
+      "category": "fills"
+    },
+    "fill-blend-mode": {
+      "number": "00248",
+      "dir": "00248-fill-blend-mode-ui",
+      "category": "fills"
+    },
+    "fill-hex-edit": {
+      "number": "00249",
+      "dir": "00249-fill-hex-edit-ui",
+      "category": "fills"
+    },
+    "fill-open-picker": {
+      "number": "00250",
+      "dir": "00250-fill-open-picker-ui",
+      "category": "fills"
+    },
+    "fill-remove": {
+      "number": "00251",
+      "dir": "00251-fill-remove-ui",
+      "category": "fills"
+    },
+    "fill-type-gradient": {
+      "number": "00252",
+      "dir": "00252-fill-type-gradient-ui",
+      "category": "fills"
+    },
+    "fill-type-image": {
+      "number": "00253",
+      "dir": "00253-fill-type-image-ui",
+      "category": "fills"
+    },
+    "fill-type-solid": {
+      "number": "00254",
+      "dir": "00254-fill-type-solid-ui",
+      "category": "fills"
+    },
+    "fill-visibility-toggle": {
+      "number": "00255",
+      "dir": "00255-fill-visibility-toggle-ui",
+      "category": "fills"
+    },
+    "gradient-reverse": {
+      "number": "00256",
+      "dir": "00256-gradient-reverse-ui",
+      "category": "fills"
+    },
+    "gradient-rotate": {
+      "number": "00257",
+      "dir": "00257-gradient-rotate-ui",
+      "category": "fills"
+    },
+    "gradient-stop-add": {
+      "number": "00258",
+      "dir": "00258-gradient-stop-add-ui",
+      "category": "fills"
+    },
+    "gradient-stop-bind-variable": {
+      "number": "00259",
+      "dir": "00259-gradient-stop-bind-variable-ui",
+      "category": "fills"
+    },
+    "gradient-stop-edit": {
+      "number": "00260",
+      "dir": "00260-gradient-stop-edit-ui",
+      "category": "fills"
+    },
+    "gradient-stop-remove": {
+      "number": "00261",
+      "dir": "00261-gradient-stop-remove-ui",
+      "category": "fills"
+    },
+    "gradient-stop-select-drag": {
+      "number": "00262",
+      "dir": "00262-gradient-stop-select-drag-ui",
+      "category": "fills"
+    },
+    "gradient-subtype-select": {
+      "number": "00263",
+      "dir": "00263-gradient-subtype-select-ui",
+      "category": "fills"
+    },
+    "image-adjustments": {
+      "number": "00264",
+      "dir": "00264-image-adjustments-ui",
+      "category": "fills"
+    },
+    "image-choose": {
+      "number": "00265",
+      "dir": "00265-image-choose-ui",
+      "category": "fills"
+    },
+    "image-rotate-90": {
+      "number": "00266",
+      "dir": "00266-image-rotate-90-ui",
+      "category": "fills"
+    },
+    "image-scale-mode": {
+      "number": "00267",
+      "dir": "00267-image-scale-mode-ui",
+      "category": "fills"
+    },
+    "image-tile-scale": {
+      "number": "00268",
+      "dir": "00268-image-tile-scale-ui",
+      "category": "fills"
+    },
+    "pencil-stroke-defaults": {
+      "number": "00269",
+      "dir": "00269-pencil-stroke-defaults-ui",
+      "category": "strokes"
+    },
+    "stroke-add": {
+      "number": "00270",
+      "dir": "00270-stroke-add-ui",
+      "category": "strokes"
+    },
+    "stroke-cap-start-end": {
+      "number": "00271",
+      "dir": "00271-stroke-cap-start-end-ui",
+      "category": "strokes"
+    },
+    "stroke-dash-cap": {
+      "number": "00272",
+      "dir": "00272-stroke-dash-cap-ui",
+      "category": "strokes"
+    },
+    "stroke-dash-style": {
+      "number": "00273",
+      "dir": "00273-stroke-dash-style-ui",
+      "category": "strokes"
+    },
+    "stroke-dash-values": {
+      "number": "00274",
+      "dir": "00274-stroke-dash-values-ui",
+      "category": "strokes"
+    },
+    "stroke-dynamic-controls": {
+      "number": "00275",
+      "dir": "00275-stroke-dynamic-controls-ui",
+      "category": "strokes"
+    },
+    "stroke-hex-edit": {
+      "number": "00276",
+      "dir": "00276-stroke-hex-edit-ui",
+      "category": "strokes"
+    },
+    "stroke-join": {
+      "number": "00277",
+      "dir": "00277-stroke-join-ui",
+      "category": "strokes"
+    },
+    "stroke-miter-angle": {
+      "number": "00278",
+      "dir": "00278-stroke-miter-angle-ui",
+      "category": "strokes"
+    },
+    "stroke-open-picker": {
+      "number": "00279",
+      "dir": "00279-stroke-open-picker-ui",
+      "category": "strokes"
+    },
+    "stroke-per-side": {
+      "number": "00280",
+      "dir": "00280-stroke-per-side-ui",
+      "category": "strokes"
+    },
+    "stroke-per-side-weight": {
+      "number": "00281",
+      "dir": "00281-stroke-per-side-weight-ui",
+      "category": "strokes"
+    },
+    "stroke-position-select": {
+      "number": "00282",
+      "dir": "00282-stroke-position-select-ui",
+      "category": "strokes"
+    },
+    "stroke-remove": {
+      "number": "00283",
+      "dir": "00283-stroke-remove-ui",
+      "category": "strokes"
+    },
+    "stroke-settings-open": {
+      "number": "00284",
+      "dir": "00284-stroke-settings-open-ui",
+      "category": "strokes"
+    },
+    "stroke-style-class": {
+      "number": "00285",
+      "dir": "00285-stroke-style-class-ui",
+      "category": "strokes"
+    },
+    "stroke-visibility-toggle": {
+      "number": "00286",
+      "dir": "00286-stroke-visibility-toggle-ui",
+      "category": "strokes"
+    },
+    "stroke-weight-edit": {
+      "number": "00287",
+      "dir": "00287-stroke-weight-edit-ui",
+      "category": "strokes"
+    },
+    "effect-add": {
+      "number": "00288",
+      "dir": "00288-effect-add-ui",
+      "category": "effects"
+    },
+    "effect-blur-radius": {
+      "number": "00289",
+      "dir": "00289-effect-blur-radius-ui",
+      "category": "effects"
+    },
+    "effect-color-bind-variable": {
+      "number": "00290",
+      "dir": "00290-effect-color-bind-variable-ui",
+      "category": "effects"
+    },
+    "effect-color-edit": {
+      "number": "00291",
+      "dir": "00291-effect-color-edit-ui",
+      "category": "effects"
+    },
+    "effect-offset-edit": {
+      "number": "00292",
+      "dir": "00292-effect-offset-edit-ui",
+      "category": "effects"
+    },
+    "effect-remove": {
+      "number": "00293",
+      "dir": "00293-effect-remove-ui",
+      "category": "effects"
+    },
+    "effect-spread": {
+      "number": "00294",
+      "dir": "00294-effect-spread-ui",
+      "category": "effects"
+    },
+    "effect-type-select": {
+      "number": "00295",
+      "dir": "00295-effect-type-select-ui",
+      "category": "effects"
+    },
+    "effect-visibility-toggle": {
+      "number": "00296",
+      "dir": "00296-effect-visibility-toggle-ui",
+      "category": "effects"
+    },
+    "text-align-horizontal": {
+      "number": "00297",
+      "dir": "00297-text-align-horizontal-ui",
+      "category": "typography"
+    },
+    "text-align-vertical": {
+      "number": "00298",
+      "dir": "00298-text-align-vertical-ui",
+      "category": "typography"
+    },
+    "text-alignment-justified": {
+      "number": "00299",
+      "dir": "00299-text-alignment-justified-ui",
+      "category": "typography"
+    },
+    "text-case": {
+      "number": "00300",
+      "dir": "00300-text-case-ui",
+      "category": "typography"
+    },
+    "text-decoration": {
+      "number": "00301",
+      "dir": "00301-text-decoration-ui",
+      "category": "typography"
+    },
+    "text-font-bind-variable": {
+      "number": "00302",
+      "dir": "00302-text-font-bind-variable-ui",
+      "category": "typography"
+    },
+    "text-font-family": {
+      "number": "00303",
+      "dir": "00303-text-font-family-ui",
+      "category": "typography"
+    },
+    "text-font-size": {
+      "number": "00304",
+      "dir": "00304-text-font-size-ui",
+      "category": "typography"
+    },
+    "text-font-weight": {
+      "number": "00305",
+      "dir": "00305-text-font-weight-ui",
+      "category": "typography"
+    },
+    "text-letter-spacing": {
+      "number": "00306",
+      "dir": "00306-text-letter-spacing-ui",
+      "category": "typography"
+    },
+    "text-line-height": {
+      "number": "00307",
+      "dir": "00307-text-line-height-ui",
+      "category": "typography"
+    },
+    "text-list-spacing": {
+      "number": "00308",
+      "dir": "00308-text-list-spacing-ui",
+      "category": "typography"
+    },
+    "text-list-style": {
+      "number": "00309",
+      "dir": "00309-text-list-style-ui",
+      "category": "typography"
+    },
+    "text-open-font-settings": {
+      "number": "00310",
+      "dir": "00310-text-open-font-settings-ui",
+      "category": "typography"
+    },
+    "text-open-type-settings": {
+      "number": "00311",
+      "dir": "00311-text-open-type-settings-ui",
+      "category": "typography"
+    },
+    "text-paragraph-spacing": {
+      "number": "00312",
+      "dir": "00312-text-paragraph-spacing-ui",
+      "category": "typography"
+    },
+    "text-path-controls": {
+      "number": "00313",
+      "dir": "00313-text-path-controls-ui",
+      "category": "typography"
+    },
+    "text-truncate": {
+      "number": "00314",
+      "dir": "00314-text-truncate-ui",
+      "category": "typography"
+    },
+    "text-underline-details": {
+      "number": "00315",
+      "dir": "00315-text-underline-details-ui",
+      "category": "typography"
+    },
+    "text-vertical-trim": {
+      "number": "00316",
+      "dir": "00316-text-vertical-trim-ui",
+      "category": "typography"
+    },
+    "type-feature-generic": {
+      "number": "00317",
+      "dir": "00317-type-feature-generic-ui",
+      "category": "typography"
+    },
+    "type-fractions": {
+      "number": "00318",
+      "dir": "00318-type-fractions-ui",
+      "category": "typography"
+    },
+    "type-hanging-lists": {
+      "number": "00319",
+      "dir": "00319-type-hanging-lists-ui",
+      "category": "typography"
+    },
+    "type-hanging-punctuation": {
+      "number": "00320",
+      "dir": "00320-type-hanging-punctuation-ui",
+      "category": "typography"
+    },
+    "type-letter-case-features": {
+      "number": "00321",
+      "dir": "00321-type-letter-case-features-ui",
+      "category": "typography"
+    },
+    "type-numbers-position": {
+      "number": "00322",
+      "dir": "00322-type-numbers-position-ui",
+      "category": "typography"
+    },
+    "type-numbers-style": {
+      "number": "00323",
+      "dir": "00323-type-numbers-style-ui",
+      "category": "typography"
+    },
+    "type-optical-size-auto": {
+      "number": "00324",
+      "dir": "00324-type-optical-size-auto-ui",
+      "category": "typography"
+    },
+    "type-paragraph-indent": {
+      "number": "00325",
+      "dir": "00325-type-paragraph-indent-ui",
+      "category": "typography"
+    },
+    "type-slashed-zero": {
+      "number": "00326",
+      "dir": "00326-type-slashed-zero-ui",
+      "category": "typography"
+    },
+    "type-variable-axis": {
+      "number": "00327",
+      "dir": "00327-type-variable-axis-ui",
+      "category": "typography"
+    },
+    "color-style-create": {
+      "number": "00328",
+      "dir": "00328-color-style-create-ui",
+      "category": "styles"
+    },
+    "effect-apply-style": {
+      "number": "00329",
+      "dir": "00329-effect-apply-style-ui",
+      "category": "styles"
+    },
+    "effect-style-create": {
+      "number": "00330",
+      "dir": "00330-effect-style-create-ui",
+      "category": "styles"
+    },
+    "fill-apply-style": {
+      "number": "00331",
+      "dir": "00331-fill-apply-style-ui",
+      "category": "styles"
+    },
+    "fill-detach-style": {
+      "number": "00332",
+      "dir": "00332-fill-detach-style-ui",
+      "category": "styles"
+    },
+    "fill-update-style": {
+      "number": "00333",
+      "dir": "00333-fill-update-style-ui",
+      "category": "styles"
+    },
+    "grid-style-create": {
+      "number": "00334",
+      "dir": "00334-grid-style-create-ui",
+      "category": "styles"
+    },
+    "stroke-apply-style": {
+      "number": "00335",
+      "dir": "00335-stroke-apply-style-ui",
+      "category": "styles"
+    },
+    "style-create-menu": {
+      "number": "00336",
+      "dir": "00336-style-create-menu-ui",
+      "category": "styles"
+    },
+    "text-apply-style": {
+      "number": "00337",
+      "dir": "00337-text-apply-style-ui",
+      "category": "styles"
+    },
+    "text-detach-style": {
+      "number": "00338",
+      "dir": "00338-text-detach-style-ui",
+      "category": "styles"
+    },
+    "text-style-create": {
+      "number": "00339",
+      "dir": "00339-text-style-create-ui",
+      "category": "styles"
+    },
+    "text-update-style": {
+      "number": "00340",
+      "dir": "00340-text-update-style-ui",
+      "category": "styles"
+    },
+    "variable-bind-field": {
+      "number": "00341",
+      "dir": "00341-variable-bind-field-ui",
+      "category": "variables"
+    },
+    "variable-collection-create": {
+      "number": "00342",
+      "dir": "00342-variable-collection-create-ui",
+      "category": "variables"
+    },
+    "variable-collection-delete": {
+      "number": "00343",
+      "dir": "00343-variable-collection-delete-ui",
+      "category": "variables"
+    },
+    "variable-collection-rename": {
+      "number": "00344",
+      "dir": "00344-variable-collection-rename-ui",
+      "category": "variables"
+    },
+    "variable-create-and-bind": {
+      "number": "00345",
+      "dir": "00345-variable-create-and-bind-ui",
+      "category": "variables"
+    },
+    "variable-create-boolean": {
+      "number": "00346",
+      "dir": "00346-variable-create-boolean-ui",
+      "category": "variables"
+    },
+    "variable-create-color": {
+      "number": "00347",
+      "dir": "00347-variable-create-color-ui",
+      "category": "variables"
+    },
+    "variable-create-number": {
+      "number": "00348",
+      "dir": "00348-variable-create-number-ui",
+      "category": "variables"
+    },
+    "variable-create-string": {
+      "number": "00349",
+      "dir": "00349-variable-create-string-ui",
+      "category": "variables"
+    },
+    "variable-delete": {
+      "number": "00350",
+      "dir": "00350-variable-delete-ui",
+      "category": "variables"
+    },
+    "variable-mode-add": {
+      "number": "00351",
+      "dir": "00351-variable-mode-add-ui",
+      "category": "variables"
+    },
+    "variable-mode-manage": {
+      "number": "00352",
+      "dir": "00352-variable-mode-manage-ui",
+      "category": "variables"
+    },
+    "variable-search": {
+      "number": "00353",
+      "dir": "00353-variable-search-ui",
+      "category": "variables"
+    },
+    "variable-unbind-field": {
+      "number": "00354",
+      "dir": "00354-variable-unbind-field-ui",
+      "category": "variables"
+    },
+    "variable-value-edit": {
+      "number": "00355",
+      "dir": "00355-variable-value-edit-ui",
+      "category": "variables"
+    },
+    "variables-open-dialog": {
+      "number": "00356",
+      "dir": "00356-variables-open-dialog-ui",
+      "category": "variables"
+    },
+    "layer-context-menu": {
+      "number": "00357",
+      "dir": "00357-layer-context-menu-ui",
+      "category": "layers-panel"
+    },
+    "layer-expand-toggle": {
+      "number": "00358",
+      "dir": "00358-layer-expand-toggle-ui",
+      "category": "layers-panel"
+    },
+    "layer-lock": {
+      "number": "00359",
+      "dir": "00359-layer-lock-ui",
+      "category": "layers-panel"
+    },
+    "layer-rename": {
+      "number": "00360",
+      "dir": "00360-layer-rename-ui",
+      "category": "layers-panel"
+    },
+    "layer-reorder-dnd": {
+      "number": "00361",
+      "dir": "00361-layer-reorder-dnd-ui",
+      "category": "layers-panel"
+    },
+    "layer-select": {
+      "number": "00362",
+      "dir": "00362-layer-select-ui",
+      "category": "layers-panel"
+    },
+    "layer-visibility": {
+      "number": "00363",
+      "dir": "00363-layer-visibility-ui",
+      "category": "layers-panel"
+    },
+    "left-panel-tabs": {
+      "number": "00364",
+      "dir": "00364-left-panel-tabs-ui",
+      "category": "layers-panel"
+    },
+    "page-create": {
+      "number": "00365",
+      "dir": "00365-page-create-ui",
+      "category": "pages"
+    },
+    "page-delete": {
+      "number": "00366",
+      "dir": "00366-page-delete-ui",
+      "category": "pages"
+    },
+    "page-rename": {
+      "number": "00367",
+      "dir": "00367-page-rename-ui",
+      "category": "pages"
+    },
+    "page-reorder-dnd": {
+      "number": "00368",
+      "dir": "00368-page-reorder-dnd-ui",
+      "category": "pages"
+    },
+    "page-switch": {
+      "number": "00369",
+      "dir": "00369-page-switch-ui",
+      "category": "pages"
+    },
+    "asset-insert-instance": {
+      "number": "00370",
+      "dir": "00370-asset-insert-instance-ui",
+      "category": "assets"
+    },
+    "asset-open-details": {
+      "number": "00371",
+      "dir": "00371-asset-open-details-ui",
+      "category": "assets"
+    },
+    "asset-search-components": {
+      "number": "00372",
+      "dir": "00372-asset-search-components-ui",
+      "category": "assets"
+    },
+    "assets-browse-library": {
+      "number": "00373",
+      "dir": "00373-assets-browse-library-ui",
+      "category": "assets"
+    },
+    "export-format-select": {
+      "number": "00374",
+      "dir": "00374-export-format-select-ui",
+      "category": "export"
+    },
+    "export-frames-pdf": {
+      "number": "00375",
+      "dir": "00375-export-frames-pdf-ui",
+      "category": "export"
+    },
+    "export-preview-toggle": {
+      "number": "00376",
+      "dir": "00376-export-preview-toggle-ui",
+      "category": "export"
+    },
+    "export-run": {
+      "number": "00377",
+      "dir": "00377-export-run-ui",
+      "category": "export"
+    },
+    "export-scale": {
+      "number": "00378",
+      "dir": "00378-export-scale-ui",
+      "category": "export"
+    },
+    "export-selection-menu": {
+      "number": "00379",
+      "dir": "00379-export-selection-menu-ui",
+      "category": "export"
+    },
+    "export-setting-add": {
+      "number": "00380",
+      "dir": "00380-export-setting-add-ui",
+      "category": "export"
+    },
+    "export-setting-remove": {
+      "number": "00381",
+      "dir": "00381-export-setting-remove-ui",
+      "category": "export"
+    },
+    "export-settings-popover": {
+      "number": "00382",
+      "dir": "00382-export-settings-popover-ui",
+      "category": "export"
+    },
+    "collab-doc-persistence": {
+      "number": "00383",
+      "dir": "00383-collab-doc-persistence-ui",
+      "category": "file-ops"
+    },
+    "document-rename": {
+      "number": "00384",
+      "dir": "00384-document-rename-ui",
+      "category": "file-ops"
+    },
+    "file-drag-drop-open": {
+      "number": "00385",
+      "dir": "00385-file-drag-drop-open-ui",
+      "category": "file-ops"
+    },
+    "file-import-pen": {
+      "number": "00386",
+      "dir": "00386-file-import-pen-ui",
+      "category": "file-ops"
+    },
+    "file-new": {
+      "number": "00387",
+      "dir": "00387-file-new-ui",
+      "category": "file-ops"
+    },
+    "file-open": {
+      "number": "00388",
+      "dir": "00388-file-open-ui",
+      "category": "file-ops"
+    },
+    "file-reload-external": {
+      "number": "00389",
+      "dir": "00389-file-reload-external-ui",
+      "category": "file-ops"
+    },
+    "file-save": {
+      "number": "00390",
+      "dir": "00390-file-save-ui",
+      "category": "file-ops"
+    },
+    "file-save-as": {
+      "number": "00391",
+      "dir": "00391-file-save-as-ui",
+      "category": "file-ops"
+    },
+    "tab-close": {
+      "number": "00392",
+      "dir": "00392-tab-close-ui",
+      "category": "file-ops"
+    },
+    "tab-switch": {
+      "number": "00393",
+      "dir": "00393-tab-switch-ui",
+      "category": "file-ops"
+    },
+    "share-copy-link": {
+      "number": "00394",
+      "dir": "00394-share-copy-link-ui",
+      "category": "sharing"
+    },
+    "share-open-dialog": {
+      "number": "00395",
+      "dir": "00395-share-open-dialog-ui",
+      "category": "sharing"
+    },
+    "share-open-settings": {
+      "number": "00396",
+      "dir": "00396-share-open-settings-ui",
+      "category": "sharing"
+    },
+    "share-remove-access": {
+      "number": "00397",
+      "dir": "00397-share-remove-access-ui",
+      "category": "sharing"
+    },
+    "share-set-audience": {
+      "number": "00398",
+      "dir": "00398-share-set-audience-ui",
+      "category": "sharing"
+    },
+    "share-set-link-permission": {
+      "number": "00399",
+      "dir": "00399-share-set-link-permission-ui",
+      "category": "sharing"
+    },
+    "share-set-password": {
+      "number": "00400",
+      "dir": "00400-share-set-password-ui",
+      "category": "sharing"
+    },
+    "share-set-role": {
+      "number": "00401",
+      "dir": "00401-share-set-role-ui",
+      "category": "sharing"
+    },
+    "share-settings-save": {
+      "number": "00402",
+      "dir": "00402-share-settings-save-ui",
+      "category": "sharing"
+    },
+    "share-transfer-ownership": {
+      "number": "00403",
+      "dir": "00403-share-transfer-ownership-ui",
+      "category": "sharing"
+    },
+    "share-viewers-can-copy": {
+      "number": "00404",
+      "dir": "00404-share-viewers-can-copy-ui",
+      "category": "sharing"
+    },
+    "ask-to-spotlight": {
+      "number": "00405",
+      "dir": "00405-ask-to-spotlight-ui",
+      "category": "collab"
+    },
+    "cancel-ask-to-spotlight": {
+      "number": "00406",
+      "dir": "00406-cancel-ask-to-spotlight-ui",
+      "category": "collab"
+    },
+    "collab-ask-to-edit": {
+      "number": "00407",
+      "dir": "00407-collab-ask-to-edit-ui",
+      "category": "collab"
+    },
+    "collab-awaiting-approval": {
+      "number": "00408",
+      "dir": "00408-collab-awaiting-approval-ui",
+      "category": "collab"
+    },
+    "collab-disconnect": {
+      "number": "00409",
+      "dir": "00409-collab-disconnect-ui",
+      "category": "collab"
+    },
+    "collab-join-approval-gate": {
+      "number": "00410",
+      "dir": "00410-collab-join-approval-gate-ui",
+      "category": "collab"
+    },
+    "collab-join-room": {
+      "number": "00411",
+      "dir": "00411-collab-join-room-ui",
+      "category": "collab"
+    },
+    "collab-multiplayer-cursors": {
+      "number": "00412",
+      "dir": "00412-collab-multiplayer-cursors-ui",
+      "category": "collab"
+    },
+    "collab-password-gate": {
+      "number": "00413",
+      "dir": "00413-collab-password-gate-ui",
+      "category": "collab"
+    },
+    "collab-peer-avatars": {
+      "number": "00414",
+      "dir": "00414-collab-peer-avatars-ui",
+      "category": "collab"
+    },
+    "collab-retry-cancel-join": {
+      "number": "00415",
+      "dir": "00415-collab-retry-cancel-join-ui",
+      "category": "collab"
+    },
+    "collab-self-avatar-menu": {
+      "number": "00416",
+      "dir": "00416-collab-self-avatar-menu-ui",
+      "category": "collab"
+    },
+    "collab-share-file": {
+      "number": "00417",
+      "dir": "00417-collab-share-file-ui",
+      "category": "collab"
+    },
+    "collab-start-editing": {
+      "number": "00418",
+      "dir": "00418-collab-start-editing-ui",
+      "category": "collab"
+    },
+    "collab-view-profile": {
+      "number": "00419",
+      "dir": "00419-collab-view-profile-ui",
+      "category": "collab"
+    },
+    "follow-peer": {
+      "number": "00420",
+      "dir": "00420-follow-peer-ui",
+      "category": "collab"
+    },
+    "spotlight-decline": {
+      "number": "00421",
+      "dir": "00421-spotlight-decline-ui",
+      "category": "collab"
+    },
+    "spotlight-dismiss-invite": {
+      "number": "00422",
+      "dir": "00422-spotlight-dismiss-invite-ui",
+      "category": "collab"
+    },
+    "spotlight-follow": {
+      "number": "00423",
+      "dir": "00423-spotlight-follow-ui",
+      "category": "collab"
+    },
+    "spotlight-me": {
+      "number": "00424",
+      "dir": "00424-spotlight-me-ui",
+      "category": "collab"
+    },
+    "spotlight-respond-ask": {
+      "number": "00425",
+      "dir": "00425-spotlight-respond-ask-ui",
+      "category": "collab"
+    },
+    "spotlight-stop": {
+      "number": "00426",
+      "dir": "00426-spotlight-stop-ui",
+      "category": "collab"
+    },
+    "spotlight-stop-following": {
+      "number": "00427",
+      "dir": "00427-spotlight-stop-following-ui",
+      "category": "collab"
+    },
+    "stop-following-peer": {
+      "number": "00428",
+      "dir": "00428-stop-following-peer-ui",
+      "category": "collab"
+    },
+    "viewport-following": {
+      "number": "00429",
+      "dir": "00429-viewport-following-ui",
+      "category": "collab"
+    },
+    "comment-add": {
+      "number": "00430",
+      "dir": "00430-comment-add-ui",
+      "category": "comments"
+    },
+    "comment-copy-link": {
+      "number": "00431",
+      "dir": "00431-comment-copy-link-ui",
+      "category": "comments"
+    },
+    "comment-deep-link-open": {
+      "number": "00432",
+      "dir": "00432-comment-deep-link-open-ui",
+      "category": "comments"
+    },
+    "comment-delete": {
+      "number": "00433",
+      "dir": "00433-comment-delete-ui",
+      "category": "comments"
+    },
+    "comment-edit-message": {
+      "number": "00434",
+      "dir": "00434-comment-edit-message-ui",
+      "category": "comments"
+    },
+    "comment-emoji-react": {
+      "number": "00435",
+      "dir": "00435-comment-emoji-react-ui",
+      "category": "comments"
+    },
+    "comment-emoji-typeahead": {
+      "number": "00436",
+      "dir": "00436-comment-emoji-typeahead-ui",
+      "category": "comments"
+    },
+    "comment-mark-read-unread": {
+      "number": "00437",
+      "dir": "00437-comment-mark-read-unread-ui",
+      "category": "comments"
+    },
+    "comment-mention": {
+      "number": "00438",
+      "dir": "00438-comment-mention-ui",
+      "category": "comments"
+    },
+    "comment-open-thread": {
+      "number": "00439",
+      "dir": "00439-comment-open-thread-ui",
+      "category": "comments"
+    },
+    "comment-reply": {
+      "number": "00440",
+      "dir": "00440-comment-reply-ui",
+      "category": "comments"
+    },
+    "comment-resolve": {
+      "number": "00441",
+      "dir": "00441-comment-resolve-ui",
+      "category": "comments"
+    },
+    "comments-sidebar": {
+      "number": "00442",
+      "dir": "00442-comments-sidebar-ui",
+      "category": "comments"
+    },
+    "dev-code-language": {
+      "number": "00443",
+      "dir": "00443-dev-code-language-ui",
+      "category": "dev-mode"
+    },
+    "dev-code-panel": {
+      "number": "00444",
+      "dir": "00444-dev-code-panel-ui",
+      "category": "dev-mode"
+    },
+    "dev-code-unit": {
+      "number": "00445",
+      "dir": "00445-dev-code-unit-ui",
+      "category": "dev-mode"
+    },
+    "dev-colors-list": {
+      "number": "00446",
+      "dir": "00446-dev-colors-list-ui",
+      "category": "dev-mode"
+    },
+    "dev-compare-changes": {
+      "number": "00447",
+      "dir": "00447-dev-compare-changes-ui",
+      "category": "dev-mode"
+    },
+    "dev-copy-code-section": {
+      "number": "00448",
+      "dir": "00448-dev-copy-code-section-ui",
+      "category": "dev-mode"
+    },
+    "dev-copy-colors": {
+      "number": "00449",
+      "dir": "00449-dev-copy-colors-ui",
+      "category": "dev-mode"
+    },
+    "dev-copy-layer-name": {
+      "number": "00450",
+      "dir": "00450-dev-copy-layer-name-ui",
+      "category": "dev-mode"
+    },
+    "dev-copy-link": {
+      "number": "00451",
+      "dir": "00451-dev-copy-link-ui",
+      "category": "dev-mode"
+    },
+    "dev-export-assets": {
+      "number": "00452",
+      "dir": "00452-dev-export-assets-ui",
+      "category": "dev-mode"
+    },
+    "dev-inspect-list": {
+      "number": "00453",
+      "dir": "00453-dev-inspect-list-ui",
+      "category": "dev-mode"
+    },
+    "dev-inspect-overlays": {
+      "number": "00454",
+      "dir": "00454-dev-inspect-overlays-ui",
+      "category": "dev-mode"
+    },
+    "dev-ready-list": {
+      "number": "00455",
+      "dir": "00455-dev-ready-list-ui",
+      "category": "dev-mode"
+    },
+    "ai-acp-agent": {
+      "number": "00456",
+      "dir": "00456-ai-acp-agent-ui",
+      "category": "ai"
+    },
+    "ai-api-key-setup": {
+      "number": "00457",
+      "dir": "00457-ai-api-key-setup-ui",
+      "category": "ai"
+    },
+    "ai-clear-chat": {
+      "number": "00458",
+      "dir": "00458-ai-clear-chat-ui",
+      "category": "ai"
+    },
+    "ai-continue": {
+      "number": "00459",
+      "dir": "00459-ai-continue-ui",
+      "category": "ai"
+    },
+    "ai-open-panel": {
+      "number": "00460",
+      "dir": "00460-ai-open-panel-ui",
+      "category": "ai"
+    },
+    "ai-provider-select": {
+      "number": "00461",
+      "dir": "00461-ai-provider-select-ui",
+      "category": "ai"
+    },
+    "ai-send-prompt": {
+      "number": "00462",
+      "dir": "00462-ai-send-prompt-ui",
+      "category": "ai"
+    },
+    "ai-stop-generation": {
+      "number": "00463",
+      "dir": "00463-ai-stop-generation-ui",
+      "category": "ai"
+    },
+    "ai-tool-edits": {
+      "number": "00464",
+      "dir": "00464-ai-tool-edits-ui",
+      "category": "ai"
+    }
+  },
+  "mcp": {
+    "batch_update": {
+      "number": "10001",
+      "dir": "10001-batch-update-mcp",
+      "registry": "core",
+      "category": "structure"
+    },
+    "calc": {
+      "number": "10002",
+      "dir": "10002-calc-mcp",
+      "registry": "core",
+      "category": "utility"
+    },
+    "delete_node": {
+      "number": "10003",
+      "dir": "10003-delete-node-mcp",
+      "registry": "core",
+      "category": "structure"
+    },
+    "describe": {
+      "number": "10004",
+      "dir": "10004-describe-mcp",
+      "registry": "core",
+      "category": "describe"
+    },
+    "eval": {
+      "number": "10005",
+      "dir": "10005-eval-mcp",
+      "registry": "core",
+      "category": "analyze"
+    },
+    "find_nodes": {
+      "number": "10006",
+      "dir": "10006-find-nodes-mcp",
+      "registry": "core",
+      "category": "read"
+    },
+    "get_jsx": {
+      "number": "10007",
+      "dir": "10007-get-jsx-mcp",
+      "registry": "core",
+      "category": "read"
+    },
+    "get_node": {
+      "number": "10008",
+      "dir": "10008-get-node-mcp",
+      "registry": "core",
+      "category": "read"
+    },
+    "get_selection": {
+      "number": "10009",
+      "dir": "10009-get-selection-mcp",
+      "registry": "core",
+      "category": "read"
+    },
+    "node_resize": {
+      "number": "10010",
+      "dir": "10010-node-resize-mcp",
+      "registry": "core",
+      "category": "structure"
+    },
+    "render": {
+      "number": "10011",
+      "dir": "10011-render-mcp",
+      "registry": "core",
+      "category": "create"
+    },
+    "reparent_node": {
+      "number": "10012",
+      "dir": "10012-reparent-node-mcp",
+      "registry": "core",
+      "category": "structure"
+    },
+    "set_fill": {
+      "number": "10013",
+      "dir": "10013-set-fill-mcp",
+      "registry": "core",
+      "category": "modify"
+    },
+    "set_layout": {
+      "number": "10014",
+      "dir": "10014-set-layout-mcp",
+      "registry": "core",
+      "category": "modify"
+    },
+    "set_layout_child": {
+      "number": "10015",
+      "dir": "10015-set-layout-child-mcp",
+      "registry": "core",
+      "category": "modify"
+    },
+    "set_radius": {
+      "number": "10016",
+      "dir": "10016-set-radius-mcp",
+      "registry": "core",
+      "category": "modify"
+    },
+    "set_stroke": {
+      "number": "10017",
+      "dir": "10017-set-stroke-mcp",
+      "registry": "core",
+      "category": "modify"
+    },
+    "set_text": {
+      "number": "10018",
+      "dir": "10018-set-text-mcp",
+      "registry": "core",
+      "category": "modify"
+    },
+    "set_text_properties": {
+      "number": "10019",
+      "dir": "10019-set-text-properties-mcp",
+      "registry": "core",
+      "category": "modify"
+    },
+    "stock_photo": {
+      "number": "10020",
+      "dir": "10020-stock-photo-mcp",
+      "registry": "core",
+      "category": "utility"
+    },
+    "update_node": {
+      "number": "10021",
+      "dir": "10021-update-node-mcp",
+      "registry": "core",
+      "category": "modify"
+    },
+    "viewport_zoom_to_fit": {
+      "number": "10022",
+      "dir": "10022-viewport-zoom-to-fit-mcp",
+      "registry": "core",
+      "category": "vector"
+    },
+    "analyze_clusters": {
+      "number": "10023",
+      "dir": "10023-analyze-clusters-mcp",
+      "registry": "extended",
+      "category": "analyze"
+    },
+    "analyze_colors": {
+      "number": "10024",
+      "dir": "10024-analyze-colors-mcp",
+      "registry": "extended",
+      "category": "analyze"
+    },
+    "analyze_spacing": {
+      "number": "10025",
+      "dir": "10025-analyze-spacing-mcp",
+      "registry": "extended",
+      "category": "analyze"
+    },
+    "analyze_typography": {
+      "number": "10026",
+      "dir": "10026-analyze-typography-mcp",
+      "registry": "extended",
+      "category": "analyze"
+    },
+    "apply_paint_style": {
+      "number": "10027",
+      "dir": "10027-apply-paint-style-mcp",
+      "registry": "extended",
+      "category": "styles"
+    },
+    "arrange": {
+      "number": "10028",
+      "dir": "10028-arrange-mcp",
+      "registry": "extended",
+      "category": "structure"
+    },
+    "attach_text_to_path": {
+      "number": "10029",
+      "dir": "10029-attach-text-to-path-mcp",
+      "registry": "extended",
+      "category": "utility"
+    },
+    "bind_variable": {
+      "number": "10030",
+      "dir": "10030-bind-variable-mcp",
+      "registry": "extended",
+      "category": "variables"
+    },
+    "boolean_exclude": {
+      "number": "10031",
+      "dir": "10031-boolean-exclude-mcp",
+      "registry": "extended",
+      "category": "vector"
+    },
+    "boolean_intersect": {
+      "number": "10032",
+      "dir": "10032-boolean-intersect-mcp",
+      "registry": "extended",
+      "category": "vector"
+    },
+    "boolean_subtract": {
+      "number": "10033",
+      "dir": "10033-boolean-subtract-mcp",
+      "registry": "extended",
+      "category": "vector"
+    },
+    "boolean_union": {
+      "number": "10034",
+      "dir": "10034-boolean-union-mcp",
+      "registry": "extended",
+      "category": "vector"
+    },
+    "clone_node": {
+      "number": "10035",
+      "dir": "10035-clone-node-mcp",
+      "registry": "extended",
+      "category": "structure"
+    },
+    "create_collection": {
+      "number": "10036",
+      "dir": "10036-create-collection-mcp",
+      "registry": "extended",
+      "category": "variables"
+    },
+    "create_component": {
+      "number": "10037",
+      "dir": "10037-create-component-mcp",
+      "registry": "extended",
+      "category": "create"
+    },
+    "create_instance": {
+      "number": "10038",
+      "dir": "10038-create-instance-mcp",
+      "registry": "extended",
+      "category": "create"
+    },
+    "create_page": {
+      "number": "10039",
+      "dir": "10039-create-page-mcp",
+      "registry": "extended",
+      "category": "create"
+    },
+    "create_paint_style": {
+      "number": "10040",
+      "dir": "10040-create-paint-style-mcp",
+      "registry": "extended",
+      "category": "styles"
+    },
+    "create_shape": {
+      "number": "10041",
+      "dir": "10041-create-shape-mcp",
+      "registry": "extended",
+      "category": "create"
+    },
+    "create_slice": {
+      "number": "10042",
+      "dir": "10042-create-slice-mcp",
+      "registry": "extended",
+      "category": "create"
+    },
+    "create_variable": {
+      "number": "10043",
+      "dir": "10043-create-variable-mcp",
+      "registry": "extended",
+      "category": "variables"
+    },
+    "create_vector": {
+      "number": "10044",
+      "dir": "10044-create-vector-mcp",
+      "registry": "extended",
+      "category": "create"
+    },
+    "delete_collection": {
+      "number": "10045",
+      "dir": "10045-delete-collection-mcp",
+      "registry": "extended",
+      "category": "variables"
+    },
+    "delete_page": {
+      "number": "10046",
+      "dir": "10046-delete-page-mcp",
+      "registry": "extended",
+      "category": "read"
+    },
+    "delete_variable": {
+      "number": "10047",
+      "dir": "10047-delete-variable-mcp",
+      "registry": "extended",
+      "category": "variables"
+    },
+    "design_to_component_map": {
+      "number": "10048",
+      "dir": "10048-design-to-component-map-mcp",
+      "registry": "extended",
+      "category": "codegen"
+    },
+    "design_to_tokens": {
+      "number": "10049",
+      "dir": "10049-design-to-tokens-mcp",
+      "registry": "extended",
+      "category": "codegen"
+    },
+    "detach_paint_style": {
+      "number": "10050",
+      "dir": "10050-detach-paint-style-mcp",
+      "registry": "extended",
+      "category": "styles"
+    },
+    "diff_create": {
+      "number": "10051",
+      "dir": "10051-diff-create-mcp",
+      "registry": "extended",
+      "category": "analyze"
+    },
+    "diff_jsx": {
+      "number": "10052",
+      "dir": "10052-diff-jsx-mcp",
+      "registry": "extended",
+      "category": "read"
+    },
+    "diff_show": {
+      "number": "10053",
+      "dir": "10053-diff-show-mcp",
+      "registry": "extended",
+      "category": "analyze"
+    },
+    "distribute": {
+      "number": "10054",
+      "dir": "10054-distribute-mcp",
+      "registry": "extended",
+      "category": "structure"
+    },
+    "done_with_changes": {
+      "number": "10055",
+      "dir": "10055-done-with-changes-mcp",
+      "registry": "extended",
+      "category": "modify"
+    },
+    "export_fig": {
+      "number": "10056",
+      "dir": "10056-export-fig-mcp",
+      "registry": "extended",
+      "category": "vector"
+    },
+    "export_image": {
+      "number": "10057",
+      "dir": "10057-export-image-mcp",
+      "registry": "extended",
+      "category": "vector"
+    },
+    "export_pdf": {
+      "number": "10058",
+      "dir": "10058-export-pdf-mcp",
+      "registry": "extended",
+      "category": "vector"
+    },
+    "export_svg": {
+      "number": "10059",
+      "dir": "10059-export-svg-mcp",
+      "registry": "extended",
+      "category": "vector"
+    },
+    "fetch_icons": {
+      "number": "10060",
+      "dir": "10060-fetch-icons-mcp",
+      "registry": "extended",
+      "category": "create"
+    },
+    "find_variables": {
+      "number": "10061",
+      "dir": "10061-find-variables-mcp",
+      "registry": "extended",
+      "category": "variables"
+    },
+    "flatten_nodes": {
+      "number": "10062",
+      "dir": "10062-flatten-nodes-mcp",
+      "registry": "extended",
+      "category": "structure"
+    },
+    "get_collection": {
+      "number": "10063",
+      "dir": "10063-get-collection-mcp",
+      "registry": "extended",
+      "category": "variables"
+    },
+    "get_components": {
+      "number": "10064",
+      "dir": "10064-get-components-mcp",
+      "registry": "extended",
+      "category": "read"
+    },
+    "get_current_page": {
+      "number": "10065",
+      "dir": "10065-get-current-page-mcp",
+      "registry": "extended",
+      "category": "read"
+    },
+    "get_page_tree": {
+      "number": "10066",
+      "dir": "10066-get-page-tree-mcp",
+      "registry": "extended",
+      "category": "read"
+    },
+    "get_variable": {
+      "number": "10067",
+      "dir": "10067-get-variable-mcp",
+      "registry": "extended",
+      "category": "variables"
+    },
+    "group_nodes": {
+      "number": "10068",
+      "dir": "10068-group-nodes-mcp",
+      "registry": "extended",
+      "category": "structure"
+    },
+    "import_svg": {
+      "number": "10069",
+      "dir": "10069-import-svg-mcp",
+      "registry": "extended",
+      "category": "create"
+    },
+    "insert_icon": {
+      "number": "10070",
+      "dir": "10070-insert-icon-mcp",
+      "registry": "extended",
+      "category": "create"
+    },
+    "list_available_fonts": {
+      "number": "10071",
+      "dir": "10071-list-available-fonts-mcp",
+      "registry": "extended",
+      "category": "read"
+    },
+    "list_collections": {
+      "number": "10072",
+      "dir": "10072-list-collections-mcp",
+      "registry": "extended",
+      "category": "variables"
+    },
+    "list_fonts": {
+      "number": "10073",
+      "dir": "10073-list-fonts-mcp",
+      "registry": "extended",
+      "category": "read"
+    },
+    "list_pages": {
+      "number": "10074",
+      "dir": "10074-list-pages-mcp",
+      "registry": "extended",
+      "category": "read"
+    },
+    "list_paint_styles": {
+      "number": "10075",
+      "dir": "10075-list-paint-styles-mcp",
+      "registry": "extended",
+      "category": "styles"
+    },
+    "list_variables": {
+      "number": "10076",
+      "dir": "10076-list-variables-mcp",
+      "registry": "extended",
+      "category": "variables"
+    },
+    "node_ancestors": {
+      "number": "10077",
+      "dir": "10077-node-ancestors-mcp",
+      "registry": "extended",
+      "category": "structure"
+    },
+    "node_bindings": {
+      "number": "10078",
+      "dir": "10078-node-bindings-mcp",
+      "registry": "extended",
+      "category": "structure"
+    },
+    "node_bounds": {
+      "number": "10079",
+      "dir": "10079-node-bounds-mcp",
+      "registry": "extended",
+      "category": "structure"
+    },
+    "node_children": {
+      "number": "10080",
+      "dir": "10080-node-children-mcp",
+      "registry": "extended",
+      "category": "structure"
+    },
+    "node_move": {
+      "number": "10081",
+      "dir": "10081-node-move-mcp",
+      "registry": "extended",
+      "category": "structure"
+    },
+    "node_replace_with": {
+      "number": "10082",
+      "dir": "10082-node-replace-with-mcp",
+      "registry": "extended",
+      "category": "structure"
+    },
+    "node_to_component": {
+      "number": "10083",
+      "dir": "10083-node-to-component-mcp",
+      "registry": "extended",
+      "category": "structure"
+    },
+    "node_tree": {
+      "number": "10084",
+      "dir": "10084-node-tree-mcp",
+      "registry": "extended",
+      "category": "structure"
+    },
+    "page_bounds": {
+      "number": "10085",
+      "dir": "10085-page-bounds-mcp",
+      "registry": "extended",
+      "category": "read"
+    },
+    "path_flip": {
+      "number": "10086",
+      "dir": "10086-path-flip-mcp",
+      "registry": "extended",
+      "category": "vector"
+    },
+    "path_get": {
+      "number": "10087",
+      "dir": "10087-path-get-mcp",
+      "registry": "extended",
+      "category": "vector"
+    },
+    "path_move": {
+      "number": "10088",
+      "dir": "10088-path-move-mcp",
+      "registry": "extended",
+      "category": "vector"
+    },
+    "path_scale": {
+      "number": "10089",
+      "dir": "10089-path-scale-mcp",
+      "registry": "extended",
+      "category": "vector"
+    },
+    "path_set": {
+      "number": "10090",
+      "dir": "10090-path-set-mcp",
+      "registry": "extended",
+      "category": "vector"
+    },
+    "query_nodes": {
+      "number": "10091",
+      "dir": "10091-query-nodes-mcp",
+      "registry": "extended",
+      "category": "read"
+    },
+    "rename_node": {
+      "number": "10092",
+      "dir": "10092-rename-node-mcp",
+      "registry": "extended",
+      "category": "structure"
+    },
+    "reorder_page": {
+      "number": "10093",
+      "dir": "10093-reorder-page-mcp",
+      "registry": "extended",
+      "category": "read"
+    },
+    "search_icons": {
+      "number": "10094",
+      "dir": "10094-search-icons-mcp",
+      "registry": "extended",
+      "category": "create"
+    },
+    "select_nodes": {
+      "number": "10095",
+      "dir": "10095-select-nodes-mcp",
+      "registry": "extended",
+      "category": "read"
+    },
+    "set_blend": {
+      "number": "10096",
+      "dir": "10096-set-blend-mcp",
+      "registry": "extended",
+      "category": "modify"
+    },
+    "set_constraints": {
+      "number": "10097",
+      "dir": "10097-set-constraints-mcp",
+      "registry": "extended",
+      "category": "modify"
+    },
+    "set_effects": {
+      "number": "10098",
+      "dir": "10098-set-effects-mcp",
+      "registry": "extended",
+      "category": "modify"
+    },
+    "set_font": {
+      "number": "10099",
+      "dir": "10099-set-font-mcp",
+      "registry": "extended",
+      "category": "modify"
+    },
+    "set_font_range": {
+      "number": "10100",
+      "dir": "10100-set-font-range-mcp",
+      "registry": "extended",
+      "category": "modify"
+    },
+    "set_image_fill": {
+      "number": "10101",
+      "dir": "10101-set-image-fill-mcp",
+      "registry": "extended",
+      "category": "modify"
+    },
+    "set_instance_property": {
+      "number": "10102",
+      "dir": "10102-set-instance-property-mcp",
+      "registry": "extended",
+      "category": "modify"
+    },
+    "set_locked": {
+      "number": "10103",
+      "dir": "10103-set-locked-mcp",
+      "registry": "extended",
+      "category": "modify"
+    },
+    "set_minmax": {
+      "number": "10104",
+      "dir": "10104-set-minmax-mcp",
+      "registry": "extended",
+      "category": "modify"
+    },
+    "set_opacity": {
+      "number": "10105",
+      "dir": "10105-set-opacity-mcp",
+      "registry": "extended",
+      "category": "modify"
+    },
+    "set_rotation": {
+      "number": "10106",
+      "dir": "10106-set-rotation-mcp",
+      "registry": "extended",
+      "category": "modify"
+    },
+    "set_section_status": {
+      "number": "10107",
+      "dir": "10107-set-section-status-mcp",
+      "registry": "extended",
+      "category": "modify"
+    },
+    "set_stroke_align": {
+      "number": "10108",
+      "dir": "10108-set-stroke-align-mcp",
+      "registry": "extended",
+      "category": "modify"
+    },
+    "set_stroke_width_profile": {
+      "number": "10109",
+      "dir": "10109-set-stroke-width-profile-mcp",
+      "registry": "extended",
+      "category": "vector"
+    },
+    "set_text_path_options": {
+      "number": "10110",
+      "dir": "10110-set-text-path-options-mcp",
+      "registry": "extended",
+      "category": "utility"
+    },
+    "set_text_resize": {
+      "number": "10111",
+      "dir": "10111-set-text-resize-mcp",
+      "registry": "extended",
+      "category": "modify"
+    },
+    "set_variable": {
+      "number": "10112",
+      "dir": "10112-set-variable-mcp",
+      "registry": "extended",
+      "category": "variables"
+    },
+    "set_visible": {
+      "number": "10113",
+      "dir": "10113-set-visible-mcp",
+      "registry": "extended",
+      "category": "modify"
+    },
+    "switch_page": {
+      "number": "10114",
+      "dir": "10114-switch-page-mcp",
+      "registry": "extended",
+      "category": "read"
+    },
+    "tidy": {
+      "number": "10115",
+      "dir": "10115-tidy-mcp",
+      "registry": "extended",
+      "category": "structure"
+    },
+    "unbind_variable": {
+      "number": "10116",
+      "dir": "10116-unbind-variable-mcp",
+      "registry": "extended",
+      "category": "variables"
+    },
+    "ungroup_node": {
+      "number": "10117",
+      "dir": "10117-ungroup-node-mcp",
+      "registry": "extended",
+      "category": "structure"
+    },
+    "update_image_fill": {
+      "number": "10118",
+      "dir": "10118-update-image-fill-mcp",
+      "registry": "extended",
+      "category": "modify"
+    },
+    "update_paint_style": {
+      "number": "10119",
+      "dir": "10119-update-paint-style-mcp",
+      "registry": "extended",
+      "category": "styles"
+    },
+    "viewport_get": {
+      "number": "10120",
+      "dir": "10120-viewport-get-mcp",
+      "registry": "extended",
+      "category": "vector"
+    },
+    "viewport_set": {
+      "number": "10121",
+      "dir": "10121-viewport-set-mcp",
+      "registry": "extended",
+      "category": "vector"
+    },
+    "get_codegen_prompt": {
+      "number": "10122",
+      "dir": "10122-get-codegen-prompt-mcp",
+      "registry": "server-only",
+      "category": "server"
+    },
+    "new_document": {
+      "number": "10123",
+      "dir": "10123-new-document-mcp",
+      "registry": "server-only",
+      "category": "server"
+    },
+    "open_file": {
+      "number": "10124",
+      "dir": "10124-open-file-mcp",
+      "registry": "server-only",
+      "category": "server"
+    },
+    "save_file": {
+      "number": "10125",
+      "dir": "10125-save-file-mcp",
+      "registry": "server-only",
+      "category": "server"
+    }
+  }
+}

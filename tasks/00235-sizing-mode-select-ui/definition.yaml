@@ -1,0 +1,36 @@
+id: 00235-sizing-mode-select-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a frame stacking two rectangles with vertical auto layout (Layout > Flow). Then use the per-axis
+  sizing chevron menus on the width and height fields to set both axes to Hug contents instead of Fixed.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Frame hugs contents on both axes
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: vertical layout hugging its primary axis
+    path: $.data.nodes[?(@.layoutMode=='VERTICAL' & @.primaryAxisSizing=='HUG')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: vertical layout hugging its counter axis
+    path: $.data.nodes[?(@.layoutMode=='VERTICAL' & @.counterAxisSizing=='HUG')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

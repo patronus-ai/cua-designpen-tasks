@@ -1,0 +1,32 @@
+id: 00009-tool-media-ui
+start_url: http://cua_designpen.web
+prompt: 'Place an image file on the canvas: press Shift+K (or use the shape flyout > Place image…) to open the file
+  dialog, choose any image file from disk, and click on the canvas to place it.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Image placed (lands as a rectangle with an image fill)
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: a rectangle-backed image node exists
+    path: $.data.nodes[?(@.type=='RECTANGLE')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

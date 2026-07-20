@@ -1,0 +1,37 @@
+id: 00089-canvas-scale-drag-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a rectangle and set it to exactly 200 x 100 via the panel fields. Press K to switch to the Scale tool,
+  then drag a corner outward until the rectangle is at least 400 wide — the height must follow along proportionally
+  without you controlling it.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Selection scaled proportionally by drag
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: rectangle width at least 400
+    path: $.data.nodes[?(@.type=='RECTANGLE')].width
+    operator: NUMERIC_MATCH
+    expected: '>= 400'
+  - name: rectangle height followed proportionally
+    path: $.data.nodes[?(@.type=='RECTANGLE')].height
+    operator: NUMERIC_MATCH
+    expected: '>= 195'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

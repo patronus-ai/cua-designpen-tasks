@@ -1,0 +1,33 @@
+id: 00236-text-resize-mode-ui
+start_url: http://cua_designpen.web
+prompt: 'Add a text layer containing a sentence or two (e.g. "The quick brown fox jumps over the lazy dog. Pack
+  my box with five dozen liquor jugs."). Select it and set its resizing mode to Auto height via Design panel > Layout
+  > Resizing, so the box keeps its width but grows taller as the text wraps.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Text set to auto-height
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: a text node auto-grows in height
+    path: $.data.nodes[?(@.type=='TEXT' & @.textAutoResize=='HEIGHT')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

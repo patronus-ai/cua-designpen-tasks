@@ -1,0 +1,37 @@
+id: 00438-comment-mention-ui
+start_url: http://cua_designpen.web
+prompt: 'Activate the Comment tool and click the canvas to open the composer. Type "@" to trigger the mention typeahead,
+  select a person from the suggestions to insert an @-mention, then finish the message with "please review" and
+  submit.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Comment contains a mention marker and the note text
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: message contains the note text
+    path: $.data.comments[0].messages[0].body
+    operator: STRING_CONTAINS
+    expected: please review
+  - name: message contains a mention marker
+    path: $.data.comments[0].messages[0].body
+    operator: STRING_CONTAINS
+    expected: '@'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

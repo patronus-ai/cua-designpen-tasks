@@ -1,0 +1,37 @@
+id: 00300-text-case-ui
+start_url: http://cua_designpen.web
+prompt: 'Create a text layer and type "launch day" in lowercase. With the layer selected, open the Type settings
+  popover via the sliders button in the Typography section, and in the Basics tab set the letter case to Uppercase
+  — do not retype the text.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: text-case observable effect
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: uppercase transform applied
+    path: $.data.nodes[?(@.type=='TEXT' & @.textCase=='UPPER')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: original lowercase characters kept
+    path: $.data.nodes[?(@.type=='TEXT')].textContent
+    operator: ARRAY_ANY_STRING_CONTAINS
+    expected: launch day
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

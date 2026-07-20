@@ -1,0 +1,36 @@
+id: 00027-vector-break-at-vertex-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a closed triangle with the Pen tool (P) and commit. Double-click it to enter vector edit mode, click
+  one corner vertex to select it, and press Alt+Delete to break the outline open at that corner.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_type
+- browser_wait
+required_tools:
+- browser
+rewards:
+- name: Broken triangle gained a duplicate vertex
+  kind: state
+  source:
+    canvas: openpencil
+  assertions:
+  - name: vector node present
+    path: $.data.nodes[?(@.type=='VECTOR')]
+    operator: ARRAY_LENGTH
+    expected: '>= 1'
+  - name: break duplicated the corner vertex (4 vertices)
+    path: $.data.nodes[?(@.type=='VECTOR')].vectorNetwork.vertices[3]
+    operator: EXISTS
+    expected: 'true'
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
+seed: null

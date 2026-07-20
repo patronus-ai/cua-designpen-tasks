@@ -1,0 +1,24 @@
+id: 00002-seeded-fig-describe
+start_url: "http://cua_designpen.web"
+prompt: |
+  Open http://cua_designpen.web. The canvas should already contain a design
+  document (the Patronus design system and logo). Take a screenshot and
+  describe in detail what you see on the canvas: the pages listed in the left
+  sidebar, the layers, and the visible design elements.
+
+bootstrap_data:
+  seed: patronus_design_system_and_logo
+
+available_tools:
+  - browser_navigate
+  - browser_screenshot
+  - browser_click
+  - browser_type
+  - browser_wait
+
+# cua_designpen has no sqlite database (state is client-side yjs),
+# so no DB diff/query rewards are possible.
+rewards:
+  - name: "Took screenshot"
+    kind: action
+    tool: browser_screenshot

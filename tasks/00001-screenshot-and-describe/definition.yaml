@@ -1,0 +1,37 @@
+id: 00001-screenshot-and-describe
+start_url: "http://cua_designpen.web"
+prompt: |
+  Navigate to http://cua_designpen.web and take a screenshot.
+  Describe what you see on the page in detail.
+
+available_tools:
+  - browser_navigate
+  - browser_screenshot
+  - browser_click
+  - browser_type
+  - browser_wait
+
+rewards:
+  - name: "Took screenshot"
+    kind: action
+    tool: browser_screenshot
+
+  - name: "No unintended side effects"
+    kind: state
+    source:
+      type: diff
+    assertions:
+      - name: "No database changes"
+        operator: DIFF
+        expected:
+          summary:
+            total_changes: 0
+
+  - name: "Database connection works"
+    kind: state
+    source:
+      query: "SELECT 1 AS ok"
+    assertions:
+      - name: "Query returns result"
+        operator: ARRAY_LENGTH
+        expected: ">= 1"

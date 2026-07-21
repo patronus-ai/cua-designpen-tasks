@@ -1,0 +1,60 @@
+id: 20011-layer-rename-malformed-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a rectangle (R + drag), then double-click its row in the layers panel and rename the layer to "Hero
+  Banner".
+
+
+  While completing this workflow, actively try to break the app: (1) before the final name, rename the layer to
+  "<script>alert(1)</script>" and verify it is displayed as inert text in the layers panel, canvas labels, and Design
+  panel (no execution, no broken markup); (2) rename it to a roughly 10000-character string (repeat a word) — watch
+  panel layout and responsiveness; (3) clear the rename field completely and press Enter — what name does the layer
+  get?; (4) rename to RTL text "لوحة الشعار" and check the row renders correctly. Finish by renaming to exactly
+  "Hero Banner". After each break attempt, recover (undo, or redo the step cleanly) so the final document matches
+  the workflow described above.
+
+
+  Log every defect you find using exactly this format, one block per defect:
+
+
+  DEFECT #<n>
+
+  Steps: <exact reproduction steps>
+
+  Observed: <what actually happened>
+
+  Expected: <what should have happened>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens), state lost after navigation
+  or reload, inconsistent state between the canvas and the panels, and unhelpful or missing error messages all count
+  as defects. If you found no defects, state exactly "NO DEFECTS FOUND". At the very end of your final message,
+  end with exactly "adversarial-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Adversarial report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'adversarial-report: complete'

@@ -1,0 +1,60 @@
+id: 20006-text-empty-commit-ui
+start_url: http://cua_designpen.web
+prompt: 'Using the Text tool (T), click an empty spot on the canvas, type "Get started", and click away on empty
+  canvas to commit it.
+
+
+  While completing this workflow, actively try to break the app: (1) with the Text tool active, click empty canvas
+  and immediately click away without typing anything — verify no empty ghost text layer is left in the layers panel;
+  (2) start a new text layer, type a few characters, then press Escape mid-word — determine whether the text commits
+  or is discarded, and whether the result is consistent with clicking away; (3) double-click the committed "Get
+  started" layer to re-enter editing, select all with Cmd+A, delete every character, and click away — see whether
+  the layer becomes empty, is auto-removed, or corrupts, then Cmd+Z until "Get started" is back. After each break
+  attempt, recover (undo, or redo the step cleanly) so the final document matches the workflow described above.
+
+
+  Log every defect you find using exactly this format, one block per defect:
+
+
+  DEFECT #<n>
+
+  Steps: <exact reproduction steps>
+
+  Observed: <what actually happened>
+
+  Expected: <what should have happened>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens), state lost after navigation
+  or reload, inconsistent state between the canvas and the panels, and unhelpful or missing error messages all count
+  as defects. If you found no defects, state exactly "NO DEFECTS FOUND". At the very end of your final message,
+  end with exactly "adversarial-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Adversarial report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'adversarial-report: complete'

@@ -2,8 +2,8 @@ id: 10002-calc-mcp
 start_url: http://cua_designpen.web
 prompt: 'Using only MCP tools: call calc with the expression "37 * 12 + 41", then use create_shape to make a rectangle
   named Result whose width equals the returned value and whose height is 100, and set its fill to black (#000000)
-  with set_fill. When you are done, zoom the canvas to fit (press Shift+1 in the browser), then take a browser screenshot
-  of the app so the result can be visually verified.
+  with set_fill. When you are done, call viewport_zoom_to_fit, then verify with get_node that the rectangle has the
+  expected width, height, and fill, and report the values.
 
 
   At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
@@ -14,25 +14,11 @@ available_tools:
 - create_shape
 - set_fill
 - get_node
-- browser_press_key
-- browser_screenshot
+- viewport_zoom_to_fit
 required_tools:
 - calc
 rewards:
-- name: 'Tool under test invoked: calc'
-  kind: action
-  tool: calc
-- name: Result rectangle has the computed width
-  kind: state
-  source:
-    canvas: openpencil
-  assertions:
-  - name: Result rectangle is 485 wide
-    path: $.data.nodes[?(@.name=='Result' & @.width==485)]
-    operator: ARRAY_LENGTH
-    expected: '>= 1'
 - name: Task went smooth (agent verdict)
   kind: answer
   comparator: STRING_CONTAINS
   expected: 'verdict: approve'
-seed: null

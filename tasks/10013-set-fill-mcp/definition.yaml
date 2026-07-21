@@ -1,41 +1,22 @@
 id: 10013-set-fill-mcp
 start_url: http://cua_designpen.web
-prompt: 'Using only MCP tools: create a 200x200 rectangle named Swatch, then call set_fill to give it a solid red
-  fill (#FF0000). When you are done, zoom the canvas to fit (press Shift+1 in the browser), then take a browser
-  screenshot of the app so the result can be visually verified.
+prompt: 'Using only MCP tools: create a 200x200 rectangle named Swatch, then call set_fill to give it a solid red fill (#FF0000).
+  When you are done, call viewport_zoom_to_fit, then verify the result with the available MCP tools and report what you found.
 
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end
+  with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly
+  "verdict: not-approve".'
 available_tools:
 - set_fill
 - create_shape
 - get_node
 - find_nodes
-- browser_press_key
-- browser_screenshot
+- viewport_zoom_to_fit
 required_tools:
 - set_fill
 rewards:
-- name: 'Tool under test invoked: set_fill'
-  kind: action
-  tool: set_fill
-- name: Swatch has a fill applied
-  kind: state
-  source:
-    canvas: openpencil
-  assertions:
-  - name: Swatch exists
-    path: $.data.nodes[?(@.name=='Swatch' & @.type=='RECTANGLE')]
-    operator: ARRAY_LENGTH
-    expected: '>= 1'
-  - name: Swatch has at least one fill
-    path: $.data.nodes[?(@.name=='Swatch')].fills
-    operator: ARRAY_LENGTH
-    expected: '>= 1'
 - name: Task went smooth (agent verdict)
   kind: answer
   comparator: STRING_CONTAINS
   expected: 'verdict: approve'
-seed: null

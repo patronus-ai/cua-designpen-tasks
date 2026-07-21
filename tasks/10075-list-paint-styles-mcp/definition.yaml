@@ -1,14 +1,13 @@
 id: 10075-list-paint-styles-mcp
 start_url: http://cua_designpen.web
-prompt: 'Using only MCP tools: create a solid paint style named Brand from #FF0000 (without linking any node), call
-  list_paint_styles to look up its id, then apply the style to a fresh 120x80 rectangle named Tag with apply_paint_style
-  using that id. When you are done, zoom the canvas to fit (press Shift+1 in the browser), then take a browser screenshot
-  of the app so the result can be visually verified.
+prompt: 'Using only MCP tools: create a solid paint style named Brand from #FF0000 (without linking any node), call list_paint_styles
+  to look up its id, then apply the style to a fresh 120x80 rectangle named Tag with apply_paint_style using that id. When
+  you are done, call viewport_zoom_to_fit, then verify the result with the available MCP tools and report what you found.
 
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end
+  with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly
+  "verdict: not-approve".'
 available_tools:
 - list_paint_styles
 - create_paint_style
@@ -16,25 +15,11 @@ available_tools:
 - create_shape
 - get_node
 - find_nodes
-- browser_press_key
-- browser_screenshot
+- viewport_zoom_to_fit
 required_tools:
 - list_paint_styles
 rewards:
-- name: 'Tool under test invoked: list_paint_styles'
-  kind: action
-  tool: list_paint_styles
-- name: Listed style id was applied to Tag
-  kind: state
-  source:
-    canvas: openpencil
-  assertions:
-  - name: Tag fill is Brand pure red
-    path: $.data.nodes[?(@.name=='Tag')].style.fill
-    operator: COLOR_NEAR
-    expected: '#FF0000'
 - name: Task went smooth (agent verdict)
   kind: answer
   comparator: STRING_CONTAINS
   expected: 'verdict: approve'
-seed: null

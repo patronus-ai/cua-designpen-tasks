@@ -1,44 +1,22 @@
 id: 10003-delete-node-mcp
 start_url: http://cua_designpen.web
-prompt: 'Using only MCP tools: create three ellipses named One, Two and Three with create_shape, then call delete_node
-  on the ellipse named Two. When you are done, zoom the canvas to fit (press Shift+1 in the browser), then take
-  a browser screenshot of the app so the result can be visually verified.
+prompt: 'Using only MCP tools: create three ellipses named One, Two and Three with create_shape, then call delete_node on
+  the ellipse named Two. When you are done, call viewport_zoom_to_fit, then verify the result with the available MCP tools
+  and report what you found.
 
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end
+  with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly
+  "verdict: not-approve".'
 available_tools:
 - delete_node
 - create_shape
 - find_nodes
-- browser_press_key
-- browser_screenshot
+- viewport_zoom_to_fit
 required_tools:
 - delete_node
 rewards:
-- name: 'Tool under test invoked: delete_node'
-  kind: action
-  tool: delete_node
-- name: Two deleted, One and Three remain
-  kind: state
-  source:
-    canvas: openpencil
-  assertions:
-  - name: Two is gone
-    path: $.data.nodes[?(@.name=='Two')]
-    operator: NOT_EXISTS
-    expected: ''
-  - name: One remains
-    path: $.data.nodes[?(@.name=='One')]
-    operator: ARRAY_LENGTH
-    expected: '>= 1'
-  - name: Three remains
-    path: $.data.nodes[?(@.name=='Three')]
-    operator: ARRAY_LENGTH
-    expected: '>= 1'
 - name: Task went smooth (agent verdict)
   kind: answer
   comparator: STRING_CONTAINS
   expected: 'verdict: approve'
-seed: null

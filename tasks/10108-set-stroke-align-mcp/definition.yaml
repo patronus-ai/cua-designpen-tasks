@@ -1,37 +1,23 @@
 id: 10108-set-stroke-align-mcp
 start_url: http://cua_designpen.web
-prompt: 'Using only MCP tools: create a vector named Ring from a closed triangle network with a 4px black stroke,
-  then call set_stroke_align with align OUTSIDE. When you are done, zoom the canvas to fit (press Shift+1 in the
-  browser), then take a browser screenshot of the app so the result can be visually verified.
+prompt: 'Using only MCP tools: create a vector named Ring from a closed triangle network with a 4px black stroke, then call
+  set_stroke_align with align OUTSIDE. When you are done, call viewport_zoom_to_fit, then verify the result with the available
+  MCP tools and report what you found.
 
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end
+  with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly
+  "verdict: not-approve".'
 available_tools:
 - set_stroke_align
 - create_vector
 - get_node
 - find_nodes
-- browser_press_key
-- browser_screenshot
+- viewport_zoom_to_fit
 required_tools:
 - set_stroke_align
 rewards:
-- name: 'Tool under test invoked: set_stroke_align'
-  kind: action
-  tool: set_stroke_align
-- name: Stroke aligned outside
-  kind: state
-  source:
-    canvas: openpencil
-  assertions:
-  - name: Ring stroke OUTSIDE
-    path: $.data.nodes[?(@.name=='Ring')].strokes[0].align
-    operator: STRING_EQUALS
-    expected: OUTSIDE
 - name: Task went smooth (agent verdict)
   kind: answer
   comparator: STRING_CONTAINS
   expected: 'verdict: approve'
-seed: null

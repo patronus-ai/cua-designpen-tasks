@@ -1,0 +1,58 @@
+id: 20038-menu-empty-selection-ui
+start_url: http://cua_designpen.web
+prompt: 'With an empty canvas and nothing selected, open the main menu (top-left menu button) and walk through the File, Edit, View, and Preferences sections, noting which items are enabled with no selection. Close the menu. Then draw a rectangle and rename its layer to "Menu probe" to prove the editor is still healthy. Final state: the "Menu probe" rectangle on the canvas.
+
+
+  While completing this workflow, actively try to break the app: (1) with nothing selected, invoke Main menu > Object > Union selection, Object > Flatten, and Object > Detach Instance — for each, record whether the item is properly disabled, errors helpfully, or silently no-ops; (2) open the Local variables dialog from the left panel Variables tab, focus its name input, and press R, Cmd+D, and Delete — check whether canvas shortcuts leak through the dialog and mutate the document; (3) open the main menu and, while it is open, click to open the fill color picker of the toolbar swatch or another popover — check overlapping popovers do not wedge the UI; (4) open Edit > Delete (or press Delete) with nothing selected and record the behavior. Undo any accidental mutations. After every break attempt, recover the document (undo, redo, or redo the step by hand) so the workflow above still ends in exactly its described final state.
+
+
+  Log every defect you find using exactly this format, one block per defect:
+
+
+  DEFECT #<n>
+
+  Steps: <exact reproduction steps>
+
+  Observed: <what actually happened>
+
+  Expected: <what should have happened>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens),
+
+  state lost after navigation or reload, inconsistent state between the canvas and the panels,
+
+  and unhelpful or missing error messages all count as defects. If you found no defects, state
+
+  exactly "NO DEFECTS FOUND". At the very end of your final message, end with exactly
+
+  "adversarial-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Adversarial report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'adversarial-report: complete'

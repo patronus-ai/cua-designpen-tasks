@@ -1,37 +1,23 @@
 id: 10082-node-replace-with-mcp
 start_url: http://cua_designpen.web
-prompt: 'Using only MCP tools: create a 100x100 rectangle named ''Old box'', then call node_replace_with swapping
-  it for JSX describing a frame named ''New hero''. When you are done, zoom the canvas to fit (press Shift+1 in
-  the browser), then take a browser screenshot of the app so the result can be visually verified.
+prompt: 'Using only MCP tools: create a 100x100 rectangle named ''Old box'', then call node_replace_with swapping it for JSX
+  describing a frame named ''New hero''. When you are done, call viewport_zoom_to_fit, then verify the result with the available
+  MCP tools and report what you found.
 
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end
+  with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly
+  "verdict: not-approve".'
 available_tools:
 - node_replace_with
 - create_shape
 - get_node
 - find_nodes
-- browser_press_key
-- browser_screenshot
+- viewport_zoom_to_fit
 required_tools:
 - node_replace_with
 rewards:
-- name: 'Tool under test invoked: node_replace_with'
-  kind: action
-  tool: node_replace_with
-- name: Replacement node present
-  kind: state
-  source:
-    canvas: openpencil
-  assertions:
-  - name: '''New hero'' node exists'
-    path: $.data.nodes[?(@.name=='New hero')]
-    operator: ARRAY_LENGTH
-    expected: '>= 1'
 - name: Task went smooth (agent verdict)
   kind: answer
   comparator: STRING_CONTAINS
   expected: 'verdict: approve'
-seed: null

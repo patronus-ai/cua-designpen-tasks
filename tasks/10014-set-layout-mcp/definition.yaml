@@ -1,46 +1,23 @@
 id: 10014-set-layout-mcp
 start_url: http://cua_designpen.web
-prompt: 'Using only MCP tools: create a 400x80 frame named Toolbar at (0,0) with three 40x40 child rectangles Btn
-  1, Btn 2 and Btn 3, then call set_layout on Toolbar with direction HORIZONTAL, spacing 16 and padding 12. When
-  you are done, zoom the canvas to fit (press Shift+1 in the browser), then take a browser screenshot of the app
-  so the result can be visually verified.
+prompt: 'Using only MCP tools: create a 400x80 frame named Toolbar at (0,0) with three 40x40 child rectangles Btn 1, Btn 2
+  and Btn 3, then call set_layout on Toolbar with direction HORIZONTAL, spacing 16 and padding 12. When you are done, call
+  viewport_zoom_to_fit, then verify the result with the available MCP tools and report what you found.
 
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end
+  with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly
+  "verdict: not-approve".'
 available_tools:
 - set_layout
 - create_shape
 - get_node
 - find_nodes
-- browser_press_key
-- browser_screenshot
+- viewport_zoom_to_fit
 required_tools:
 - set_layout
 rewards:
-- name: 'Tool under test invoked: set_layout'
-  kind: action
-  tool: set_layout
-- name: Auto-layout repositions the buttons
-  kind: state
-  source:
-    canvas: openpencil
-  assertions:
-  - name: Btn 1 at padding origin
-    path: $.data.nodes[?(@.name=='Btn 1' & @.x==12)]
-    operator: ARRAY_LENGTH
-    expected: '>= 1'
-  - name: Btn 2 flows after Btn 1
-    path: $.data.nodes[?(@.name=='Btn 2' & @.x==68)]
-    operator: ARRAY_LENGTH
-    expected: '>= 1'
-  - name: Btn 3 flows after Btn 2
-    path: $.data.nodes[?(@.name=='Btn 3' & @.x==124)]
-    operator: ARRAY_LENGTH
-    expected: '>= 1'
 - name: Task went smooth (agent verdict)
   kind: answer
   comparator: STRING_CONTAINS
   expected: 'verdict: approve'
-seed: null

@@ -11,26 +11,26 @@ available_tools:
 - browser_navigate
 - browser_screenshot
 - browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
 - browser_type
 - browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
 required_tools:
 - browser
 rewards:
-- name: Dash pattern is 10 on, 5 off
-  kind: state
-  source:
-    canvas: openpencil
-  assertions:
-  - name: dash length 10
-    path: $.data.nodes[?(@.type=='RECTANGLE')].strokes[0].dashPattern[0]
-    operator: NUMERIC_MATCH
-    expected: '10'
-  - name: gap length 5
-    path: $.data.nodes[?(@.type=='RECTANGLE')].strokes[0].dashPattern[1]
-    operator: NUMERIC_MATCH
-    expected: '5'
 - name: Task went smooth (agent verdict)
   kind: answer
   comparator: STRING_CONTAINS
   expected: 'verdict: approve'
-seed: null

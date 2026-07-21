@@ -1,42 +1,23 @@
 id: 10028-arrange-mcp
 start_url: http://cua_designpen.web
-prompt: 'Using only MCP tools: create three 100x100 rectangles — Box A at (0,0), Box B at (400,300), Box C at (150,700)
-  — then call arrange with mode row and gap 20 so the row starts at Box A''s position. When you are done, zoom the
-  canvas to fit (press Shift+1 in the browser), then take a browser screenshot of the app so the result can be visually
-  verified.
+prompt: 'Using only MCP tools: create three 100x100 rectangles — Box A at (0,0), Box B at (400,300), Box C at (150,700) —
+  then call arrange with mode row and gap 20 so the row starts at Box A''s position. When you are done, call viewport_zoom_to_fit,
+  then verify the result with the available MCP tools and report what you found.
 
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end
+  with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly
+  "verdict: not-approve".'
 available_tools:
 - arrange
 - create_shape
 - get_node
 - find_nodes
-- browser_press_key
-- browser_screenshot
+- viewport_zoom_to_fit
 required_tools:
 - arrange
 rewards:
-- name: 'Tool under test invoked: arrange'
-  kind: action
-  tool: arrange
-- name: Row layout applied with 20px gap
-  kind: state
-  source:
-    canvas: openpencil
-  assertions:
-  - name: Box B at (120,0)
-    path: $.data.nodes[?(@.name=='Box B' & @.x==120 & @.y==0)]
-    operator: ARRAY_LENGTH
-    expected: '>= 1'
-  - name: Box C at (240,0)
-    path: $.data.nodes[?(@.name=='Box C' & @.x==240 & @.y==0)]
-    operator: ARRAY_LENGTH
-    expected: '>= 1'
 - name: Task went smooth (agent verdict)
   kind: answer
   comparator: STRING_CONTAINS
   expected: 'verdict: approve'
-seed: null

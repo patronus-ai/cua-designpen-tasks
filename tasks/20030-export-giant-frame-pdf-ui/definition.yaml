@@ -1,0 +1,58 @@
+id: 20030-export-giant-frame-pdf-ui
+start_url: http://cua_designpen.web
+prompt: 'Create two frames with the Frame tool (F): a 400x300 frame renamed to "Cover" and a 400x300 frame renamed to "Slide 2" (set exact sizes via the W and H fields in the properties panel). Export the whole page as one PDF via Main menu > File > Export frames to PDF…. Final state: both frames on the page with "Cover" at exactly 400x300.
+
+
+  While completing this workflow, actively try to break the app: (1) before the final export, temporarily resize "Cover" to 20000 x 20000 via the W/H fields and run Export frames to PDF… — watch for a freeze, a crash, or a blank/corrupt download — then undo back to 400x300; (2) rename "Slide 2" to a 1000+ character name, export, observe the produced file name and any UI breakage, then rename it back; (3) invoke the Export frames to PDF… menu item twice in quick succession and check for duplicate downloads or a wedged dialog; (4) press Escape mid-export and verify the editor recovers cleanly. After every break attempt, recover the document (undo, redo, or redo the step by hand) so the workflow above still ends in exactly its described final state.
+
+
+  Log every defect you find using exactly this format, one block per defect:
+
+
+  DEFECT #<n>
+
+  Steps: <exact reproduction steps>
+
+  Observed: <what actually happened>
+
+  Expected: <what should have happened>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens),
+
+  state lost after navigation or reload, inconsistent state between the canvas and the panels,
+
+  and unhelpful or missing error messages all count as defects. If you found no defects, state
+
+  exactly "NO DEFECTS FOUND". At the very end of your final message, end with exactly
+
+  "adversarial-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Adversarial report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'adversarial-report: complete'

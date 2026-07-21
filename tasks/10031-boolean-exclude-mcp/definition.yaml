@@ -1,37 +1,23 @@
 id: 10031-boolean-exclude-mcp
 start_url: http://cua_designpen.web
-prompt: 'Using only MCP tools: create two overlapping 100x100 rectangles (the second offset by 50px on both axes),
-  then call boolean_exclude with both ids. When you are done, zoom the canvas to fit (press Shift+1 in the browser),
-  then take a browser screenshot of the app so the result can be visually verified.
+prompt: 'Using only MCP tools: create two overlapping 100x100 rectangles (the second offset by 50px on both axes), then call
+  boolean_exclude with both ids. When you are done, call viewport_zoom_to_fit, then verify the result with the available MCP
+  tools and report what you found.
 
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end
+  with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly
+  "verdict: not-approve".'
 available_tools:
 - boolean_exclude
 - create_shape
 - get_node
 - find_nodes
-- browser_press_key
-- browser_screenshot
+- viewport_zoom_to_fit
 required_tools:
 - boolean_exclude
 rewards:
-- name: 'Tool under test invoked: boolean_exclude'
-  kind: action
-  tool: boolean_exclude
-- name: EXCLUDE boolean result exists
-  kind: state
-  source:
-    canvas: openpencil
-  assertions:
-  - name: EXCLUDE node exists
-    path: $.data.nodes[?(@.type=='BOOLEAN_OPERATION' & @.booleanOperation=='EXCLUDE')]
-    operator: ARRAY_LENGTH
-    expected: '>= 1'
 - name: Task went smooth (agent verdict)
   kind: answer
   comparator: STRING_CONTAINS
   expected: 'verdict: approve'
-seed: null

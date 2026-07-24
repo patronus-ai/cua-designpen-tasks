@@ -1,7 +1,9 @@
-id: 00176-pref-rename-duplicated-layers-ui
+id: 00061-pen-add-on-path-ui
 start_url: http://cua_designpen.web
 prompt: |-
-  Open the main menu and turn OFF Preferences > "Rename duplicated layers" (on by default). Then draw a rectangle, rename its layer to exactly "Card 1", and duplicate it with Ctrl+D (on this Linux environment the command modifier is Ctrl, not Ctrl — the app's own Edit menu lists Duplicate as Ctrl+D). Final state: two layers both named "Card 1" (the duplicate keeps the name because the preference is off).
+  Select the Pen tool (P) and draw a straight two-point line, clicking at roughly (200,300) and (500,300). Do NOT press Enter (Enter is "Done" and ends the vector edit session). Instead press Escape once — this switches the pen from chain-extending mode into node/path edit while keeping you inside the same vector edit session. Then click directly on the middle of the existing segment at about (350,300) to insert one extra anchor point onto the path (a single continuous vertex on the same path, not a new path).
+
+  Base your verdict only on the final result: approve if the line ends with three anchors on one continuous path (both original endpoints plus the inserted middle vertex). Exploration detours or minor UI friction you recovered from are not blockers.
 
   At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
 available_tools:

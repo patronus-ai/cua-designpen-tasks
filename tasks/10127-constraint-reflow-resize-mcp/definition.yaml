@@ -1,0 +1,29 @@
+id: 10127-constraint-reflow-resize-mcp
+start_url: http://cua_designpen.web
+prompt: |
+  Using only MCP tools, exercise constraint-driven reflow when a frame is resized:
+  1. Create a 400x400 frame named Shell.
+  2. Create a 50x50 child rectangle named Pin inside Shell, positioned near the right edge at local x=340, y=20 (so its right side sits 10px from the frame's right border: 400 - 340 - 50 = 10).
+  3. Call set_constraints on Pin with horizontal MAX (pin right) and vertical MIN.
+  4. Read Pin with get_node and record its x (should be 340).
+  5. Now widen the frame: call update_node on Shell with width 600 (a +200 change). Because Pin is pinned right, the engine must reflow it.
+  6. Read Pin again with get_node.
+
+  Verify the reflow: after widening Shell to 600, Pin's x must have increased by about 200 (to ~540), keeping its right-edge gap to the frame at 10px. Pin must NOT have stayed at x=340. Call viewport_zoom_to_fit and report Pin's x before and after the resize.
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
+available_tools:
+- set_constraints
+- update_node
+- create_shape
+- get_node
+- find_nodes
+- viewport_zoom_to_fit
+required_tools:
+- set_constraints
+- update_node
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

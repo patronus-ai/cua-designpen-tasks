@@ -1,0 +1,37 @@
+id: 00182-pref-snap-to-geometry-ui
+start_url: http://cua_designpen.web
+prompt: 'Confirm Main menu > Preferences > "Snap to geometry" is enabled (on by default). Draw a 100x100 square
+  at x 100, y 100, then draw a second 100x100 square somewhere below it and drag the second one upward until it
+  snaps exactly level with the first — both tops at the same height.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

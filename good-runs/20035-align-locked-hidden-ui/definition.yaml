@@ -1,0 +1,58 @@
+id: 20035-align-locked-hidden-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw two 100x100 squares with the Rectangle tool (R): one at x=100, y=100 named "Sq A" and one at x=320, y=240 named "Sq B" (set exact positions and sizes via the X/Y/W/H fields, rename via the layers panel). Select both and align their left edges via Main menu > Arrange > Align Left (or the first button in the design panel alignment row). Final state: both squares sit at x=100.
+
+
+  While completing this workflow, actively try to break the app: (1) first select only "Sq A" alone and invoke Align Left — record whether the command is disabled, aligns to the page/frame, or silently no-ops; (2) lock "Sq B" with Cmd+Shift+L, select both, align left, and check whether the locked square moves, is skipped with feedback, or desyncs panel vs canvas — then unlock; (3) hide "Sq B" with Cmd+Shift+H, select both via the layers panel, align, unhide, and check where the hidden square ended up; (4) hammer undo/redo across the align operations and verify X values in the properties panel always match the canvas. Finish with both squares aligned at x=100. After every break attempt, recover the document (undo, redo, or redo the step by hand) so the workflow above still ends in exactly its described final state.
+
+
+  Log every defect you find using exactly this format, one block per defect:
+
+
+  DEFECT #<n>
+
+  Steps: <exact reproduction steps>
+
+  Observed: <what actually happened>
+
+  Expected: <what should have happened>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens),
+
+  state lost after navigation or reload, inconsistent state between the canvas and the panels,
+
+  and unhelpful or missing error messages all count as defects. If you found no defects, state
+
+  exactly "NO DEFECTS FOUND". At the very end of your final message, end with exactly
+
+  "adversarial-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Adversarial report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'adversarial-report: complete'

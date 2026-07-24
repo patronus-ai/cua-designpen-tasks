@@ -1,0 +1,80 @@
+id: 40021-large-response-truncation-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools (the browser is allowed only for screenshots and visual verification): Test large
+  result sets and truncation honesty: (1) create 60 RECTANGLEs named "Bulk 001" through "Bulk 060" (40x40, laid
+  out in a grid) — use batch_update with chunked operations JSON, or eval if it is enabled (eval requires OPENPENCIL_MCP_EVAL=1;
+  if it is rejected as disabled, record the error shape and fall back to batch_update); (2) find_nodes with type
+  RECTANGLE — count the results: all 60 must be returned, or the response must EXPLICITLY say it was cut (silent
+  truncation is a critical finding); confirm you can locate "Bulk 042" specifically; (3) get_page_tree at full depth
+  — measure the response size and flag it if it exceeds ~50K characters or is truncated without saying so; (4) query_nodes
+  with limit 10 — expect exactly 10 plus some indication that more exist; (5) describe on the page — response size
+  must stay sane. Any oversized or silently-cut response is a finding.
+
+
+  Harness discipline: before EVERY tool call, state the output you expect; after the call, compare actual vs expected
+  and flag any mismatch. Pay special attention to data-modeling issues: fields that do not round-trip, list vs detail
+  disagreements, IDs that change format between tools, broken references between nodes, stale reads after writes,
+  and silently truncated results. When you are done, zoom the canvas to fit (press Shift+1 in the browser) and take
+  a browser screenshot so the final state can be visually verified.
+
+
+  Log every mismatch or defect you find using exactly this format, one block per finding:
+
+
+  MISMATCH #<n>
+
+  Step: <the exact tool call with its arguments>
+
+  Expected: <what you expected and why>
+
+  Actual: <what the tool returned / what the app did>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Fields that do not round-trip, list vs detail disagreements, broken references, stale reads after writes, silent
+  truncation, free-form or unstructured error payloads, misleading success responses, and any single response over
+  ~50K characters all count as findings. If you found no mismatches, state exactly "NO MISMATCHES FOUND". At the
+  very end of your final message, end with exactly "mcp-harness-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- create_shape
+- batch_update
+- eval
+- find_nodes
+- get_page_tree
+- query_nodes
+- describe
+- get_node
+required_tools:
+- create_shape
+- batch_update
+- eval
+- find_nodes
+- get_page_tree
+- query_nodes
+- describe
+- get_node
+rewards:
+- name: MCP harness report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mcp-harness-report: complete'

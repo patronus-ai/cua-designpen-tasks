@@ -1,0 +1,78 @@
+id: 40017-read-shape-consistency-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools (the browser is allowed only for screenshots and visual verification): Response-shape
+  consistency audit: (1) create_shape a FRAME "Probe" 200x100 at (0,0) with one RECTANGLE child; (2) read the SAME
+  frame through every read tool: get_node, find_nodes, node_tree, get_page_tree, query_nodes (inspect the tool description
+  for the selector syntax and select it by name) and describe; (3) build a field-by-field comparison: id format
+  (string vs number, same value everywhere?), type naming (FRAME vs frame vs Frame), geometry fields (x/y/width/height
+  vs bounds objects), how children are represented, and whether optional fields are consistently present-and-null
+  vs sometimes missing. ANY disagreement between two tools describing the same entity is a finding — shape drift
+  is the thing this task hunts; (4) query_nodes with a selector that matches nothing — the empty result must be
+  clearly distinguishable from an invalid-selector error.
+
+
+  Harness discipline: before EVERY tool call, state the output you expect; after the call, compare actual vs expected
+  and flag any mismatch. Pay special attention to data-modeling issues: fields that do not round-trip, list vs detail
+  disagreements, IDs that change format between tools, broken references between nodes, stale reads after writes,
+  and silently truncated results. When you are done, zoom the canvas to fit (press Shift+1 in the browser) and take
+  a browser screenshot so the final state can be visually verified.
+
+
+  Log every mismatch or defect you find using exactly this format, one block per finding:
+
+
+  MISMATCH #<n>
+
+  Step: <the exact tool call with its arguments>
+
+  Expected: <what you expected and why>
+
+  Actual: <what the tool returned / what the app did>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Fields that do not round-trip, list vs detail disagreements, broken references, stale reads after writes, silent
+  truncation, free-form or unstructured error payloads, misleading success responses, and any single response over
+  ~50K characters all count as findings. If you found no mismatches, state exactly "NO MISMATCHES FOUND". At the
+  very end of your final message, end with exactly "mcp-harness-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- create_shape
+- get_node
+- find_nodes
+- node_tree
+- get_page_tree
+- query_nodes
+- describe
+required_tools:
+- create_shape
+- get_node
+- find_nodes
+- node_tree
+- get_page_tree
+- query_nodes
+- describe
+rewards:
+- name: MCP harness report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mcp-harness-report: complete'

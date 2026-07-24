@@ -1,0 +1,58 @@
+id: 20029-export-empty-cancel-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a rectangle, fill it pure blue (#0000FF) via the Fill section hex input, and rename its layer to "Export me". With it selected, add a PNG export setting via the "+" in the Export section of the right panel, then click the Export button to download the image. Final state: "Export me" still on the canvas with its export setting.
+
+
+  While completing this workflow, actively try to break the app: (1) deselect everything (press Escape on empty canvas) and press Cmd+Shift+E (Export Selection) with nothing selected — record whether the app errors helpfully, opens a broken dialog, or silently no-ops; (2) open the export row''s settings popover and set the file-name suffix to a 1000+ character string, then export and observe the outcome; (3) add 8 export rows in rapid succession then remove them all as fast as possible with the "−" buttons and check no orphaned rows or ghost settings remain; (4) trigger the export and dismiss/cancel any dialog mid-flight (Escape) and verify the editor stays responsive and no half-written state remains. After every break attempt, recover the document (undo, redo, or redo the step by hand) so the workflow above still ends in exactly its described final state.
+
+
+  Log every defect you find using exactly this format, one block per defect:
+
+
+  DEFECT #<n>
+
+  Steps: <exact reproduction steps>
+
+  Observed: <what actually happened>
+
+  Expected: <what should have happened>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens),
+
+  state lost after navigation or reload, inconsistent state between the canvas and the panels,
+
+  and unhelpful or missing error messages all count as defects. If you found no defects, state
+
+  exactly "NO DEFECTS FOUND". At the very end of your final message, end with exactly
+
+  "adversarial-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Adversarial report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'adversarial-report: complete'

@@ -1,0 +1,92 @@
+{
+  "00069-canvas-alt-duplicate-drag-ui": {
+    "category": "infra-error",
+    "reason": "The browser-automation tooling cannot hold a modifier key (Alt/Option) down during a mouse drag (hold_key rejects modifiers; drag actions ignore a modifier param), so the Alt-drag peel-off gesture cannot be injected; the app UI itself works (2/5 runs passed). This is a harness capability gap, not an app bug.",
+    "failing_count": 3
+  },
+  "00100-clipboard-paste-ui": {
+    "category": "ui-broken-app-fix",
+    "reason": "Right-click context-menu 'Copy' does not place the object on the clipboard, so right-click 'Paste here' pastes nothing; runs proved keyboard Ctrl+C/Ctrl+V and Ctrl+C->'Paste here' both work, isolating the defect to the context-menu Copy handler. Consistent across all 5 failing runs.",
+    "failing_count": 5
+  },
+  "00265-image-choose-ui": {
+    "category": "infra-error",
+    "reason": "The image picker's 'Upload from computer' opens a native OS file-selection dialog that the browser-only automation cannot operate, and file inputs cannot be set programmatically; no in-app image source exists. The app UI works up to the picker; the blocker is an environment/harness limitation, not an app bug.",
+    "failing_count": 5
+  },
+  "10001-batch-update-mcp": {
+    "category": "infra-error",
+    "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first create_shape call, blocking all steps; the MCP bridge to the app was down for those runs (3/5 passed when connected).",
+    "failing_count": 2
+  },
+  "10008-get-node-mcp": {
+    "category": "infra-error",
+    "reason": "Failing run returned 'OpenPencil app is not connected' on the first create_shape call, blocking the task; MCP bridge disconnected.",
+    "failing_count": 1
+  },
+  "10016-set-radius-mcp": {
+    "category": "infra-error",
+    "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first create_shape call; MCP bridge disconnected.",
+    "failing_count": 2
+  },
+  "10027-apply-paint-style-mcp": {
+    "category": "infra-error",
+    "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+    "failing_count": 2
+  },
+  "10034-boolean-union-mcp": {
+    "category": "infra-error",
+    "reason": "Failing run returned 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+    "failing_count": 1
+  },
+  "10040-create-paint-style-mcp": {
+    "category": "infra-error",
+    "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+    "failing_count": 2
+  },
+  "10052-diff-jsx-mcp": {
+    "category": "infra-error",
+    "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+    "failing_count": 2
+  },
+  "10069-import-svg-mcp": {
+    "category": "infra-error",
+    "reason": "Failing run returned 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+    "failing_count": 1
+  },
+  "10077-node-ancestors-mcp": {
+    "category": "infra-error",
+    "reason": "Failing run returned 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+    "failing_count": 1
+  },
+  "10084-node-tree-mcp": {
+    "category": "infra-error",
+    "reason": "Failing run returned 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+    "failing_count": 1
+  },
+  "10093-reorder-page-mcp": {
+    "category": "infra-error",
+    "reason": "All 4 failing runs hit 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+    "failing_count": 4
+  },
+  "10099-set-font-mcp": {
+    "category": "infra-error",
+    "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+    "failing_count": 2
+  },
+  "10111-set-text-resize-mcp": {
+    "category": "infra-error",
+    "reason": "All 3 failing runs hit 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+    "failing_count": 3
+  },
+  "10121-viewport-set-mcp": {
+    "category": "infra-error",
+    "reason": "All 3 failing runs hit 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+    "failing_count": 3
+  },
+  "30001-create-shape-mcp": {
+    "category": "agent-flaky",
+    "reason": "The single failing run's tail is pure screenshot/base64 data with no verdict text or connection error, and 4/5 runs passed with MCP working, so no app fix or infra failure is indicated; the lone failure appears to be an agent-side/run artifact.",
+    "failing_count": 1
+  }
+}

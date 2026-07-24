@@ -1,0 +1,58 @@
+id: 20033-duplicate-hammer-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a polygon (shape flyout > Polygon), keep it selected, and press Cmd+D five times in a row so six polygons exist. Then set the original polygon''s fill to pure red (#FF0000) and one duplicate''s fill to pure green (#00FF00), switching between them quickly. Final state: at least three polygons remain on the page.
+
+
+  While completing this workflow, actively try to break the app: (1) hammer Cmd+D 10 more times as fast as the UI allows and check every duplicate gets a sane name and the expected +20,+20 offset, with no overlapping ghost copies or skipped numbers; (2) press Cmd+D with nothing selected and record whether it errors, no-ops silently, or duplicates something unexpected; (3) delete the original polygon, then press Cmd+D again and check what is duplicated (stale selection is a classic breaker), then undo the delete; (4) hammer undo until only one polygon remains and redo back, checking the layers panel count matches the canvas at every step. Finish with at least three polygons present. After every break attempt, recover the document (undo, redo, or redo the step by hand) so the workflow above still ends in exactly its described final state.
+
+
+  Log every defect you find using exactly this format, one block per defect:
+
+
+  DEFECT #<n>
+
+  Steps: <exact reproduction steps>
+
+  Observed: <what actually happened>
+
+  Expected: <what should have happened>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens),
+
+  state lost after navigation or reload, inconsistent state between the canvas and the panels,
+
+  and unhelpful or missing error messages all count as defects. If you found no defects, state
+
+  exactly "NO DEFECTS FOUND". At the very end of your final message, end with exactly
+
+  "adversarial-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Adversarial report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'adversarial-report: complete'

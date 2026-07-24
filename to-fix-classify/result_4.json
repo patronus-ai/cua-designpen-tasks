@@ -1,0 +1,92 @@
+{
+  "00083-canvas-padding-edit-ui": {
+    "category": "ui-broken-app-fix",
+    "reason": "On a default 0-padding auto-layout frame the on-canvas left padding band is not rendered: hovering shows nothing and double-clicking the inner edge deselects the frame instead of opening the padding editor. The agent completed the goal only via a properties-panel workaround (set padding 20 first), then set left padding to 40.",
+    "failing_count": 1
+  },
+  "00102-copy-as-png-ui": {
+    "category": "infra-error",
+    "reason": "All failing runs performed the menu flow correctly, but the app toasted 'Clipboard unavailable — downloaded PNG instead' because the async Clipboard API is unavailable on the insecure http://cua_designpen.web origin; the app degraded gracefully, so this is an environment/origin constraint, not app logic.",
+    "failing_count": 4
+  },
+  "00317-type-feature-generic-ui": {
+    "category": "ui-broken-app-fix",
+    "reason": "The Type settings Details tab has no 'Standard ligatures' (liga) toggle — Letterforms only offers Rare ligatures, Contextual alternates, and Ordinals — so the requested step is impossible; verified exhaustively in all 5 runs (matches the same finding from prior job a03c9bd1).",
+    "failing_count": 5
+  },
+  "10002-calc-mcp": {
+    "category": "infra-error",
+    "reason": "All 3 failing runs died on the first tool call with 'OpenPencil app is not connected' from the MCP bridge; no app logic was ever reached.",
+    "failing_count": 3
+  },
+  "10009-get-selection-mcp": {
+    "category": "infra-error",
+    "reason": "The single failing run was blocked at the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error.",
+    "failing_count": 1
+  },
+  "10018-set-text-mcp": {
+    "category": "infra-error",
+    "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first create_shape call and could not proceed.",
+    "failing_count": 2
+  },
+  "10028-arrange-mcp": {
+    "category": "infra-error",
+    "reason": "The single failing run was blocked at the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error.",
+    "failing_count": 1
+  },
+  "10035-clone-node-mcp": {
+    "category": "infra-error",
+    "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first create_shape call; no app behavior was exercised.",
+    "failing_count": 2
+  },
+  "10042-create-slice-mcp": {
+    "category": "ui-broken-app-fix",
+    "reason": "In the 2 runs where tools worked, create_slice produced a node with correct name/position/size but type FRAME instead of SLICE (verified via get_node/find_nodes) — an app-logic bug. The other 3 runs were blocked by 'OpenPencil app is not connected' infra errors; the app bug is the actionable dominant cause since the task fails whenever the tool actually runs.",
+    "failing_count": 5
+  },
+  "10055-done-with-changes-mcp": {
+    "category": "infra-error",
+    "reason": "All 3 failing runs were blocked at the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error.",
+    "failing_count": 3
+  },
+  "10070-insert-icon-mcp": {
+    "category": "infra-error",
+    "reason": "All 5 runs failed on the first insert_icon call with 'OpenPencil app is not connected'; nothing app-specific was reached.",
+    "failing_count": 5
+  },
+  "10078-node-bindings-mcp": {
+    "category": "infra-error",
+    "reason": "Both failing runs were blocked at the first create_collection call by the 'OpenPencil app is not connected' MCP bridge error.",
+    "failing_count": 2
+  },
+  "10085-page-bounds-mcp": {
+    "category": "infra-error",
+    "reason": "Both failing runs were blocked at the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error.",
+    "failing_count": 2
+  },
+  "10094-search-icons-mcp": {
+    "category": "infra-error",
+    "reason": "Two failing runs were fully blocked by 'OpenPencil app is not connected'; the third hit the same connection error on the first search_icons call, retried, and completed the goal but reported not-approve because of the initial infra hiccup.",
+    "failing_count": 3
+  },
+  "10101-set-image-fill-mcp": {
+    "category": "infra-error",
+    "reason": "Both failing runs were blocked at the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error.",
+    "failing_count": 2
+  },
+  "10113-set-visible-mcp": {
+    "category": "infra-error",
+    "reason": "Both failing runs were blocked at the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error.",
+    "failing_count": 2
+  },
+  "10122-get-codegen-prompt-mcp": {
+    "category": "ui-broken-app-fix",
+    "reason": "set_text non-deterministically corrupted a line of long content (textDecoration mapping stored as text-transform) on the first write; an identical re-issued call stored it correctly, indicating a flaky write/data-integrity bug in the app's set_text path (plus a dropped trailing newline).",
+    "failing_count": 1
+  },
+  "30016-set-text-mcp": {
+    "category": "agent-flaky",
+    "reason": "Both failing tails are nothing but a repeating '0123456789' flood (the agent's 5000-character stress payload) with no final message or verdict — the runs drowned their own context/output in the giant string and never delivered a report; 3/5 runs of the same task passed, so app and infra handled it.",
+    "failing_count": 2
+  }
+}

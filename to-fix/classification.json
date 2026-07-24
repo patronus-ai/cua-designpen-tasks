@@ -1,0 +1,537 @@
+{
+ "00051-vector-shape-builder-remove-ui": {
+  "category": "infra-error",
+  "reason": "All 5 runs completed the draw/commit/fill steps fine; the only blocker was the automation environment being unable to hold the Alt modifier during a mouse drag (hold_key rejects modifiers, mouse actions ignore them). The app itself works \u2014 an Alt+click strips the fill correctly.",
+  "failing_count": 5
+ },
+ "00086-canvas-pinch-zoom-ui": {
+  "category": "infra-error",
+  "reason": "All 5 runs reached 200% zoom via the app's zoom menu; the app's canvas zoom is fine. The failure is that the harness cannot emit a Ctrl-modified wheel event (scroll ignores modifiers, hold_key won't hold Ctrl) and Ctrl+= is captured as browser page zoom.",
+  "failing_count": 5
+ },
+ "00157-rulers-toggle-ui": {
+  "category": "agent-flaky",
+  "reason": "The Rulers feature works and rulers were already enabled by default, so the agent refused to click (which would toggle them off) and flagged the premise mismatch. App and infra are fine; no app fix is indicated (this is a task-design/seed-state issue).",
+  "failing_count": 5
+ },
+ "00337-text-apply-style-ui": {
+  "category": "ui-broken-app-fix",
+  "reason": "Both failing runs completed the task only by zooming the browser to 80%: the 'Create new text style' modal is taller than the 1280x720 viewport and its 'Create style' button sits below the fold, with the modal not scrollable, so the form cannot be submitted at the supported viewport.",
+  "failing_count": 2
+ },
+ "10004-describe-mcp": {
+  "category": "ui-broken-app-fix",
+  "reason": "All 4 runs completed the rename/zoom/verify but flagged the same tool inconsistency: describe rejects the document root id '0:0' ('Node not found') though viewport_zoom_to_fit docs call 0:0 the root, and no page/document node is describable, so 'describe on the document' is impossible.",
+  "failing_count": 4
+ },
+ "10011-render-mcp": {
+  "category": "infra-error",
+  "reason": "The single failing run's render call returned 'OpenPencil app is not connected' \u2014 the desktop app/MCP backend was not connected, blocking the task entirely.",
+  "failing_count": 1
+ },
+ "10020-stock-photo-mcp": {
+  "category": "infra-error",
+  "reason": "All 4 failing runs hit 'OpenPencil app is not connected' on the first create_shape call; the MCP backend was down, so nothing could proceed.",
+  "failing_count": 4
+ },
+ "10031-boolean-exclude-mcp": {
+  "category": "infra-error",
+  "reason": "The single failing run hit 'OpenPencil app is not connected' on the first create_shape call; MCP backend disconnected.",
+  "failing_count": 1
+ },
+ "10037-create-component-mcp": {
+  "category": "infra-error",
+  "reason": "The single failing run hit 'OpenPencil app is not connected' on the first create_shape (FRAME) call; MCP backend disconnected.",
+  "failing_count": 1
+ },
+ "10046-delete-page-mcp": {
+  "category": "infra-error",
+  "reason": "All 3 failing runs hit 'OpenPencil app is not connected' on the first create_page call; MCP backend disconnected.",
+  "failing_count": 3
+ },
+ "10062-flatten-nodes-mcp": {
+  "category": "infra-error",
+  "reason": "The single failing run hit 'OpenPencil app is not connected' on the first create_shape call; MCP backend disconnected.",
+  "failing_count": 1
+ },
+ "10072-list-collections-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first create_collection call; MCP backend disconnected.",
+  "failing_count": 2
+ },
+ "10080-node-children-mcp": {
+  "category": "infra-error",
+  "reason": "All 4 failing runs hit 'OpenPencil app is not connected' on the first create_shape (FRAME) call; MCP backend disconnected.",
+  "failing_count": 4
+ },
+ "10090-path-set-mcp": {
+  "category": "infra-error",
+  "reason": "All 3 failing runs hit 'OpenPencil app is not connected' on the first create_vector call; MCP backend disconnected.",
+  "failing_count": 3
+ },
+ "10096-set-blend-mcp": {
+  "category": "infra-error",
+  "reason": "All 4 failing runs hit 'OpenPencil app is not connected' on the first tool call; MCP backend disconnected.",
+  "failing_count": 4
+ },
+ "10104-set-minmax-mcp": {
+  "category": "infra-error",
+  "reason": "The single failing run hit 'OpenPencil app is not connected'; MCP backend disconnected.",
+  "failing_count": 1
+ },
+ "10117-ungroup-node-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs hit 'OpenPencil app is not connected'; MCP backend disconnected.",
+  "failing_count": 2
+ },
+ "10124-open-file-mcp": {
+  "category": "ui-broken-app-fix",
+  "reason": "4 of 5 runs found save_file with an explicit path returns 404 (only pathless save works) so beacon.fig is never written, open_file then fails with 'invalid zip data', and a failed open_file wipes the active document. One run instead hit 'app not connected' (infra), but the dominant, actionable cause is the broken path-based save plus the open_file data-loss side effect.",
+  "failing_count": 5
+ },
+ "00063-pen-chain-from-vertex-ui": {
+  "category": "ui-broken-app-fix",
+  "reason": "Pen tool cannot branch a new chain from an interior/shared vertex: pen-clicking it converts the node to a smooth point and curves the existing segment instead of starting a new chain. Reproduced consistently across all 5 runs (including zero-movement clicks).",
+  "failing_count": 5
+ },
+ "00093-canvas-wheel-pan-zoom-ui": {
+  "category": "infra-error",
+  "reason": "The requested Ctrl/Cmd+scroll zoom gesture cannot be emitted by the browser automation (no modifier on the scroll action; hold_key rejects modifier keys) and Ctrl+= is captured as browser page zoom; pan and the app's own zoom control work fine. Tooling/environment limitation, not an app defect.",
+  "failing_count": 5
+ },
+ "00217-instance-text-prop-edit-ui": {
+  "category": "agent-flaky",
+  "reason": "Agent completed the deliverable correctly (instance text property changed to 'Buy now', 4/5 runs passed) but voted not-approve over UX friction (confusing Add-vs-Create property, inability to delete a created property). App produced the correct result; no fix indicated by this run.",
+  "failing_count": 1
+ },
+ "00386-file-import-pen-ui": {
+  "category": "infra-error",
+  "reason": "File > Open... correctly triggers a native OS file picker, which is outside the browser viewport and cannot be driven by the CDP-based automation tools; programmatic file-input setting is blocked by browser security. Environment/tooling limitation, not an app defect.",
+  "failing_count": 5
+ },
+ "10005-eval-mcp": {
+  "category": "infra-error",
+  "reason": "The eval tool (gated behind OPENPENCIL_MCP_EVAL=1) was never registered/exposed in the session, so the core create step could not run. Environment configuration flag not enabled.",
+  "failing_count": 5
+ },
+ "10013-set-fill-mcp": {
+  "category": "infra-error",
+  "reason": "The single failing run hit a transient 'OpenPencil app is not connected' error on the first MCP call; the other 3 runs passed. MCP/app connection glitch.",
+  "failing_count": 1
+ },
+ "10021-update-node-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs blocked at the first create_shape call by the 'OpenPencil app is not connected' error. Transient MCP/app connection failure.",
+  "failing_count": 2
+ },
+ "10032-boolean-intersect-mcp": {
+  "category": "ui-broken-app-fix",
+  "reason": "boolean_intersect produces union-sized 150x150 bounds instead of the 50x50 overlap (mathematically impossible for an intersection of two 100x100 rects) - the intersect geometry is not computed. Dominant defect; 2 of 5 runs were instead blocked by transient connection errors.",
+  "failing_count": 5
+ },
+ "10038-create-instance-mcp": {
+  "category": "infra-error",
+  "reason": "All 3 failing runs blocked at the first create_shape call by the 'OpenPencil app is not connected' error. Transient MCP/app connection failure.",
+  "failing_count": 3
+ },
+ "10050-detach-paint-style-mcp": {
+  "category": "infra-error",
+  "reason": "The single failing run blocked at the first create_shape call by the 'OpenPencil app is not connected' error; other 4 runs passed. Transient MCP/app connection failure.",
+  "failing_count": 1
+ },
+ "10063-get-collection-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs hit the 'OpenPencil app is not connected' error (one transient/recovered, one hard-blocked at step 1); the task functionally worked when connected. One run also noted a minor stale static-opacity reporting inconsistency, but the binding resolved correctly.",
+  "failing_count": 2
+ },
+ "10074-list-pages-mcp": {
+  "category": "infra-error",
+  "reason": "The single failing run blocked at the first create_page call by the 'OpenPencil app is not connected' error; other 4 runs passed. Transient MCP/app connection failure.",
+  "failing_count": 1
+ },
+ "10082-node-replace-with-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs blocked at the first create_shape call by the 'OpenPencil app is not connected' error. Transient MCP/app connection failure.",
+  "failing_count": 2
+ },
+ "10091-query-nodes-mcp": {
+  "category": "infra-error",
+  "reason": "The single failing run blocked at the first create_shape call by the 'OpenPencil app is not connected' error; other 4 runs passed. Transient MCP/app connection failure.",
+  "failing_count": 1
+ },
+ "10097-set-constraints-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs blocked at the first create_shape call by the 'OpenPencil app is not connected' error. Transient MCP/app connection failure.",
+  "failing_count": 2
+ },
+ "10105-set-opacity-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs blocked at the first create_shape call by the 'OpenPencil app is not connected' error. Transient MCP/app connection failure.",
+  "failing_count": 2
+ },
+ "10118-update-image-fill-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs blocked at the first create_shape call by the 'OpenPencil app is not connected' error. Transient MCP/app connection failure.",
+  "failing_count": 2
+ },
+ "10125-save-file-mcp": {
+  "category": "ui-broken-app-fix",
+  "reason": "save_file with an explicit path consistently returns 404 Not Found (both relative and absolute in-root paths) while pathless save succeeds, so the required artifact.fig is never written. Reproduced 5/5; broken path-based save endpoint.",
+  "failing_count": 5
+ },
+ "00067-pen-remove-vertex-ui": {
+  "category": "ui-broken-app-fix",
+  "reason": "All 3 failing runs drew and committed the zigzag correctly, but clicking a middle anchor with the pen in edit mode converts it to a smooth/curved node instead of removing it, and no delete-anchor mechanism exists anywhere (Delete kills the whole vector).",
+  "failing_count": 3
+ },
+ "00099-clipboard-cut-ui": {
+  "category": "ui-broken-app-fix",
+  "reason": "Cut (both right-click and Edit menu) removes the object but puts unusable data on the clipboard: the cut star can never be pasted back and Cut even clobbers previously copied content, while Copy>Paste works reliably.",
+  "failing_count": 1
+ },
+ "00239-color-alpha-slider-ui": {
+  "category": "ui-broken-app-fix",
+  "reason": "All 3 failing runs hit the same picker bug: the alpha slider lands on 49.5% which the picker rounds and displays as '50%' (disagreeing with the Fill panel's 49.5%), and typing 50 into the picker's opacity field is a no-op; exact 50% is only reachable via the Fill panel workaround.",
+  "failing_count": 3
+ },
+ "00388-file-open-ui": {
+  "category": "infra-error",
+  "reason": "All 5 runs: File > Open correctly triggers a native OS file picker, which browser/CDP automation cannot see or drive, and no .fig file is provisioned; the app menu flow works \u2014 the task is uncompletable in this harness, an environment/task-design problem rather than an app defect.",
+  "failing_count": 5
+ },
+ "10006-find-nodes-mcp": {
+  "category": "infra-error",
+  "reason": "All 3 failing runs died on the first MCP call with 'OpenPencil app is not connected' (bridge to the SPA not up), so no app logic was ever exercised.",
+  "failing_count": 3
+ },
+ "10014-set-layout-mcp": {
+  "category": "ui-broken-app-fix",
+  "reason": "3 of 5 failing runs reached set_layout and all found the same persistent bug: layoutMode/itemSpacing apply but only the first child is repositioned \u2014 Btn 2/3 stay stacked at (0,0) instead of flowing horizontally; the other 2 runs were blocked by the separate 'app is not connected' infra error.",
+  "failing_count": 5
+ },
+ "10022-viewport-zoom-to-fit-mcp": {
+  "category": "infra-error",
+  "reason": "All 3 failing runs failed on the very first MCP call with 'OpenPencil app is not connected'; nothing app-specific was reached.",
+  "failing_count": 3
+ },
+ "10033-boolean-subtract-mcp": {
+  "category": "ui-broken-app-fix",
+  "reason": "All 4 failing runs reproduced the same geometry bug: boolean_subtract creates a BOOLEAN_OPERATION node whose bounds are 150x150 \u2014 the UNION of the operands \u2014 instead of the 100x100 expected for A-B, confirmed independently by viewport_zoom_to_fit.",
+  "failing_count": 4
+ },
+ "10039-create-page-mcp": {
+  "category": "infra-error",
+  "reason": "All 3 failing runs hit the 'OpenPencil app is not connected' error on create_page; runs 2 and 5 show the error is spurious/transient (read tools worked immediately after and a retry succeeded), pointing at an MCP-bridge startup race whose 'do not retry' error text turns a transient into a failed run.",
+  "failing_count": 3
+ },
+ "10051-diff-create-mcp": {
+  "category": "infra-error",
+  "reason": "The single failing run died on the first MCP call with 'OpenPencil app is not connected'; no app functionality was exercised.",
+  "failing_count": 1
+ },
+ "10068-group-nodes-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs failed immediately with 'OpenPencil app is not connected' on the first create_shape call; pure backend-connection outage.",
+  "failing_count": 2
+ },
+ "10075-list-paint-styles-mcp": {
+  "category": "infra-error",
+  "reason": "The single failing run hit 'OpenPencil app is not connected' on the very first tool call (create_paint_style) and could do nothing further.",
+  "failing_count": 1
+ },
+ "10083-node-to-component-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs failed on the first create_shape call with 'OpenPencil app is not connected'; no app logic reached.",
+  "failing_count": 2
+ },
+ "10092-rename-node-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs died immediately on 'OpenPencil app is not connected' at the first create_shape call.",
+  "failing_count": 2
+ },
+ "10098-set-effects-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs failed on the first MCP call with 'OpenPencil app is not connected'; connection outage, not app behavior.",
+  "failing_count": 2
+ },
+ "10106-set-rotation-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first create_shape call and stopped as the error instructs.",
+  "failing_count": 2
+ },
+ "10120-viewport-get-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs failed on the first viewport_set call with 'OpenPencil app is not connected'; nothing app-specific was exercised.",
+  "failing_count": 2
+ },
+ "20008-frame-delete-children-ui": {
+  "category": "ui-broken-app-fix",
+  "reason": "During the prescribed stress test, setting the frame's H field to 1e99 and triggering Zoom to fit hard-froze the app (main thread blocked indefinitely) until the browser container itself became unresponsive \u2014 a crash-class app bug (missing input validation plus unguarded zoom-to-fit math), even though the run's terminal symptoms look like infra.",
+  "failing_count": 1
+ },
+ "00069-canvas-alt-duplicate-drag-ui": {
+  "category": "infra-error",
+  "reason": "The browser-automation tooling cannot hold a modifier key (Alt/Option) down during a mouse drag (hold_key rejects modifiers; drag actions ignore a modifier param), so the Alt-drag peel-off gesture cannot be injected; the app UI itself works (2/5 runs passed). This is a harness capability gap, not an app bug.",
+  "failing_count": 3
+ },
+ "00100-clipboard-paste-ui": {
+  "category": "ui-broken-app-fix",
+  "reason": "Right-click context-menu 'Copy' does not place the object on the clipboard, so right-click 'Paste here' pastes nothing; runs proved keyboard Ctrl+C/Ctrl+V and Ctrl+C->'Paste here' both work, isolating the defect to the context-menu Copy handler. Consistent across all 5 failing runs.",
+  "failing_count": 5
+ },
+ "00265-image-choose-ui": {
+  "category": "infra-error",
+  "reason": "The image picker's 'Upload from computer' opens a native OS file-selection dialog that the browser-only automation cannot operate, and file inputs cannot be set programmatically; no in-app image source exists. The app UI works up to the picker; the blocker is an environment/harness limitation, not an app bug.",
+  "failing_count": 5
+ },
+ "10001-batch-update-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first create_shape call, blocking all steps; the MCP bridge to the app was down for those runs (3/5 passed when connected).",
+  "failing_count": 2
+ },
+ "10008-get-node-mcp": {
+  "category": "infra-error",
+  "reason": "Failing run returned 'OpenPencil app is not connected' on the first create_shape call, blocking the task; MCP bridge disconnected.",
+  "failing_count": 1
+ },
+ "10016-set-radius-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first create_shape call; MCP bridge disconnected.",
+  "failing_count": 2
+ },
+ "10027-apply-paint-style-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+  "failing_count": 2
+ },
+ "10034-boolean-union-mcp": {
+  "category": "infra-error",
+  "reason": "Failing run returned 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+  "failing_count": 1
+ },
+ "10040-create-paint-style-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+  "failing_count": 2
+ },
+ "10052-diff-jsx-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+  "failing_count": 2
+ },
+ "10069-import-svg-mcp": {
+  "category": "infra-error",
+  "reason": "Failing run returned 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+  "failing_count": 1
+ },
+ "10077-node-ancestors-mcp": {
+  "category": "infra-error",
+  "reason": "Failing run returned 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+  "failing_count": 1
+ },
+ "10084-node-tree-mcp": {
+  "category": "infra-error",
+  "reason": "Failing run returned 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+  "failing_count": 1
+ },
+ "10093-reorder-page-mcp": {
+  "category": "infra-error",
+  "reason": "All 4 failing runs hit 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+  "failing_count": 4
+ },
+ "10099-set-font-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+  "failing_count": 2
+ },
+ "10111-set-text-resize-mcp": {
+  "category": "infra-error",
+  "reason": "All 3 failing runs hit 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+  "failing_count": 3
+ },
+ "10121-viewport-set-mcp": {
+  "category": "infra-error",
+  "reason": "All 3 failing runs hit 'OpenPencil app is not connected' on the first MCP call; MCP bridge disconnected.",
+  "failing_count": 3
+ },
+ "30001-create-shape-mcp": {
+  "category": "agent-flaky",
+  "reason": "The single failing run's tail is pure screenshot/base64 data with no verdict text or connection error, and 4/5 runs passed with MCP working, so no app fix or infra failure is indicated; the lone failure appears to be an agent-side/run artifact.",
+  "failing_count": 1
+ },
+ "00083-canvas-padding-edit-ui": {
+  "category": "ui-broken-app-fix",
+  "reason": "On a default 0-padding auto-layout frame the on-canvas left padding band is not rendered: hovering shows nothing and double-clicking the inner edge deselects the frame instead of opening the padding editor. The agent completed the goal only via a properties-panel workaround (set padding 20 first), then set left padding to 40.",
+  "failing_count": 1
+ },
+ "00102-copy-as-png-ui": {
+  "category": "infra-error",
+  "reason": "All failing runs performed the menu flow correctly, but the app toasted 'Clipboard unavailable \u2014 downloaded PNG instead' because the async Clipboard API is unavailable on the insecure http://cua_designpen.web origin; the app degraded gracefully, so this is an environment/origin constraint, not app logic.",
+  "failing_count": 4
+ },
+ "00317-type-feature-generic-ui": {
+  "category": "ui-broken-app-fix",
+  "reason": "The Type settings Details tab has no 'Standard ligatures' (liga) toggle \u2014 Letterforms only offers Rare ligatures, Contextual alternates, and Ordinals \u2014 so the requested step is impossible; verified exhaustively in all 5 runs (matches the same finding from prior job a03c9bd1).",
+  "failing_count": 5
+ },
+ "10002-calc-mcp": {
+  "category": "infra-error",
+  "reason": "All 3 failing runs died on the first tool call with 'OpenPencil app is not connected' from the MCP bridge; no app logic was ever reached.",
+  "failing_count": 3
+ },
+ "10009-get-selection-mcp": {
+  "category": "infra-error",
+  "reason": "The single failing run was blocked at the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error.",
+  "failing_count": 1
+ },
+ "10018-set-text-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first create_shape call and could not proceed.",
+  "failing_count": 2
+ },
+ "10028-arrange-mcp": {
+  "category": "infra-error",
+  "reason": "The single failing run was blocked at the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error.",
+  "failing_count": 1
+ },
+ "10035-clone-node-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first create_shape call; no app behavior was exercised.",
+  "failing_count": 2
+ },
+ "10042-create-slice-mcp": {
+  "category": "ui-broken-app-fix",
+  "reason": "In the 2 runs where tools worked, create_slice produced a node with correct name/position/size but type FRAME instead of SLICE (verified via get_node/find_nodes) \u2014 an app-logic bug. The other 3 runs were blocked by 'OpenPencil app is not connected' infra errors; the app bug is the actionable dominant cause since the task fails whenever the tool actually runs.",
+  "failing_count": 5
+ },
+ "10055-done-with-changes-mcp": {
+  "category": "infra-error",
+  "reason": "All 3 failing runs were blocked at the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error.",
+  "failing_count": 3
+ },
+ "10070-insert-icon-mcp": {
+  "category": "infra-error",
+  "reason": "All 5 runs failed on the first insert_icon call with 'OpenPencil app is not connected'; nothing app-specific was reached.",
+  "failing_count": 5
+ },
+ "10078-node-bindings-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs were blocked at the first create_collection call by the 'OpenPencil app is not connected' MCP bridge error.",
+  "failing_count": 2
+ },
+ "10085-page-bounds-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs were blocked at the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error.",
+  "failing_count": 2
+ },
+ "10094-search-icons-mcp": {
+  "category": "infra-error",
+  "reason": "Two failing runs were fully blocked by 'OpenPencil app is not connected'; the third hit the same connection error on the first search_icons call, retried, and completed the goal but reported not-approve because of the initial infra hiccup.",
+  "failing_count": 3
+ },
+ "10101-set-image-fill-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs were blocked at the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error.",
+  "failing_count": 2
+ },
+ "10113-set-visible-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs were blocked at the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error.",
+  "failing_count": 2
+ },
+ "10122-get-codegen-prompt-mcp": {
+  "category": "ui-broken-app-fix",
+  "reason": "set_text non-deterministically corrupted a line of long content (textDecoration mapping stored as text-transform) on the first write; an identical re-issued call stored it correctly, indicating a flaky write/data-integrity bug in the app's set_text path (plus a dropped trailing newline).",
+  "failing_count": 1
+ },
+ "30016-set-text-mcp": {
+  "category": "agent-flaky",
+  "reason": "Both failing tails are nothing but a repeating '0123456789' flood (the agent's 5000-character stress payload) with no final message or verdict \u2014 the runs drowned their own context/output in the giant string and never delivered a report; 3/5 runs of the same task passed, so app and infra handled it.",
+  "failing_count": 2
+ },
+ "00085-canvas-pan-right-drag-ui": {
+  "category": "infra-error",
+  "reason": "All 5 runs blocked because the browser automation harness has no right-mouse-button press-and-hold/drag primitive (only atomic right_click and left-button down/up), so the right-drag pan gesture cannot be issued. Agents verified the app itself works (preference toggles and persists, context menu correct, scroll-wheel pan moves the canvas).",
+  "failing_count": 5
+ },
+ "00109-paste-to-replace-ui": {
+  "category": "ui-broken-app-fix",
+  "reason": "All 5 runs hit the same reproducible app bug: right-click context-menu 'Copy' never populates the clipboard, so 'Paste to replace' fails with 'Clipboard has no design content to paste'; keyboard Ctrl+C works, isolating the defect to the menu Copy action.",
+  "failing_count": 5
+ },
+ "00336-style-create-menu-ui": {
+  "category": "ui-broken-app-fix",
+  "reason": "All 5 runs found the Styles '+' 'Create new text style' dialog's font-size control is a preset-only, non-typeable combobox (8-48 presets, no 40 and no custom entry), making the instructed style creation at size 40 impossible; styles also cannot be edited or deleted afterwards. The Typography panel's editable size field proves the dialog control is the broken piece.",
+  "failing_count": 5
+ },
+ "10003-delete-node-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs died on the very first MCP call with 'OpenPencil app is not connected' (MCP bridge to the live SPA not established); 3 other attempts of the identical task passed, so this is flaky environment connectivity, not app logic.",
+  "failing_count": 2
+ },
+ "10010-node-resize-mcp": {
+  "category": "infra-error",
+  "reason": "Single failing run blocked at the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error; 4/5 attempts passed, indicating intermittent environment connectivity.",
+  "failing_count": 1
+ },
+ "10019-set-text-properties-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first MCP call and could not touch the document; the same task passed in 3 other attempts, so the cause is the flaky MCP-to-app bridge.",
+  "failing_count": 2
+ },
+ "10029-attach-text-to-path-mcp": {
+  "category": "infra-error",
+  "reason": "Single failing run blocked immediately by the 'OpenPencil app is not connected' MCP bridge error before any operation; 4/5 attempts passed.",
+  "failing_count": 1
+ },
+ "10036-create-collection-mcp": {
+  "category": "infra-error",
+  "reason": "All 3 failing runs failed on the first create_collection call with 'OpenPencil app is not connected'; nothing app-specific was ever exercised, and 2 attempts passed, pointing to intermittent bridge connectivity.",
+  "failing_count": 3
+ },
+ "10045-delete-collection-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs hit the 'OpenPencil app is not connected' MCP error on their very first tool call (list_collections / create_collection); 3 attempts passed, so this is environment flakiness.",
+  "failing_count": 2
+ },
+ "10060-fetch-icons-mcp": {
+  "category": "infra-error",
+  "reason": "All 3 failing runs failed at the initial fetch_icons call with 'OpenPencil app is not connected'; no app behavior was reachable, and 2 attempts passed, indicating flaky MCP bridge connectivity.",
+  "failing_count": 3
+ },
+ "10071-list-available-fonts-mcp": {
+  "category": "infra-error",
+  "reason": "Single failing run blocked on the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error; 4/5 attempts passed.",
+  "failing_count": 1
+ },
+ "10079-node-bounds-mcp": {
+  "category": "infra-error",
+  "reason": "Both failing runs died on the first create_shape call with 'OpenPencil app is not connected'; 3 attempts passed, so the failure is intermittent environment connectivity, not app logic.",
+  "failing_count": 2
+ },
+ "10089-path-scale-mcp": {
+  "category": "infra-error",
+  "reason": "Single failing run blocked at the initial create_vector call by the 'OpenPencil app is not connected' MCP bridge error; 4/5 attempts passed.",
+  "failing_count": 1
+ },
+ "10095-select-nodes-mcp": {
+  "category": "infra-error",
+  "reason": "Single failing run blocked at the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error; 4/5 attempts passed.",
+  "failing_count": 1
+ },
+ "10103-set-locked-mcp": {
+  "category": "infra-error",
+  "reason": "Single failing run blocked at the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error; 4/5 attempts passed.",
+  "failing_count": 1
+ },
+ "10114-switch-page-mcp": {
+  "category": "infra-error",
+  "reason": "All 5 runs failed identically on the very first create_page call with 'OpenPencil app is not connected', before any app logic ran. The 5/5 consistency suggests this task's environment never brings up the MCP-to-app bridge, but the evidence in every tail is a pure connection error, i.e. environment/infra.",
+  "failing_count": 5
+ },
+ "10123-new-document-mcp": {
+  "category": "infra-error",
+  "reason": "In all 5 runs new_document failed with 'OpenPencil app is not connected' while (in runs that probed further) read tools like find_nodes/get_node/viewport_zoom_to_fit worked fine \u2014 consistent with the environment missing the OPENPENCIL_MCP_ROOT setup the task prompt itself flags as required. Some tails frame it as a tool bug (misleading error), but the dominant actionable cause is environment configuration for new_document.",
+  "failing_count": 5
+ }
+}

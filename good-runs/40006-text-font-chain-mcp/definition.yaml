@@ -1,0 +1,83 @@
+id: 40006-text-font-chain-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools (the browser is allowed only for screenshots and visual verification): Chain the text
+  and font tools: (1) create_shape a TEXT node "Headline" 300x60 at (0,0) and set_text "The quick brown fox"; (2)
+  list_fonts and list_available_fonts — compare the two responses (entry shape, overlap, filtering by family) and
+  flag inconsistencies between them; pick a family both report (e.g. Roboto); (3) set_font with that family, size
+  24 and a bold style — get_node must round-trip family, size and style exactly; (4) set_font_range start 4 end
+  9 with size 40 and color #FF0000 — get_node/describe must show the mixed styling on exactly that range; (5) set_text
+  to replace the full text — record what happens to the range styling (silent corruption is a finding); (6) set_text_properties
+  align_horizontal CENTER and set_text_resize TRUNCATE — read both back via get_node.
+
+
+  Harness discipline: before EVERY tool call, state the output you expect; after the call, compare actual vs expected
+  and flag any mismatch. Pay special attention to data-modeling issues: fields that do not round-trip, list vs detail
+  disagreements, IDs that change format between tools, broken references between nodes, stale reads after writes,
+  and silently truncated results. When you are done, zoom the canvas to fit (press Shift+1 in the browser) and take
+  a browser screenshot so the final state can be visually verified.
+
+
+  Log every mismatch or defect you find using exactly this format, one block per finding:
+
+
+  MISMATCH #<n>
+
+  Step: <the exact tool call with its arguments>
+
+  Expected: <what you expected and why>
+
+  Actual: <what the tool returned / what the app did>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Fields that do not round-trip, list vs detail disagreements, broken references, stale reads after writes, silent
+  truncation, free-form or unstructured error payloads, misleading success responses, and any single response over
+  ~50K characters all count as findings. If you found no mismatches, state exactly "NO MISMATCHES FOUND". At the
+  very end of your final message, end with exactly "mcp-harness-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- create_shape
+- set_text
+- list_fonts
+- list_available_fonts
+- set_font
+- set_font_range
+- set_text_properties
+- set_text_resize
+- describe
+- get_node
+required_tools:
+- create_shape
+- set_text
+- list_fonts
+- list_available_fonts
+- set_font
+- set_font_range
+- set_text_properties
+- set_text_resize
+- describe
+- get_node
+rewards:
+- name: MCP harness report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mcp-harness-report: complete'

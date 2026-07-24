@@ -1,0 +1,78 @@
+id: 40022-server-file-roundtrip-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools (the browser is allowed only for screenshots and visual verification): Test the server
+  file tools (they require OPENPENCIL_MCP_ROOT; if a call is rejected as disabled, record the exact error — it must
+  be structured and self-explanatory, that IS part of the test — then continue with whatever remains possible):
+  (1) create_shape a RECTANGLE "Original" so the document is non-empty, then save_file as "qa-harness-a.pencil"
+  — expect a saved path back; (2) new_document — the document must reset: find_nodes returns nothing and list_pages
+  shows a fresh document; (3) create_shape a RECTANGLE "Marker", save_file as "qa-harness-b.pencil"; (4) open_file
+  the FIRST saved path — "Marker" must be gone and "Original" must be back (the persistence round-trip); (5) open_file
+  "no/such/file.pencil" — structured not-found error; (6) open_file "../outside-root.pencil" — the path traversal
+  must be refused with a structured error, never read from outside the sandbox root.
+
+
+  Harness discipline: before EVERY tool call, state the output you expect; after the call, compare actual vs expected
+  and flag any mismatch. Pay special attention to data-modeling issues: fields that do not round-trip, list vs detail
+  disagreements, IDs that change format between tools, broken references between nodes, stale reads after writes,
+  and silently truncated results. When you are done, zoom the canvas to fit (press Shift+1 in the browser) and take
+  a browser screenshot so the final state can be visually verified.
+
+
+  Log every mismatch or defect you find using exactly this format, one block per finding:
+
+
+  MISMATCH #<n>
+
+  Step: <the exact tool call with its arguments>
+
+  Expected: <what you expected and why>
+
+  Actual: <what the tool returned / what the app did>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Fields that do not round-trip, list vs detail disagreements, broken references, stale reads after writes, silent
+  truncation, free-form or unstructured error payloads, misleading success responses, and any single response over
+  ~50K characters all count as findings. If you found no mismatches, state exactly "NO MISMATCHES FOUND". At the
+  very end of your final message, end with exactly "mcp-harness-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- create_shape
+- save_file
+- new_document
+- open_file
+- find_nodes
+- list_pages
+- get_node
+required_tools:
+- create_shape
+- save_file
+- new_document
+- open_file
+- find_nodes
+- list_pages
+- get_node
+rewards:
+- name: MCP harness report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mcp-harness-report: complete'

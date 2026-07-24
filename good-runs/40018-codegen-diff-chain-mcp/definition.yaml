@@ -1,0 +1,92 @@
+id: 40018-codegen-diff-chain-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools (the browser is allowed only for screenshots and visual verification): Chain the codegen
+  and diff tools: (1) create_shape a FRAME "Widget" 200x120 with a RECTANGLE child and a TEXT child (set_text "Hi");
+  get_jsx on Widget — the JSX must reference both children; (2) using the JSX dialect you just observed, call render
+  to create a new small frame at (0,400) — find_nodes must show it and get_jsx on it must round-trip semantically;
+  (3) node_replace_with on the rendered frame''s rectangle, swapping it for a modified element — verify via get_node/node_tree;
+  (4) diff_jsx from Widget to the rendered frame, diff_create between the same two, and diff_show on Widget with
+  a props argument — each must return a structured, non-empty response that actually reflects the differences; (5)
+  design_to_component_map — Widget must appear in the map; (6) get_codegen_prompt — expect a non-empty prompt; (7)
+  done_with_changes on Widget with reason "qa pass" — record the response shape.
+
+
+  Harness discipline: before EVERY tool call, state the output you expect; after the call, compare actual vs expected
+  and flag any mismatch. Pay special attention to data-modeling issues: fields that do not round-trip, list vs detail
+  disagreements, IDs that change format between tools, broken references between nodes, stale reads after writes,
+  and silently truncated results. When you are done, zoom the canvas to fit (press Shift+1 in the browser) and take
+  a browser screenshot so the final state can be visually verified.
+
+
+  Log every mismatch or defect you find using exactly this format, one block per finding:
+
+
+  MISMATCH #<n>
+
+  Step: <the exact tool call with its arguments>
+
+  Expected: <what you expected and why>
+
+  Actual: <what the tool returned / what the app did>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Fields that do not round-trip, list vs detail disagreements, broken references, stale reads after writes, silent
+  truncation, free-form or unstructured error payloads, misleading success responses, and any single response over
+  ~50K characters all count as findings. If you found no mismatches, state exactly "NO MISMATCHES FOUND". At the
+  very end of your final message, end with exactly "mcp-harness-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- create_shape
+- set_text
+- get_jsx
+- render
+- node_replace_with
+- diff_jsx
+- diff_create
+- diff_show
+- design_to_component_map
+- get_codegen_prompt
+- done_with_changes
+- find_nodes
+- node_tree
+- get_node
+required_tools:
+- create_shape
+- set_text
+- get_jsx
+- render
+- node_replace_with
+- diff_jsx
+- diff_create
+- diff_show
+- design_to_component_map
+- get_codegen_prompt
+- done_with_changes
+- find_nodes
+- node_tree
+- get_node
+rewards:
+- name: MCP harness report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mcp-harness-report: complete'

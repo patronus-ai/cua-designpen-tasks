@@ -1,0 +1,80 @@
+id: 40011-autolayout-arrange-chain-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools (the browser is allowed only for screenshots and visual verification): Verify layout
+  math end to end: (1) create_shape a FRAME "Row" 400x120 at (0,0) and three 60x60 RECTANGLE children inside it;
+  (2) set_layout on Row with direction HORIZONTAL, spacing 20, padding 10 — node_bounds of the children must show
+  x offsets 10, 90 and 170 inside the frame (padding + spacing math); (3) set_layout_child on the middle child with
+  sizing_horizontal FILL and grow 1 — verify via node_bounds that it actually expands and via get_node that the
+  setting round-trips; (4) create_shape three loose 40x40 rectangles, then arrange them with mode row and gap 30
+  — verify the resulting positions; (5) distribute the same three with axis horizontal gap 15 — verify; (6) tidy
+  them — verify spacing is normalized. State the exact expected coordinates before each step and compare against
+  node_bounds after.
+
+
+  Harness discipline: before EVERY tool call, state the output you expect; after the call, compare actual vs expected
+  and flag any mismatch. Pay special attention to data-modeling issues: fields that do not round-trip, list vs detail
+  disagreements, IDs that change format between tools, broken references between nodes, stale reads after writes,
+  and silently truncated results. When you are done, zoom the canvas to fit (press Shift+1 in the browser) and take
+  a browser screenshot so the final state can be visually verified.
+
+
+  Log every mismatch or defect you find using exactly this format, one block per finding:
+
+
+  MISMATCH #<n>
+
+  Step: <the exact tool call with its arguments>
+
+  Expected: <what you expected and why>
+
+  Actual: <what the tool returned / what the app did>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Fields that do not round-trip, list vs detail disagreements, broken references, stale reads after writes, silent
+  truncation, free-form or unstructured error payloads, misleading success responses, and any single response over
+  ~50K characters all count as findings. If you found no mismatches, state exactly "NO MISMATCHES FOUND". At the
+  very end of your final message, end with exactly "mcp-harness-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- create_shape
+- set_layout
+- set_layout_child
+- node_bounds
+- arrange
+- distribute
+- tidy
+- get_node
+required_tools:
+- create_shape
+- set_layout
+- set_layout_child
+- node_bounds
+- arrange
+- distribute
+- tidy
+- get_node
+rewards:
+- name: MCP harness report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mcp-harness-report: complete'

@@ -1,13 +1,9 @@
 id: 00023-vector-align-vertices-ui
 start_url: http://cua_designpen.web
-prompt: 'With the Pen tool (P), click out a rough 4-point zigzag line and press Enter to commit. Double-click the
-  path to enter vector edit mode, select all four vertices (Cmd+A or drag a marquee around them), and use the alignment
-  row in the right-hand vector edit panel to align them vertically so all points sit on the same horizontal level.
+prompt: |-
+  With the Pen tool (P), click out a rough 4-point zigzag line and press Enter to commit. Double-click the path to enter vector edit mode, select all four vertices (Ctrl+A or drag a marquee around them), and use the alignment row in the right-hand vector edit panel to align them vertically so all points sit on the same horizontal level.
 
-
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
 available_tools:
 - browser_navigate
 - browser_screenshot

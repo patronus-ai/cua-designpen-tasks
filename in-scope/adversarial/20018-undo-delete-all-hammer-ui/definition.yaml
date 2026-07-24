@@ -1,36 +1,19 @@
 id: 20018-undo-delete-all-hammer-ui
 start_url: http://cua_designpen.web
-prompt: 'Draw a rectangle, an ellipse, and a line (R, O, L) anywhere on the canvas. Select everything with Cmd+A
-  and press Delete to clear the page, then use Cmd+Z to restore all three shapes.
+prompt: |-
+  Draw a rectangle, an ellipse, and a line (R, O, L) anywhere on the canvas. Select everything with Ctrl+A and press Delete to clear the page, then use Ctrl+Z to restore all three shapes.
 
-
-  While completing this workflow, actively try to break the app: (1) after restoring, keep hammering Cmd+Z far beyond
-  the history bottom (10+ extra presses) — each extra press must be a harmless no-op; (2) alternate Cmd+Z and Cmd+Shift+Z
-  rapidly about 20 times across the delete-all — the three shapes must always appear/disappear together, with the
-  layers panel matching the canvas every time; (3) undo the delete, draw a new star, then press Cmd+Shift+Z — check
-  how the redo branch is handled (the delete-all redo should be discarded, not merged); delete the star when done
-  so exactly the original three shapes remain. After each break attempt, recover (undo, or redo the step cleanly)
-  so the final document matches the workflow described above.
-
+  While completing this workflow, actively try to break the app: (1) after restoring, keep hammering Ctrl+Z far beyond the history bottom (10+ extra presses) — each extra press must be a harmless no-op; (2) alternate Ctrl+Z and Ctrl+Shift+Z rapidly about 20 times across the delete-all — the three shapes must always appear/disappear together, with the layers panel matching the canvas every time; (3) undo the delete, draw a new star, then press Ctrl+Shift+Z — check how the redo branch is handled (the delete-all redo should be discarded, not merged); delete the star when done so exactly the original three shapes remain. After each break attempt, recover (undo, or redo the step cleanly) so the final document matches the workflow described above.
 
   Log every defect you find using exactly this format, one block per defect:
 
-
   DEFECT #<n>
-
   Steps: <exact reproduction steps>
-
   Observed: <what actually happened>
-
   Expected: <what should have happened>
-
   Severity: <critical | major | minor | cosmetic>
 
-
-  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens), state lost after navigation
-  or reload, inconsistent state between the canvas and the panels, and unhelpful or missing error messages all count
-  as defects. If you found no defects, state exactly "NO DEFECTS FOUND". At the very end of your final message,
-  end with exactly "adversarial-report: complete".'
+  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens), state lost after navigation or reload, inconsistent state between the canvas and the panels, and unhelpful or missing error messages all count as defects. If you found no defects, state exactly "NO DEFECTS FOUND". At the very end of your final message, end with exactly "adversarial-report: complete".
 available_tools:
 - browser_navigate
 - browser_screenshot

@@ -1,11 +1,13 @@
 id: 00066-pen-connect-endpoints-ui
 start_url: http://cua_designpen.web
-prompt: |-
-  With the Pen tool (P), inside ONE vector edit session draw two separate open strokes: draw the first stroke, then press Escape (NOT Enter) to finish that chain while staying in the same vector edit session (pressing Enter is "Done" and exits the session, which would make the second stroke a separate object). Draw the second stroke as another subpath of the same vector. Then pen-click a loose endpoint of one stroke and click the loose endpoint of the other so a connecting segment joins them into a single continuous path. Exit the session when done.
+prompt: 'With the Pen tool (P), inside one vector edit session draw two separate open strokes (commit the first
+  chain with Enter, then draw the second). Then pen-click a loose endpoint of one stroke and click the loose endpoint
+  of the other stroke so the two are welded into a single continuous path. Exit the session.
 
-  Note: for open paths export_svg emits one "M" command per segment, so seeing multiple "M" subpaths in the SVG is normal serialization — it does NOT mean the strokes are disconnected. Judge success by whether the two strokes are joined into one connected path (one connected component with two loose ends).
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
 available_tools:
 - browser_navigate
 - browser_screenshot

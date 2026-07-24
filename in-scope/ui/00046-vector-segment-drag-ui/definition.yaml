@@ -1,12 +1,11 @@
 id: 00046-vector-segment-drag-ui
 start_url: http://cua_designpen.web
-prompt: 'Draw a rectangle (R + drag), double-click it to enter vector edit mode with the Move subtool active, and
-  drag the body of one entire side outward — grab the edge itself, not a corner.
+prompt: |-
+  Draw a rectangle (R + drag), then double-click it to enter vector edit mode with the Move subtool active. Drag one entire side outward so the whole side translates as a unit and the shape stays a clean rectangle (just wider/taller). Grab the edge body itself — NOT a corner node, and NOT the exact midpoint of the edge: the midpoint has a small insert-point handle (a dot) that, if grabbed, adds a new anchor and bends the side into a peak instead of moving it. Grab the side roughly a quarter or three-quarters of the way along its length (clearly off both corners and off the midpoint dot) and drag outward.
 
+  Base your verdict ONLY on whether the whole side moved outward and the shape is still a rectangle (four corners, no peak). If instead you accidentally created a peak/pentagon, undo and retry off the midpoint; needing a retry is not itself a blocker.
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
 available_tools:
 - browser_navigate
 - browser_screenshot

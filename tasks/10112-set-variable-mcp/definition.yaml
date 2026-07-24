@@ -1,0 +1,28 @@
+id: 10112-set-variable-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools: create a collection named Fx with a FLOAT variable named fade valued 0.2 and bind the opacity
+  of a rectangle named Veil to it; look up the collection''s mode id with get_collection, then call set_variable changing
+  fade to 0.8 in that mode. When you are done, call viewport_zoom_to_fit, then verify the result with the available MCP tools
+  and report what you found.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end
+  with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly
+  "verdict: not-approve".'
+available_tools:
+- set_variable
+- create_collection
+- create_variable
+- bind_variable
+- get_collection
+- create_shape
+- get_node
+- find_nodes
+- viewport_zoom_to_fit
+required_tools:
+- set_variable
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

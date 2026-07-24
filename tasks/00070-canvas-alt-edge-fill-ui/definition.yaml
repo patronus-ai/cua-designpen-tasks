@@ -1,9 +1,13 @@
 id: 00070-canvas-alt-edge-fill-ui
 start_url: http://cua_designpen.web
-prompt: |-
-  Create a frame containing two rectangles side by side and convert the frame to a horizontal auto-layout. Select one of the child rectangles, then in the Design sidebar's Layout section open the width sizing dropdown (data-test-id "layout-width-sizing-menu") and choose "Fill container" so the rectangle's horizontal sizing fills the available space along the row. Do not use the Alt/Option + double-click resize-handle gesture — the automation harness cannot hold modifier keys during a mouse action; the Layout-section dropdown sets the identical Fill sizing.
+prompt: 'Create a frame containing two rectangles side by side and convert the frame to a horizontal auto-layout.
+  Select one of the child rectangles, then hold Alt/Option and double-click its side (left or right) resize handle
+  so its horizontal sizing switches to fill the available space along the row.
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
 available_tools:
 - browser_navigate
 - browser_screenshot

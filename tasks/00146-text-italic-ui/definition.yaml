@@ -1,9 +1,12 @@
 id: 00146-text-italic-ui
 start_url: http://cua_designpen.web
-prompt: |-
-  Create a text layer with the text tool (T) reading "quarterly review", select it, and italicize it via Main menu > Text > Italic. Do not rely on the Ctrl+I shortcut — use the menu item.
+prompt: 'Create a text layer with the text tool (T) reading "quarterly review", select it, and italicize it via
+  Main menu > Text > Italic. Do not rely on the Cmd+I shortcut — use the menu item.
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
+  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
+  end with exactly "verdict: not-approve".'
 available_tools:
 - browser_navigate
 - browser_screenshot

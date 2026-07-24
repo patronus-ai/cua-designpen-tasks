@@ -1,0 +1,37 @@
+id: 30010-set-instance-property-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools: use create_shape to make a FRAME 160x60 named Card at (0,0) with a TEXT child, use create_component
+  to convert Card into a component, then use create_instance to place an instance at (0,100). When you are done, call viewport_zoom_to_fit,
+  then verify the result with the available MCP tools and report what you found.
+
+  While completing this workflow, actively try to break the app through the tools: call set_instance_property with a nonexistent
+  property name "doesNotExist"; call set_instance_property with a BOOLEAN-shaped property whose value is "maybe" (not "true"/"false");
+  call set_instance_property with a nonexistent instance id "ghost-inst"; call it with value set to an object instead of a
+  string. Confirm each returns a structured status/code/message error rather than silently succeeding. Recover from any errors
+  and finish the workflow described above.
+
+  Log every defect you find using exactly this format, one block per defect:
+
+  DEFECT #<n> Steps: <exact MCP tool calls with their arguments to reproduce> Observed: <what actually happened> Expected:
+  <what should have happened> Severity: <critical | major | minor | cosmetic>
+
+  Broken rendering, crashes, freezes, silent failures (invalid input accepted but nothing happens or a success response is
+  returned), partial application of a batch that was supposed to be atomic, state lost after navigation or reload, inconsistent
+  state between the canvas and the tool responses, and free-form or unstructured error messages (any error that is not a structured
+  status/code/message payload) all count as defects. If you found no defects, state exactly "NO DEFECTS FOUND". At the very
+  end of your final message, end with exactly "adversarial-report: complete".'
+available_tools:
+- set_instance_property
+- create_instance
+- create_component
+- create_shape
+- get_node
+- find_nodes
+- viewport_zoom_to_fit
+required_tools:
+- set_instance_property
+rewards:
+- name: Adversarial report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'adversarial-report: complete'

@@ -1,0 +1,58 @@
+id: 20024-variable-malformed-values-ui
+start_url: http://cua_designpen.web
+prompt: 'Open the Local variables dialog from the left panel Variables tab, create a collection, and use the Add menu to create a FLOAT (number) variable named "gutter" with value 240. Draw a rectangle, rename its layer to "Gutter box", and bind its width field to the "gutter" token using the width field''s variable affordance in the properties panel — the rectangle must snap to 240 wide. Final state: the variable value is 240 and "Gutter box" is exactly 240 wide.
+
+
+  While completing this workflow, actively try to break the app: (1) edit the gutter value cell in the dialog table to each of these in turn, committing each with Enter: "abc", "1e99", "-0", "NaN", an empty string, and "12🚀3" — after each commit check what the cell shows, what the bound rectangle''s width becomes, and whether any validation message appears; (2) after a malformed commit, compare the width shown in the properties panel against the actual canvas size for a mismatch; (3) commit a huge value like 999999999 and check canvas, zoom, and panel behavior; (4) hammer undo/redo across the value edits and verify the dialog table follows. Finish by setting the value back to exactly 240. After every break attempt, recover the document (undo, redo, or redo the step by hand) so the workflow above still ends in exactly its described final state.
+
+
+  Log every defect you find using exactly this format, one block per defect:
+
+
+  DEFECT #<n>
+
+  Steps: <exact reproduction steps>
+
+  Observed: <what actually happened>
+
+  Expected: <what should have happened>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens),
+
+  state lost after navigation or reload, inconsistent state between the canvas and the panels,
+
+  and unhelpful or missing error messages all count as defects. If you found no defects, state
+
+  exactly "NO DEFECTS FOUND". At the very end of your final message, end with exactly
+
+  "adversarial-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Adversarial report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'adversarial-report: complete'

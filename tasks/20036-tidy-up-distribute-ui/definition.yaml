@@ -1,0 +1,58 @@
+id: 20036-tidy-up-distribute-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw three 100x100 squares with the Rectangle tool (R) at y=100 and x positions 100, 260, and 500, named "Sq A", "Sq B", "Sq C" (exact values via the X/Y/W/H fields, names via the layers panel). Select all three and click the Tidy up button in the design panel''s Position section (it only appears for multi-selections) to even out the horizontal gaps — the outer squares must stay in place, leaving x at 100 / 300 / 500. Final state: the three squares evenly spaced with a 100px gap between neighbors.
+
+
+  While completing this workflow, actively try to break the app: (1) double-click the Tidy up button as fast as possible and check the second invocation does not re-shuffle or corrupt positions; (2) stack "Sq A" exactly on top of "Sq B" (same X/Y), select all three, tidy up, and observe how coincident squares are distributed — then undo and restore the positions; (3) lock "Sq C" and tidy the trio — record whether the locked square is moved, skipped, or breaks the layout — then unlock; (4) hammer undo/redo across the tidy operations and confirm the properties panel X values always match the canvas. Finish in the described final state. After every break attempt, recover the document (undo, redo, or redo the step by hand) so the workflow above still ends in exactly its described final state.
+
+
+  Log every defect you find using exactly this format, one block per defect:
+
+
+  DEFECT #<n>
+
+  Steps: <exact reproduction steps>
+
+  Observed: <what actually happened>
+
+  Expected: <what should have happened>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens),
+
+  state lost after navigation or reload, inconsistent state between the canvas and the panels,
+
+  and unhelpful or missing error messages all count as defects. If you found no defects, state
+
+  exactly "NO DEFECTS FOUND". At the very end of your final message, end with exactly
+
+  "adversarial-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Adversarial report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'adversarial-report: complete'

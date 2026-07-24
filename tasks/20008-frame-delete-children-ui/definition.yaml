@@ -1,0 +1,60 @@
+id: 20008-frame-delete-children-ui
+start_url: http://cua_designpen.web
+prompt: 'Activate the Frame tool (F) and drag out a frame about 400 by 300. Draw two rectangles inside it with the
+  Rectangle tool (R) so the frame has two children.
+
+
+  While completing this workflow, actively try to break the app: (1) select the frame and press Delete — confirm
+  the children are removed together with it and nothing orphaned remains on canvas or in the layers panel, then
+  Cmd+Z to restore everything; (2) via the Design panel set the frame H field to 0, then -50, then 1e99 — for each
+  value check panel display vs canvas render vs children clipping, and restore roughly 300 afterwards; (3) drag
+  one child rectangle out of the frame and, mid-drag, press Escape — verify no half-reparented duplicate or lost
+  layer. After each break attempt, recover (undo, or redo the step cleanly) so the final document matches the workflow
+  described above.
+
+
+  Log every defect you find using exactly this format, one block per defect:
+
+
+  DEFECT #<n>
+
+  Steps: <exact reproduction steps>
+
+  Observed: <what actually happened>
+
+  Expected: <what should have happened>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens), state lost after navigation
+  or reload, inconsistent state between the canvas and the panels, and unhelpful or missing error messages all count
+  as defects. If you found no defects, state exactly "NO DEFECTS FOUND". At the very end of your final message,
+  end with exactly "adversarial-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Adversarial report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'adversarial-report: complete'

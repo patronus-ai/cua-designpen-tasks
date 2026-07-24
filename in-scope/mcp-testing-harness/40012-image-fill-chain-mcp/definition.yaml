@@ -1,0 +1,75 @@
+id: 40012-image-fill-chain-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools (the browser is allowed only for screenshots and visual verification): Chain the image
+  tools: (1) stock_photo requesting one photo (inspect the tool description for the requests format); (2) create_shape
+  a 200x150 RECTANGLE "Photo" and set_image_fill with the returned image data — get_node must show an image fill
+  with scale_mode FILL; (3) update_image_fill with scale_mode TILE, tile_scale 0.5, rotation 90 and exposure 0.2
+  — read back every changed field via get_node; adjustments that are accepted but not persisted are findings; (4)
+  export_image on the rectangle with format PNG and scale 2 — expect image data back; create_shape a second RECTANGLE
+  "Copy" and set_image_fill it with the exported data (the export→import round-trip); (5) export_image with a nonexistent
+  id and with scale 0 — both must produce structured errors.
+
+
+  Harness discipline: before EVERY tool call, state the output you expect; after the call, compare actual vs expected
+  and flag any mismatch. Pay special attention to data-modeling issues: fields that do not round-trip, list vs detail
+  disagreements, IDs that change format between tools, broken references between nodes, stale reads after writes,
+  and silently truncated results. When you are done, zoom the canvas to fit (press Shift+1 in the browser) and take
+  a browser screenshot so the final state can be visually verified.
+
+
+  Log every mismatch or defect you find using exactly this format, one block per finding:
+
+
+  MISMATCH #<n>
+
+  Step: <the exact tool call with its arguments>
+
+  Expected: <what you expected and why>
+
+  Actual: <what the tool returned / what the app did>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Fields that do not round-trip, list vs detail disagreements, broken references, stale reads after writes, silent
+  truncation, free-form or unstructured error payloads, misleading success responses, and any single response over
+  ~50K characters all count as findings. If you found no mismatches, state exactly "NO MISMATCHES FOUND". At the
+  very end of your final message, end with exactly "mcp-harness-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- stock_photo
+- create_shape
+- set_image_fill
+- update_image_fill
+- export_image
+- get_node
+required_tools:
+- stock_photo
+- create_shape
+- set_image_fill
+- update_image_fill
+- export_image
+- get_node
+rewards:
+- name: MCP harness report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mcp-harness-report: complete'

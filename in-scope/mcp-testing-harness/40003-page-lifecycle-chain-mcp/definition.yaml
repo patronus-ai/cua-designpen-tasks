@@ -1,0 +1,83 @@
+id: 40003-page-lifecycle-chain-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools (the browser is allowed only for screenshots and visual verification): Run a page
+  lifecycle chain: (1) list_pages and get_current_page — note the current page and the id/name format used; (2)
+  create_page "QA Page" — list_pages must now include it using the same entry shape as the existing pages; (3) switch_page
+  to "QA Page" — get_current_page must agree; (4) create_shape a 100x100 RECTANGLE "Marker" on it, then page_bounds
+  — the reported bounds must contain the rectangle; (5) reorder_page "QA Page" to index 0 — list_pages order must
+  reflect the move; (6) switch_page back to the original page — find_nodes "Marker" there must return nothing (page
+  scoping); (7) delete_page "QA Page" — list_pages must drop it and get_current_page must still return a valid page;
+  (8) attempt delete_page on the now-current page only if more than one page remains, otherwise call delete_page
+  with a nonexistent page name — either way the response must be a structured, informative error or a clean success,
+  never a wedged document.
+
+
+  Harness discipline: before EVERY tool call, state the output you expect; after the call, compare actual vs expected
+  and flag any mismatch. Pay special attention to data-modeling issues: fields that do not round-trip, list vs detail
+  disagreements, IDs that change format between tools, broken references between nodes, stale reads after writes,
+  and silently truncated results. When you are done, zoom the canvas to fit (press Shift+1 in the browser) and take
+  a browser screenshot so the final state can be visually verified.
+
+
+  Log every mismatch or defect you find using exactly this format, one block per finding:
+
+
+  MISMATCH #<n>
+
+  Step: <the exact tool call with its arguments>
+
+  Expected: <what you expected and why>
+
+  Actual: <what the tool returned / what the app did>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Fields that do not round-trip, list vs detail disagreements, broken references, stale reads after writes, silent
+  truncation, free-form or unstructured error payloads, misleading success responses, and any single response over
+  ~50K characters all count as findings. If you found no mismatches, state exactly "NO MISMATCHES FOUND". At the
+  very end of your final message, end with exactly "mcp-harness-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- list_pages
+- get_current_page
+- create_page
+- switch_page
+- create_shape
+- page_bounds
+- reorder_page
+- find_nodes
+- delete_page
+required_tools:
+- list_pages
+- get_current_page
+- create_page
+- switch_page
+- create_shape
+- page_bounds
+- reorder_page
+- find_nodes
+- delete_page
+rewards:
+- name: MCP harness report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mcp-harness-report: complete'

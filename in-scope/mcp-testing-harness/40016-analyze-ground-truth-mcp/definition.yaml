@@ -1,0 +1,81 @@
+id: 40016-analyze-ground-truth-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools (the browser is allowed only for screenshots and visual verification): Test the analyze
+  tools against a scene you control: (1) build ground truth — four 50x50 RECTANGLEs in a row at x = 0, 70, 140,
+  210 (a constant 20px gap), set_fill two of them #FF0000 and two #0000FF; add one TEXT "Sample" with set_font size
+  16 and one TEXT "Big" with size 32; (2) analyze_spacing — it must report the 20px gap; (3) analyze_colors with
+  limit 10 — it must report exactly the two fill colors with two uses each; (4) analyze_typography with group_by
+  size — it must report sizes 16 and 32; (5) analyze_clusters with min_count 2 — it should detect the row of rectangles.
+  Compare every response against the known scene: colors or sizes that exist but are not reported, and anything
+  reported that does not exist, are findings.
+
+
+  Harness discipline: before EVERY tool call, state the output you expect; after the call, compare actual vs expected
+  and flag any mismatch. Pay special attention to data-modeling issues: fields that do not round-trip, list vs detail
+  disagreements, IDs that change format between tools, broken references between nodes, stale reads after writes,
+  and silently truncated results. When you are done, zoom the canvas to fit (press Shift+1 in the browser) and take
+  a browser screenshot so the final state can be visually verified.
+
+
+  Log every mismatch or defect you find using exactly this format, one block per finding:
+
+
+  MISMATCH #<n>
+
+  Step: <the exact tool call with its arguments>
+
+  Expected: <what you expected and why>
+
+  Actual: <what the tool returned / what the app did>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Fields that do not round-trip, list vs detail disagreements, broken references, stale reads after writes, silent
+  truncation, free-form or unstructured error payloads, misleading success responses, and any single response over
+  ~50K characters all count as findings. If you found no mismatches, state exactly "NO MISMATCHES FOUND". At the
+  very end of your final message, end with exactly "mcp-harness-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- create_shape
+- set_fill
+- set_text
+- set_font
+- analyze_spacing
+- analyze_colors
+- analyze_typography
+- analyze_clusters
+- get_node
+required_tools:
+- create_shape
+- set_fill
+- set_text
+- set_font
+- analyze_spacing
+- analyze_colors
+- analyze_typography
+- analyze_clusters
+- get_node
+rewards:
+- name: MCP harness report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mcp-harness-report: complete'

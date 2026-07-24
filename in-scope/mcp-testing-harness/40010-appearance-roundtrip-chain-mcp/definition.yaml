@@ -1,0 +1,81 @@
+id: 40010-appearance-roundtrip-chain-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools (the browser is allowed only for screenshots and visual verification): Round-trip
+  every appearance property on one node, reading back with get_node after EVERY write: (1) create_shape a 150x150
+  RECTANGLE "Look"; (2) set_fill #FF0000; (3) set_fill with color #FF0000, color_end #0000FF and gradient left-right;
+  (4) set_stroke #000000 weight 4 align OUTSIDE; (5) set_stroke_align CENTER; (6) set_opacity 0.35; (7) set_blend
+  MULTIPLY; (8) set_radius with top_left 4, top_right 8, bottom_right 12, bottom_left 16; (9) set_effects type DROP_SHADOW
+  color #000000 offset_x 0 offset_y 4 radius 10. Each read-back must return exactly what was written — flag any
+  value that comes back mutated (0.35 → 0.3499…), any per-corner radius flattened to a uniform one, any gradient
+  or stroke-align detail lost, and any effect field missing from the read.
+
+
+  Harness discipline: before EVERY tool call, state the output you expect; after the call, compare actual vs expected
+  and flag any mismatch. Pay special attention to data-modeling issues: fields that do not round-trip, list vs detail
+  disagreements, IDs that change format between tools, broken references between nodes, stale reads after writes,
+  and silently truncated results. When you are done, zoom the canvas to fit (press Shift+1 in the browser) and take
+  a browser screenshot so the final state can be visually verified.
+
+
+  Log every mismatch or defect you find using exactly this format, one block per finding:
+
+
+  MISMATCH #<n>
+
+  Step: <the exact tool call with its arguments>
+
+  Expected: <what you expected and why>
+
+  Actual: <what the tool returned / what the app did>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Fields that do not round-trip, list vs detail disagreements, broken references, stale reads after writes, silent
+  truncation, free-form or unstructured error payloads, misleading success responses, and any single response over
+  ~50K characters all count as findings. If you found no mismatches, state exactly "NO MISMATCHES FOUND". At the
+  very end of your final message, end with exactly "mcp-harness-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- create_shape
+- set_fill
+- set_stroke
+- set_stroke_align
+- set_opacity
+- set_blend
+- set_radius
+- set_effects
+- get_node
+required_tools:
+- create_shape
+- set_fill
+- set_stroke
+- set_stroke_align
+- set_opacity
+- set_blend
+- set_radius
+- set_effects
+- get_node
+rewards:
+- name: MCP harness report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mcp-harness-report: complete'

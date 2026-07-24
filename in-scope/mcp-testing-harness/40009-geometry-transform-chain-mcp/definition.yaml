@@ -1,0 +1,79 @@
+id: 40009-geometry-transform-chain-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools (the browser is allowed only for screenshots and visual verification): Verify geometry
+  reads and writes agree: (1) create_shape a RECTANGLE "Geo" 100x50 at (10,10); node_bounds must report exactly
+  x=10 y=10 width=100 height=50 and get_node must agree field-for-field; (2) node_move to (200,300) — both readers
+  must match exactly; (3) node_resize to 250x125 — both readers must match; (4) set_rotation 45 — record what node_bounds
+  reports (rotated AABB ≈ 265x265 for this size) vs what get_node width/height mean, and flag if the two readers
+  silently disagree about rotated geometry; (5) set_constraints horizontal STRETCH vertical CENTER and set_minmax
+  min_width 50 max_width 400 — get_node must round-trip all four; (6) node_resize to 500x50 — check whether max_width=400
+  actually clamps the resize; a constraint that is stored but never enforced (or silently dropped) is a finding.
+
+
+  Harness discipline: before EVERY tool call, state the output you expect; after the call, compare actual vs expected
+  and flag any mismatch. Pay special attention to data-modeling issues: fields that do not round-trip, list vs detail
+  disagreements, IDs that change format between tools, broken references between nodes, stale reads after writes,
+  and silently truncated results. When you are done, zoom the canvas to fit (press Shift+1 in the browser) and take
+  a browser screenshot so the final state can be visually verified.
+
+
+  Log every mismatch or defect you find using exactly this format, one block per finding:
+
+
+  MISMATCH #<n>
+
+  Step: <the exact tool call with its arguments>
+
+  Expected: <what you expected and why>
+
+  Actual: <what the tool returned / what the app did>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Fields that do not round-trip, list vs detail disagreements, broken references, stale reads after writes, silent
+  truncation, free-form or unstructured error payloads, misleading success responses, and any single response over
+  ~50K characters all count as findings. If you found no mismatches, state exactly "NO MISMATCHES FOUND". At the
+  very end of your final message, end with exactly "mcp-harness-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- create_shape
+- node_bounds
+- node_move
+- node_resize
+- set_rotation
+- set_constraints
+- set_minmax
+- get_node
+required_tools:
+- create_shape
+- node_bounds
+- node_move
+- node_resize
+- set_rotation
+- set_constraints
+- set_minmax
+- get_node
+rewards:
+- name: MCP harness report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mcp-harness-report: complete'

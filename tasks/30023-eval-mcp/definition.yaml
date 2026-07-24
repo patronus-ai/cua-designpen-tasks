@@ -1,0 +1,45 @@
+id: 30023-eval-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools (requires OPENPENCIL_MCP_EVAL=1): use eval to run JavaScript that creates a 100x100 rectangle named EvalBox at (0,0). When you are done, zoom the canvas to fit (press Shift+1 in the browser), then take a browser screenshot of the app so the result can be visually verified.
+
+While completing this workflow, actively try to break the app through the tools: call eval with code that throws (throw new Error("boom")); call eval with code that references an undefined variable (return notDefinedVar); call eval with an injection-shaped payload that tries to read the environment (return JSON.stringify(process.env)); call eval with a tight loop guarded so it cannot run forever. Confirm thrown errors and forbidden access come back as a structured status/code/message error rather than crashing the app or leaking internals. Recover from any errors and finish the workflow described above.
+
+Log every defect you find using exactly this format, one block per defect:
+
+DEFECT #<n>
+Steps: <exact MCP tool calls with their arguments to reproduce>
+Observed: <what actually happened>
+Expected: <what should have happened>
+Severity: <critical | major | minor | cosmetic>
+
+Broken rendering, crashes, freezes, silent failures (invalid input accepted but nothing happens or a success response is returned), partial application of a batch that was supposed to be atomic, state lost after navigation or reload, inconsistent state between the canvas and the tool responses, and free-form or unstructured error messages (any error that is not a structured status/code/message payload) all count as defects. If you found no defects, state exactly "NO DEFECTS FOUND". At the very end of your final message, end with exactly "adversarial-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- eval
+- get_node
+- find_nodes
+required_tools:
+- eval
+rewards:
+- name: Adversarial report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'adversarial-report: complete'

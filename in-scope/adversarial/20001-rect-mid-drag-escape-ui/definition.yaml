@@ -1,0 +1,61 @@
+id: 20001-rect-mid-drag-escape-ui
+start_url: http://cua_designpen.web
+prompt: 'Activate the Rectangle tool (press R or pick shape flyout > Rectangle), drag out a rectangle on the canvas,
+  then use the W and H fields in the right-hand Design panel to set its size to exactly 240 wide by 140 tall.
+
+
+  While completing this workflow, actively try to break the app: (1) while dragging out a rectangle, press Escape
+  mid-drag several times and verify no ghost or half-drawn rectangle is left on the canvas or in the layers panel;
+  (2) do zero-size drags — press R, click and release at the same spot without moving — and check whether a degenerate
+  0x0 layer gets created; (3) start a drag and, without releasing the mouse, press other tool shortcuts (O, T, F)
+  and Escape in rapid succession to see if the in-progress shape or the tool state corrupts; (4) immediately after
+  committing the rectangle, double-press R rapidly and click once on empty canvas to look for accidental extra layers.
+  After each break attempt, recover (undo, or redo the step cleanly) so the final document matches the workflow
+  described above.
+
+
+  Log every defect you find using exactly this format, one block per defect:
+
+
+  DEFECT #<n>
+
+  Steps: <exact reproduction steps>
+
+  Observed: <what actually happened>
+
+  Expected: <what should have happened>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens), state lost after navigation
+  or reload, inconsistent state between the canvas and the panels, and unhelpful or missing error messages all count
+  as defects. If you found no defects, state exactly "NO DEFECTS FOUND". At the very end of your final message,
+  end with exactly "adversarial-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Adversarial report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'adversarial-report: complete'

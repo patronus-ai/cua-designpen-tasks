@@ -1,0 +1,58 @@
+id: 20022-instance-override-detach-ui
+start_url: http://cua_designpen.web
+prompt: 'Draw a small rectangle and turn it into a component with Cmd+Alt+K (or Main menu > Object > Create Component). Right-click the component and choose Create instance. Override that instance''s fill to pure red (#FF0000) via the hex input in the Fill section (the master must stay its original color). Then create a second instance the same way and detach it with Cmd+Alt+B (or Main menu > Object > Detach Instance) so it becomes a plain frame. Final state: the master component, the red overridden instance, and the detached copy all on the page.
+
+
+  While completing this workflow, actively try to break the app: (1) open the fill color picker popover on the second instance and, while the popover is still open, press Cmd+Alt+B to detach it mid-edit — check for a stuck popover, a crash, or a half-applied fill; (2) after the red override, change the master''s fill to a third color and verify the override survives and the Fill panel, layers panel, and canvas all agree for each copy; (3) press Escape in the middle of picking the override color and verify no half-state is committed; (4) hammer undo/redo across the override-then-detach sequence and check the detached frame never re-links or loses its geometry. After every break attempt, recover the document (undo, redo, or redo the step by hand) so the workflow above still ends in exactly its described final state.
+
+
+  Log every defect you find using exactly this format, one block per defect:
+
+
+  DEFECT #<n>
+
+  Steps: <exact reproduction steps>
+
+  Observed: <what actually happened>
+
+  Expected: <what should have happened>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens),
+
+  state lost after navigation or reload, inconsistent state between the canvas and the panels,
+
+  and unhelpful or missing error messages all count as defects. If you found no defects, state
+
+  exactly "NO DEFECTS FOUND". At the very end of your final message, end with exactly
+
+  "adversarial-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Adversarial report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'adversarial-report: complete'

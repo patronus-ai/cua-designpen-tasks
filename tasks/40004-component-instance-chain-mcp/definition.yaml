@@ -1,0 +1,85 @@
+id: 40004-component-instance-chain-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools (the browser is allowed only for screenshots and visual verification): Chain the component
+  tools end to end: (1) create_shape a FRAME "Button" 120x40 at (0,0), create_shape a TEXT child inside it (parent_id
+  = Button) and set_text it to "Buy"; (2) create_component on the Button frame — keep the component id; get_components
+  must list it under the same id; (3) create_instance of the component at (0,100) — get_node on the instance must
+  report type INSTANCE and reference the component; (4) inspect the instance with get_node/describe to discover
+  its exposed properties, then set_instance_property to override the text to "Sell" — verify via get_node that the
+  instance shows "Sell" while the master still shows "Buy"; (5) create_shape a 80x80 RECTANGLE "Chip" and node_to_component
+  it — get_components must now list two components; (6) delete_node the Button master component, then get_node on
+  the instance — record exactly what happens to the orphaned instance; a dangling reference that later tool calls
+  crash on is a finding.
+
+
+  Harness discipline: before EVERY tool call, state the output you expect; after the call, compare actual vs expected
+  and flag any mismatch. Pay special attention to data-modeling issues: fields that do not round-trip, list vs detail
+  disagreements, IDs that change format between tools, broken references between nodes, stale reads after writes,
+  and silently truncated results. When you are done, zoom the canvas to fit (press Shift+1 in the browser) and take
+  a browser screenshot so the final state can be visually verified.
+
+
+  Log every mismatch or defect you find using exactly this format, one block per finding:
+
+
+  MISMATCH #<n>
+
+  Step: <the exact tool call with its arguments>
+
+  Expected: <what you expected and why>
+
+  Actual: <what the tool returned / what the app did>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Fields that do not round-trip, list vs detail disagreements, broken references, stale reads after writes, silent
+  truncation, free-form or unstructured error payloads, misleading success responses, and any single response over
+  ~50K characters all count as findings. If you found no mismatches, state exactly "NO MISMATCHES FOUND". At the
+  very end of your final message, end with exactly "mcp-harness-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- create_shape
+- set_text
+- create_component
+- get_components
+- create_instance
+- set_instance_property
+- node_to_component
+- describe
+- get_node
+- delete_node
+required_tools:
+- create_shape
+- set_text
+- create_component
+- get_components
+- create_instance
+- set_instance_property
+- node_to_component
+- describe
+- get_node
+- delete_node
+rewards:
+- name: MCP harness report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mcp-harness-report: complete'

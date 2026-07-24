@@ -1,0 +1,46 @@
+id: 30014-set-stroke-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools: use create_shape to make a 100x100 rectangle named Framed at (0,0), then use set_stroke to give it a black (#000000) stroke of weight 4 aligned CENTER. When you are done, zoom the canvas to fit (press Shift+1 in the browser), then take a browser screenshot of the app so the result can be visually verified.
+
+While completing this workflow, actively try to break the app through the tools: call set_stroke with weight -5 (negative), then with weight 0, then with weight 1000000000 (huge); call set_stroke with align "MIDDLE" (not a valid alignment); call set_stroke with a malformed color "black". Confirm the out-of-range and invalid values are rejected with a structured status/code/message error rather than producing an invisible or corrupt stroke. Recover from any errors and finish the workflow described above.
+
+Log every defect you find using exactly this format, one block per defect:
+
+DEFECT #<n>
+Steps: <exact MCP tool calls with their arguments to reproduce>
+Observed: <what actually happened>
+Expected: <what should have happened>
+Severity: <critical | major | minor | cosmetic>
+
+Broken rendering, crashes, freezes, silent failures (invalid input accepted but nothing happens or a success response is returned), partial application of a batch that was supposed to be atomic, state lost after navigation or reload, inconsistent state between the canvas and the tool responses, and free-form or unstructured error messages (any error that is not a structured status/code/message payload) all count as defects. If you found no defects, state exactly "NO DEFECTS FOUND". At the very end of your final message, end with exactly "adversarial-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- set_stroke
+- create_shape
+- get_node
+- find_nodes
+required_tools:
+- set_stroke
+rewards:
+- name: Adversarial report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'adversarial-report: complete'

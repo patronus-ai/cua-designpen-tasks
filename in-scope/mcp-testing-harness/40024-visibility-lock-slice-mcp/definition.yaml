@@ -1,0 +1,82 @@
+id: 40024-visibility-lock-slice-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools (the browser is allowed only for screenshots and visual verification): Test visibility,
+  locking, slices and section status: (1) create_shape a RECTANGLE "Guard" 100x100; set_visible false — get_node
+  must report visible false; check whether find_nodes still returns the hidden node and record the behavior; set_visible
+  true; (2) set_locked true, then attempt node_move and set_fill on the locked node — record whether mutations are
+  refused with a structured error or silently applied; silently mutating a locked node is a finding; set_locked
+  false; (3) create_slice at (0,0) 200x200 named "Cut" — get_node must report a slice-typed node with those bounds;
+  (4) create_shape a SECTION "Zone" 300x200, then set_section_status to BUILD and afterwards to COMPLETED with a
+  reason — read the status back after each change; (5) set_section_status with the invalid status "DONE" — structured
+  error required.
+
+
+  Harness discipline: before EVERY tool call, state the output you expect; after the call, compare actual vs expected
+  and flag any mismatch. Pay special attention to data-modeling issues: fields that do not round-trip, list vs detail
+  disagreements, IDs that change format between tools, broken references between nodes, stale reads after writes,
+  and silently truncated results. When you are done, zoom the canvas to fit (press Shift+1 in the browser) and take
+  a browser screenshot so the final state can be visually verified.
+
+
+  Log every mismatch or defect you find using exactly this format, one block per finding:
+
+
+  MISMATCH #<n>
+
+  Step: <the exact tool call with its arguments>
+
+  Expected: <what you expected and why>
+
+  Actual: <what the tool returned / what the app did>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Fields that do not round-trip, list vs detail disagreements, broken references, stale reads after writes, silent
+  truncation, free-form or unstructured error payloads, misleading success responses, and any single response over
+  ~50K characters all count as findings. If you found no mismatches, state exactly "NO MISMATCHES FOUND". At the
+  very end of your final message, end with exactly "mcp-harness-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- create_shape
+- set_visible
+- set_locked
+- node_move
+- set_fill
+- create_slice
+- set_section_status
+- find_nodes
+- get_node
+required_tools:
+- create_shape
+- set_visible
+- set_locked
+- node_move
+- set_fill
+- create_slice
+- set_section_status
+- find_nodes
+- get_node
+rewards:
+- name: MCP harness report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mcp-harness-report: complete'

@@ -1,0 +1,75 @@
+id: 40019-batch-mixed-readwrite-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools (the browser is allowed only for screenshots and visual verification): Test batching,
+  atomicity and read-after-write freshness: (1) calc with expression "17 * 3 + 9" — expect exactly 60; (2) create_shape
+  two 100x100 RECTANGLEs B1 and B2; (3) batch_update with a single operations JSON setting width=200 and opacity=0.4
+  on both — IMMEDIATELY get_node both: every change must be visible in the very next read (a stale read is a critical
+  finding); (4) get_node B1, take the width it returns, and batch_update B1''s width to that value plus 10 — verify
+  the write-from-read lands at 210; (5) batch_update mixing one valid operation (B1 width 300) with one operation
+  on a nonexistent id — record whether the batch is atomic (nothing applied) or partial (B1 changed), and whether
+  the response identifies which operation failed; EITHER behavior is acceptable only if the response states it explicitly
+  — silent partial application is a finding; (6) call update_node on B2''s opacity five times in rapid succession
+  (0.1 … 0.5) then get_node — the final value must be the last write.
+
+
+  Harness discipline: before EVERY tool call, state the output you expect; after the call, compare actual vs expected
+  and flag any mismatch. Pay special attention to data-modeling issues: fields that do not round-trip, list vs detail
+  disagreements, IDs that change format between tools, broken references between nodes, stale reads after writes,
+  and silently truncated results. When you are done, zoom the canvas to fit (press Shift+1 in the browser) and take
+  a browser screenshot so the final state can be visually verified.
+
+
+  Log every mismatch or defect you find using exactly this format, one block per finding:
+
+
+  MISMATCH #<n>
+
+  Step: <the exact tool call with its arguments>
+
+  Expected: <what you expected and why>
+
+  Actual: <what the tool returned / what the app did>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Fields that do not round-trip, list vs detail disagreements, broken references, stale reads after writes, silent
+  truncation, free-form or unstructured error payloads, misleading success responses, and any single response over
+  ~50K characters all count as findings. If you found no mismatches, state exactly "NO MISMATCHES FOUND". At the
+  very end of your final message, end with exactly "mcp-harness-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- calc
+- create_shape
+- batch_update
+- update_node
+- get_node
+required_tools:
+- calc
+- create_shape
+- batch_update
+- update_node
+- get_node
+rewards:
+- name: MCP harness report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mcp-harness-report: complete'

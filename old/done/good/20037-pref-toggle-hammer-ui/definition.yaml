@@ -1,0 +1,58 @@
+id: 20037-pref-toggle-hammer-ui
+start_url: http://cua_designpen.web
+prompt: 'Open the main menu and turn OFF Preferences > "Rename duplicated layers" (it is on by default). Then draw a rectangle, rename its layer to exactly "Card 1", and duplicate it with Cmd+D — the duplicate must keep the identical name "Card 1" with no number appended. Final state: at least two layers named "Card 1" and the preference left OFF.
+
+
+  While completing this workflow, actively try to break the app: (1) before settling the preference, toggle "Rename duplicated layers" ON and OFF at least 8 times in rapid succession, reopening the Preferences submenu each time, and verify the checkbox always reflects the last click; (2) with the Preferences submenu still open, press app shortcuts (R, Cmd+D, Cmd+Z) and check whether they leak through to the canvas while a menu is open; (3) press Cmd+D within milliseconds of clicking the preference toggle and check which naming behavior wins; (4) walk the Escape ladder out of the nested Preferences submenu one level at a time and verify no menu layer gets stuck. After every break attempt, recover the document (undo, redo, or redo the step by hand) so the workflow above still ends in exactly its described final state.
+
+
+  Log every defect you find using exactly this format, one block per defect:
+
+
+  DEFECT #<n>
+
+  Steps: <exact reproduction steps>
+
+  Observed: <what actually happened>
+
+  Expected: <what should have happened>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens),
+
+  state lost after navigation or reload, inconsistent state between the canvas and the panels,
+
+  and unhelpful or missing error messages all count as defects. If you found no defects, state
+
+  exactly "NO DEFECTS FOUND". At the very end of your final message, end with exactly
+
+  "adversarial-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Adversarial report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'adversarial-report: complete'

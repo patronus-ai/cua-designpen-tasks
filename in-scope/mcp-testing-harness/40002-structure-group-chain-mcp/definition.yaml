@@ -1,0 +1,82 @@
+id: 40002-structure-group-chain-mcp
+start_url: http://cua_designpen.web
+prompt: 'Using only MCP tools (the browser is allowed only for screenshots and visual verification): Exercise the
+  node-structure tools as one chain: (1) create_shape three 60x60 RECTANGLEs named A1, A2, A3 at x=0, 80, 160 (y=0);
+  (2) group_nodes the three and keep the group id; (3) node_children on the group — expect exactly the three ids;
+  (4) node_tree on the group and node_ancestors on A1 — the parent/child edges must agree in both directions; (5)
+  clone_node the group — the clone and every descendant must get fresh ids distinct from the originals; (6) create_shape
+  a FRAME "Holder" 400x300 at (0,200), then reparent_node A1 into Holder with insert_index 0 — node_children on
+  both the group and Holder must reflect the move, and node_ancestors on A1 must now include Holder; (7) ungroup_node
+  the original group — its remaining children must survive as siblings and get_node on the old group id must return
+  a structured not-found error.
+
+
+  Harness discipline: before EVERY tool call, state the output you expect; after the call, compare actual vs expected
+  and flag any mismatch. Pay special attention to data-modeling issues: fields that do not round-trip, list vs detail
+  disagreements, IDs that change format between tools, broken references between nodes, stale reads after writes,
+  and silently truncated results. When you are done, zoom the canvas to fit (press Shift+1 in the browser) and take
+  a browser screenshot so the final state can be visually verified.
+
+
+  Log every mismatch or defect you find using exactly this format, one block per finding:
+
+
+  MISMATCH #<n>
+
+  Step: <the exact tool call with its arguments>
+
+  Expected: <what you expected and why>
+
+  Actual: <what the tool returned / what the app did>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Fields that do not round-trip, list vs detail disagreements, broken references, stale reads after writes, silent
+  truncation, free-form or unstructured error payloads, misleading success responses, and any single response over
+  ~50K characters all count as findings. If you found no mismatches, state exactly "NO MISMATCHES FOUND". At the
+  very end of your final message, end with exactly "mcp-harness-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- create_shape
+- group_nodes
+- node_children
+- node_tree
+- node_ancestors
+- clone_node
+- reparent_node
+- ungroup_node
+- get_node
+required_tools:
+- create_shape
+- group_nodes
+- node_children
+- node_tree
+- node_ancestors
+- clone_node
+- reparent_node
+- ungroup_node
+- get_node
+rewards:
+- name: MCP harness report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mcp-harness-report: complete'

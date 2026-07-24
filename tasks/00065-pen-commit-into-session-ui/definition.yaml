@@ -1,7 +1,7 @@
-id: 00391-file-save-as-ui
+id: 00065-pen-commit-into-session-ui
 start_url: http://cua_designpen.web
 prompt: |-
-  Draw a circle, then save a copy of the document under a new file name "copy-of-design.fig" via Main menu > File > Save As… (Ctrl+Shift+S on this Linux environment). Because the browser's native file picker is unavailable over http, the app opens its own in-app Save As dialog (a modal with a filename input, data-test-id "save-as-dialog" / "save-as-filename"). Type "copy-of-design.fig" into the filename field and confirm with the "save-as-confirm" button.
+  With the Pen tool (P), draw a V (three clicks: (200,250), (260,350), (320,250)). Do NOT press Enter (Enter is "Done" and exits the vector edit session); instead press Escape once to end the current chain while staying inside the same vector edit session. Still in that session with the pen, draw one more separate short two-point stroke nearby (e.g. (380,250) to (440,300)), then press Escape again to end that chain and exit the session. Final state: both strokes exist as subpaths of a single vector, created within one edit session.
 
   At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
 available_tools:

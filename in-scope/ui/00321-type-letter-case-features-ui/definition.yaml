@@ -1,13 +1,9 @@
 id: 00321-type-letter-case-features-ui
 start_url: http://cua_designpen.web
-prompt: 'Create a text layer with the text "Chapter One". Open the Type settings popover via the sliders button
-  in the Typography section, switch to the Details tab, and enable the small caps OpenType feature. If the current
-  font does not offer small caps, first switch the layer to a font that does.
+prompt: |-
+  Create a text layer with the text "Chapter One". In this app small caps is set via the Case control in the Type settings (a text-case value), not a Details-tab OpenType toggle. The default Inter (upright) does not support small caps, so first switch the layer to a font that does — e.g. Roboto or Montserrat. Then set the Case control to Small caps.
 
-
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
 available_tools:
 - browser_navigate
 - browser_screenshot

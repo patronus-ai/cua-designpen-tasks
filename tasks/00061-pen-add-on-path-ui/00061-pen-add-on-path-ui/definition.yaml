@@ -1,7 +1,7 @@
 id: 00061-pen-add-on-path-ui
 start_url: http://cua_designpen.web
 prompt: |-
-  Select the Pen tool (P) and draw a straight two-point line, clicking at roughly (200,300) and (500,300). Do NOT press Enter (Enter is "Done" and ends the vector edit session). Instead press Escape once — this switches the pen from chain-extending mode into node/path edit while keeping you inside the same vector edit session. Then click directly on the middle of the existing segment at about (350,300) to insert one extra anchor point onto the path (a single continuous vertex on the same path, not a new path). Do not open the pen tool dropdown while a draw is active.
+  Select the Pen tool (P) and draw a straight two-point line, clicking at roughly (200,300) and (500,300). Do NOT press Enter (Enter is "Done" and ends the vector edit session). Instead press Escape once — this switches the pen from chain-extending mode into node/path edit while keeping you inside the same vector edit session. Then click directly on the middle of the existing segment at about (350,300) to insert one extra anchor point onto the path (a single continuous vertex on the same path, not a new path).
 
   Base your verdict only on the final result: approve if the line ends with three anchors on one continuous path (both original endpoints plus the inserted middle vertex). Exploration detours or minor UI friction you recovered from are not blockers.
 

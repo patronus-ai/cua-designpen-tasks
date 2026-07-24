@@ -1,0 +1,87 @@
+{
+  "00085-canvas-pan-right-drag-ui": {
+    "category": "infra-error",
+    "reason": "All 5 runs blocked because the browser automation harness has no right-mouse-button press-and-hold/drag primitive (only atomic right_click and left-button down/up), so the right-drag pan gesture cannot be issued. Agents verified the app itself works (preference toggles and persists, context menu correct, scroll-wheel pan moves the canvas).",
+    "failing_count": 5
+  },
+  "00109-paste-to-replace-ui": {
+    "category": "ui-broken-app-fix",
+    "reason": "All 5 runs hit the same reproducible app bug: right-click context-menu 'Copy' never populates the clipboard, so 'Paste to replace' fails with 'Clipboard has no design content to paste'; keyboard Ctrl+C works, isolating the defect to the menu Copy action.",
+    "failing_count": 5
+  },
+  "00336-style-create-menu-ui": {
+    "category": "ui-broken-app-fix",
+    "reason": "All 5 runs found the Styles '+' 'Create new text style' dialog's font-size control is a preset-only, non-typeable combobox (8-48 presets, no 40 and no custom entry), making the instructed style creation at size 40 impossible; styles also cannot be edited or deleted afterwards. The Typography panel's editable size field proves the dialog control is the broken piece.",
+    "failing_count": 5
+  },
+  "10003-delete-node-mcp": {
+    "category": "infra-error",
+    "reason": "Both failing runs died on the very first MCP call with 'OpenPencil app is not connected' (MCP bridge to the live SPA not established); 3 other attempts of the identical task passed, so this is flaky environment connectivity, not app logic.",
+    "failing_count": 2
+  },
+  "10010-node-resize-mcp": {
+    "category": "infra-error",
+    "reason": "Single failing run blocked at the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error; 4/5 attempts passed, indicating intermittent environment connectivity.",
+    "failing_count": 1
+  },
+  "10019-set-text-properties-mcp": {
+    "category": "infra-error",
+    "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first MCP call and could not touch the document; the same task passed in 3 other attempts, so the cause is the flaky MCP-to-app bridge.",
+    "failing_count": 2
+  },
+  "10029-attach-text-to-path-mcp": {
+    "category": "infra-error",
+    "reason": "Single failing run blocked immediately by the 'OpenPencil app is not connected' MCP bridge error before any operation; 4/5 attempts passed.",
+    "failing_count": 1
+  },
+  "10036-create-collection-mcp": {
+    "category": "infra-error",
+    "reason": "All 3 failing runs failed on the first create_collection call with 'OpenPencil app is not connected'; nothing app-specific was ever exercised, and 2 attempts passed, pointing to intermittent bridge connectivity.",
+    "failing_count": 3
+  },
+  "10045-delete-collection-mcp": {
+    "category": "infra-error",
+    "reason": "Both failing runs hit the 'OpenPencil app is not connected' MCP error on their very first tool call (list_collections / create_collection); 3 attempts passed, so this is environment flakiness.",
+    "failing_count": 2
+  },
+  "10060-fetch-icons-mcp": {
+    "category": "infra-error",
+    "reason": "All 3 failing runs failed at the initial fetch_icons call with 'OpenPencil app is not connected'; no app behavior was reachable, and 2 attempts passed, indicating flaky MCP bridge connectivity.",
+    "failing_count": 3
+  },
+  "10071-list-available-fonts-mcp": {
+    "category": "infra-error",
+    "reason": "Single failing run blocked on the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error; 4/5 attempts passed.",
+    "failing_count": 1
+  },
+  "10079-node-bounds-mcp": {
+    "category": "infra-error",
+    "reason": "Both failing runs died on the first create_shape call with 'OpenPencil app is not connected'; 3 attempts passed, so the failure is intermittent environment connectivity, not app logic.",
+    "failing_count": 2
+  },
+  "10089-path-scale-mcp": {
+    "category": "infra-error",
+    "reason": "Single failing run blocked at the initial create_vector call by the 'OpenPencil app is not connected' MCP bridge error; 4/5 attempts passed.",
+    "failing_count": 1
+  },
+  "10095-select-nodes-mcp": {
+    "category": "infra-error",
+    "reason": "Single failing run blocked at the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error; 4/5 attempts passed.",
+    "failing_count": 1
+  },
+  "10103-set-locked-mcp": {
+    "category": "infra-error",
+    "reason": "Single failing run blocked at the first create_shape call by the 'OpenPencil app is not connected' MCP bridge error; 4/5 attempts passed.",
+    "failing_count": 1
+  },
+  "10114-switch-page-mcp": {
+    "category": "infra-error",
+    "reason": "All 5 runs failed identically on the very first create_page call with 'OpenPencil app is not connected', before any app logic ran. The 5/5 consistency suggests this task's environment never brings up the MCP-to-app bridge, but the evidence in every tail is a pure connection error, i.e. environment/infra.",
+    "failing_count": 5
+  },
+  "10123-new-document-mcp": {
+    "category": "infra-error",
+    "reason": "In all 5 runs new_document failed with 'OpenPencil app is not connected' while (in runs that probed further) read tools like find_nodes/get_node/viewport_zoom_to_fit worked fine — consistent with the environment missing the OPENPENCIL_MCP_ROOT setup the task prompt itself flags as required. Some tails frame it as a tool bug (misleading error), but the dominant actionable cause is environment configuration for new_document.",
+    "failing_count": 5
+  }
+}

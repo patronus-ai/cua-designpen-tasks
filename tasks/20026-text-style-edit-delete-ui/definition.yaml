@@ -3,7 +3,10 @@ start_url: http://cua_designpen.web
 prompt: 'With nothing selected, use the Styles section "+" to create a shared text style named "Heading" with font size 32. Create a text layer with the text "Quarterly report" (Text tool, T) and apply the "Heading" style to it via the TextStylesMenu in the Typography section. Then edit the style''s font size to 40 and confirm the text layer follows. Then delete the "Heading" style from the styles list while it is applied. Final state: the "Quarterly report" text layer ends rendered at font size 40 — set it by hand after the deletion if needed.
 
 
-  While completing this workflow, actively try to break the app: (1) delete the style while the text layer is in an active text-editing session (caret blinking) and check for a crash or a half-styled layer; (2) apply the style and immediately hammer undo/redo at least 8 times and verify the Typography panel chip and the rendered size never desync; (3) rename the style to "<script>alert(1)</script> 🔥" and check every surface that displays the name renders it as inert text; (4) after deleting the in-use style, check the Typography section for a stale chip pointing at a dead style. After every break attempt, recover the document (undo, redo, or redo the step by hand) so the workflow above still ends in exactly its described final state.
+  Work within a limited turn budget: what completes this task is delivering the final defect report ending with the exact marker below, so never run out of turns before you write it. Be economical — take a screenshot only after finishing a numbered step, not after every click; collapse repeated key presses into a single press_key with a repeat count (undo/redo eight times is one call with repeat 8, then one screenshot); and trust any state you have already verified once. The moment you sense you are running low on turns, stop testing immediately and write the report.
+
+
+  While completing the workflow, try to break the app. Do these two checks (required): (1) delete the style while the text layer is in an active text-editing session (caret blinking) and check for a crash or a half-styled layer; (2) apply the style, then undo and redo eight times using press_key with a repeat count, and after that take one screenshot and confirm the Typography panel chip and the rendered size agree. Only if you still have turns to spare, also try: (3) rename the style to "<script>alert(1)</script> 🔥" and check every surface that displays the name renders it as inert text; (4) after deleting the in-use style, check the Typography section for a stale chip pointing at a dead style. After every break attempt, recover the document so the workflow still ends in exactly its described final state.
 
 
   Log every defect you find using exactly this format, one block per defect:
@@ -20,15 +23,7 @@ prompt: 'With nothing selected, use the Styles section "+" to create a shared te
   Severity: <critical | major | minor | cosmetic>
 
 
-  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens),
-
-  state lost after navigation or reload, inconsistent state between the canvas and the panels,
-
-  and unhelpful or missing error messages all count as defects. If you found no defects, state
-
-  exactly "NO DEFECTS FOUND". At the very end of your final message, end with exactly
-
-  "adversarial-report: complete".'
+  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens), state lost after navigation or reload, inconsistent state between the canvas and the panels, and unhelpful or missing error messages all count as defects. If you found no defects, state exactly "NO DEFECTS FOUND". At the very end of your final message, end with exactly "adversarial-report: complete".'
 available_tools:
 - browser_navigate
 - browser_screenshot

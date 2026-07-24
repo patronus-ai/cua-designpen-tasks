@@ -1,0 +1,92 @@
+{
+  "00051-vector-shape-builder-remove-ui": {
+    "category": "infra-error",
+    "reason": "All 5 runs completed the draw/commit/fill steps fine; the only blocker was the automation environment being unable to hold the Alt modifier during a mouse drag (hold_key rejects modifiers, mouse actions ignore them). The app itself works — an Alt+click strips the fill correctly.",
+    "failing_count": 5
+  },
+  "00086-canvas-pinch-zoom-ui": {
+    "category": "infra-error",
+    "reason": "All 5 runs reached 200% zoom via the app's zoom menu; the app's canvas zoom is fine. The failure is that the harness cannot emit a Ctrl-modified wheel event (scroll ignores modifiers, hold_key won't hold Ctrl) and Ctrl+= is captured as browser page zoom.",
+    "failing_count": 5
+  },
+  "00157-rulers-toggle-ui": {
+    "category": "agent-flaky",
+    "reason": "The Rulers feature works and rulers were already enabled by default, so the agent refused to click (which would toggle them off) and flagged the premise mismatch. App and infra are fine; no app fix is indicated (this is a task-design/seed-state issue).",
+    "failing_count": 5
+  },
+  "00337-text-apply-style-ui": {
+    "category": "ui-broken-app-fix",
+    "reason": "Both failing runs completed the task only by zooming the browser to 80%: the 'Create new text style' modal is taller than the 1280x720 viewport and its 'Create style' button sits below the fold, with the modal not scrollable, so the form cannot be submitted at the supported viewport.",
+    "failing_count": 2
+  },
+  "10004-describe-mcp": {
+    "category": "ui-broken-app-fix",
+    "reason": "All 4 runs completed the rename/zoom/verify but flagged the same tool inconsistency: describe rejects the document root id '0:0' ('Node not found') though viewport_zoom_to_fit docs call 0:0 the root, and no page/document node is describable, so 'describe on the document' is impossible.",
+    "failing_count": 4
+  },
+  "10011-render-mcp": {
+    "category": "infra-error",
+    "reason": "The single failing run's render call returned 'OpenPencil app is not connected' — the desktop app/MCP backend was not connected, blocking the task entirely.",
+    "failing_count": 1
+  },
+  "10020-stock-photo-mcp": {
+    "category": "infra-error",
+    "reason": "All 4 failing runs hit 'OpenPencil app is not connected' on the first create_shape call; the MCP backend was down, so nothing could proceed.",
+    "failing_count": 4
+  },
+  "10031-boolean-exclude-mcp": {
+    "category": "infra-error",
+    "reason": "The single failing run hit 'OpenPencil app is not connected' on the first create_shape call; MCP backend disconnected.",
+    "failing_count": 1
+  },
+  "10037-create-component-mcp": {
+    "category": "infra-error",
+    "reason": "The single failing run hit 'OpenPencil app is not connected' on the first create_shape (FRAME) call; MCP backend disconnected.",
+    "failing_count": 1
+  },
+  "10046-delete-page-mcp": {
+    "category": "infra-error",
+    "reason": "All 3 failing runs hit 'OpenPencil app is not connected' on the first create_page call; MCP backend disconnected.",
+    "failing_count": 3
+  },
+  "10062-flatten-nodes-mcp": {
+    "category": "infra-error",
+    "reason": "The single failing run hit 'OpenPencil app is not connected' on the first create_shape call; MCP backend disconnected.",
+    "failing_count": 1
+  },
+  "10072-list-collections-mcp": {
+    "category": "infra-error",
+    "reason": "Both failing runs hit 'OpenPencil app is not connected' on the first create_collection call; MCP backend disconnected.",
+    "failing_count": 2
+  },
+  "10080-node-children-mcp": {
+    "category": "infra-error",
+    "reason": "All 4 failing runs hit 'OpenPencil app is not connected' on the first create_shape (FRAME) call; MCP backend disconnected.",
+    "failing_count": 4
+  },
+  "10090-path-set-mcp": {
+    "category": "infra-error",
+    "reason": "All 3 failing runs hit 'OpenPencil app is not connected' on the first create_vector call; MCP backend disconnected.",
+    "failing_count": 3
+  },
+  "10096-set-blend-mcp": {
+    "category": "infra-error",
+    "reason": "All 4 failing runs hit 'OpenPencil app is not connected' on the first tool call; MCP backend disconnected.",
+    "failing_count": 4
+  },
+  "10104-set-minmax-mcp": {
+    "category": "infra-error",
+    "reason": "The single failing run hit 'OpenPencil app is not connected'; MCP backend disconnected.",
+    "failing_count": 1
+  },
+  "10117-ungroup-node-mcp": {
+    "category": "infra-error",
+    "reason": "Both failing runs hit 'OpenPencil app is not connected'; MCP backend disconnected.",
+    "failing_count": 2
+  },
+  "10124-open-file-mcp": {
+    "category": "ui-broken-app-fix",
+    "reason": "4 of 5 runs found save_file with an explicit path returns 404 (only pathless save works) so beacon.fig is never written, open_file then fails with 'invalid zip data', and a failed open_file wipes the active document. One run instead hit 'app not connected' (infra), but the dominant, actionable cause is the broken path-based save plus the open_file data-loss side effect.",
+    "failing_count": 5
+  }
+}

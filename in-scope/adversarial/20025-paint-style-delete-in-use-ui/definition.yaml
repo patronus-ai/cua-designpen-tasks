@@ -3,7 +3,10 @@ start_url: http://cua_designpen.web
 prompt: 'With nothing selected, use the Styles section "+" in the properties panel to create a paint style named "Brand/Green" with value pure green (#00FF00). Draw a rectangle, rename its layer to "Styled A", and apply "Brand/Green" to its fill via the fill apply-styles popover in the Fill section. Then change Styled A''s fill to pure red (#FF0000) and use the update action in the apply-styles panel to push the change back into the shared style. Then delete the "Brand/Green" style from the styles list while it is still applied to Styled A. Final state: "Styled A" ends filled pure red (#FF0000) — fix the fill by hand after the deletion if needed.
 
 
-  While completing this workflow, actively try to break the app: (1) after deleting the in-use style, check the Fill section for a stale style chip and compare it against the rendered canvas color; (2) rename the style to a 500+ character name before deleting it and check the styles list, apply popover, and fill chip all survive; (3) apply and detach the style to Styled A several times in rapid succession and watch for duplicated fill rows or a dead popover; (4) hammer undo/redo across the update-style step and verify the style''s stored color and the rectangle never disagree. After every break attempt, recover the document (undo, redo, or redo the step by hand) so the workflow above still ends in exactly its described final state.
+  Work within a limited turn budget: what completes this task is delivering the final defect report ending with the exact marker below, so never run out of turns before you write it. Be economical — take a screenshot only after finishing a numbered step, not after every click; collapse repeated key presses into a single press_key with a repeat count (undo/redo eight times is one call with repeat 8, then one screenshot); and trust any state you have already verified once. The moment you sense you are running low on turns, stop testing immediately and write the report.
+
+
+  While completing the workflow, try to break the app. Do these two checks (required): (1) after deleting the in-use style, check the Fill section for a stale style chip and compare it against the rendered canvas color; (2) undo and redo eight times across the update-style step using press_key with a repeat count, then take one screenshot and confirm the style''s stored color and the rectangle agree. Only if you still have turns to spare, also try: (3) rename the style to a 500+ character name before deleting it and check the styles list, apply popover, and fill chip all survive; (4) apply and detach the style to Styled A several times in rapid succession and watch for duplicated fill rows or a dead popover. After every break attempt, recover the document so the workflow still ends in exactly its described final state.
 
 
   Log every defect you find using exactly this format, one block per defect:
@@ -20,15 +23,7 @@ prompt: 'With nothing selected, use the Styles section "+" in the properties pan
   Severity: <critical | major | minor | cosmetic>
 
 
-  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens),
-
-  state lost after navigation or reload, inconsistent state between the canvas and the panels,
-
-  and unhelpful or missing error messages all count as defects. If you found no defects, state
-
-  exactly "NO DEFECTS FOUND". At the very end of your final message, end with exactly
-
-  "adversarial-report: complete".'
+  Broken rendering, crashes, freezes, silent failures (action accepted but nothing happens), state lost after navigation or reload, inconsistent state between the canvas and the panels, and unhelpful or missing error messages all count as defects. If you found no defects, state exactly "NO DEFECTS FOUND". At the very end of your final message, end with exactly "adversarial-report: complete".'
 available_tools:
 - browser_navigate
 - browser_screenshot

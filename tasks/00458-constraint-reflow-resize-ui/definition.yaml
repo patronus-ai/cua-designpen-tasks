@@ -1,0 +1,39 @@
+id: 00458-constraint-reflow-resize-ui
+start_url: http://cua_designpen.web
+prompt: |
+  Create a plain (non-auto-layout) frame roughly 600 wide with the Frame tool. Draw a small rectangle inside it, positioned near the frame's RIGHT edge (leave a small visible gap, about 20px, between the rectangle's right side and the frame's right border). Note the gap.
+
+  With the rectangle selected, open the constraints controls via the pin toggle in the Position section and set the horizontal constraint select to "Right" (pin right).
+
+  Now select the frame and make it noticeably wider — drag its right-middle resize handle to the right by about 200px (or set the frame's W value ~200px larger). Because the child is pinned right, it must reflow: the rectangle should move right along with the frame's right edge so the gap between the rectangle's right side and the frame's right border stays the same as before the resize. The rectangle must NOT stay stuck near the old (left-of-center) position.
+
+  Confirm the reflow happened: after widening the frame, the rectangle's right-edge gap to the frame is unchanged and the rectangle's X position increased by about the same amount the frame widened. Report the rectangle's X before and after.
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

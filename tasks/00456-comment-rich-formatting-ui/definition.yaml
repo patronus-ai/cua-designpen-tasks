@@ -1,0 +1,40 @@
+id: 00456-comment-rich-formatting-ui
+start_url: http://cua_designpen.web
+prompt: |
+  Activate the Comment tool from the toolbar and click an empty spot on the canvas to place a comment pin and open the composer.
+
+  In the comment editor, write a review note that uses rich formatting, entered with the composer's inline-formatting controls (not by typing literal markdown characters):
+  - A bold run: press Cmd/Ctrl+B, type the word "blocker", then press Cmd/Ctrl+B again to turn bold off.
+  - An italic run: press Cmd/Ctrl+I, type the word "later", then press Cmd/Ctrl+I again.
+  - A hyperlink: type the word "spec", select it, press Cmd/Ctrl+K to open the "Add link" dialog, enter https://example.com/spec in the link URL field, and confirm with "Add link".
+
+  Submit the comment (press Enter or click the send button). Then open the posted comment thread and confirm the body renders formatted: "blocker" appears bold, "later" appears italic, and "spec" is a clickable link — the raw markers (**, _, [ ]( )) must NOT be visible as literal text.
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

@@ -1,0 +1,37 @@
+id: 00459-frame-device-preset-ui
+start_url: http://cua_designpen.web
+prompt: |
+  Activate the Frame tool from the toolbar (shortcut F). With the Frame tool active, the right sidebar shows the frame device-presets panel (categories like Phone, Tablet, Desktop, Watch, Paper).
+
+  In the "Phone" category, click the "iPhone 16" preset. This should create a new frame on the canvas, named "iPhone 16", sized to that device's dimensions, and select it.
+
+  Confirm the created frame takes the preset's size, not an arbitrary drawn size: the selected layer is named "iPhone 16", and its width reads 393 and its height reads 852 in the properties panel. Report the width and height you observe.
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

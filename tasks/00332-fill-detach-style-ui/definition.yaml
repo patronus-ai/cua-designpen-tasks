@@ -1,13 +1,11 @@
 id: 00332-fill-detach-style-ui
 start_url: http://cua_designpen.web
-prompt: 'Create a paint style (any color) and apply it to a new rectangle''s fill via the fill apply-styles popover.
-  Then detach the style from the rectangle''s fill using the detach action in the apply-styles panel, and recolor
-  just this rectangle to pure blue (#0000FF).
+prompt: |-
+  Create a fill style named "Brand Red" (pure red #FF0000) and apply it to a rectangle. Then detach the rectangle from the style: open the fill apply-styles popover and select "No style" — in this app that is the detach action; it unlinks the style while keeping the current color as a plain fill. Finally change the rectangle's fill to pure blue #0000FF and confirm the "Brand Red" style itself still exists and is still red.
 
+  Base your verdict ONLY on the end state: rectangle is #0000FF with no linked style, and the "Brand Red" style still exists unchanged.
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
 available_tools:
 - browser_navigate
 - browser_screenshot

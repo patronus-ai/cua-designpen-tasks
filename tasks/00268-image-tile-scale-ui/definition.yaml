@@ -1,12 +1,11 @@
 id: 00268-image-tile-scale-ui
 start_url: http://cua_designpen.web
-prompt: 'Draw a rectangle and give it an image fill with any picture. Set the scale mode to Tile, then type 50 into
-  the tile scale percent field so each tile renders at half the image''s original size.
+prompt: |-
+  Draw a rectangle and give it an image fill. Switching the fill type to Image automatically applies a built-in placeholder picture (Figma-style default image) — this environment has no file-upload or external-image provider, so you do NOT need to (and cannot) upload your own file; the auto-seeded placeholder IS a real, tileable image and is the expected, correct content here. Do not treat the "Upload from computer" prompt or the placeholder as a blocker. With the image fill in place, set the scale mode to Tile, then type 50 into the tile scale percent field so each tile renders at half the image's original size.
 
+  Judge success by the end state only: the rectangle has an image fill, scale mode = Tile, and tile scale = 50%. If those are set, the task succeeded — approve.
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
 available_tools:
 - browser_navigate
 - browser_screenshot

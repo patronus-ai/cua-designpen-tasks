@@ -1,13 +1,9 @@
 id: 00030-vector-cut-divide-ui
 start_url: http://cua_designpen.web
-prompt: 'Draw a closed square outline with the Pen tool (P) and commit. Double-click it to enter vector edit mode,
-  activate the Cut subtool (X), then drag a cut line straight across the square from one corner to the opposite
-  corner.
+prompt: |-
+  Draw a closed square outline with the Pen tool (P) and commit it. Double-click it to enter vector edit mode, activate the Cut subtool (X), then drag a cut line straight across the square from one corner to the opposite corner to divide it. A cut leaves two pieces that share a coincident point at the cut, so the exported path data may serialize as a single connected chain (one "M") even though the cut worked — do NOT judge by counting SVG subpaths or "M" commands, and clicking near the target point is enough (no exact-pixel precision required). Base your verdict on the end state: the shape has been cut/divided as described.
 
-
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
 available_tools:
 - browser_navigate
 - browser_screenshot

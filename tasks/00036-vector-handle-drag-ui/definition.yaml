@@ -1,12 +1,13 @@
 id: 00036-vector-handle-drag-ui
 start_url: http://cua_designpen.web
-prompt: 'Draw a short line with the Pen tool (P) and commit. Double-click it to enter vector edit mode, select one
-  endpoint, and drag its direction handle tip out and away so the stroke leaves that point as a curve.
+prompt: |-
+  Draw a short line with the Pen tool (P) and commit it. Double-click it to enter vector edit mode, then make the stroke leave one endpoint as a curve by pulling a direction handle out of that endpoint.
 
+  Note: a freshly-drawn straight endpoint has NO visible direction handle yet (its tangents are zero-length) — that is normal, not a bug. To pull a handle out of it, use the Bend tool (or hold Ctrl/Cmd) and drag directly from the endpoint anchor outward; drag with a clear, continuous motion (a few pixels is not enough — the bend needs enough travel to register) so a new direction handle is drawn out and the stroke curves away from that point. If dragging straight off the bare anchor does not take, use this reliable fallback: with the Bend tool drag the segment body to curve it (this creates direction handles on both endpoints), then adjust the endpoint's now-existing handle. Both are valid ways to do this.
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  Judge success by the end state: the stroke leaves that endpoint as a curve (the segment has a non-zero tangent there / the line is visibly curved, not straight). If so, the task succeeded — approve. The absence of a pre-existing handle on a straight endpoint is expected and not a blocker.
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
 available_tools:
 - browser_navigate
 - browser_screenshot

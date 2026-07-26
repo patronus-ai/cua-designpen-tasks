@@ -1,12 +1,11 @@
 id: 00262-gradient-stop-select-drag-ui
 start_url: http://cua_designpen.web
-prompt: 'Draw a rectangle with a gradient fill, select the first stop''s marker on the gradient bar, and move it
-  to exactly 25% along the gradient (drag it, or type 25 into the stop''s position field).
+prompt: |-
+  Draw a rectangle and give it a linear gradient fill. In the fill color picker's gradient editor, click the first stop marker on the gradient bar to select it, then move that stop to the 25% position. Preferred method: type 25 into the stop's numeric position field and confirm — this is a fully valid way to complete the task. (You may also try dragging the marker or the on-canvas gradient handle, but if a drag does not register in your environment, use the numeric field; that is not a defect of the app.)
 
+  Base your verdict ONLY on the end state: the selected stop sits at position 25%.
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
 available_tools:
 - browser_navigate
 - browser_screenshot

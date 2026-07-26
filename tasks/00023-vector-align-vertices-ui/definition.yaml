@@ -1,7 +1,9 @@
 id: 00023-vector-align-vertices-ui
 start_url: http://cua_designpen.web
 prompt: |-
-  With the Pen tool (P), click out a rough 4-point zigzag line and press Enter to commit. Double-click the path to enter vector edit mode, select all four vertices (Ctrl+A or drag a marquee around them), and use the alignment row in the right-hand vector edit panel to align them vertically so all points sit on the same horizontal level.
+  With the Pen tool (P), click out a rough 4-point zigzag line and press Enter to commit it. The Pen tool stays armed after Enter, so press Escape or switch to the Move/Select tool (V) first — otherwise the next canvas drag would draw a new path. Then double-click the committed path to enter vector edit mode and select all four vertices with Ctrl+A. (Use Ctrl+A, not a marquee drag: while the Pen tool is still active a drag on the canvas draws a new line instead of selecting the points.) With all four vertices selected, use the alignment row in the right-hand vector edit panel to align them vertically so every point sits on the same horizontal level.
+
+  Judge success by the end state: all four vertices share the same Y coordinate (the path bounding-box height collapses to 0 / all Y values equal). The alignment row is the feature under test; if the vertices are aligned, the task succeeded — approve.
 
   At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
 available_tools:

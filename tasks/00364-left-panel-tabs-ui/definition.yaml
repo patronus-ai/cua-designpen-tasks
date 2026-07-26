@@ -1,13 +1,11 @@
 id: 00364-left-panel-tabs-ui
 start_url: http://cua_designpen.web
-prompt: 'Draw a rounded rectangle and turn it into a component. Then switch the left panel to the Assets tab using
-  the tab strip at the top of the panel, find the component there, and place two copies of it onto the canvas from
-  the Assets panel.
+prompt: |-
+  Switch the left panel to the Assets view using the vertical icon rail along the far-left edge of the window (the File / Assets / Tools / Variables icons). Open Assets, then drag two instances of any component from "Created in this file" onto the canvas. If no component exists yet, first create a simple one: draw a rectangle, right-click it and choose "Create component", then drag it in twice from the Assets panel.
 
+  Base your verdict ONLY on whether the Assets view opened from the rail and two instances landed on the canvas.
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
 available_tools:
 - browser_navigate
 - browser_screenshot

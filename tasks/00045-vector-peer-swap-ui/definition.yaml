@@ -1,13 +1,11 @@
 id: 00045-vector-peer-swap-ui
 start_url: http://cua_designpen.web
-prompt: 'Draw a straight line with the Pen tool (P), commit, and double-click it to enter vector edit mode. Use
-  the Cut subtool (X) to slice it into two separate pieces. Then switch back to the Move subtool (V) and grab a
-  vertex on the other piece — the one you were not just editing — and drag it somewhere new.
+prompt: |-
+  Draw a straight horizontal line with the Pen tool (P) (two clicks), press Enter to commit it, then double-click the line to enter vector edit mode. Use the Cut subtool (X) and click the middle of the line to slice it into two pieces. Switch back to the Move subtool (V). Now grab the FAR free endpoint of the other piece — the outer vertex that sits well away from the cut point, NOT the anchor at the cut itself — and drag it to a clearly new location on the canvas.
 
+  Judge success ONLY by whether that endpoint visibly moved to its new position (confirm with a screenshot). Do NOT judge by inspecting the exported SVG or counting subpaths / "M" commands: the two cut pieces share a coincident anchor at the cut point, so the path data may serialize as a single connected chain (one "M") even though the drag worked correctly — that is expected serialization, not a failure. As long as you selected the Cut subtool, sliced the line, switched to Move, and dragged the other piece’s far endpoint to a new spot, the task succeeded.
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
 available_tools:
 - browser_navigate
 - browser_screenshot

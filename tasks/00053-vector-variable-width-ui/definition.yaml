@@ -1,13 +1,11 @@
 id: 00053-vector-variable-width-ui
 start_url: http://cua_designpen.web
-prompt: 'Draw a straight stroke with the Pen tool (P) and commit. Double-click it to enter vector edit mode, activate
-  the Variable width subtool (vector edit toolbar "More" menu > Variable width, or press Shift+W), and drag on the
-  middle of the stroke to make it swell thicker there than at its ends, calligraphy style.
+prompt: |-
+  Draw a straight horizontal stroke with the Pen tool (P) and commit it (press Escape or Enter to finish). This creates a "Vector 1" layer whose bounding box is zero-height, so clicking the thin line on the canvas may not select it — instead select "Vector 1" in the Layers panel and press Enter to enter vector edit mode. Activate the Variable width subtool (vector edit toolbar "More" menu > Variable width, or press Shift+W), then drag on the middle of the stroke to make it swell thicker there than at its ends, calligraphy style.
 
+  Base your verdict ONLY on whether the stroke ended up swollen in the middle and tapered at the ends. Selecting the thin line via the Layers panel instead of clicking it on canvas is the intended path here and is not a blocker.
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
 available_tools:
 - browser_navigate
 - browser_screenshot

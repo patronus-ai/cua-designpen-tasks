@@ -1,12 +1,11 @@
 id: 00264-image-adjustments-ui
 start_url: http://cua_designpen.web
-prompt: 'Draw a rectangle and give it an image fill (Image tab in the paint panel, choose any picture). Then drag
-  the Saturation adjustment slider in the image fill panel all the way to maximum.
+prompt: |-
+  Draw a rectangle and give it an image fill (any image). Open the image fill's Adjustments and set Saturation to its maximum (value 100). To set the value, CLICK directly at the far-right end of the Saturation slider track — the slider sets its value from the click position. If a press-and-drag gesture does not register in your environment, clicking the target position instead is a fully valid way to complete this task, not a defect. Verify the value reads 100 and persists after deselecting and reselecting the shape.
 
+  Base your verdict ONLY on the end state: Saturation = 100 and the canvas shows the more saturated image.
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
 available_tools:
 - browser_navigate
 - browser_screenshot

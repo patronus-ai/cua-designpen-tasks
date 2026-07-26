@@ -1,13 +1,13 @@
 id: 00067-pen-remove-vertex-ui
 start_url: http://cua_designpen.web
-prompt: 'With the Pen tool (P), draw a 5-point zigzag (clicks at (100,300), (160,200), (220,300), (280,200), (340,300))
-  and commit it. Then, still with the pen active on that path in edit mode, click one of its middle anchor points
-  so that point is removed and the path simplifies.
+prompt: |-
+  With the Pen tool (P), draw a 5-point zigzag (clicks at (100,300), (160,200), (220,300), (280,200), (340,300)) and commit it with Enter. Then enter vector edit mode on that path (double-click it) and remove one of its middle anchor points so the path simplifies.
 
+  Reliable way to remove the middle anchor: click that anchor until it is genuinely SELECTED (it turns a solid blue dot, not just a hover glow), then press Delete or Backspace — the point is removed and the path heals into a simpler shape. Clicking or Alt-clicking directly on a middle anchor with the Pen tool also removes it, but only when the click lands exactly on the point; if a pen click merely highlights the node without removing it, fall back to the select-then-Delete method above — that is a valid, expected way to do this and not a bug. Important: pressing Delete when NO vertex is selected removes the whole path (that is normal), so make sure the middle anchor is solid-blue selected before deleting.
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  Judge success by the end state: exactly one middle anchor is gone (the path drops from 5 anchors to 4) and it is still a single simplified Vector. If so, the task succeeded — approve.
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and end with exactly "verdict: not-approve".
 available_tools:
 - browser_navigate
 - browser_screenshot

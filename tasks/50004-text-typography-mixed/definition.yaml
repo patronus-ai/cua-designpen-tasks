@@ -1,0 +1,83 @@
+id: 50004-text-typography-mixed
+start_url: http://cua_designpen.web
+prompt: 'Text is where the two surfaces are most likely to drift.
+
+
+  1. With MCP, create a TEXT node at x=100 y=120 and set its content to "Parity check".
+
+  2. With MCP, set its font size to 32.
+
+  3. In the browser, select the text and read the Typography section: the family, the size 32 and the content must
+  match. Screenshot it.
+
+  4. Change the size to 18 in the UI''s Typography section.
+
+  5. Set letter spacing to 10 in the UI. That field is a percentage field and numeric-only: you type 10 and it means
+  10%, and the readout stays a bare "10" — that is the intended value, not a bug.
+
+  6. With MCP, get_node on the text — size must be 18 and the letter spacing must read as 10% (however the tool
+  expresses it). A value of 10px instead of 10% is a real finding.
+
+  7. Finally edit the copy in the UI (double-click the text, type " v2" at the end, press Escape) and confirm MCP
+  reads the updated string.
+
+
+  Work in the order given and keep it tight — one action per step, no exploratory detours. Every time you cross
+  from MCP to UI or back, check that both surfaces agree about the same document.
+
+
+  Report every disagreement you find using exactly this format, one block per finding:
+
+
+  DESYNC #<n>
+
+  Step: <what you did, on which surface>
+
+  MCP says: <tool call and its result>
+
+  UI says: <what the panel / canvas / layer list shows>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  A value that reads back differently on the two surfaces, an edit on one surface that the other never sees, a node
+  missing from one of them, or a stale read after a write all count as findings. Rounding of the same number (e.g.
+  99.6 shown as 100) is cosmetic, not a desync. If both surfaces agreed throughout, state exactly "NO DESYNC FOUND".
+  At the very end of your final message, end with exactly "mixed-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- create_shape
+- set_text
+- set_font
+- get_node
+- set_text_properties
+required_tools:
+- browser
+- create_shape
+- set_text
+- set_font
+- get_node
+- set_text_properties
+rewards:
+- name: Mixed MCP+UI report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mixed-report: complete'

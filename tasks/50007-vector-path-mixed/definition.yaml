@@ -1,0 +1,80 @@
+id: 50007-vector-path-mixed
+start_url: http://cua_designpen.web
+prompt: 'Vector geometry across both surfaces. Avoid pixel-perfect gestures where a panel or a selection will do.
+
+
+  1. With MCP, create a vector with three points forming an open L shape somewhere in the middle of the canvas,
+  then read it back with path_get and note the coordinates.
+
+  2. In the browser, press Shift+1, screenshot, and confirm the path is drawn as described.
+
+  3. Enter vector editing in the UI: make sure the move tool is active (press Escape, then V), then double-click
+  the path. Click one end vertex until it is solid-selected — do not drag a marquee, and do not use the pen tool
+  here.
+
+  4. Move that vertex with the arrow keys (10 presses of Down) rather than dragging, so the move is exact.
+
+  5. With MCP, path_get again — exactly one point must have moved, by the amount the arrow keys applied, and node_bounds
+  must have grown accordingly. Unchanged coordinates for the other points are expected.
+
+  6. Press Escape to leave vector editing and confirm the shape is still a single vector in the layer list, not
+  two.
+
+
+  Work in the order given and keep it tight — one action per step, no exploratory detours. Every time you cross
+  from MCP to UI or back, check that both surfaces agree about the same document.
+
+
+  Report every disagreement you find using exactly this format, one block per finding:
+
+
+  DESYNC #<n>
+
+  Step: <what you did, on which surface>
+
+  MCP says: <tool call and its result>
+
+  UI says: <what the panel / canvas / layer list shows>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  A value that reads back differently on the two surfaces, an edit on one surface that the other never sees, a node
+  missing from one of them, or a stale read after a write all count as findings. Rounding of the same number (e.g.
+  99.6 shown as 100) is cosmetic, not a desync. If both surfaces agreed throughout, state exactly "NO DESYNC FOUND".
+  At the very end of your final message, end with exactly "mixed-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- create_vector
+- path_get
+- get_node
+- node_bounds
+required_tools:
+- browser
+- create_vector
+- path_get
+- get_node
+- node_bounds
+rewards:
+- name: Mixed MCP+UI report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mixed-report: complete'

@@ -1,0 +1,81 @@
+id: 50005-autolayout-mixed
+start_url: http://cua_designpen.web
+prompt: 'Auto layout, half over MCP and half in the panel.
+
+
+  1. With MCP, create a FRAME 300x200 at x=40 y=40 named "Stack", then create two RECTANGLEs 80x40 and reparent
+  both into the frame.
+
+  2. With MCP, turn on auto layout on the frame: vertical direction, gap 16, padding 12 on all sides.
+
+  3. In the browser, select the frame and read the Auto layout section — direction, gap and padding must match,
+  and the two rectangles must be stacked with visible spacing. Screenshot it.
+
+  4. In the UI, change the gap to 32 and the direction to horizontal.
+
+  5. With MCP, get_node on the frame — gap 32 and horizontal direction must both be there, and the children''s X/Y
+  must reflect the new arrangement.
+
+  6. Note the frame''s sizing mode (fixed vs hug) as reported by MCP and as shown in the panel. If they disagree,
+  that is a finding.
+
+
+  Work in the order given and keep it tight — one action per step, no exploratory detours. Every time you cross
+  from MCP to UI or back, check that both surfaces agree about the same document.
+
+
+  Report every disagreement you find using exactly this format, one block per finding:
+
+
+  DESYNC #<n>
+
+  Step: <what you did, on which surface>
+
+  MCP says: <tool call and its result>
+
+  UI says: <what the panel / canvas / layer list shows>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  A value that reads back differently on the two surfaces, an edit on one surface that the other never sees, a node
+  missing from one of them, or a stale read after a write all count as findings. Rounding of the same number (e.g.
+  99.6 shown as 100) is cosmetic, not a desync. If both surfaces agreed throughout, state exactly "NO DESYNC FOUND".
+  At the very end of your final message, end with exactly "mixed-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- create_shape
+- set_layout
+- set_layout_child
+- reparent_node
+- get_node
+required_tools:
+- browser
+- create_shape
+- set_layout
+- set_layout_child
+- reparent_node
+- get_node
+rewards:
+- name: Mixed MCP+UI report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mixed-report: complete'

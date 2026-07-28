@@ -1,0 +1,124 @@
+{
+  "mixed": {
+    "create-mcp-verify-ui": {
+      "number": "50001",
+      "dir": "50001-create-mcp-verify-ui-mixed",
+      "category": "crud-parity",
+      "mcp_tools": [
+        "create_shape",
+        "find_nodes",
+        "get_node",
+        "rename_node",
+        "delete_node"
+      ]
+    },
+    "draw-ui-inspect-mcp": {
+      "number": "50002",
+      "dir": "50002-draw-ui-inspect-mcp-mixed",
+      "category": "crud-parity",
+      "mcp_tools": [
+        "find_nodes",
+        "get_node",
+        "node_bounds",
+        "node_resize",
+        "get_page_tree"
+      ]
+    },
+    "fill-roundtrip": {
+      "number": "50003",
+      "dir": "50003-fill-roundtrip-mixed",
+      "category": "appearance-parity",
+      "mcp_tools": [
+        "create_shape",
+        "set_fill",
+        "get_node",
+        "select_nodes"
+      ]
+    },
+    "text-typography": {
+      "number": "50004",
+      "dir": "50004-text-typography-mixed",
+      "category": "text-parity",
+      "mcp_tools": [
+        "create_shape",
+        "set_text",
+        "set_font",
+        "get_node",
+        "set_text_properties"
+      ]
+    },
+    "autolayout": {
+      "number": "50005",
+      "dir": "50005-autolayout-mixed",
+      "category": "layout-parity",
+      "mcp_tools": [
+        "create_shape",
+        "set_layout",
+        "set_layout_child",
+        "reparent_node",
+        "get_node"
+      ]
+    },
+    "component-instance": {
+      "number": "50006",
+      "dir": "50006-component-instance-mixed",
+      "category": "component-parity",
+      "mcp_tools": [
+        "create_shape",
+        "set_text",
+        "create_component",
+        "create_instance",
+        "get_node",
+        "node_children"
+      ]
+    },
+    "vector-path": {
+      "number": "50007",
+      "dir": "50007-vector-path-mixed",
+      "category": "vector-parity",
+      "mcp_tools": [
+        "create_vector",
+        "path_get",
+        "get_node",
+        "node_bounds"
+      ]
+    },
+    "pages": {
+      "number": "50008",
+      "dir": "50008-pages-mixed",
+      "category": "document-parity",
+      "mcp_tools": [
+        "create_page",
+        "switch_page",
+        "list_pages",
+        "get_current_page",
+        "create_shape"
+      ]
+    },
+    "paint-style": {
+      "number": "50009",
+      "dir": "50009-paint-style-mixed",
+      "category": "appearance-parity",
+      "mcp_tools": [
+        "create_shape",
+        "create_paint_style",
+        "apply_paint_style",
+        "list_paint_styles",
+        "get_node",
+        "node_bindings"
+      ]
+    },
+    "export-parity": {
+      "number": "50010",
+      "dir": "50010-export-parity-mixed",
+      "category": "export-parity",
+      "mcp_tools": [
+        "create_shape",
+        "set_fill",
+        "get_page_tree",
+        "export_svg",
+        "viewport_zoom_to_fit"
+      ]
+    }
+  }
+}

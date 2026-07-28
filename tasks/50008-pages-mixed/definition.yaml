@@ -1,0 +1,79 @@
+id: 50008-pages-mixed
+start_url: http://cua_designpen.web
+prompt: 'Pages are document-level state — both surfaces must see the same set.
+
+
+  1. With MCP, list_pages and note what exists, then create a page named "MCP Page".
+
+  2. In the browser, open the page list in the left sidebar: the new page must be there. Screenshot it.
+
+  3. With MCP, switch to that page and create a RECTANGLE 100x100 on it.
+
+  4. In the UI, the canvas must be showing "MCP Page" with that rectangle on it — if the UI is still on the old
+  page while get_current_page says otherwise, that is a finding.
+
+  5. Rename the page in the UI (double-click its name in the sidebar) to "UI Page".
+
+  6. With MCP, list_pages and get_current_page — the new name must be reflected, the page count must be unchanged,
+  and the rectangle must still be on that page.
+
+
+  Work in the order given and keep it tight — one action per step, no exploratory detours. Every time you cross
+  from MCP to UI or back, check that both surfaces agree about the same document.
+
+
+  Report every disagreement you find using exactly this format, one block per finding:
+
+
+  DESYNC #<n>
+
+  Step: <what you did, on which surface>
+
+  MCP says: <tool call and its result>
+
+  UI says: <what the panel / canvas / layer list shows>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  A value that reads back differently on the two surfaces, an edit on one surface that the other never sees, a node
+  missing from one of them, or a stale read after a write all count as findings. Rounding of the same number (e.g.
+  99.6 shown as 100) is cosmetic, not a desync. If both surfaces agreed throughout, state exactly "NO DESYNC FOUND".
+  At the very end of your final message, end with exactly "mixed-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- create_page
+- switch_page
+- list_pages
+- get_current_page
+- create_shape
+required_tools:
+- browser
+- create_page
+- switch_page
+- list_pages
+- get_current_page
+- create_shape
+rewards:
+- name: Mixed MCP+UI report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mixed-report: complete'

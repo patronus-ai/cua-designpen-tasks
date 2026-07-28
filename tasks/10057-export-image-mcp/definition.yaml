@@ -1,7 +1,9 @@
 id: 10057-export-image-mcp
 start_url: http://cua_designpen.web
-prompt: 'Using only MCP tools: create a 100x100 rectangle named Source, call export_image on it with format PNG, then create
-  a second 100x100 rectangle named Photo and set the exported PNG data as Photo''s image fill via set_image_fill. When you
+prompt: 'Using only MCP tools: create a 100x100 rectangle named Source and give it a solid fill (create_shape takes a
+  fill argument, or use set_fill) — a rectangle created without one has no fill at all, so exporting it would produce a
+  fully transparent image, which is expected and not a bug. Then call export_image on Source with format PNG, create a
+  second 100x100 rectangle named Photo, and set the exported PNG data as Photo''s image fill via set_image_fill. When you
   are done, call viewport_zoom_to_fit, then verify the result with the available MCP tools and report what you found.
 
 
@@ -10,6 +12,7 @@ prompt: 'Using only MCP tools: create a 100x100 rectangle named Source, call exp
   "verdict: not-approve".'
 available_tools:
 - export_image
+- set_fill
 - create_shape
 - set_image_fill
 - get_node

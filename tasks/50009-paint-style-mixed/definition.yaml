@@ -1,0 +1,84 @@
+id: 50009-paint-style-mixed
+start_url: http://cua_designpen.web
+prompt: 'A shared paint style, applied over MCP and detached in the UI.
+
+
+  1. With MCP, create two RECTANGLEs side by side, then create a paint style named "Brand/Primary" with the colour
+  #7A5AF8 and apply it to both.
+
+  2. In the browser, select one rectangle: the Fill row must show the style name rather than a bare hex, and both
+  shapes must be purple. Screenshot it.
+
+  3. In the UI, detach the style from that one shape (the Fill row''s style control offers "No style" / detach)
+  — the colour stays, the link goes.
+
+  4. With MCP, check both shapes: the detached one must no longer reference the style while keeping #7A5AF8, and
+  the other must still be bound to it.
+
+  5. With MCP, change the style''s colour to #12B76A. Only the still-bound shape may change — in the UI as well
+  as in what MCP reports.
+
+  6. list_paint_styles must show exactly one style with its current colour.
+
+
+  Work in the order given and keep it tight — one action per step, no exploratory detours. Every time you cross
+  from MCP to UI or back, check that both surfaces agree about the same document.
+
+
+  Report every disagreement you find using exactly this format, one block per finding:
+
+
+  DESYNC #<n>
+
+  Step: <what you did, on which surface>
+
+  MCP says: <tool call and its result>
+
+  UI says: <what the panel / canvas / layer list shows>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  A value that reads back differently on the two surfaces, an edit on one surface that the other never sees, a node
+  missing from one of them, or a stale read after a write all count as findings. Rounding of the same number (e.g.
+  99.6 shown as 100) is cosmetic, not a desync. If both surfaces agreed throughout, state exactly "NO DESYNC FOUND".
+  At the very end of your final message, end with exactly "mixed-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- create_shape
+- create_paint_style
+- apply_paint_style
+- list_paint_styles
+- get_node
+- node_bindings
+required_tools:
+- browser
+- create_shape
+- create_paint_style
+- apply_paint_style
+- list_paint_styles
+- get_node
+- node_bindings
+rewards:
+- name: Mixed MCP+UI report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mixed-report: complete'

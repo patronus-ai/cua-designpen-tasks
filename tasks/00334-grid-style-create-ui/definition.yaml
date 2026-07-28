@@ -1,13 +1,19 @@
 id: 00334-grid-style-create-ui
 start_url: http://cua_designpen.web
 prompt: 'With nothing selected, open the Styles section "+" in the properties panel and create a new layout-guide
-  style containing a simple column grid (e.g. 4 columns). Then create a new frame (e.g. 800x600) and apply that
-  layout-guide style to it so the columns show on the frame.
+  style containing a simple column grid (e.g. 4 columns). Then create a new frame (e.g. 800x600) and apply
+  that layout-guide style to it.
 
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  Layout guide bands are hidden globally by default (Figma parity), so after applying the style turn them
+  on via Main menu > View > "Layout guides" (or press Shift+G) — only then do the columns paint on the
+  frame. A frame that shows no bands before you flip that toggle is expected, not a bug; do not treat
+  the default-off state as a defect.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without
+  problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say
+  what went wrong and end with exactly "verdict: not-approve".'
 available_tools:
 - browser_navigate
 - browser_screenshot

@@ -6,13 +6,11 @@ prompt: 'Build a card component: a rectangle plus a small circle "notification d
   Properties section.
 
 
-  Use the layer-level route to create the property: select the dot layer itself (inside the component)
-  and use its "Create boolean property" button — that one binds the layer''s visibility and shows an eye
-  icon on the property. Do not use the component-root Properties "+" form: its "Apply to layer" dropdown
-  is a native select that the pointer driver often fails to commit, and a property created with no layer
-  selected is a known no-op that currently cannot be deleted (tracked as RLCU-3000). If you end up with
-  such a stray property, ignore it and judge the task by the layer-bound property working; a leftover
-  unbound definition is not a blocker.
+  Prefer the layer-level route to create the property: select the dot layer itself (inside the component)
+  and use its "Create boolean property" button — that binds the layer''s visibility directly and marks
+  the property with an eye icon. The component-root Properties "+" form also works, but its "Apply to
+  layer" dropdown is a native select that the pointer driver often fails to commit, so verify the chosen
+  layer actually stuck before submitting.
 
 
   At the very end of your final message, state whether the task went smoothly. If everything worked without

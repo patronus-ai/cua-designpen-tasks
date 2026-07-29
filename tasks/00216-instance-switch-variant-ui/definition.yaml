@@ -8,19 +8,14 @@ prompt: 'Build a button component set with two size variants and switch an insta
   and use "Create component set" (main menu or the canvas right-click menu) to combine them into one set.
 
 
-  Then, before inserting anything, click an empty spot on the canvas (or press Escape) so you are no longer
-  scoped inside the set — inserting while drilled into a component set parents the instance to the set
-  instead of the page, which is a known app issue (RLCU-3025) and not something to spend turns fighting.
-  With nothing entered, insert an instance of the Small variant from the Assets panel, select it, and
-  switch it to the Large variant with the Variant section select in the Design panel; that select is a
-  native dropdown, so if a click on the option does not commit, use the keyboard instead. Confirm the
-  instance resizes from 120 to 220 wide.
+  Before inserting anything, click an empty spot on the canvas (or press Escape) so no container is entered
+  — the instance belongs at the page root, next to the set, not inside it. Then insert an instance of
+  the Small variant from the Assets panel, select it, and switch it to the Large variant with the Variant
+  section select in the Design panel; that select is a native dropdown, so if a click on the option does
+  not commit, use the keyboard instead. Confirm the instance resizes from 120 to 220 wide.
 
 
-  If the instance still lands inside the set, do not fight the canvas drag: cut it (Ctrl+X), click empty
-  canvas, paste (Ctrl+V) — it lands at the page root — and carry on. A stray instance that had to be re-parented
-  that way is not a reason to withhold approval; judge the task by the two-variant set existing and the
-  instance switching from Small to Large.
+  Judge the task by the two-variant set existing and the instance switching from Small to Large.
 
 
   At the very end of your final message, state whether the task went smoothly. If everything worked without

@@ -1,12 +1,20 @@
 id: 00032-vector-delete-selected-ui
 start_url: http://cua_designpen.web
-prompt: 'With the Pen tool (P), draw a zigzag with 5 points and commit. Double-click it to enter vector edit mode,
-  click one of the middle vertices to select it, and press Delete to remove it.
+prompt: 'With the Pen tool (P), draw a zigzag with 5 points, then press Escape to commit the chain. Press
+  Escape a second time (or press V) before you touch the path again: committing a pen chain leaves the
+  Pen armed, and while the Pen is armed a plain click on a mid-path vertex deletes it instead of selecting
+  it — that is the Pen''s documented behaviour, not a bug, so drop to the Move tool first.
 
 
-  At the very end of your final message, state whether the task went smoothly. If everything worked without problems,
-  end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say what went wrong and
-  end with exactly "verdict: not-approve".'
+  With Move active, double-click the path to enter vector edit mode, click one of the middle vertices
+  to select it (it should stay in place and highlight), and press Delete to remove it. Judge the task
+  by the path going from 5 points to 4; if a vertex disappears on click because the Pen was still armed,
+  undo, switch to Move and redo the selection rather than reporting a defect.
+
+
+  At the very end of your final message, state whether the task went smoothly. If everything worked without
+  problems, end with exactly "verdict: approve". If you hit any problems, bugs, or blockers, briefly say
+  what went wrong and end with exactly "verdict: not-approve".'
 available_tools:
 - browser_navigate
 - browser_screenshot

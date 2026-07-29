@@ -1,0 +1,105 @@
+id: 60006-page-lifecycle-abuse-ui
+start_url: http://cua_designpen.web
+prompt: 'Your deliverable is a defect report whose final line is exactly "adversarial-report: complete".
+  That line is mandatory and unconditional: emit it if you found defects, if you found none, if the workflow
+  could not be finished, and even if you had to abandon the session early. Everything else in this prompt
+  is best-effort.
+
+
+  Create a second page named "Handoff", draw a rectangle on it, switch back to the first page and draw
+  an ellipse there.
+
+
+  While completing that workflow, attack page management. Create a page whose name is empty, one named
+  the same as an existing page, and one with 300 characters. Switch pages five times in rapid succession
+  and check the canvas ends up showing the content of the page the sidebar says is active. Start a drag
+  on the canvas and switch page mid-drag, then report whether a stray shape was created or the tool got
+  stuck. Delete the page that is currently active and report what the app switches to; then try to delete
+  the last remaining page and confirm it is refused with a clear message rather than leaving a document
+  with no pages. Undo a page deletion and check the page''s contents come back, not just an empty page.
+  Recover so the document ends in the state the workflow describes.
+
+
+  Baseline for this environment — deviations from it are findings, but these specific behaviours are intended
+  and must NOT be reported:
+
+  - Reloading or navigating away discards the unsaved local document; this container deliberately runs
+  without persistence.
+
+  - Layout guide bands stay hidden until View > "Layout guides" (Shift+G) is enabled.
+
+  - A shape with no fill exports as a transparent image.
+
+  - Sections are created without a background fill.
+
+  - Numeric fields round their readout; a value that reads back rounded to what you typed is correct.
+
+  - Native dropdown popups sometimes ignore a synthetic click on an option; retry or use the keyboard
+  before calling it a defect.
+
+
+  Turn budget — the report matters, exhaustive probing does not. Work cheaply: screenshot at checkpoints
+  rather than after every action, never retry a failed interaction more than twice, and never re-verify
+  something you already wrote down. Treat the attack list as a menu: cover at least three of its angles,
+  and go further only while you clearly have turns to spare. Aim to finish all probing inside roughly
+  30 tool calls; once you approach 40, or the app stops responding, or anything else threatens to cut
+  the session short, stop probing immediately and write the report from what you already have. A short
+  report that arrives beats a thorough one that never does — an unfinished workflow is not a failed task,
+  but a missing report is.
+
+
+  Context guard — never spend your own output budget on bulk. Do not emit a single tool argument longer
+  than about 400 characters: to probe oversized input, send the largest payload that stays under that
+  ceiling and say in the report what size you actually tested. A tool that documents or enforces its own
+  length cap is not a defect. If a response comes back very large, record its approximate size once and
+  do not request it again; if a listing tool would return hundreds of entries, narrow the filter instead
+  of re-reading the whole set. Running out of context before the report is written is the one outcome
+  that makes this task worthless.
+
+
+  Log every defect you find using exactly this format, one block per defect:
+
+
+  DEFECT #<n>
+
+  Steps: <exact reproduction steps, including coordinates or element names>
+
+  Observed: <what actually happened>
+
+  Expected: <what should have happened>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Crashes, freezes, a canvas that stops repainting, broken or garbled rendering, silent failures (the
+  UI accepts an action and nothing happens), state that disagrees between the canvas, the layers panel
+  and the properties panel, data loss the workflow did not ask for, and missing or unhelpful error messages
+  all count as defects. If you found no defects, state exactly "NO DEFECTS FOUND". At the very end of
+  your final message, end with exactly "adversarial-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Adversarial report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'adversarial-report: complete'

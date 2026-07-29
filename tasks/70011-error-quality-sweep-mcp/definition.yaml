@@ -1,0 +1,145 @@
+id: 70011-error-quality-sweep-mcp
+start_url: http://cua_designpen.web
+prompt: 'Your deliverable is a report whose final line is exactly "mcp-harness-report: complete". That
+  line is mandatory and unconditional: emit it whether the chain ran clean, diverged everywhere, or had
+  to be abandoned part-way. Everything else in this prompt is best-effort.
+
+
+  Using the app''s MCP tools (a browser is available only to screenshot the canvas for confirmation),
+  work through the chain below.
+
+
+  Create one rectangle to have a valid id on hand, then run a deliberate error sweep across five different
+  tools of your choice from the list. For each tool, issue three calls: one with a nonexistent id ("0:99999"),
+  one with a required argument of the wrong type (a number where a string belongs, or an object where
+  an array belongs), and one with a required argument missing entirely. Separately, issue reads that legitimately
+  match nothing — find_nodes and query_nodes with a filter no node satisfies. Finish by confirming with
+  get_node and a browser screenshot that the document survived the sweep unchanged.
+
+
+  Judge the errors, not just their presence. For every failing call record whether the response is a structured
+  error rather than a transport failure or a crash; whether the message identifies which argument was
+  wrong and what was expected, i.e. whether you could self-correct from it alone (say so explicitly per
+  call); and whether anything internal leaked — stack traces, file paths, module names, container paths.
+  Then check that an empty-but-successful read is clearly distinguishable from an error: if "nothing matched"
+  and "your query was invalid" arrive in the same shape, that is a finding. Any invalid call that returns
+  success, or mutates the document anyway, is critical.
+
+
+  Grounding for this environment — these are intended and must NOT be reported as defects:
+
+  - `setup_problem` and `grade_problem` are harness plumbing, not part of the app''s tool surface; exclude
+  them from coverage claims.
+
+  - This deployment has no login, no accounts and no session tokens: the document is local to the container.
+
+  - Reloading or navigating away discards the unsaved document; there is no persistence layer to test.
+
+  - Numeric values may read back rounded; a rounded echo of what you wrote is a correct round-trip.
+
+  - A shape with no fill exports as a transparent image, and sections are created without a background
+  fill.
+
+
+  Turn budget — the report matters, chain completeness does not. Keep calls cheap: batch creations instead
+  of looping, screenshot only at the end unless a step needs visual confirmation, and never repeat a call
+  whose answer you already recorded. If a step is impossible, record it as a divergence and move on rather
+  than retrying. Aim to finish the chain inside roughly 35 tool calls; once you approach 45, or a call
+  hangs, or the container stops responding, stop the chain immediately and write the report plus the matrix
+  block from what you already have. Steps you never reached are reported as not-exercised — that is a
+  normal outcome. A missing report is the only real failure.
+
+
+  Context guard — never spend your own output budget on bulk. Do not emit a single tool argument longer
+  than about 400 characters: to probe oversized input, send the largest payload that stays under that
+  ceiling and say in the report what size you actually tested. A tool that documents or enforces its own
+  length cap is not a defect. If a response comes back very large, record its approximate size once and
+  do not request it again; if a listing tool would return hundreds of entries, narrow the filter instead
+  of re-reading the whole set. Running out of context before the report is written is the one outcome
+  that makes this task worthless.
+
+
+  Run this as a chain, not as isolated calls: the output of each step must be the input of the next, and
+  you must never retype a value you could have read. Before every call, state one line "EXPECT: <what
+  the response should contain>". After every call, state "ACTUAL: <what came back>" and then "OK" or "MISMATCH".
+  Never repair a mismatch silently — record it, then continue the chain so later steps still get exercised.
+
+
+  Report every divergence using exactly this format, one block per divergence:
+
+
+  MISMATCH #<n>
+
+  Step: <step number and tool name>
+
+  Call: <tool name with the exact arguments used>
+
+  Expected: <what the PRD-level behaviour or the previous step implies>
+
+  Actual: <the response, quoted>
+
+  Class: <round-trip | list-vs-detail | broken-reference | stale-read | shape-drift | pagination | error-quality
+  | context-size | missing-tool>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  A field that does not survive a write/read round-trip, a list response that disagrees with the detail
+  response about the same entity, a reference pointing at an entity that no longer exists, a read that
+  does not yet reflect a write that already returned, a silently truncated result set, and an error too
+  vague to self-correct from all count as divergences.
+
+
+  The quality-matrix rows in scope for this chain are: 2.3, 9.4, 13.3. Judge each one from what this chain
+  actually showed.
+
+
+  Close with a matrix block, one line per row you actually exercised, using exactly this shape:
+
+
+  MATRIX
+
+  <row> <PASS | FAIL | N/A> — <one-line evidence, naming the tool call that proves it>
+
+
+  Use N/A only with evidence for why the row cannot apply here, never as a way to skip a row you could
+  have tested. Then, at the very end of your final message, end with exactly "mcp-harness-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+- create_shape
+- get_node
+- update_node
+- delete_node
+- find_nodes
+- query_nodes
+- set_fill
+- set_text
+- reparent_node
+- group_nodes
+- export_image
+- viewport_zoom_to_fit
+required_tools:
+- browser
+rewards:
+- name: MCP harness report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'mcp-harness-report: complete'

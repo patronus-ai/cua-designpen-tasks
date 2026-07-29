@@ -1,0 +1,327 @@
+{
+  "adversarial": {
+    "panel-input-hostility": {
+      "number": "60001",
+      "dir": "60001-panel-input-hostility-ui",
+      "surface": "ui",
+      "category": "forms",
+      "angles": [
+        "malformed input",
+        "empty input",
+        "oversized input",
+        "double submit"
+      ]
+    },
+    "autolayout-dependency-break": {
+      "number": "60002",
+      "dir": "60002-autolayout-dependency-break-ui",
+      "surface": "ui",
+      "category": "referenced-records",
+      "angles": [
+        "delete referenced record",
+        "stale view",
+        "boundary values"
+      ]
+    },
+    "component-master-teardown": {
+      "number": "60003",
+      "dir": "60003-component-master-teardown-ui",
+      "surface": "ui",
+      "category": "referenced-records",
+      "angles": [
+        "delete referenced record",
+        "stale view",
+        "double action"
+      ]
+    },
+    "paint-style-in-use-abuse": {
+      "number": "60004",
+      "dir": "60004-paint-style-in-use-abuse-ui",
+      "surface": "ui",
+      "category": "referenced-records",
+      "angles": [
+        "delete referenced record",
+        "duplicate names",
+        "stale view"
+      ]
+    },
+    "text-content-hostility": {
+      "number": "60005",
+      "dir": "60005-text-content-hostility-ui",
+      "surface": "ui",
+      "category": "forms",
+      "angles": [
+        "hostile input",
+        "empty commit",
+        "oversized input",
+        "shortcut leakage"
+      ]
+    },
+    "page-lifecycle-abuse": {
+      "number": "60006",
+      "dir": "60006-page-lifecycle-abuse-ui",
+      "surface": "ui",
+      "category": "referenced-records",
+      "angles": [
+        "delete referenced record",
+        "duplicate names",
+        "rapid switching"
+      ]
+    },
+    "navigation-midflow": {
+      "number": "60007",
+      "dir": "60007-navigation-midflow-ui",
+      "surface": "ui",
+      "category": "lifecycle",
+      "angles": [
+        "navigate away mid-operation",
+        "back button after mutation",
+        "stale view"
+      ]
+    },
+    "undo-redo-hammer": {
+      "number": "60008",
+      "dir": "60008-undo-redo-hammer-ui",
+      "surface": "ui",
+      "category": "rapid-repeat",
+      "angles": [
+        "same action twice quickly",
+        "undo mid-operation",
+        "history integrity"
+      ]
+    },
+    "dev-handoff-stale": {
+      "number": "60009",
+      "dir": "60009-dev-handoff-stale-ui",
+      "surface": "ui",
+      "category": "stale-view",
+      "angles": [
+        "stale view",
+        "delete referenced record",
+        "rapid switching"
+      ]
+    },
+    "vector-session-hostility": {
+      "number": "60010",
+      "dir": "60010-vector-session-hostility-ui",
+      "surface": "ui",
+      "category": "rapid-repeat",
+      "angles": [
+        "cancel mid-flow",
+        "delete everything",
+        "mode confusion"
+      ]
+    },
+    "create-read-types": {
+      "number": "60011",
+      "dir": "60011-create-read-types-mcp",
+      "surface": "mcp",
+      "category": "type-abuse",
+      "angles": [
+        "wrong types",
+        "nonexistent ids",
+        "boundary values"
+      ],
+      "mcp_tools": [
+        "create_shape",
+        "get_node",
+        "find_nodes",
+        "update_node",
+        "delete_node",
+        "node_bounds",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "query-selector-injection": {
+      "number": "60012",
+      "dir": "60012-query-selector-injection-mcp",
+      "surface": "mcp",
+      "category": "injection",
+      "angles": [
+        "injection-shaped payloads",
+        "malformed selectors",
+        "boundary values"
+      ],
+      "mcp_tools": [
+        "create_shape",
+        "query_nodes",
+        "find_nodes",
+        "get_node",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "batch-atomicity": {
+      "number": "60013",
+      "dir": "60013-batch-atomicity-mcp",
+      "surface": "mcp",
+      "category": "atomicity",
+      "angles": [
+        "unsafe sequences",
+        "partial application",
+        "boundary values"
+      ],
+      "mcp_tools": [
+        "create_shape",
+        "batch_update",
+        "get_node",
+        "find_nodes",
+        "get_page_tree",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "structure-cycles": {
+      "number": "60014",
+      "dir": "60014-structure-cycles-mcp",
+      "surface": "mcp",
+      "category": "graph-integrity",
+      "angles": [
+        "cycles",
+        "self-referential input",
+        "cross-scope ids"
+      ],
+      "mcp_tools": [
+        "create_shape",
+        "group_nodes",
+        "ungroup_node",
+        "reparent_node",
+        "flatten_nodes",
+        "get_page_tree",
+        "create_page",
+        "switch_page",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "instance-property-abuse": {
+      "number": "60015",
+      "dir": "60015-instance-property-abuse-mcp",
+      "surface": "mcp",
+      "category": "components",
+      "angles": [
+        "self-reference",
+        "nonexistent names",
+        "wrong types"
+      ],
+      "mcp_tools": [
+        "create_shape",
+        "create_component",
+        "create_instance",
+        "set_instance_property",
+        "swap_instance_component",
+        "get_node",
+        "get_components",
+        "get_page_tree",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "image-fill-payloads": {
+      "number": "60016",
+      "dir": "60016-image-fill-payloads-mcp",
+      "surface": "mcp",
+      "category": "payloads",
+      "angles": [
+        "malformed payloads",
+        "oversized payloads",
+        "unsafe sequences"
+      ],
+      "mcp_tools": [
+        "create_shape",
+        "set_fill",
+        "set_image_fill",
+        "update_image_fill",
+        "get_node",
+        "export_image",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "text-tool-boundaries": {
+      "number": "60017",
+      "dir": "60017-text-tool-boundaries-mcp",
+      "surface": "mcp",
+      "category": "type-abuse",
+      "angles": [
+        "empty and oversized input",
+        "out-of-range indices",
+        "wrong target types"
+      ],
+      "mcp_tools": [
+        "create_shape",
+        "set_text",
+        "set_text_properties",
+        "set_font",
+        "set_font_range",
+        "attach_text_to_path",
+        "get_node",
+        "list_fonts",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "layout-tool-extremes": {
+      "number": "60018",
+      "dir": "60018-layout-tool-extremes-mcp",
+      "surface": "mcp",
+      "category": "type-abuse",
+      "angles": [
+        "wrong enums",
+        "boundary values",
+        "wrong target types"
+      ],
+      "mcp_tools": [
+        "create_shape",
+        "set_layout",
+        "set_layout_child",
+        "tidy",
+        "distribute",
+        "get_node",
+        "get_page_tree",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "export-response-shapes": {
+      "number": "60019",
+      "dir": "60019-export-response-shapes-mcp",
+      "surface": "mcp",
+      "category": "payloads",
+      "angles": [
+        "nonexistent ids",
+        "empty selection",
+        "oversized targets"
+      ],
+      "mcp_tools": [
+        "create_shape",
+        "set_fill",
+        "export_image",
+        "export_svg",
+        "export_pdf",
+        "get_node",
+        "find_nodes",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "page-and-state-tools": {
+      "number": "60020",
+      "dir": "60020-page-and-state-tools-mcp",
+      "surface": "mcp",
+      "category": "graph-integrity",
+      "angles": [
+        "delete referenced record",
+        "nonexistent ids",
+        "unsafe sequences"
+      ],
+      "mcp_tools": [
+        "create_page",
+        "switch_page",
+        "delete_page",
+        "reorder_page",
+        "list_pages",
+        "get_current_page",
+        "create_shape",
+        "select_nodes",
+        "get_selection",
+        "delete_node",
+        "viewport_set",
+        "viewport_get",
+        "viewport_zoom_to_fit"
+      ]
+    }
+  }
+}

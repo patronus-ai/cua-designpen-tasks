@@ -1,0 +1,273 @@
+{
+  "mcp-harness": {
+    "node-crud-chain": {
+      "number": "70001",
+      "dir": "70001-node-crud-chain-mcp",
+      "category": "crud",
+      "matrix_rows": [
+        "2.x",
+        "3.x",
+        "19.x"
+      ],
+      "mcp_tools": [
+        "create_shape",
+        "find_nodes",
+        "get_node",
+        "update_node",
+        "rename_node",
+        "node_bounds",
+        "clone_node",
+        "delete_node",
+        "get_page_tree",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "page-crud-chain": {
+      "number": "70002",
+      "dir": "70002-page-crud-chain-mcp",
+      "category": "crud",
+      "matrix_rows": [
+        "2.x",
+        "3.x",
+        "19.x"
+      ],
+      "mcp_tools": [
+        "create_page",
+        "list_pages",
+        "get_current_page",
+        "switch_page",
+        "reorder_page",
+        "delete_page",
+        "create_shape",
+        "find_nodes",
+        "get_page_tree",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "component-instance-chain": {
+      "number": "70003",
+      "dir": "70003-component-instance-chain-mcp",
+      "category": "crud",
+      "matrix_rows": [
+        "3.x",
+        "19.x"
+      ],
+      "mcp_tools": [
+        "create_shape",
+        "create_component",
+        "get_components",
+        "create_instance",
+        "set_instance_property",
+        "swap_instance_component",
+        "get_node",
+        "find_nodes",
+        "delete_node",
+        "get_page_tree",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "paint-style-chain": {
+      "number": "70004",
+      "dir": "70004-paint-style-chain-mcp",
+      "category": "crud",
+      "matrix_rows": [
+        "2.x",
+        "9.x",
+        "19.x"
+      ],
+      "mcp_tools": [
+        "create_paint_style",
+        "list_paint_styles",
+        "apply_paint_style",
+        "update_paint_style",
+        "detach_paint_style",
+        "get_node",
+        "create_shape",
+        "set_fill",
+        "find_nodes",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "structure-tree-chain": {
+      "number": "70005",
+      "dir": "70005-structure-tree-chain-mcp",
+      "category": "crud",
+      "matrix_rows": [
+        "3.x",
+        "19.x"
+      ],
+      "mcp_tools": [
+        "create_shape",
+        "group_nodes",
+        "ungroup_node",
+        "reparent_node",
+        "node_children",
+        "node_ancestors",
+        "node_tree",
+        "get_page_tree",
+        "get_node",
+        "delete_node",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "text-round-trip-chain": {
+      "number": "70006",
+      "dir": "70006-text-round-trip-chain-mcp",
+      "category": "crud",
+      "matrix_rows": [
+        "2.x",
+        "19.x"
+      ],
+      "mcp_tools": [
+        "create_shape",
+        "set_text",
+        "get_node",
+        "set_text_properties",
+        "set_font",
+        "set_font_range",
+        "list_fonts",
+        "set_text_resize",
+        "find_nodes",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "vector-path-chain": {
+      "number": "70007",
+      "dir": "70007-vector-path-chain-mcp",
+      "category": "crud",
+      "matrix_rows": [
+        "2.x",
+        "19.x"
+      ],
+      "mcp_tools": [
+        "create_vector",
+        "path_get",
+        "path_set",
+        "path_move",
+        "path_scale",
+        "path_flip",
+        "flatten_nodes",
+        "get_node",
+        "node_bounds",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "layout-settle-chain": {
+      "number": "70008",
+      "dir": "70008-layout-settle-chain-mcp",
+      "category": "async",
+      "matrix_rows": [
+        "9.x",
+        "19.x"
+      ],
+      "mcp_tools": [
+        "create_shape",
+        "set_layout",
+        "set_layout_child",
+        "node_bounds",
+        "get_node",
+        "tidy",
+        "distribute",
+        "node_children",
+        "get_page_tree",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "shape-consistency-sweep": {
+      "number": "70009",
+      "dir": "70009-shape-consistency-sweep-mcp",
+      "category": "consistency",
+      "matrix_rows": [
+        "9.x",
+        "19.x"
+      ],
+      "mcp_tools": [
+        "create_shape",
+        "create_component",
+        "create_instance",
+        "get_node",
+        "find_nodes",
+        "query_nodes",
+        "node_children",
+        "node_tree",
+        "get_page_tree",
+        "get_selection",
+        "select_nodes",
+        "describe",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "pagination-and-size": {
+      "number": "70010",
+      "dir": "70010-pagination-and-size-mcp",
+      "category": "limits",
+      "matrix_rows": [
+        "9.3",
+        "13.1",
+        "13.2"
+      ],
+      "mcp_tools": [
+        "create_shape",
+        "batch_update",
+        "find_nodes",
+        "query_nodes",
+        "get_page_tree",
+        "node_tree",
+        "node_children",
+        "list_pages",
+        "get_node",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "error-quality-sweep": {
+      "number": "70011",
+      "dir": "70011-error-quality-sweep-mcp",
+      "category": "errors",
+      "matrix_rows": [
+        "2.3",
+        "9.4",
+        "13.3"
+      ],
+      "mcp_tools": [
+        "create_shape",
+        "get_node",
+        "update_node",
+        "delete_node",
+        "find_nodes",
+        "query_nodes",
+        "set_fill",
+        "set_text",
+        "reparent_node",
+        "group_nodes",
+        "export_image",
+        "viewport_zoom_to_fit"
+      ]
+    },
+    "read-write-interleave": {
+      "number": "70012",
+      "dir": "70012-read-write-interleave-mcp",
+      "category": "async",
+      "matrix_rows": [
+        "9.2",
+        "13.x",
+        "19.x"
+      ],
+      "mcp_tools": [
+        "create_shape",
+        "update_node",
+        "get_node",
+        "find_nodes",
+        "set_fill",
+        "node_bounds",
+        "delete_node",
+        "select_nodes",
+        "get_selection",
+        "create_page",
+        "switch_page",
+        "get_page_tree",
+        "clone_node",
+        "viewport_zoom_to_fit"
+      ]
+    }
+  }
+}

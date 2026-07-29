@@ -1,0 +1,105 @@
+id: 60008-undo-redo-hammer-ui
+start_url: http://cua_designpen.web
+prompt: 'Your deliverable is a defect report whose final line is exactly "adversarial-report: complete".
+  That line is mandatory and unconditional: emit it if you found defects, if you found none, if the workflow
+  could not be finished, and even if you had to abandon the session early. Everything else in this prompt
+  is best-effort.
+
+
+  Draw two overlapping rectangles, union them into one shape (Boolean > Union), then apply a #FF0000 fill
+  to the result.
+
+
+  While completing that workflow, attack the history. Press Ctrl+Z ten times in rapid succession, then
+  Ctrl+Shift+Z ten times, and check the document you land on is one you actually created, with the layers
+  panel agreeing with the canvas. Undo past the very first action and redo past the last one and report
+  any node that comes back empty, invisible, mispositioned or duplicated. Perform the union twice in quick
+  succession on the same selection. Undo a union and immediately draw a new shape, then try to redo and
+  confirm the redo branch was dropped cleanly rather than resurrecting a stale node. Start a drag on a
+  shape and press Ctrl+Z mid-gesture, then release, and report whether the gesture committed on top of
+  an undone state. Recover so the document ends in the state the workflow describes.
+
+
+  Baseline for this environment — deviations from it are findings, but these specific behaviours are intended
+  and must NOT be reported:
+
+  - Reloading or navigating away discards the unsaved local document; this container deliberately runs
+  without persistence.
+
+  - Layout guide bands stay hidden until View > "Layout guides" (Shift+G) is enabled.
+
+  - A shape with no fill exports as a transparent image.
+
+  - Sections are created without a background fill.
+
+  - Numeric fields round their readout; a value that reads back rounded to what you typed is correct.
+
+  - Native dropdown popups sometimes ignore a synthetic click on an option; retry or use the keyboard
+  before calling it a defect.
+
+
+  Turn budget — the report matters, exhaustive probing does not. Work cheaply: screenshot at checkpoints
+  rather than after every action, never retry a failed interaction more than twice, and never re-verify
+  something you already wrote down. Treat the attack list as a menu: cover at least three of its angles,
+  and go further only while you clearly have turns to spare. Aim to finish all probing inside roughly
+  30 tool calls; once you approach 40, or the app stops responding, or anything else threatens to cut
+  the session short, stop probing immediately and write the report from what you already have. A short
+  report that arrives beats a thorough one that never does — an unfinished workflow is not a failed task,
+  but a missing report is.
+
+
+  Context guard — never spend your own output budget on bulk. Do not emit a single tool argument longer
+  than about 400 characters: to probe oversized input, send the largest payload that stays under that
+  ceiling and say in the report what size you actually tested. A tool that documents or enforces its own
+  length cap is not a defect. If a response comes back very large, record its approximate size once and
+  do not request it again; if a listing tool would return hundreds of entries, narrow the filter instead
+  of re-reading the whole set. Running out of context before the report is written is the one outcome
+  that makes this task worthless.
+
+
+  Log every defect you find using exactly this format, one block per defect:
+
+
+  DEFECT #<n>
+
+  Steps: <exact reproduction steps, including coordinates or element names>
+
+  Observed: <what actually happened>
+
+  Expected: <what should have happened>
+
+  Severity: <critical | major | minor | cosmetic>
+
+
+  Crashes, freezes, a canvas that stops repainting, broken or garbled rendering, silent failures (the
+  UI accepts an action and nothing happens), state that disagrees between the canvas, the layers panel
+  and the properties panel, data loss the workflow did not ask for, and missing or unhelpful error messages
+  all count as defects. If you found no defects, state exactly "NO DEFECTS FOUND". At the very end of
+  your final message, end with exactly "adversarial-report: complete".'
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+- browser_upload_file
+- browser_create_tab
+- browser_close_tab
+- browser_switch_tab
+- browser_list_tabs
+required_tools:
+- browser
+rewards:
+- name: Adversarial report delivered
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'adversarial-report: complete'

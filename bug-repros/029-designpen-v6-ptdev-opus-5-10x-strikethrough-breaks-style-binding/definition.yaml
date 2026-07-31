@@ -1,0 +1,57 @@
+id: 029-designpen-v6-ptdev-opus-5-10x-strikethrough-breaks-style-binding
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported bug: text decoration and shared text styles are
+  mutually exclusive in the editor. Applying Strikethrough via the text-options
+  popover silently breaks the node's text-style binding; conversely, applying a
+  shared style drops an existing strikethrough; and "Create style" does not capture
+  the decoration. In production this made a struck-through price impossible to
+  combine with a style-binding requirement.
+
+  The canvas already contains a design document with shared text styles. Steps:
+
+  1. With the Text tool, create a text node reading "£49.99" and apply any shared
+     text style from the typography list. Screenshot; note the bound style name
+     shown in the panel.
+  2. Open the text options (the "…" popover in the Typography section), find the
+     Decoration row and set Strikethrough. Screenshot: the text must render
+     struck-through AND the panel must still show the same bound style name.
+  3. If the binding broke, re-apply the shared style and check whether the
+     strikethrough survives. Record what happens in both directions.
+
+  The bug reproduces if you cannot end up with BOTH the shared-style binding intact
+  and the strikethrough rendered on the same text node.
+
+  Note: this document has known content defects — some component text properties are not wired to their nested text layers, and a few text styles are bound to fonts not shipped in this environment (text renders invisible with them). These are seed-content issues, not the bug under test; do not report them.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: ptdev-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

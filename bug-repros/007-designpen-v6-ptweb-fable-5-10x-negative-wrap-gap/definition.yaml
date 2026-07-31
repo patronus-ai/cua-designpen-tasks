@@ -1,0 +1,59 @@
+id: 007-designpen-v6-ptweb-fable-5-10x-negative-wrap-gap
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported auto-layout bug: wrapping a selection in auto layout
+  (Shift+A) computes a large NEGATIVE item gap (e.g. -314px) when the selected items
+  overlap or sit far apart, and rows switched to space-between keep a stale negative
+  itemSpacing (-28 was found written into exported documents).
+
+  The canvas loads the production seed document. Pan/zoom to an empty area of the canvas and work there. Steps:
+
+  1. Draw four rectangles about 80x80 each, roughly in a horizontal row but with
+     uneven spacing (some close together, some ~150px apart). It's fine if two of
+     them slightly overlap — that is part of the repro.
+  2. Select all four and press Shift+A to wrap them in an auto-layout frame.
+  3. Read the resulting frame's item gap value in the Layout section of the right
+     panel and screenshot the canvas.
+     The gap must be a sane non-negative number (or the items must at least render
+     without stacking on top of each other). A large negative gap like -314, or items
+     collapsing into a pile, means the bug reproduced.
+  4. Now set the frame's horizontal distribution to space-between (the auto-layout
+     spacing mode control). Verify the items spread across the frame and that the gap
+     field does not show a residual negative value.
+  5. Switch the distribution back to a fixed gap and set it to 16. Verify the items
+     render with a visible 16px gap.
+
+  The bug reproduces if step 3 yields a large negative gap / stacked items, or step 4
+  leaves a stale negative itemSpacing.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: ptweb-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

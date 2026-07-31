@@ -1,0 +1,56 @@
+id: 011-designpen-v6-ptweb-opus-5-10x-assets-drag-misparent
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported drag-and-drop bug: dragging a component out of the
+  Assets panel onto a target frame drops the new instance at the page root (or under
+  the wrong parent) instead of inside the frame it was dropped on.
+
+  The canvas already contains a design document with a component library. Steps:
+
+  1. Draw a frame (F) roughly 400 x 400 on an empty area of the canvas. Name it
+     "DropTarget" via the layers panel if renaming is convenient; otherwise remember
+     its position in the layer tree.
+  2. Open the Assets panel and drag any library component from the panel, dropping it
+     visually INSIDE the frame's bounds.
+  3. Check the layers panel: the new instance must be a CHILD of the frame you dropped
+     it on, not a sibling sitting at the page root that merely overlaps the frame
+     visually.
+  4. Repeat the drag with a second component (any other library component) onto the
+     same frame and re-check the parent in the layers panel.
+  5. If a drop landed at the page root, try moving it out of the way, and note whether
+     the visual position matched the wrong parenting.
+
+  The bug reproduces if a dropped instance ends up outside the target frame in the
+  layer tree despite being dropped inside its bounds.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: ptweb-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

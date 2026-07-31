@@ -1,0 +1,56 @@
+id: 001-designpen-v6-ptdev-opus-5-10x-color-style-binding-no-repaint
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported rendering bug: applying a shared color style to a node
+  records the binding in the properties panel but the canvas keeps rendering the old
+  paint (sometimes the fill even goes white).
+
+  The canvas already contains a design document with a design system (shared color
+  styles). Steps:
+
+  1. Draw a rectangle roughly 200x120 on an empty area of the canvas and give it a
+     hardcoded fill, for example #FF0000, via the fill hex field.
+  2. With the rectangle selected, open the fill style picker (the styles/library icon
+     next to the Fill swatch in the right panel) and apply one of the document's shared
+     color styles.
+  3. Immediately check the canvas: the rectangle must repaint to the style's color in
+     one step — no extra clicks, no deselect/reselect, no toggling required.
+  4. Confirm in the Fill section that the fill now shows the style name (bound), not a
+     raw hex, and that the rendered color matches that style.
+  5. Deselect, then reselect the rectangle and re-verify the rendered color one more time.
+
+  The bug reproduces if: the panel shows the style binding but the rectangle still
+  renders the previous #FF0000 (or turns white), or the binding silently falls back to
+  a raw hex value.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 25 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: ptdev-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

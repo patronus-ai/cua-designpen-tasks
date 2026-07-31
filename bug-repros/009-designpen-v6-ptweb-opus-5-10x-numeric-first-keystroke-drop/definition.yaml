@@ -1,0 +1,55 @@
+id: 009-designpen-v6-ptweb-opus-5-10x-numeric-first-keystroke-drop
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported input bug: numeric fields in the right properties panel
+  drop the FIRST keystroke typed into them — an agent typing "120" ends up with "20",
+  producing off-scale spacing and sizes.
+
+  The canvas loads the production seed document. Pan/zoom to an empty area of the canvas and work there. Steps:
+
+  1. Draw a rectangle roughly 100x100.
+  2. Click into the width (W) field in the right panel, select the existing value, and
+     type 120 then press Enter. Read the field back and check the rectangle: it must
+     be exactly 120 wide — not 20.
+  3. Repeat with the height (H) field: type 340, Enter. Expect exactly 340 — not 40.
+  4. Draw a frame with auto layout, click into its item gap field, type 24, Enter.
+     Expect exactly 24 — not 4.
+  5. Do each entry at a normal pace but do NOT pre-click twice or add extra guard
+     keystrokes — the point is whether a plain select-and-type loses its first digit.
+     If a value comes out wrong, note the field, what you typed, and what it became,
+     then correct it and move on.
+
+  The bug reproduces if any field ends up with the first digit missing (120→20,
+  340→40, 24→4).
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 25 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: ptweb-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

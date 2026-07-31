@@ -1,0 +1,61 @@
+id: 026-designpen-v6-broking-fable-5-10x-undo-corrupts-layout
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported bug in undo: Ctrl+Z produces states that never
+  existed — it mangles an instance's child geometry inside auto-layout, or silently
+  reverts EARLIER unrelated edits in addition to (or instead of) the most recent
+  one.
+
+  The canvas already contains a design document with a component library. Steps:
+
+  1. From the Assets panel, place an instance of a library component with a visible
+     text label inside a plain auto-layout frame you create. Override its label to
+     "UNDO CHECK". Screenshot.
+  2. Make three distinct small edits in sequence: (a) change the label to
+     "UNDO CHECK 2", (b) move the instance about 50px, (c) change one fill color.
+  3. Press Ctrl+Z once. Screenshot: ONLY edit (c) may revert — the label must still
+     read "UNDO CHECK 2", the position must be unchanged, and the instance's
+     internal layout must be intact (no mangled or shuffled children).
+  4. Press Ctrl+Z again (only (b) reverts) and again (only (a) reverts, label back
+     to "UNDO CHECK"). Verify each step and that geometry stays sane.
+  5. Redo once (Ctrl+Shift+Z or Ctrl+Y) and verify the state steps forward
+     correctly.
+
+  The bug reproduces if any undo reverts an unrelated earlier edit, skips the latest
+  edit, or leaves the instance's layout corrupt.
+
+  Note: this document has known content defects — a few icons are broken in the seed itself (e.g. a left-arrow drawn pointing right, a broken info icon), one legacy many-variant table-row set is corrupt, some legacy text styles are bound to missing fonts, and some component text properties are not wired. These are seed-content issues, not the bug under test; do not report them.
+
+  Important: do NOT reload the page — this environment intentionally discards the document on reload; a reset after reload is not a defect.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: broking-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

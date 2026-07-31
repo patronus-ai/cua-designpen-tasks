@@ -1,0 +1,58 @@
+id: 034-designpen-v6-ptdev-fable-5-10x-absolute-position-stuck-child
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported auto-layout bug: a child inside an auto-layout frame
+  can end up absolutely positioned — e.g. after wrapping two items with Shift+A, or
+  after a layers-panel reparent — and the position toggle next to the X/Y fields
+  fails to bring it back into the layout flow.
+
+  The canvas already contains a design document. Steps:
+
+  1. Draw two rectangles side by side on empty canvas, select both, and wrap them
+     with Shift+A (add auto layout). Screenshot the panel and layers tree: BOTH
+     children must be in-flow. (Fixing the wrap's direction or a bogus gap value is
+     fine — the negative-gap defect is a separate known issue; the target here is a
+     child stuck in absolute positioning.)
+  2. If either child shows as absolutely positioned, use the absolute-position
+     toggle (crosshair icon near the Position fields) to return it to flow. It must
+     rejoin the auto-layout flow and take a normal slot.
+  3. Independent check: in any auto-layout frame, set a child to absolute via the
+     toggle, move it a little, then toggle it back. It must re-enter the flow both
+     times, and siblings must reflow around it.
+
+  The bug reproduces if a child ends up absolutely positioned and cannot be
+  returned to the layout flow with the toggle.
+
+  Note: this document has known content defects — some component text properties are not wired to their nested text layers, and a few text styles are bound to fonts not shipped in this environment (text renders invisible with them). These are seed-content issues, not the bug under test; do not report them.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: ptdev-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

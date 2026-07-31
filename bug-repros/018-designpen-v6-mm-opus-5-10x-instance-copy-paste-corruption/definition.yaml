@@ -1,0 +1,61 @@
+id: 018-designpen-v6-mm-opus-5-10x-instance-copy-paste-corruption
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported clipboard bug: copying or cutting a configured
+  component instance and pasting it is lossy — the paste produces an empty frame,
+  drops the instance's overrides (reverting them to component defaults), pastes the
+  wrong image fill, or drops the pasted node without reflowing it in auto-layout.
+
+  The canvas already contains a design document with a component library. Steps:
+
+  1. From the Assets panel, place an instance of a library component with a visible
+     text label. Override its label to "PASTE CHECK" and change one of its fills to a
+     clearly different color. Screenshot: both overrides render.
+  2. Copy it with Ctrl+C and paste with Ctrl+V. Screenshot: the pasted copy must be a
+     full instance (not an empty frame) and must keep the "PASTE CHECK" label and the
+     fill override.
+  3. Move the pasted copy ~150px aside and verify the original is untouched.
+  4. Cut the original with Ctrl+X and paste it back with Ctrl+V. It must come back
+     fully rendered, overrides intact, at a sane position.
+  5. If any node with an image fill is visible in the document, copy/paste it too and
+     verify the pasted copy shows the SAME image (reported runs saw every paste
+     showing the document's first image instead).
+
+  The bug reproduces if any paste yields an empty shell, lost overrides, a wrong
+  image fill, or un-reflowed geometry.
+
+  Note: this document has known content defects — some text styles are bound to fonts not shipped in this environment (text renders invisible with them), a few labels and logo tiles have wrong seed content, and some component properties are not wired. These are seed-content issues, not the bug under test; do not report them.
+
+  Important: do NOT reload the page — this environment intentionally discards the document on reload; a reset after reload is not a defect.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: mm-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

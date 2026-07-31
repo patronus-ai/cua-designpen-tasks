@@ -1,0 +1,56 @@
+id: 016-chirag-real-4seeds-opus5-export-fig-timeout
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported export bug: exporting the document as a .fig file never
+  completes on larger documents — the export path hangs past its timeout even on an
+  idle canvas, and the app sometimes freezes while serializing. A related symptom:
+  two consecutive exports of the SAME unchanged document produced different content
+  (state-sync race).
+
+  The canvas already contains a design document with a component library. Steps:
+
+  1. Take a baseline screenshot of the loaded document. The seed is already
+     production-sized (tens of MB) — do NOT duplicate content to grow it.
+  2. Open the application main menu (left end of the toolbar) and find the export /
+     save option for the .fig format (File > Save / Export). Trigger it.
+  3. Watch for up to 60 seconds: the export must complete (a download starts or the
+     UI reports success) and the app must stay responsive — verify responsiveness by
+     taking a screenshot and selecting a node afterwards.
+  4. Trigger the same export a second time without editing anything in between, and
+     confirm it also completes and the app still responds.
+
+  The bug reproduces if the export never finishes, the UI freezes during it (later
+  screenshots fail or show a frozen frame), or the app becomes unresponsive afterward.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 25 tool calls. If the
+  app hangs, stop probing and write your report from what you have.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: broking-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

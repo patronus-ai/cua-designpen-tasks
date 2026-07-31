@@ -1,0 +1,66 @@
+id: 002-designpen-v6-mm-fable-5-10x-instance-override-revert
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported state bug: overrides applied to a component instance
+  (text, fills, variant choices) silently revert to the component's defaults after
+  ordinary editor operations — switching pages, duplicating the instance, or editing
+  the parent.
+
+  The canvas already contains a design document with a component library. Steps:
+
+  1. From the Assets panel, place one instance of any library component that renders
+     a visible text label (e.g. a button, menu row or card component) onto an empty
+     area of the canvas.
+  2. Override the instance: change its label text to "CONFIRM ORDER" (select the nested
+     text and retype it, or use the instance's Label property in the right panel), and
+     change its fill to a clearly different color.
+  3. Screenshot and confirm both overrides render.
+  4. Create a second page in the pages sidebar, switch to it, then switch back to the
+     first page. Verify the instance still shows "CONFIRM ORDER" and the overridden
+     fill — not the component defaults.
+  5. Duplicate the instance with Ctrl+D. Verify the duplicate keeps both overrides.
+  6. Move the original instance about 100px with the mouse. Verify the overrides
+     survive the move.
+  7. Navigate to the main component (right panel's "Go to main component" affordance
+     or locate the component's master in the layers/assets view), then navigate back to your
+     instances. Verify both instances STILL show "CONFIRM ORDER" and the overridden
+     fill — in the reported runs, per-card icon and avatar swaps all reverted to
+     defaults after visiting the components page.
+
+  The bug reproduces if any override reverts to the master component's default label
+  or color at steps 4-7.
+
+  Important: do NOT reload the page — this environment intentionally discards the
+  document on reload; a reset after reload is not a defect.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: mm-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

@@ -1,0 +1,55 @@
+id: 028-designpen-v6-broking-fable-5-10x-caps-retype-corruption
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported text bug: after retyping the content of a text node
+  that uses a shared text style, a later width edit can flip the rendered text to
+  ALL-CAPS — with no case/transform property visibly changed anywhere.
+
+  The canvas already contains a design document with shared text styles. Steps:
+
+  1. With the Text tool, create a text node reading "Receipt Bank" and apply a
+     shared text style from the typography styles list (prefer a button/label-like
+     style if one is offered). Screenshot: it must render mixed-case.
+  2. Retype the content: double-click into the node, select all with Ctrl+A, type
+     "Receipt Bank" again, commit with Escape. Verify it still renders mixed-case.
+  3. Change the node's width via the W field (about +40). Screenshot and check the
+     canvas case again.
+  4. Repeat the retype + width-edit cycle twice more, checking the rendered case
+     after each step.
+
+  The bug reproduces if the canvas ever renders "RECEIPT BANK" (ALL-CAPS) while the
+  content you typed and the applied style are unchanged mixed-case.
+
+  Note: this document has known content defects — a few icons are broken in the seed itself (e.g. a left-arrow drawn pointing right, a broken info icon), one legacy many-variant table-row set is corrupt, some legacy text styles are bound to missing fonts, and some component text properties are not wired. These are seed-content issues, not the bug under test; do not report them.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: broking-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

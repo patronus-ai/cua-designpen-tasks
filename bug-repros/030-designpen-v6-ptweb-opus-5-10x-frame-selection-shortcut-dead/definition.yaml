@@ -1,0 +1,55 @@
+id: 030-designpen-v6-ptweb-opus-5-10x-frame-selection-shortcut-dead
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported bug: the Ctrl+Alt+G keyboard shortcut for "Frame
+  selection" never fires, while the identical action works from the right-click
+  menu. Control from the same reports: Ctrl+Alt+K (Create component) DOES work, so
+  this is not a container/modifier problem — one specific binding is dead.
+
+  The canvas already contains a design document. Steps:
+
+  1. Draw a rectangle on empty canvas and keep it selected.
+  2. Press Ctrl+Alt+G. Check the layers panel and screenshot: the rectangle should
+     now be wrapped in a new frame.
+  3. If nothing happened, right-click the rectangle and use the "Frame selection"
+     menu item — verify the menu route performs the action (then undo it).
+  4. Control: select the rectangle again and press Ctrl+Alt+K (Create component).
+     Record whether that chord works — in the reports it did, isolating the dead
+     binding. Undo afterwards.
+
+  The bug reproduces if Ctrl+Alt+G does nothing while the same action works from
+  the menu (especially while Ctrl+Alt+K fires fine).
+
+  Note: this document has known content defects — several flat-named legacy text styles (the Body_16px family) are bound to missing fonts and render text invisible, and some component text properties are not wired. These are seed-content issues, not the bug under test; do not report them.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: ptweb-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

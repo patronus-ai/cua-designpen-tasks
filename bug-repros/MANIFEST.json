@@ -1,0 +1,337 @@
+{
+  "bug-repros": {
+    "color-style-binding-no-repaint": {
+      "number": "001",
+      "dir": "001-designpen-v6-ptdev-opus-5-10x-color-style-binding-no-repaint",
+      "job": "9628fa83 designpen v6 ptdev opus-5 10x",
+      "also_seen_in": [
+        "27a14af4 broking opus",
+        "088bacf2 broking fable",
+        "a12ec6a4 ptweb fable v5",
+        "aea562db mm fable v5",
+        "7cf836b0 ptweb opus"
+      ],
+      "bug": "shared color/text style binding records but does not repaint; fills go white; unbinds to raw hex"
+    },
+    "instance-override-revert": {
+      "number": "002",
+      "dir": "002-designpen-v6-mm-fable-5-10x-instance-override-revert",
+      "job": "0d00efba designpen v6 mm fable-5 10x",
+      "also_seen_in": [
+        "9628fa83 ptdev opus (critical)",
+        "27a14af4 broking opus run 72dbb8bd",
+        "d580a233 ptweb fable",
+        "aea562db mm fable v5"
+      ],
+      "bug": "instance overrides revert to master defaults on page switch / duplicate / visiting components page"
+    },
+    "component-text-property-dropped": {
+      "number": "003",
+      "dir": "003-chirag-real-4seeds-postfix-opus5-5000t-btf-component-text-property-dropped",
+      "job": "4d2b2812 chirag-real-4seeds-postfix-opus5-5000t-btf",
+      "runs": [
+        "e3bef233 (ptweb)",
+        "afc1e3e6 (ptdev)"
+      ],
+      "bug": "text-property overrides accepted but dropped: componentPropertyValues without definitions; property un-deletable"
+    },
+    "stale-text-measurement": {
+      "number": "004",
+      "dir": "004-designpen-v6-ptdev-fable-5-10x-stale-text-measurement",
+      "job": "604c7b2d designpen v6 ptdev fable-5 10x",
+      "also_seen_in": [
+        "695f1cc4 ptdev fable v5 run e4589641",
+        "d580a233 ptweb fable",
+        "0d00efba mm fable",
+        "088bacf2 broking fable"
+      ],
+      "bug": "text keeps stale measured width after edit; clipped until Fixed<->Hug toggle or retype"
+    },
+    "fixed-frame-auto-expand": {
+      "number": "005",
+      "dir": "005-designpen-v6-ptdev-fable-5-10x-fixed-frame-auto-expand",
+      "job": "604c7b2d designpen v6 ptdev fable-5 10x",
+      "also_seen_in": [
+        "695f1cc4 ptdev fable v5 (360->524)",
+        "d580a233 ptweb fable (hero 360->1238)"
+      ],
+      "bug": "Fixed-dimension frames silently auto-expand when children overflow"
+    },
+    "fill-container-stale-width": {
+      "number": "006",
+      "dir": "006-designpen-v5-ptweb-fable-5-10x-r3-full-fill-container-stale-width",
+      "job": "a12ec6a4 designpen v5 ptweb fable-5 10x r3-full",
+      "also_seen_in": [
+        "4d2b2812 run e3bef233"
+      ],
+      "bug": "Fill-container children keep stale fixed widths after reparent/sibling/parent resize"
+    },
+    "negative-wrap-gap": {
+      "number": "007",
+      "dir": "007-designpen-v6-ptweb-fable-5-10x-negative-wrap-gap",
+      "job": "d580a233 designpen v6 ptweb fable-5 10x",
+      "also_seen_in": [
+        "a12ec6a4 ptweb fable v5 run ffd872a2 (itemSpacing -28)",
+        "aea562db mm fable v5 (-314px)",
+        "604c7b2d ptdev fable"
+      ],
+      "bug": "Shift+A computes large negative wrap gaps; stale negative itemSpacing on space-between rows"
+    },
+    "special-character-input": {
+      "number": "008",
+      "dir": "008-designpen-v6-mm-fable-5-10x-special-character-input",
+      "job": "0d00efba designpen v6 mm fable-5 10x",
+      "also_seen_in": [
+        "aea562db mm fable v5 (splits -\u00a34.00)",
+        "all four fable v6 jobs (dash/pound insertion notes)"
+      ],
+      "bug": "special characters fire no key event / start a new paragraph, splitting strings"
+    },
+    "numeric-first-keystroke-drop": {
+      "number": "009",
+      "dir": "009-designpen-v6-ptweb-opus-5-10x-numeric-first-keystroke-drop",
+      "job": "7cf836b0 designpen v6 ptweb opus-5 10x",
+      "bug": "numeric panel fields drop the first keystroke (120 -> 20)"
+    },
+    "assets-panel-hang": {
+      "number": "010",
+      "dir": "010-chirag-real-4seeds-opus5-assets-panel-hang",
+      "job": "f36e7d6e chirag-real-4seeds-opus5",
+      "runs": [
+        "241b9dac (52 tool errors, container death)"
+      ],
+      "bug": "Assets panel 1500+ grid render/search hangs the tab"
+    },
+    "assets-drag-misparent": {
+      "number": "011",
+      "dir": "011-designpen-v6-ptweb-opus-5-10x-assets-drag-misparent",
+      "job": "7cf836b0 designpen v6 ptweb opus-5 10x",
+      "also_seen_in": [
+        "604c7b2d ptdev fable (insert lands as strays)"
+      ],
+      "bug": "drag from Assets drops instance at page root / wrong parent"
+    },
+    "text-invisible-after-duplicate": {
+      "number": "012",
+      "dir": "012-chirag-real-4seeds-v2-text-invisible-after-duplicate",
+      "job": "641bfe3c chirag-real-4seeds-v2",
+      "bug": "text renders invisible after duplicate/move"
+    },
+    "layer-reorder-visual-mismatch": {
+      "number": "013",
+      "dir": "013-chirag-real-4seeds-v2-layer-reorder-visual-mismatch",
+      "job": "641bfe3c chirag-real-4seeds-v2",
+      "bug": "layer reorder changes tree order but not visual stacking"
+    },
+    "text-style-renders-invisible": {
+      "number": "014",
+      "dir": "014-designpen-v6-ptweb-fable-5-10x-text-style-renders-invisible",
+      "job": "d580a233 designpen v6 ptweb fable-5 10x",
+      "also_seen_in": [
+        "088bacf2 broking fable (Typography/Subheading/Sub4 invisible)"
+      ],
+      "bug": "specific shared text styles render text invisible on canvas"
+    },
+    "canvas-focus-loss-typing": {
+      "number": "015",
+      "dir": "015-designpen-v6-ptweb-fable-5-10x-canvas-focus-loss-typing",
+      "job": "d580a233 designpen v6 ptweb fable-5 10x",
+      "also_seen_in": [
+        "088bacf2 broking fable (54 hits)",
+        "604c7b2d ptdev fable (28)",
+        "0d00efba mm fable (23)",
+        "f36e7d6e run 241b9dac (15+)"
+      ],
+      "bug": "canvas drops focus between click and type: 'no editable element is focused'"
+    },
+    "export-fig-timeout": {
+      "number": "016",
+      "dir": "016-chirag-real-4seeds-opus5-export-fig-timeout",
+      "job": "f36e7d6e chirag-real-4seeds-opus5",
+      "also_seen_in": [
+        "4d2b2812 (all big-seed gradings on stale autosave)",
+        "27a14af4 (49% stale gradings)",
+        "7cf836b0 (export flip-flop repro)"
+      ],
+      "bug": ".fig export never completes on larger documents; consecutive exports flip-flop between states"
+    },
+    "variant-switch-no-commit": {
+      "number": "017",
+      "dir": "017-designpen-v6-broking-fable-5-10x-variant-switch-no-commit",
+      "job": "088bacf2 designpen v6 broking fable-5 10x",
+      "also_seen_in": [
+        "27a14af4 broking opus (N1, ~8 transcripts)"
+      ],
+      "bug": "right-panel variant dropdown selections silently don't commit (mouse AND keyboard); only the hidden native select works"
+    },
+    "instance-copy-paste-corruption": {
+      "number": "018",
+      "dir": "018-designpen-v6-mm-opus-5-10x-instance-copy-paste-corruption",
+      "job": "e9ee9a6e designpen v6 mm opus-5 10x",
+      "also_seen_in": [
+        "0d00efba mm fable (N1)",
+        "088bacf2 broking fable (N2 instance degrades to empty frame)",
+        "604c7b2d ptdev fable (cut/paste loses overrides)",
+        "81710459 mm-opus QA i4 copy/paste-corruption variant"
+      ],
+      "bug": "copy/cut+paste of configured instances is lossy: empty shells, dropped overrides, wrong image fill, no auto-layout reflow"
+    },
+    "variables-panel-broken": {
+      "number": "019",
+      "dir": "019-designpen-v6-ptweb-fable-5-10x-variables-panel-broken",
+      "job": "d580a233 designpen v6 ptweb fable-5 10x",
+      "also_seen_in": [
+        "9628fa83 ptdev opus (NEW-A, 6 transcripts)",
+        "27a14af4 broking opus (N7)",
+        "088bacf2 broking fable (N6)",
+        "e9ee9a6e mm opus (N3)",
+        "604c7b2d ptdev fable"
+      ],
+      "bug": "Variables panel: every collection tab shows the same list, search doesn't filter, rows render undefined; Libraries-tab variable assignment doesn't repaint"
+    },
+    "stroke-stale-after-resize": {
+      "number": "020",
+      "dir": "020-designpen-v6-ptdev-opus-5-10x-stroke-stale-after-resize",
+      "job": "9628fa83 designpen v6 ptdev opus-5 10x",
+      "also_seen_in": [
+        "604c7b2d ptdev fable (NEW-3, fresh-instance repro)",
+        "27a14af4 broking opus (N2: inside-stroke right border missing + stale width)",
+        "7cf836b0 ptweb opus (rounded-rect radius>=half-height strokes render arcs only)"
+      ],
+      "bug": "strokes render at stale/original geometry after resize (fill correct); inside-position strokes can drop an edge; Inside->Center toggle forces repaint"
+    },
+    "instance-resize-no-relayout": {
+      "number": "021",
+      "dir": "021-designpen-v6-ptdev-opus-5-10x-instance-resize-no-relayout",
+      "job": "9628fa83 designpen v6 ptdev opus-5 10x",
+      "also_seen_in": [
+        "27a14af4 broking opus (N8)",
+        "088bacf2 broking fable (N5)",
+        "7cf836b0 ptweb opus (instances don't reflow internal auto-layout)"
+      ],
+      "bug": "resizing a component instance doesn't re-layout its nested children (stale widths, clipped text, unstretched inner frames)"
+    },
+    "icon-vector-broken-after-swap": {
+      "number": "022",
+      "dir": "022-designpen-v6-ptdev-fable-5-10x-icon-vector-broken-after-swap",
+      "job": "604c7b2d designpen v6 ptdev fable-5 10x",
+      "also_seen_in": [
+        "e9ee9a6e mm opus (N2 black squares / stale leftover vectors)",
+        "088bacf2 broking fable (N3 nested vector swaps don't render; detach fixes)",
+        "9628fa83 ptdev opus (lucide icons partial paths)"
+      ],
+      "bug": "swapped or scaled icon vectors render broken: partial paths, open arcs, slivers, faint dashes, black squares"
+    },
+    "hidden-children-occupy-space": {
+      "number": "023",
+      "dir": "023-designpen-v6-ptdev-fable-5-10x-hidden-children-occupy-space",
+      "job": "604c7b2d designpen v6 ptdev fable-5 10x",
+      "also_seen_in": [],
+      "bug": "children hidden via visibility toggle still occupy auto-layout flow space (ghost gaps) until a reflow is forced"
+    },
+    "layers-drag-reparent-inert": {
+      "number": "024",
+      "dir": "024-designpen-v6-broking-opus-5-10x-layers-drag-reparent-inert",
+      "job": "27a14af4 designpen v6 broking opus-5 10x",
+      "also_seen_in": [
+        "088bacf2 broking fable (N9 drag limits)",
+        "d580a233 ptweb fable (re-parenting broken via ALL routes)",
+        "7cf836b0 ptweb opus (frame cut/paste empty clipboard)",
+        "e9ee9a6e mm opus (reorder: layer-drag, canvas drag, bring/send all fail)"
+      ],
+      "bug": "layers-panel drag to reorder/reparent is inert \u2014 no drop feedback, tree never mutates; cut/paste was the workaround"
+    },
+    "swap-instance-dead": {
+      "number": "025",
+      "dir": "025-designpen-v6-ptweb-fable-5-10x-swap-instance-dead",
+      "job": "d580a233 designpen v6 ptweb fable-5 10x",
+      "also_seen_in": [
+        "7cf836b0 ptweb opus (nested swap no-op)",
+        "0d00efba mm fable (N3 swap carries stale overrides, white-on-white)"
+      ],
+      "bug": "Swap-instance result-row clicks are a no-op (esp. nested instances); when a swap does apply it can carry stale overrides and render corrupt"
+    },
+    "undo-corrupts-layout": {
+      "number": "026",
+      "dir": "026-designpen-v6-broking-fable-5-10x-undo-corrupts-layout",
+      "job": "088bacf2 designpen v6 broking fable-5 10x",
+      "also_seen_in": [
+        "0d00efba mm fable (N2 undo reverts unrelated earlier edits)",
+        "e9ee9a6e mm opus (overrides lost from undo)"
+      ],
+      "bug": "Ctrl+Z produces states that never existed: mangles instance child geometry in auto-layout, or silently reverts earlier unrelated edits"
+    },
+    "middle-dot-glyph-corruption": {
+      "number": "027",
+      "dir": "027-designpen-v6-broking-opus-5-10x-middle-dot-glyph-corruption",
+      "job": "27a14af4 designpen v6 broking opus-5 10x",
+      "also_seen_in": [
+        "088bacf2 broking fable (numeric glyph glitch: 1,245.60 renders as 1.245.60/25.60)"
+      ],
+      "bug": "the middle-dot character corrupts glyph advances -> overlapping/garbled text render (render bug, distinct from class-8 input events)"
+    },
+    "caps-retype-corruption": {
+      "number": "028",
+      "dir": "028-designpen-v6-broking-fable-5-10x-caps-retype-corruption",
+      "job": "088bacf2 designpen v6 broking fable-5 10x",
+      "also_seen_in": [],
+      "bug": "retyping content then editing width flips the rendered text to ALL-CAPS with no case/transform property change"
+    },
+    "strikethrough-breaks-style-binding": {
+      "number": "029",
+      "dir": "029-designpen-v6-ptdev-opus-5-10x-strikethrough-breaks-style-binding",
+      "job": "9628fa83 designpen v6 ptdev opus-5 10x",
+      "also_seen_in": [
+        "7c9b594b ptdev-opus QA i6 (style-apply drops decoration; Create-style doesn't capture it)"
+      ],
+      "bug": "text decoration and shared text-style bindings are mutually exclusive: strikethrough breaks the binding, re-applying the style drops the strikethrough"
+    },
+    "frame-selection-shortcut-dead": {
+      "number": "030",
+      "dir": "030-designpen-v6-ptweb-opus-5-10x-frame-selection-shortcut-dead",
+      "job": "7cf836b0 designpen v6 ptweb opus-5 10x",
+      "also_seen_in": [
+        "27a14af4 broking opus (N6, ~10 transcripts)",
+        "088bacf2 broking fable (N8)",
+        "e9ee9a6e mm opus (N4)"
+      ],
+      "bug": "Ctrl+Alt+G (Frame selection) never fires while the same menu action works and Ctrl+Alt+K works \u2014 one dead binding, not the container modifier trap"
+    },
+    "apostrophe-breaks-text-measurement": {
+      "number": "031",
+      "dir": "031-designpen-v6-ptweb-fable-5-10x-apostrophe-breaks-text-measurement",
+      "job": "d580a233 designpen v6 ptweb fable-5 10x",
+      "also_seen_in": [],
+      "bug": "typing an apostrophe (and sometimes comma) wedges text auto-measurement: content stored correctly but node stays clipped at a stale width"
+    },
+    "gap-auto-space-between-broken": {
+      "number": "032",
+      "dir": "032-designpen-v6-ptweb-fable-5-10x-gap-auto-space-between-broken",
+      "job": "d580a233 designpen v6 ptweb fable-5 10x",
+      "also_seen_in": [
+        "604c7b2d ptdev fable ('Auto' gap computes buggy/stale values)",
+        "27a14af4 broking opus (gap Auto->fixed forces relayout)"
+      ],
+      "bug": "auto-layout gap 'Auto' (space-between) fails to distribute children / renders stale positions"
+    },
+    "panel-header-rename-dead": {
+      "number": "033",
+      "dir": "033-designpen-v6-ptweb-fable-5-10x-panel-header-rename-dead",
+      "job": "d580a233 designpen v6 ptweb fable-5 10x",
+      "also_seen_in": [
+        "27a14af4 + 088bacf2 broking (right-panel header rename doesn't work)"
+      ],
+      "bug": "renaming via the design-panel header never commits; layers-tree rename of the same node works"
+    },
+    "absolute-position-stuck-child": {
+      "number": "034",
+      "dir": "034-designpen-v6-ptdev-fable-5-10x-absolute-position-stuck-child",
+      "job": "604c7b2d designpen v6 ptdev fable-5 10x",
+      "also_seen_in": [
+        "27a14af4 broking opus (N9: Shift+A wrap makes 2nd child absolutely positioned)",
+        "088bacf2 broking fable (children keep stale absolute positions in AL frames)"
+      ],
+      "bug": "auto-layout child ends up absolutely positioned (Shift+A wrap / layer-drag reparent) and the position toggle fails to return it to flow"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+id: 019-designpen-v6-ptweb-fable-5-10x-variables-panel-broken
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported bug in the Variables panel (left rail): every
+  collection tab shows the same list, search does not filter, rows render as
+  undefined/blank junk, and assigning a variable from the color picker's Libraries
+  tab does not repaint the canvas.
+
+  The canvas already contains a design document. Steps:
+
+  1. Open the Variables panel from the left rail. Screenshot.
+  2. If the panel has multiple collection tabs, click through each and screenshot:
+     each collection must show its OWN contents (lists must differ between
+     collections), and rows must render readable names/values — not "undefined" or
+     blank entries.
+  3. Type a term matching a visible variable into the panel's search box: the list
+     must filter down.
+  4. Close the panel. Select any node with a solid fill, open the fill color picker,
+     switch to its Libraries/variables tab and assign a color variable. The canvas
+     fill must repaint to the variable's color.
+
+  The bug reproduces if collections all show an identical list, rows render as
+  undefined/junk, search does not filter, or the variable assignment does not render.
+
+  Note: a sparsely populated or empty collection is not by itself the bug — the bug
+  is the panel showing the same list for every collection, broken row rendering, a
+  dead search box, or an assignment that does not repaint.
+
+  Note: this document has known content defects — several flat-named legacy text styles (the Body_16px family) are bound to missing fonts and render text invisible, and some component text properties are not wired. These are seed-content issues, not the bug under test; do not report them.
+
+  Important: do NOT reload the page — this environment intentionally discards the document on reload; a reset after reload is not a defect.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: ptweb-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

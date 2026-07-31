@@ -1,0 +1,63 @@
+id: 017-designpen-v6-broking-fable-5-10x-variant-switch-no-commit
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported bug: selecting a variant value in the right-panel
+  variant dropdown of a component instance silently does nothing — the panel value
+  snaps back or the canvas keeps the old variant. In the reported runs both mouse
+  clicks and keyboard selection failed, and agents had to copy pre-made instances
+  from the library page instead.
+
+  The canvas already contains a design document with a component library. Steps:
+
+  1. From the Assets panel, place an instance of a library component that belongs to
+     a component set with variants (its right panel shows one or more variant
+     dropdowns — e.g. a button, tag, chip or row component with state/size variants).
+  2. Screenshot the instance and note the current variant value shown in the panel.
+  3. Open the variant dropdown and click a DIFFERENT variant value. Screenshot: the
+     panel must show the new value AND the canvas render must change to match it.
+  4. Repeat the switch on a second, different component set to rule out a one-off.
+  5. If a dropdown selection does not commit, also try the keyboard route (open the
+     dropdown, arrow keys, Enter) and record whether any route commits.
+
+  The bug reproduces if a selected variant value fails to commit (the panel snaps
+  back to the old value or the canvas keeps rendering the old variant).
+
+  Note: some variant combinations may legitimately not exist in a sparse component
+  set — pick a simple single-property switch and, if unsure, confirm on the library
+  page that the target variant exists before judging.
+
+  Note: this document has known content defects — a few icons are broken in the seed itself (e.g. a left-arrow drawn pointing right, a broken info icon), one legacy many-variant table-row set is corrupt, some legacy text styles are bound to missing fonts, and some component text properties are not wired. These are seed-content issues, not the bug under test; do not report them.
+
+  Important: do NOT reload the page — this environment intentionally discards the document on reload; a reset after reload is not a defect.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: broking-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

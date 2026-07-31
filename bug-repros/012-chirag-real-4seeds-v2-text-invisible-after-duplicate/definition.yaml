@@ -1,0 +1,55 @@
+id: 012-chirag-real-4seeds-v2-text-invisible-after-duplicate
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported rendering bug: text nodes render INVISIBLE after being
+  duplicated or moved — the layer exists in the tree with the right content, but
+  nothing paints on the canvas.
+
+  The canvas loads the production seed document. Pan/zoom to an empty area of the canvas and work there. Steps:
+
+  1. Activate the Text tool (T), click the canvas, type "Quarterly report", and press
+     Escape to commit. Screenshot: the text must be visible.
+  2. Duplicate it with Ctrl+D. Move the duplicate about 150px below the original with
+     the mouse or arrow keys. Screenshot and zoom: BOTH text nodes must be visible and
+     readable.
+  3. Now move the ORIGINAL about 200px to the right. Screenshot: both must still
+     render.
+  4. Copy/paste the text node (Ctrl+C, Ctrl+V), position the pasted copy in empty
+     space, and verify it renders too.
+  5. Cross-check against the layers panel: every text layer listed there must have a
+     visible counterpart on the canvas (same count).
+
+  The bug reproduces if any text layer exists in the layers panel but paints nothing
+  (or paints blank/invisible glyphs) on the canvas after a duplicate, move, or paste.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 25 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: broking-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

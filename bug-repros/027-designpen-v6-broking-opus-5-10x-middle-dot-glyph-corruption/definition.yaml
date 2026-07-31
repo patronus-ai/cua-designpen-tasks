@@ -1,0 +1,57 @@
+id: 027-designpen-v6-broking-opus-5-10x-middle-dot-glyph-corruption
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported text-render bug: the '·' (middle dot) character
+  corrupts glyph advances in a text node — the text renders with overlapping or
+  garbled glyphs around the dot. This is about the RENDER being corrupt; it is
+  separate from the known, expected driver note that such characters fire no
+  US-keyboard key event when typed.
+
+  The canvas already contains a design document. Steps:
+
+  1. With the Text tool, create a text node reading "Qty 2 · NSE · Limit" (two
+     middle dots) and commit with Escape. Zoom in and screenshot: every glyph must
+     be evenly spaced — no overlapping, garbled or collapsed cluster around the
+     dots.
+  2. Create a second node reading "₹1,245.60 · Delivered". Zoom: digits, comma,
+     period and dot must all render in order without overlap (reported runs also saw
+     numerals render wrong near such punctuation).
+  3. Edit the first node by appending " · Day", commit, and re-verify the render.
+
+  The bug reproduces if any text containing '·' renders overlapping or garbled
+  glyphs. The driver reporting "no key event, inserted directly" for '·' or '₹' is
+  expected and is NOT the bug.
+
+  Note: this document has known content defects — a few icons are broken in the seed itself (e.g. a left-arrow drawn pointing right, a broken info icon), one legacy many-variant table-row set is corrupt, some legacy text styles are bound to missing fonts, and some component text properties are not wired. These are seed-content issues, not the bug under test; do not report them.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: broking-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

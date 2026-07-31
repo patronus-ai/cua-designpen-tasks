@@ -1,0 +1,57 @@
+id: 006-designpen-v5-ptweb-fable-5-10x-r3-full-fill-container-stale-width
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported layout bug: a child set to "Fill container" keeps a
+  stale fixed width instead of tracking its parent — after reparenting, sibling
+  changes, or parent resize, the child's rendered width no longer matches the parent's
+  content box.
+
+  The canvas loads the production seed document. Pan/zoom to an empty area of the canvas and work there. Steps:
+
+  1. Draw a frame (F) about 400 x 300 and enable vertical auto layout on it.
+  2. Draw a rectangle inside it about 200 x 60. Set the rectangle's horizontal sizing
+     to "Fill container" in the right panel.
+  3. Verify the rectangle immediately stretches to the frame's inner width (frame
+     width minus horizontal padding), both in the rendered canvas and in the width
+     readout.
+  4. Resize the frame to 600 wide. Verify the rectangle's width follows to the new
+     inner width in the same step — no toggling, no reselect.
+  5. Add a second rectangle (about 100 x 60) into the frame as a sibling. Verify the
+     first rectangle still fills the width and did not snap back to a previous value.
+  6. Resize the frame down to 300 wide and verify the fill child shrinks with it.
+
+  The bug reproduces if at any step the "Fill container" child keeps its old width
+  (renders narrower or wider than the parent's content box) until you toggle its
+  sizing mode.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: ptweb-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

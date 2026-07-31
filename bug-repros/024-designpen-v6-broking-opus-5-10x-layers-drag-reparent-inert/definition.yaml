@@ -1,0 +1,56 @@
+id: 024-designpen-v6-broking-opus-5-10x-layers-drag-reparent-inert
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported bug: drag-and-drop in the layers panel is inert —
+  dragging a layer row to reorder it among siblings, or onto/into another frame to
+  reparent it, gives no drop feedback and never mutates the tree. In reported runs
+  agents fell back to cut/paste (Ctrl+X, select target, Ctrl+V).
+
+  The canvas already contains a design document. Steps:
+
+  1. On empty canvas draw two plain frames A and B side by side, and a small
+     rectangle inside A. Screenshot the layers panel.
+  2. In the layers panel, drag the rectangle's row from under A into B. Screenshot:
+     the tree must now show it under B and the canvas must reflect the move.
+  3. Add a second rectangle inside B, then drag-reorder B's two children (swap their
+     order) in the layers panel. The tree order must change.
+  4. Also drag one root-level layer between two other root-level rows to reorder at
+     the root.
+  5. If the drags do nothing, verify the cut/paste route works (Ctrl+X the
+     rectangle, select B, Ctrl+V) — confirming specifically the drag path is dead.
+
+  The bug reproduces if layers-panel drag never reorders or reparents anything.
+
+  Note: this document has known content defects — a few icons are broken in the seed itself (e.g. a left-arrow drawn pointing right, a broken info icon), one legacy many-variant table-row set is corrupt, some legacy text styles are bound to missing fonts, and some component text properties are not wired. These are seed-content issues, not the bug under test; do not report them.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: broking-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

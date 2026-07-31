@@ -1,0 +1,56 @@
+id: 008-designpen-v6-mm-fable-5-10x-special-character-input
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported text-input bug: typing special characters (pound sign,
+  minus/dashes, middle dot, em dash) into a canvas text node fires no key event and
+  instead starts a new paragraph, splitting strings like "-£4.00" across lines. In the
+  reported runs each affected field cost 20-30 remediation calls.
+
+  The canvas loads the production seed document. Pan/zoom to an empty area of the canvas and work there. Steps:
+
+  1. Activate the Text tool (T), click the canvas, and type exactly: -£4.00
+     Press Escape to commit. Screenshot and zoom in: the string must render as ONE
+     line reading "-£4.00" — not split across two lines, not missing the "£" or "-".
+  2. Create a second text node and type: Balance · £120 — updated
+     (middle dot and em dash included). Commit and verify it renders as one line with
+     every character present.
+  3. Create a third text node and type: 3–5 days
+     (en dash). Commit and verify one line, all characters present.
+  4. For any node that rendered wrong, retype it once via double-click editing to see
+     whether the second attempt behaves the same, and report exactly which characters
+     were dropped or where the line split.
+
+  The bug reproduces if any special character is silently dropped, or the text splits
+  into multiple lines/paragraphs at the special character.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 25 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: mm-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

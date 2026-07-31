@@ -1,0 +1,58 @@
+id: 014-designpen-v6-ptweb-fable-5-10x-text-style-renders-invisible
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported text-style bug: applying certain shared text styles to
+  a text node makes the text render INVISIBLE — the layer keeps its content, but
+  nothing paints. In the reported runs, agents found that some of a document's named
+  text styles rendered fine while others ("Body_16px"-style flat names) produced
+  invisible text, and they had to blacklist those styles.
+
+  The canvas already contains a design document with shared text styles. Steps:
+
+  1. Activate the Text tool (T), click the canvas, type "Sample paragraph text", and
+     commit with Escape. Confirm it renders.
+  2. With the text node selected, open the text-style picker in the Typography section
+     of the right panel and note the shared text styles the document offers. Make sure
+     your sample includes flat-named styles like "Body_16px" / "Sub4 SemiBold" if
+     present — production reports named exactly these as rendering invisible.
+  3. Apply the first available shared text style. Screenshot and zoom: the text must
+     still be VISIBLE (size/font may change — that is expected).
+  4. Repeat step 3 for up to five more different text styles, one at a time,
+     screenshotting after each. Every style must produce visible, readable text.
+  5. If a style makes the text vanish, record the style's exact name, then apply a
+     different style to confirm the text comes back (i.e. the content was never lost,
+     only the paint).
+
+  The bug reproduces if any shared text style renders the text invisible.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: ptweb-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

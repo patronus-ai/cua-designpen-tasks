@@ -1,0 +1,59 @@
+id: 015-designpen-v6-ptweb-fable-5-10x-canvas-focus-loss-typing
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported focus bug: the canvas drops keyboard focus between a
+  click and the keystrokes that follow, so typing fails with "no editable element is
+  focused" or the text lands nowhere. In the reported runs this happened 15-50 times
+  per session, right after entering text-edit mode or clicking a panel field.
+
+  The canvas loads the production seed document. Pan/zoom to an empty area of the canvas and work there. Steps:
+
+  1. Activate the Text tool (T), click the canvas, and IMMEDIATELY type
+     "First entry" without any extra clicks or waits in between. Commit with Escape.
+     The text node must contain exactly "First entry".
+  2. Repeat the click-then-type cycle
+     five times in a row at different canvas positions, each time typing a short
+     distinct string ("alpha", "bravo", "charlie", "delta", "echo") immediately after
+     the click that should have opened editing. Commit each with Escape.
+  3. Count the results: five text nodes, each with exactly its intended content — no
+     empty nodes, no missing leading characters, no typing errors reported by your
+     tools.
+  4. Now test panel focus: select one text node, click the font-size field in the
+     right panel, and immediately type 24 and Enter. The size must read 24.
+  5. Report any instance where a type action failed because nothing was focused, or
+     where characters went missing at the start of a string.
+
+  The bug reproduces if typing after a click fails with a focus error or produces an
+  empty/truncated text node.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: ptweb-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

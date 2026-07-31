@@ -1,0 +1,56 @@
+id: 023-designpen-v6-ptdev-fable-5-10x-hidden-children-occupy-space
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported auto-layout bug: children hidden with the visibility
+  (eye) toggle still occupy flow space — siblings do not close up, leaving a ghost
+  gap, until a reflow is forced.
+
+  The canvas already contains a design document. Steps:
+
+  1. On empty canvas create a horizontal auto-layout frame containing three 40x40
+     rectangles with gap 8 (draw three rectangles, select all, add auto layout, fix
+     direction/gap). Screenshot and note the frame's total width.
+  2. Hide the MIDDLE child using the eye toggle in the layers panel. Screenshot: the
+     two remaining children must close up next to each other and a hug-sized frame
+     must shrink accordingly — no ghost gap where the hidden child was.
+  3. Unhide it, then hide the FIRST child and verify the same.
+  4. If convenient, repeat inside a library component instance: toggle a nested
+     child's visibility and verify no ghost space remains.
+  5. If ghost space persists, nudge the frame's width by 1px (e.g. W 328 to 327) and
+     note whether the forced reflow removes it — that confirms the stale-flow bug.
+
+  The bug reproduces if a hidden child keeps occupying auto-layout flow space.
+
+  Note: this document has known content defects — some component text properties are not wired to their nested text layers, and a few text styles are bound to fonts not shipped in this environment (text renders invisible with them). These are seed-content issues, not the bug under test; do not report them.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: ptdev-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

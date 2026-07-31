@@ -1,0 +1,57 @@
+id: 032-designpen-v6-ptweb-fable-5-10x-gap-auto-space-between-broken
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported auto-layout bug: the gap value "Auto"
+  (space-between) does not work — children fail to distribute across the frame, or
+  positions render stale, and agents had to compute fixed gaps instead.
+
+  The canvas already contains a design document. Steps:
+
+  1. On empty canvas create a horizontal auto-layout frame with a FIXED width of
+     360, padding 0, containing two 40x40 rectangles.
+  2. Set the gap to Auto / space-between using the gap field's dropdown or chevron
+     affordance (use the UI control — do not judge the bug by typing the word
+     "auto" into a numeric field, which may be rejected by design).
+  3. Screenshot: the first child must sit at the left edge and the second at the
+     right edge (about 280px apart).
+  4. Add a third 40x40 rectangle to the frame: all three must distribute evenly.
+     Screenshot.
+  5. Resize the frame to 480 wide: the distribution must recompute to the new
+     width.
+
+  The bug reproduces if space-between mode fails to distribute the children or
+  renders stale positions after a change.
+
+  Note: this document has known content defects — several flat-named legacy text styles (the Body_16px family) are bound to missing fonts and render text invisible, and some component text properties are not wired. These are seed-content issues, not the bug under test; do not report them.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: ptweb-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

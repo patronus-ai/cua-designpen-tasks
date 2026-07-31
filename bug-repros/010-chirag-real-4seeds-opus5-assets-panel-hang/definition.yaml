@@ -1,0 +1,59 @@
+id: 010-chirag-real-4seeds-opus5-assets-panel-hang
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported stability bug: opening the Assets panel on a document
+  with a large component library (1,500+ entries in the reported runs) hangs the
+  browser tab — the grid render blocks the main thread, screenshots start failing, and
+  typing into the panel's search box freezes the app.
+
+  The canvas already contains a design document with a component library. Steps:
+
+  1. Take a baseline screenshot of the loaded editor.
+  2. Open the Assets panel (left sidebar). Time-box it: after opening, wait 2 seconds,
+     then take a screenshot. If the screenshot succeeds and the panel shows its
+     component grid, the panel survived the initial render.
+  3. Scroll the Assets grid down a few times, screenshotting after each second scroll.
+     The app must keep responding — each screenshot must come back and show the grid
+     scrolled further.
+  4. Click into the Assets search box and type "button". Wait 2 seconds, screenshot,
+     and confirm the grid filtered and the app still responds.
+  5. Clear the search, close the panel, and confirm the canvas still responds by
+     drawing one small rectangle.
+
+  The bug reproduces if at any step the tab stops responding: screenshots fail or come
+  back frozen/unchanged, typing produces nothing, or the app never recovers. If a
+  single interaction fails once but works on the retry, note it as flakiness rather
+  than a hang.
+
+  Work cheaply: never retry a failed interaction more than twice, and aim to finish
+  within roughly 25 tool calls. If the app becomes unresponsive, stop probing and
+  write your report from what you have.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: broking-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

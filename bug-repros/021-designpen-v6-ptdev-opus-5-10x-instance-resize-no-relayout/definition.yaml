@@ -1,0 +1,58 @@
+id: 021-designpen-v6-ptdev-opus-5-10x-instance-resize-no-relayout
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported layout bug: resizing a component INSTANCE does not
+  re-layout its nested children — internal auto-layout children keep their baked
+  sizes, inner frames do not stretch, and text clips at old widths, while doing the
+  same to a plain frame reflows fine.
+
+  The canvas already contains a design document with a component library. Steps:
+
+  1. From the Assets panel, place an instance of a library component that has
+     internal auto-layout and a visible text label (a button-, card- or list-row-like
+     component). Screenshot at native size.
+  2. Resize the instance about +120 wider via the W field. Screenshot: its children
+     must reflow to the new width — fill-width children stretch, right-aligned
+     children move right, and no text clips at the old width.
+  3. Resize back to roughly native width, then make it about +60 taller. Children
+     must adjust again.
+  4. Control: draw a plain auto-layout frame with two rectangles, resize it the same
+     way, and confirm plain frames DO reflow — the reported defect is
+     instance-specific.
+
+  The bug reproduces if the instance's children keep stale baked layout (clipped
+  text, unstretched inner frames, stale child positions) after the root resize.
+
+  Note: this document has known content defects — some component text properties are not wired to their nested text layers, and a few text styles are bound to fonts not shipped in this environment (text renders invisible with them). These are seed-content issues, not the bug under test; do not report them.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: ptdev-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

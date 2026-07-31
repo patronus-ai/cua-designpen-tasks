@@ -1,0 +1,59 @@
+id: 020-designpen-v6-ptdev-opus-5-10x-stroke-stale-after-resize
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported renderer bug: strokes do not re-render on resize.
+  After resizing a frame or instance that has a border, the stroke keeps painting at
+  the original baked width while the fill resizes correctly; inside-position strokes
+  can also drop an entire edge. In reported runs, toggling Stroke Position from
+  Inside to Center forced the repaint.
+
+  The canvas already contains a design document. Steps:
+
+  1. Draw a rectangle or frame about 300x80 on empty canvas. Give it a visible fill
+     and a 2px stroke with Position set to Inside. Zoom in and screenshot: all four
+     edges of the border must render.
+  2. Resize it to about 450 wide using the W field. Zoom in and screenshot: the
+     stroke must follow the new 450px outline on all four edges — not keep painting
+     the old 300px outline, and no edge may go missing.
+  3. From the Assets panel, place a library component instance that renders with a
+     visible border (an input-, field- or card-like component). Resize its width by
+     about +100 via the W field. Zoom: the border must track the new width.
+  4. If a stroke paints stale, toggle its Stroke Position from Inside to Center and
+     note whether that forces the correct repaint (this confirms the staleness).
+
+  The bug reproduces if any stroke renders at stale geometry or loses an edge after
+  a resize.
+
+  Note: this document has known content defects — some component text properties are not wired to their nested text layers, and a few text styles are bound to fonts not shipped in this environment (text renders invisible with them). These are seed-content issues, not the bug under test; do not report them.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: ptdev-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

@@ -1,0 +1,68 @@
+id: 003-chirag-real-4seeds-postfix-opus5-5000t-btf-component-text-property-dropped
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported component-property bug: text-property overrides set on
+  instances are silently dropped — the instance records the override value, but the
+  rendered label stays at the placeholder because the property definition ends up
+  dangling on the component. In the reported runs, seven form fields all rendered the
+  literal placeholder text even though the properties panel had accepted real labels.
+  A related symptom: a component text property could not be deleted once created.
+
+  The canvas loads the production ptweb seed document. Its library contains components
+  that expose TEXT properties (e.g. buttons/fields with a label property). Known
+  caveat: SOME seed components have property definitions that were never wired to
+  their text nodes — if a particular component ignores its property, try one or two
+  other components before concluding; the decisive app-level check is step 5 with
+  your OWN component. Steps:
+
+  1. From the Assets panel, place an instance of a library component that exposes a
+     text property in the right panel.
+  2. Set that text property to "Full name".
+  3. Screenshot: the button on canvas must now render "Full name", not the component's
+     default label.
+  4. Place a second instance of the same component and set its text property to
+     "Mobile number". Verify it renders "Mobile number" and the first instance still
+     renders "Full name".
+  5. Now build your own component: draw a small frame with a text layer reading
+     "Placeholder", select the frame and create a component from it (right-click >
+     Create component, or the toolbar action). Add a text property to it wired to the
+     text layer if the UI offers property creation, create an instance, and set that
+     property to "Email address". Verify the instance renders "Email address".
+     If the UI offers deleting the property, delete it and confirm the deletion works
+     without corrupting the instance. If property creation is not available in the UI,
+     note that and skip step 5 — do not treat the absence as a defect.
+
+  The bug reproduces if a property value is accepted by the panel but the canvas keeps
+  rendering the placeholder/default label, or if a created property cannot be deleted.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 35 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: ptweb-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

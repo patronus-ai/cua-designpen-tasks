@@ -1,0 +1,55 @@
+id: 005-designpen-v6-ptdev-fable-5-10x-fixed-frame-auto-expand
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported layout bug: a frame with FIXED dimensions silently
+  auto-expands when its children overflow. In the reported runs a 360px-wide mobile
+  screen root repeatedly grew to ~524px on its own after content was added, and the
+  agents had to keep resetting the width.
+
+  The canvas loads the production seed document. Pan/zoom to an empty area of the canvas and work there. Steps:
+
+  1. Draw a frame (F) and set its size to exactly 360 x 640 in the right panel.
+     Confirm both dimensions read Fixed (not Hug) — set them to Fixed if needed.
+  2. Enable vertical auto layout on the frame.
+  3. Add children that are wider than the frame: draw a rectangle inside it and set the
+     rectangle's width to 500. Also add a text node inside with a long single-line
+     string like "This label is intentionally much wider than its parent frame".
+  4. After each addition, read the FRAME's width in the right panel and screenshot.
+     The frame must still be exactly 360 wide — overflowing children may stick out or
+     be clipped, but a Fixed dimension must never change by itself.
+  5. Now resize the rectangle to 700 wide and check the frame width one more time.
+
+  The bug reproduces if the frame's width drifts from 360 (e.g. to ~500-524) without
+  you resizing the frame itself.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 30 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: ptdev-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'

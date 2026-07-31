@@ -1,0 +1,59 @@
+id: 004-designpen-v6-ptdev-fable-5-10x-stale-text-measurement
+start_url: http://cua_designpen.web
+prompt: |
+  You are verifying a reported text-layout bug: after editing a text node's content,
+  the node keeps its stale measured width, so longer labels render clipped until the
+  agent toggles sizing (Fixed <-> Hug) or retypes the content to force a re-measure.
+
+  The canvas loads the production seed document. Pan/zoom to an empty area of the canvas and work there. Steps:
+
+  1. Activate the Text tool (press T), click on the canvas, and type "OK". Press Escape
+     to commit.
+  2. In the right panel confirm the text node's horizontal sizing is Hug (auto-width).
+     If it isn't, set it to Hug.
+  3. Double-click the text to re-enter editing, select all, and replace the content
+     with the much longer string "Confirmation number 4821-7730". Press Escape to
+     commit.
+  4. Screenshot and inspect closely (zoom if needed): the full string must be visible
+     on one line, not clipped after the first few characters, and the node's reported
+     width in the right panel must have grown to fit the new content.
+  5. Repeat the same check once more with another text node: type "5", commit, then
+     replace with "Estimated delivery: 3-5 business days" and verify it renders
+     unclipped with an updated width.
+
+  The bug reproduces if the rendered text is visually clipped to the old short width,
+  or the width readout stays at the old value, until you toggle Fixed/Hug or retype.
+  Do not apply the workaround before checking — the point is whether the first commit
+  is already correct.
+
+  Work cheaply: screenshot only at the checkpoints above, never retry a failed
+  interaction more than twice, and aim to finish within roughly 25 tool calls.
+
+  At the very end of your final message, state whether the task went smoothly. If
+  everything worked without problems, end with exactly "verdict: approve". If you hit
+  any problems, bugs, or blockers (including the bug above reproducing), briefly say
+  what went wrong and end with exactly "verdict: not-approve".
+bootstrap_data:
+  seed: ptdev-v4
+available_tools:
+- browser_navigate
+- browser_screenshot
+- browser_click
+- browser_right_click
+- browser_double_click
+- browser_mouse_move
+- browser_drag
+- browser_scroll
+- browser_scroll_to
+- browser_press_key
+- browser_type
+- browser_wait
+- browser_get_page_text
+- browser_evaluate
+required_tools:
+- browser
+rewards:
+- name: Task went smooth (agent verdict)
+  kind: answer
+  comparator: STRING_CONTAINS
+  expected: 'verdict: approve'
